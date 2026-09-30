@@ -1,0 +1,11 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: SWAT+ Documentation
+  structure:
+    - type: space
+      key: space-1
+      title: SWAT+ Documentation
+      path: io-docs
+      default: true
+      content:
+        directory: ./io-docs
