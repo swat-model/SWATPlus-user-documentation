@@ -1,0 +1,3 @@
+# Manual Application of Irrigation
+
+&#x20;             A manual irrigation application can be scheduled by date or by heat units.  Irrigation amount (mm), input by the user, is the amount of water applied that reaches the soil.  An irrigation efficiency factor is applied to account for losses from the source to the soil including conveyance loss and evaporative loss.  The surface runoff ratio is the fraction of water applied that leaves the field as surface runoff.  The remainder infiltrates into the soil and is subject to the soil water routing algorithms described in Section 2, Chapter 3.  This allows for more realistic simulation of the soil water profile and application of excess irrigation for leaching salts.

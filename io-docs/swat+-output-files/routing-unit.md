@@ -1,0 +1,10 @@
+# Routing Unit
+
+The printing of routing unit output is controlled by entering "y" or "n" in the _ru_ line in [print.prt](../introduction-1/simulation-settings/print.prt/). Routing unit output can be printed at daily, monthly, yearly, and average annual time steps. The names of the routing unit output files are as follows:&#x20;
+
+* ru\_day.txt
+* ru\_mon.txt
+* ru\_yr.txt
+* ru\_aa.txt
+
+<table><thead><tr><th width="116.6666259765625">Field</th><th width="257.33331298828125">Description</th><th>Unit</th></tr></thead><tbody><tr><td>jday</td><td>Julian Day</td><td>n/a</td></tr><tr><td>mon</td><td>Month</td><td>n/a</td></tr><tr><td>day</td><td>Day of the month</td><td>n/a</td></tr><tr><td>yr</td><td>Year</td><td>n/a</td></tr><tr><td>name</td><td>Name of the object</td><td>n/a</td></tr><tr><td>type</td><td>Type of the object</td><td>n/a</td></tr><tr><td>flo</td><td>Routing unit flow</td><td>m3/s</td></tr><tr><td>sed</td><td>Routing unit sediment</td><td>tons</td></tr><tr><td>orgn</td><td>Routing unit organic nitrogen</td><td>kg</td></tr><tr><td>sedp</td><td>Routing unit sediment phosphorus</td><td>kg</td></tr><tr><td>no3</td><td>Routing unit nitrate nitrogen</td><td>kg</td></tr><tr><td>solp</td><td>Routing unit soluble phosphorus</td><td>kg</td></tr><tr><td>chla</td><td>Routing unit Chlorophyll-a</td><td>kg</td></tr><tr><td>nh3</td><td>Routing unit ammonia nitrogen</td><td>kg</td></tr><tr><td>no2</td><td>Routing unit nitrite nitrogen</td><td>kg</td></tr><tr><td>cbod</td><td>Routing unit carbonaceous biochemical oxygen demand</td><td>kg</td></tr><tr><td>dox</td><td>Routing unit dissolved oxygen</td><td>kg</td></tr><tr><td>san</td><td>Routing unit sand</td><td>tons</td></tr><tr><td>sil</td><td>Routing unit silt</td><td>tons</td></tr><tr><td>cla</td><td>Routing unit clay</td><td>tons</td></tr><tr><td>sag</td><td>Routing unit small aggregates</td><td>tons</td></tr><tr><td>lag</td><td>Routing unit large aggregates</td><td>tons</td></tr><tr><td>grv</td><td>Routing unit gravel</td><td>tons</td></tr><tr><td>null</td><td></td><td></td></tr></tbody></table>

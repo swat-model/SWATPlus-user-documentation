@@ -1,0 +1,20 @@
+---
+description: >-
+  This file contains pre-defined fertilizer, manure, and pesticide application
+  operations.
+---
+
+# chem\_app.ops
+
+| Field                      | Description               |  Type  | Unit | Default | Range |
+| -------------------------- | ------------------------- | :----: | :--: | :-----: | :---: |
+| [name](name_chem.md)       | Chemical application name | string |  n/a |   n/a   |  n/a  |
+| chem\_form                 | Currently not used        | string |      |         |       |
+| app\_typ                   | Currently not used        | string |      |         |       |
+| [app\_eff](app_eff.md)     | Application efficiency    |  real  |      |    0.   |       |
+| foliar\_eff                | Currently not used        |  real  |      |         |       |
+| [inject\_dp](inject_dp.md) | Injection depth           |  real  |  mm  |    0.   |       |
+| [surf\_frac](surf_frac.md) | Surface fraction          |  real  |      |    0.   |       |
+| drift\_pot                 | Currently not used        |  real  |      |         |       |
+| aerial\_unif               | Currently not used        |  real  |      |         |       |
+

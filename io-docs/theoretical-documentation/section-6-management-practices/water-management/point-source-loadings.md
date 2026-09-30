@@ -1,0 +1,5 @@
+# Point Source Loadings
+
+&#x20;     SWAT+ directly simulates the loading of water, sediment and other constituents off of land areas in the watershed. To simulate the loading of water and pollutants from sources not associated with a land area (e.g. sewage treatment plants), SWAT+ allows point source information to be read in at any point along the channel network. The point source loadings may be summarized on a daily, monthly, yearly, or average annual basis.&#x20;
+
+&#x20;         Files containing the point source loads are created by the user. The loads are read into the model and routed through the channel network using rechour, recday, recmon, recyear, or reccnst commands in the watershed configuration file. SWAT+ will read in water, sediment, organic N, organic P, nitrate, soluble P, ammonium, nitrite, metal, and bacteria data from the point source files. Chapter 2 in the SWAT+ User’s Manual reviews the format of the command lines in the watershed configuration file while Chapter 31 in the SWAT+ User’s Manual reviews the format of the point source files.

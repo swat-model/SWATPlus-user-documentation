@@ -1,0 +1,3 @@
+# Heavy Metal Routing
+
+Heavy metals are pollutants that are increasingly under scrutiny. Most heavy metals can exist in a number of different valence states and the solubility of a heavy metal is often dependent on the valence state it is in. The complexity of the processes affecting heavy metal solubility make modeling these processes directly unrealistic. At this time, SWAT+ allows heavy metal loadings to be added to the stream network in point source loading inputs. SWAT+ currently routes the heavy metals through the channel network, but includes no algorithms to model in-stream processes. Simple mass balance equations are used to determine the movement of heavy metals through the river network.

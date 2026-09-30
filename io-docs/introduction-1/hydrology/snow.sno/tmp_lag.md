@@ -1,0 +1,11 @@
+---
+description: Snowpack temperature lag factor
+---
+
+# tmp\_lag
+
+The influence of the previous day’s snowpack temperature on the current day’s snow pack temperature is controlled by a lagging factor, which inherently accounts for snow pack density, snowpack depth, exposure and other factors affecting snowpack temperature.&#x20;
+
+{% hint style="info" %}
+As _tmp\_lag_ approaches 1.0, the mean air temperature on the current day exerts an increasingly greater influence on the snow pack temperature and the snow pack temperature from the previous day exerts less and less influence. As it approaches zero, the snowpack temperature will be less influenced by the current day's air temperature.
+{% endhint %}

@@ -1,0 +1,11 @@
+# Phosphorus Removal
+
+&#x20;       Phosphorus adsorption takes place in the soil media below the biozone. The concentration of P in the biozone is often in the linear range of reported nonlinear isotherms (McCray et al., 2005). A linear isotherm is represented by the equation:
+
+&#x20;                                       $$S=K_DC$$                                                                              (15)
+
+where $$S$$ is the mass of solute sorbed per unit dry weight of solid (mg/kg), $$C$$ is the concentration of the solute in solution in equilibrium with the mass of solute sorbed onto the solid (mg/L), and $$K_D$$ is a linear distribution coefficient (L/kg). McCray et al. (2005) recommends $$K_D$$= 15.1 L/kg, the linear sorption isotherm constant as median value, but the value may vary from the 10th percentile ($$K_D$$= 5 L/kg) to 90th percentile ($$K_D$$= 128 L/kg) for modeling purpose. Similarly, a median value of $$S_{max}$$= 237 mg/kg is recommended for the maximum $$P$$ sorption capacity. This value may underestimate the P sorption capacity of the soil in some cases. A larger value (\~800mg/kg) can be used (Zanini et al., 1998) when the $$P$$ sorption capacity is underestimated. The concentration of P in the biozone is often reported low; thus, only the linear portion of a nonlinear isotherm is enough for estimation.&#x20;
+
+&#x20;                 Phosphorus sorption isotherm described in Equation (15) gives an estimate of $$P$$ sorption capacity given the $$P$$ concentration and the distribution coefficient. According to this equation, effluent $$P$$ concentration leaching to sub-soil layer should be zero until the soil is saturated with$$P$$; however, small amount of soluble $$P$$ leaches to sub-soil layer with daily inflow of $$P$$ to the biozone. The effluent $$P$$ concentration is estimated by a linear relationship suggested by Bond et al. (2006) in which the outflow P concentration is proportional to the total amount P in the soil layer based on soil type as depicted in Figure 6:4-2.        &#x20;
+
+![Figure 6:4-2 Water-soluble P as a function of Mehlich-3 P for native Autryville loamy sand, Wasda muck, Georgeville silt loam, and Pacolet sandy clay loam soils (Bond et al., 2006).](<../../../../.gitbook/assets/new3 (1).jpg>)

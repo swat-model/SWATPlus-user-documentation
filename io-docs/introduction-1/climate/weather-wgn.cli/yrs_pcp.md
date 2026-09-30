@@ -1,0 +1,11 @@
+---
+description: Number of years of maximum monthly 0.5 h rainfall data
+---
+
+# yrs\_pcp
+
+This variable is used to calculate values for [pcp\_hhr](pcp_hhr.md).&#x20;
+
+{% hint style="info" %}
+If no value is specified, the model will set _yrs\_pcp_ = 10.
+{% endhint %}

@@ -1,0 +1,5 @@
+# Water Allocation
+
+{% hint style="warning" %}
+The SWAT+ Water Allocation Module is still work in progress and not fully functional in the current revision. A description of the general approach as well as input/output files will be added before the release of the next SWAT+ revision.&#x20;
+{% endhint %}
