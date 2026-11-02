@@ -12,5 +12,5 @@ description: >-
 | [slp](slp.md) | Average slope steepness                          |   real  |  m/m |   0.02  |       |
 | [slp\_len](slp_len.md) | Average slope length                             |   real  |   m  |   50.0  |       |
 | [lat\_len](lat_len.md) | Average slope length for lateral subsurface flow |   real  |   m  |   50.0  |       |
-| dist\_cha | Currently not used | real | m |  |  |
+| dist\_cha | Average distance to stream (copied to HRU state and available for calibration; the nitrogen-loss equation using it is commented out in main 6f515368) | real | m |  |  |
 | [depos](depos.md) | Deposition coefficient | real | none | 1 |  |

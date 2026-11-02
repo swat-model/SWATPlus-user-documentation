@@ -69,8 +69,8 @@ The user is advised to print only those outputs that are needed for model evalua
 | lsu\_cb\_gl | LSU-area-weighted carbon gain/loss |
 | lsu\_cb\_trf | LSU-area-weighted carbon transformations |
 | lsu\_cb\_plt | LSU-area-weighted plant carbon state |
-| hru\_cb | Legacy carbon output switch retained for compatibility; no current writer uses it |
-| hru\_cb\_vars | Legacy carbon-variable switch retained for compatibility; no current writer uses it |
+| hru\_cb | Legacy HRU carbon output (active daily, monthly, and yearly writer calls) |
+| hru\_cb\_vars | Legacy HRU carbon-variable output (active daily, monthly, and yearly writer calls when carbon = 2) |
 | hru\_cb\_gl | HRU carbon gain/loss |
 | hru\_cb\_trf | HRU carbon transformations |
 | hru\_cb\_lyr | HRU per-layer soil organic carbon totals and sequestration |
@@ -93,3 +93,5 @@ GWFlow output rows require label-based object parsing: set use_obj_lbls to a val
 gwflow_obs and gwflow_solute select their four output periods independently. gwflow_heat supports daily, yearly, and average annual output; its monthly column does not enable a monthly heat-balance output. If the heat or solute row is omitted, its periods follow the water-balance settings. If the observation row is omitted, its four period flags retain their default enabled values.
 
 gwflow_pump is a group switch: any y among its four columns enables pumping output at all implemented periods; four n values disable the group. gwflow_flux is also a group switch: a y in its daily or yearly column enables its diagnostics; its monthly and average annual columns do not enable the group. These two rows do not independently select output periods.
+
+In SWAT+ main (6f515368), `hru_cb` calls the legacy carbon writer for enabled daily, monthly, and yearly output. `hru_cb_vars` calls the legacy carbon-variable writer for those periods when `carbon = 2` in `codes.bsn`. These two legacy rows accept `y` for normal output and `l` for diagnostic output. Neither writer-call block has a corresponding average-annual call; the fourth column therefore does not independently request an average-annual legacy report. See [the legacy writer calls](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/command.f90#L524).

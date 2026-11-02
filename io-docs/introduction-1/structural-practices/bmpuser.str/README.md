@@ -9,7 +9,7 @@ There are many conservation practices that are not implemented in SWAT+, but for
 | Field                    | Description                   | Type    | Unit    | Range     |
 | ------------------------ | ----------------------------- | ------- | ------- | --------- |
 | [name](name_bmpdb.md)    | ​Name of BMP record           | string  | n/a     | n/a       |
-| flag | Currently not used            | integer |         |           |
+| flag | User-BMP flag token (read but not used as an activation switch; selecting the record applies supported parameters) | integer |         |           |
 | [sed\_eff](sed_eff.md) | Sediment removal by BMP | real | fraction | 0.0-1.0 |
 | [ptlp\_eff](ptlp_eff.md) | ​Particulate P removal by BMP | real | fraction | 0.0-1.0 |
 | [solp\_eff](solp_eff.md) | ​Soluble P removal by BMP | real | fraction | 0.0-1.0 |

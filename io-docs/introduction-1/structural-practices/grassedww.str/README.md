@@ -9,7 +9,7 @@ Grassed waterways are vegetated channels that transport runoff from a field. Veg
 | Field                        | Description                         | Type    | Unit | Range       |
 | ---------------------------- | ----------------------------------- | ------- | ---- | ----------- |
 | [name](name_grwdb.md)        | Name of the grassed waterway record | string  | n/a  | n/a         |
-| flag | ​Currently not used | integer |  |  |
+| flag | Grassed-waterway flag token (read but not used as an activation switch; selecting the record applies supported parameters) | integer |  |  |
 | [mann](mann.md) | Manning's n for grassed waterway    | real    | n/a  | 0.001-0.50  |
 | [sed\_co](sed_co.md) | Sediment transport coefficient      | real    | n/a  | 0.0-1.0     |
 | [dp](dp.md) | Depth of grassed waterway | real | m | 0.0-10.0 |
