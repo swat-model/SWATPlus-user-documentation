@@ -13,18 +13,18 @@
 | [slp](slp.md) | Land surface slope                                                                            |   real  |    m/m   |     0.04     |  0.0-0.60  |
 | [slp\_len](slp_len.md) | Land surface slope length                                                                     |   real  |     m    |     64.20    |            |
 | [et\_co](et_co.md) | ET coefficient                                                                                |   real  |   none   |              |            |
-| [aqu\_sp\_yld](aqu_sp_yld.md) | Specific yield of the shallow aquifer (currently not used in simulation calculations) | real | none | 0.05 |  |
+| [aqu\_sp\_yld](aqu_sp_yld.md) | Specific yield of the shallow aquifer (calibration handling and output only; not applied to simulated state in main 6f515368) | real | none | 0.05 |  |
 | [alpha\_bf](alpha_bf.md) | Baseflow alpha factor | real | 1/days | 0.05 |  |
 | [revap](revap.md) | Revap coefficient                                                                             |   real  |   none   |      0.0     |            |
 | [rchg\_dp](rchg_dp.md) | Percolation coefficient from shallow to deep aquifer                                          |   real  |   none   |     0.01     |            |
 | [sw\_init](sw_init.md) | Initial soil water (fraction of available water capacity)                                     |   real  | fraction |     0.50     |   0.0-1.0  |
-| [aqu\_init](aqu_init.md) | Initial shallow aquifer storage (currently not used in simulation calculations) | real | mm | 3.00 |  |
-| [aqu\_sh\_flo](aqu_sh_flo.md) | Initial shallow aquifer flow (currently not used in simulation calculations) | real | mm | 0.0 |  |
-| [aqu\_dp\_flo](aqu_dp_flo.md) | Initial deep aquifer flow (currently not used in simulation calculations) | real | mm | 300.0 |  |
-| [snow\_h2o](snow_h2o.md) | Initial snow water equivalent (currently not used in simulation calculations) | real | mm | 0.0 |  |
+| [aqu\_init](aqu_init.md) | Intended initial shallow-aquifer storage (calibration handling and output only; not applied to simulated state in main 6f515368) | real | mm | 3.00 |  |
+| [aqu\_sh\_flo](aqu_sh_flo.md) | Intended initial shallow-aquifer flow (calibration handling and output only; not applied to simulated state in main 6f515368) | real | mm | 0.0 |  |
+| [aqu\_dp\_flo](aqu_dp_flo.md) | Intended initial deep-aquifer storage (calibration handling and output only; not applied to simulated state in main 6f515368) | real | mm | 300.0 |  |
+| [snow\_h2o](snow_h2o.md) | Intended initial snow water equivalent (calibration handling and output only; not applied to simulated state in main 6f515368) | real | mm | 0.0 |  |
 | [lat](lat.md) | Latitude | real | dec degrees | 31.60 |  |
 | [soil\_text](soil_text.md) | Soil texture                                                                                  |  string |    n/a   |      n/a     |     n/a    |
-| [trop\_flag](trop_flag.md) | Tropical flag (currently not used in simulation calculations) | string | n/a | non\_trop | n/a |
+| [trop\_flag](trop_flag.md) | Tropical flag (calibration output only; does not select simulation calculations in main 6f515368) | string | n/a | non\_trop | n/a |
 | [grow\_start](grow_start.md) | Start of growing season for non-tropical/start of monsoon initialization period for tropical  |  string |    n/a   |      n/a     |     n/a    |
 | [grow\_end](grow_end.md) | End of growing season for non-tropical/end of monsoon initialization period for tropical | string | n/a | n/a | n/a |
 | [plnt\_typ](plnt_typ.md) | Plant type                                                                                    |  string |    n/a   |     agrl     |     n/a    |

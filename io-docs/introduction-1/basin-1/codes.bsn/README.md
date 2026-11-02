@@ -18,7 +18,7 @@ description: This file contains control codes for the simulation of basin-level 
 | wq\_cha | Currently not used                               | integer |
 | [nostress](rte_pest.md)   | Turning off of plant stress                      | integer |
 | cn                        | Currently not used                               | integer |
-| c\_fact | Currently not used                               | integer |
+| c\_fact | C-factor method selector (entered value overwritten with 1 before method selection in main 6f515368) | integer |
 | [carbon](carbon.md) | Carbon routine                                   | integer |
 | [lapse](baseflo.md)       | Precipitation and temperature lapse rate control | integer |
 | [uhyd](uhyd.md)           | Unit Hydrograph method                           | integer |

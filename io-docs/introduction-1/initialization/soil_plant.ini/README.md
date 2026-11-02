@@ -9,7 +9,7 @@ description: >-
 | Field                          | Description                                            | Type   |
 | ------------------------------ | ------------------------------------------------------ | ------ |
 | [name](name-soil_plant.ini.md) | Name of the soil and plant initialization              | string |
-| [sw\_frac](sw_frac.md) | Not used. Initial soil water is controlled by sw_init in parameters.bsn. | real |
+| [sw\_frac](sw_frac.md) | Intended initial soil-water fraction (read but not applied; sw_init in parameters.bsn controls initial water) | real |
 | [nutrients](nutrients.md) | Pointer to the nutrient initialization file            | string |
 | [pest](pest.md) | Pointer to the pesticide initialization file           | string |
 | path | Name of a record in path_hru.ini that initializes pathogen concentrations in soil and plants. | string |

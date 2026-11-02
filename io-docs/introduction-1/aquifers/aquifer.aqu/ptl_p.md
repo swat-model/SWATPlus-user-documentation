@@ -1,9 +1,9 @@
 ---
-description: Average flow distance to stream or object (currently not used)
+description: Average flow distance to stream or object (not used in routing or pesticide transport)
 ---
 
 # flo\_dist
 
 **Code reference:** `aqudb(i)%flo_dist` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aquifer_module.f90#L14)).
 
-SWAT+ main (6f515368) reads and stores this value, but does not use it in aquifer routing, pesticide transport, or another simulation calculation. Changing it currently has no effect on simulation results.
+Average flow distance from the aquifer to the receiving stream or object (m). SWAT+ main (6f515368) reads and copies this value and permits calibration changes, but no active aquifer-routing or pesticide-transport calculation consumes it.
