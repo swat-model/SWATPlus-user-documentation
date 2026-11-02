@@ -4,7 +4,9 @@ description: Name of the pesticide record
 
 # name (pesticide.pes)
 
-The name of the urban land type is a primary key referenced when pesticide applications are scheduled in [**management.sch**](../../landuse-and-management/management.sch/) or [**lum.dtl**](../../decision-tables/lum.dtl/). All names in the **pesticide.pes** database must be unique.
+**Code reference:** `pestdb(ip)%name` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pesticide_data_module.f90#L6)).
+
+The pesticide record name is a primary key referenced when pesticide applications are scheduled in [**management.sch**](../../landuse-and-management/management.sch/) or [**lum.dtl**](../../decision-tables/lum.dtl/). All names in the **pesticide.pes** database must be unique.
 
 | Name             | Description             |
 | ---------------- | ----------------------- |

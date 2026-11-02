@@ -15,8 +15,8 @@ The only timestep output can be printed at using this file is daily. A descripti
 
 | Field                         | Description                              | Type    |
 | ----------------------------- | ---------------------------------------- | ------- |
-| id                            | ID of the object print record            | integer |
-| [obj\_typ](obj_typ.md)        | Type of object to print output for       | string  |
+| id | ID of the object print record            | integer |
+| [obj\_typ](obj_typ.md) | Type of object to print output for       | string  |
 | [obj\_typ\_no](obj_typ_no.md) | Number of the object to print output for | integer |
-| [hyd\_typ](hyd_typ.md)        | Type of hydrograph to print              | string  |
+| [hyd\_typ](hyd_typ.md) | Type of hydrograph to print              | string  |
 | filename                      | User-defined name of output file         | string  |

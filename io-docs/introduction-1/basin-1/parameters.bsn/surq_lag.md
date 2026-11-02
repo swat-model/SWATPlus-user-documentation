@@ -1,8 +1,10 @@
 ---
-description: Surface runoff lag coefficient
+description: Surface runoff lag time
 ---
 
 # surq\_lag
+
+**Code reference:** `bsn_prm%surlag` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L82)).
 
 In large routing units with a time of concentration greater than 1 day, only a portion of the surface runoff will reach the main channel on the day it is generated. SWAT+ incorporates a surface runoff storage feature to lag a portion of the surface runoff release to the main channel.&#x20;
 

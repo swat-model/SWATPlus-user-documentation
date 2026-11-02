@@ -1,9 +1,9 @@
 ---
-description: Average flow distance to stream or object
+description: Average flow distance to stream or object (currently not used)
 ---
 
 # flo\_dist
 
-The distance between the aquifer and the stream impacts the delivery of pesticides from the aquifer to the stream. The longer the distance, the smaller the pesticide load.&#x20;
+**Code reference:** `aqudb(i)%flo_dist` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aquifer_module.f90#L14)).
 
-This variable is only used for calculating pesticide transport from the aquifer to the stream, not for flow or nutrient routing.
+SWAT+ main (6f515368) reads and stores this value, but does not use it in aquifer routing, pesticide transport, or another simulation calculation. Changing it currently has no effect on simulation results.

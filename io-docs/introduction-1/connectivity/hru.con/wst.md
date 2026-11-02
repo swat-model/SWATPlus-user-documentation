@@ -1,7 +1,9 @@
 ---
-description: Pointer to the weather station file
+description: Weather station name
 ---
 
 # wst
 
-The pointer to the weather station file is a foreign key referencing [name](../../climate/weather-sta.cli/name-weather_sta.cli.md) in [**weather-sta.cli**](../../climate/weather-sta.cli/).
+**Code reference:** `ob(i)%wst_c` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L344)).
+
+The wst value is a foreign key matching the name field in weather-sta.cli. SWAT+ uses that name to resolve the weather-station record for the object.

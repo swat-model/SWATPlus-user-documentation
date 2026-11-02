@@ -4,6 +4,8 @@ description: Maximum potential leaf area index
 
 # lai\_pot
 
+**Code reference:** `pldb(ic)%blai` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/plant_data_module.f90#L45)).
+
 The variable _lai\_pot_ is one of six parameters used to quantify leaf area development of a plant species during the growing season. The figure below illustrates the relationship of the database parameters to the leaf area development modeled by SWAT+.
 
 ![](<../../../.gitbook/assets/image (25).png>)

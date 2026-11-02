@@ -1,7 +1,9 @@
 ---
-description: Dry weight of biomass removed by trampling daily
+description: Currently not used
 ---
 
 # bm\_tramp
 
-Trampling becomes significant as the number of animals grazing per hectare increases. This is a very subjective value which is typically set equal to [bm\_eat](eat.md), i.e., the animals trample as much as they eat.
+**Code reference:** `grazeop_db(igrazop)%tramp` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operations_module.f90#L127)).
+
+SWAT+ main (6f515368) reads this value and calculates a trampling fraction, but immediately resets that fraction to zero before changing any plant biomass. Changing bm_tramp currently has no effect on simulation results.
