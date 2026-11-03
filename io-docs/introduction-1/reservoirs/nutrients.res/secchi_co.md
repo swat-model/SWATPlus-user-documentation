@@ -1,7 +1,9 @@
 ---
-description: Water clarity coefficient for the reservoir
+description: Annual loss-rate coefficient for soluble phosphorus
 ---
 
-# secchi\_co
+# secchi_co
 
-The clarity of the reservoir is expressed by the secchi-disk depth, which is calculated as a function of chlorophyll _a_. Because suspended sediment also can affect water clarity, the water clarity coefficient has been added to the equation to allow users to adjust for the impact of factors other than chlorophyll _a_ on water clarity.
+**Code reference:** `res_nut(ires)%psolr` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/reservoir_data_module.f90#L118)).
+
+Despite the legacy input label, this field is the annual loss-rate coefficient for soluble phosphorus, not a water-clarity coefficient. SWAT+ divides the input by 365 and applies the daily coefficient in reservoir and wetland nutrient loss.

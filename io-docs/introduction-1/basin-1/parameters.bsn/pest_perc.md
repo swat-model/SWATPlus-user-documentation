@@ -4,6 +4,8 @@ description: Pesticide percolation coefficient
 
 # pest\_perc
 
+**Code reference:** `bsn_prm%percop` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L99)).
+
 This parameter controls the amount of pesticide removed from the surface layer in runoff and lateral flow relative to the amount removed via percolation. This parameter is only important if pesticide transport is simulated.&#x20;
 
 {% hint style="info" %}

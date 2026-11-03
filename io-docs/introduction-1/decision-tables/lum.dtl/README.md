@@ -23,12 +23,12 @@ Finally, the outcomes and actions are defined. The number of lines used for this
 
 | Field                    | Description                    | Type    |
 | ------------------------ | ------------------------------ | ------- |
-| [act\_typ](act_typ.md)   | Type of action                 | string  |
-| [obj](obj-1.md)          | Object type                    | string  |
+| [act\_typ](act_typ.md) | Type of action                 | string  |
+| [obj](obj-1.md) | Object type                    | string  |
 | [obj\_num](obj_num-1.md) | Object ID                      | integer |
 | [name](name.md)          | Name of the action             | string  |
 | [option](option.md)      | Action option                  | string  |
 | [const](const.md)        | Action constant                | real    |
 | [const2](const2.md)      | Action constant                | real    |
-| [fp](fp.md)              | File pointer for action option | string  |
-| [outcome](outcome.md)    | Outcome                        | string  |
+| [fp](fp.md) | File pointer for action option | string  |
+| [outcome](outcome.md) | Outcome                        | string  |

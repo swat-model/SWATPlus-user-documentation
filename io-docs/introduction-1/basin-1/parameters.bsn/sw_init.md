@@ -6,6 +6,8 @@ description: >-
 
 # sw\_init
 
+**Code reference:** `bsn_prm%ffcb` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L81)).
+
 All soils in the watershed will be initialized to the same fraction. If _sw\_init_ = 0.0, the model will calculate it as a function of average annual precipitation.&#x20;
 
 {% hint style="info" %}

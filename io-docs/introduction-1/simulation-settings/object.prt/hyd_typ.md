@@ -4,6 +4,8 @@ description: Type of hydrograph to print
 
 # hyd\_typ
 
+**Code reference:** `ob_out(ii)%hydtyp` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L260)).
+
 The following hydrographs can be printed:
 
 | Hydrograph Code | Description                                 | Object type |

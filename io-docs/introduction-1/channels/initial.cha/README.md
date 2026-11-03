@@ -13,7 +13,7 @@ description: >-
 | [pest](ch_pest.md)        | Pointer to the pesticide initialization file       | string |
 | path                      | Currently not used                                 | string |
 | hmet                      | Currently not used                                 | string |
-| [salt](ch_salt.md)        | Pointer to the salt initialization file            | string |
+| [salt](ch_salt.md) | Intended salt-initialization pointer (read but not used here in main 6f515368; active initialization uses initial.cha_cs) | string |
 
 {% hint style="warning" %}
 There are no plans to work on the pathogen and heavy metal routines in the foreseeable future unless there is a demand for it in the user community.

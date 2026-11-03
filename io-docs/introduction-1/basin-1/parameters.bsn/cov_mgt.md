@@ -4,3 +4,4 @@ description: Scaling parameter for cover and management factor for overland flow
 
 # cov\_mgt
 
+**Code reference:** `bsn_prm%c_factor` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L128)).
