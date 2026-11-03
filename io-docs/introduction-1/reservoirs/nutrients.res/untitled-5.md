@@ -1,5 +1,5 @@
 ---
-description: Nitrogen settling rate during the mid-year nutrient settling period
+description: Annual nitrogen loss-rate coefficient used during the mid-year nutrient period
 ---
 
 # mid\_n\_stl

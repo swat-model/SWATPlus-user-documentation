@@ -1,5 +1,5 @@
 ---
-description: Phosphorus settling rate outside the mid-year nutrient settling period
+description: Annual phosphorus loss-rate coefficient used outside the mid-year nutrient period
 ---
 
 # p\_stl
