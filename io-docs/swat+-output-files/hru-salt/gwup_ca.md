@@ -1,15 +1,25 @@
 ---
-description: "Groundwater salt transferred from aquifer to soil"
+description: "Calcium wetland-seepage salt diagnostic"
 ---
 
 # gwup_ca
 
-**Code reference:** `hsaltb_d(j)%salt(isalt)%wtsp` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_module.f90#L18)).
+**Printed heading:** `gwup_ca`, position 64 in the fixed 159-entry header. The mappings below apply to the eight-ion case in the order sulfate, calcium, magnesium, sodium, potassium, chloride, carbonate, bicarbonate. The writer uses `cs_db%num_salts` values per group; for another count, reconstruct the row from the WRITE list.
 
-In this output table, `gwup_ca` is one of the fields described as: Groundwater salt transferred from aquifer to soil. Important: this source prints a header/value mismatch. At the position labeled `gwup_ca`, the data writer supplies `hsaltb_d(j)%salt(isalt)%wtsp`. This page records that positional relationship and does not reinterpret the value as the printed label.
+**Actual value:** `hsaltb_d(j)%salt(2)%wtsp` ([daily writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L48); [record declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_module.f90#L7)). Calcium wetland-seepage salt diagnostic.
 
 **Unit:** kg/ha.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+**Header mismatch:** The nominal heading denotes groundwater-to-soil salt diagnostic, but the value at this position is `%wtsp`. The omitted groundwater-upward-transfer group shifts the following values eight places to the left. Do not use the nominal label to assign the actual quantity or unit.
+
+**Producer and interpretation:** [Wetland seepage calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_salt.f90#L62) computes a seepage loss in kg from seepage volume times salt concentration, capped by the wetland's mass remaining after outflow. It divides by **HRU area** in ha, adds the result to the top soil layer, and stores it in `wtspsalt(j,2)` ([soil addition](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_salt.f90#L92)). This is the input to soil at the wetland step; it does not measure how much of that input remains after soil transport. It does not use the runoff lag buffer.
+
+Monthly and yearly values sum the daily diagnostic. Average annual divides the accumulated yearly diagnostic by configured `time%nbyr`, giving the annual amount convention kg/ha/yr. The denominator is the configured simulation-year count, not a count of years contributing output; skipped or partial periods require care.
+
+The corresponding period members are `hsaltb_m(j)%salt(2)%wtsp`, `hsaltb_y(j)%salt(2)%wtsp`, and `hsaltb_a(j)%salt(2)%wtsp` ([monthly/yearly transfer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L95); [yearly/AA transfer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L191); [AA division](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L288)).
+
+The `%gwup` diagnostic is assigned in [the HRU controller](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L800), but this output writer omits it. Groundwater-to-soil salt transfer cannot be recovered from this heading's value. The intended `gwupsalt` producer would add `hru_soil(j,jj,4)` across layers, but [its guard](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_lch.f90#L51) uses a local `gw_soil_flag` initialized to zero with no enabling assignment. That branch stays off in this source; enabling the global GWFlow soil-exchange setting does not change the local flag.
+
+See the [complete schema and period limitations](README.md#actual-data-layout). This page identifies the stored diagnostic and writer aggregation; it does not independently validate every upstream transport or application calculation.
 
 [Back to the output table](README.md).

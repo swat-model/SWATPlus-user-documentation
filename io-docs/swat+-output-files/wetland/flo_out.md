@@ -1,15 +1,15 @@
 ---
-description: "Incoming and outgoing water"
+description: "Outgoing water volume"
 ---
 
 # flo_out
 
 **Code reference:** `wet_out_d(j)%flo` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L32)).
 
-In this output table, `flo_out` is one of the fields described as: Incoming and outgoing water.
+Outgoing water volume.
 
 **Unit:** m3.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Monthly output gives the average daily outgoing volume in m3 per day. The yearly row uses the full accumulated volume in m3, and average annual divides the yearly volumes by the number of printed years. Paddy discharge uses a weir release routine, while other wetlands use the configured decision table. [Period calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_output.f90#L37), [Release paths](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_control.f90#L179)
 
 [Back to the output table](README.md).

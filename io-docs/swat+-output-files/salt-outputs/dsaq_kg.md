@@ -1,15 +1,15 @@
 ---
-description: "Mineral dissolution in soils and aquifers"
+description: "Net change in dissolved salt from aquifer mineral reactions"
 ---
 
 # dsaq_kg
 
-**Code reference:** `salt_basin(i)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L36)).
+**Code reference:** `salt_basin(24)` ([calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L286-L303)).
 
-In this output table, `dsaq_kg` is one of the fields described as: Mineral dissolution in soils and aquifers.
+Net change in dissolved salt from aquifer mineral reactions. The standard aquifer path reads the combined chemistry diagnostic, and the GWFlow path sums its cell mineral diagnostics. The average-annual report leaves this field in cumulative kg.
 
-**Unit:** kg.
+**Unit:** kg for all reporting periods.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [reporting periods](basin-salt-balance.md#reporting-periods) for aggregation.
 
-[Back to the output table](README.md).
+[Back to schema](basin-salt-balance.md).

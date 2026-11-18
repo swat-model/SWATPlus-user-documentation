@@ -1,15 +1,19 @@
 ---
-description: "Groundwater discharge to surface water"
+description: "Groundwater/channel exchange diagnostic"
 ---
 
 # gw_sw
 
-**Code reference:** `gw_hyd_ss(i)%gwsw` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_module.f90#L121)).
+**Code reference:** `gw_hyd_ss(i)%gwsw` for daily cell output ([daily writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L1223)).
 
-Groundwater discharge to surface water.
+Daily negative values represent groundwater discharge to channels. In the monthly and yearly cell arrays, the channel-exchange routine adds signed Q to `gwsw` for both directions, so those fields and their average-annual derivatives are net channel exchange rather than discharge alone. Positive values can therefore represent channel seepage into groundwater.
 
-**Unit:** m3/day.
+Source: [daily split and combined period accumulation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_channel_exch.f90#L89).
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+**Unit:** m3/day for this cell report's flux fields.
 
-[Back to the output table](README.md).
+**Period treatment:** daily rows print the daily cell diagnostic. Monthly rows divide the separate `gw_hyd_ss_mo` array by `time%day_mo`; yearly rows divide `gw_hyd_ss_yr` by `time%day_end_yr`. Average-annual rows sum yearly daily means and divide by `real(time%nbyr)`, giving equal weight to yearly means rather than pooling every simulated day. These rates are not the mm basin totals. See [monthly](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L1336), [yearly](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L1593), and [average annual](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L1638).
+
+The period arrays have their own producers and known gaps; they cannot all be reconstructed by summing daily rows. See the [family table](README.md).
+
+[Back to the cell water-balance schema](cell-water-balance.md).

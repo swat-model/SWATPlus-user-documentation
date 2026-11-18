@@ -1,15 +1,15 @@
 ---
-description: "Salt added by surface-water, groundwater, and outside-source irrigation"
+description: "Salt assigned to groundwater irrigation in the HRU diagnostics"
 ---
 
 # irgw_kg
 
-**Code reference:** `salt_basin(i)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L36)).
+**Code reference:** `salt_basin(11)` ([calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L153-L160)).
 
-In this output table, `irgw_kg` is one of the fields described as: Salt added by surface-water, groundwater, and outside-source irrigation.
+Salt assigned to groundwater irrigation in the HRU diagnostics. The field is zero on the inspected revision because it has no active producer. [HRU salt diagnostics](../hru-salt/README.md)
 
-**Unit:** kg.
+**Unit:** kg for daily, monthly, and yearly output. The average-annual value is kg/yr.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [reporting periods](basin-salt-balance.md#reporting-periods) for aggregation.
 
-[Back to the output table](README.md).
+[Back to schema](basin-salt-balance.md).

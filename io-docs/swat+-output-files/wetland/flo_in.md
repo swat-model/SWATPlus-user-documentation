@@ -1,15 +1,15 @@
 ---
-description: "Incoming and outgoing water"
+description: "Incoming water volume"
 ---
 
 # flo_in
 
 **Code reference:** `wet_in_d(j)%flo` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L32)).
 
-In this output table, `flo_in` is one of the fields described as: Incoming and outgoing water.
+Incoming water volume.
 
 **Unit:** m3.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Monthly output gives the average daily incoming volume in m3 per day. The yearly row uses the full accumulated volume in m3, and average annual divides the yearly volumes by the number of printed years. GWFlow can add groundwater inflow to the daily record when active. [Period calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_output.f90#L37), [Groundwater inflow](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_wetland.f90#L139)
 
 [Back to the output table](README.md).

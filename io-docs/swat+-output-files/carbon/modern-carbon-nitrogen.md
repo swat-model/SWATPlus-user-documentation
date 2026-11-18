@@ -1,38 +1,35 @@
 # Modern Carbon and Nitrogen Outputs
 
-The modern landscape carbon and nitrogen reports use the standard `_day`, `_mon`, `_yr`, and `_aa` intervals and can be written as TXT and CSV. HRU and LSU variants share the same printed field names where both are available.
+Use the file family below to find its printed column order and print setting. The modern landscape reports use `_day`, `_mon`, `_yr`, and `_aa` suffixes with TXT and optional CSV variants.
 
-## Nutrient cycling
+## How to produce these files
 
-{% hint style="warning" %}
-The inspected source opens the `hru_ncycle_*` files and prints their headers, but no data-row write to those file units is present. The fields below therefore describe printed header positions, not verified populated columns.
-{% endhint %}
+Use named object rows in [print.prt](../../introduction-1/simulation-settings/print.prt/README.md) (`use_obj_lbls = y`). Set the daily, monthly, yearly, or average-annual column to `y` for the desired files. Set `csvout` to `y` for CSV copies. [LSU print rows](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_print_codes_read.f90#L360), [HRU print rows](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_print_codes_read.f90#L400)
 
-`hru_ncycle_*` begins with `jday`, `mon`, `day`, `yr`, `unit`, `gis_id`, and `name`, followed by:
+| File family | Print row |
+| --- | --- |
+| [`hru_ncycle_*`](hru-nutrient-cycling.md) headers | `hru_nb` |
+| [`hru_carb_gl_*` and `lsu_carb_gl_*`](carbon-gains-and-losses.md) | `hru_cb_gl` and `lsu_cb_gl` |
+| [`hru_scf_*` and `lsu_scf_*`](soil-carbon-fluxes.md) | `hru_cb_trf` and `lsu_cb_trf` |
+| [`hru_plc_stat_*`](hru-plant-carbon-status.md) | `hru_cb_plt` |
+| [`lsu_plc_stat_*`](lsu-plant-carbon-status.md) | `lsu_cb_plt` |
 
-| Field | Description | Unit |
-| --- | --- | --- |
-| [lab_min_p](modern-carbon-nitrogen/lab_min_p.md) | Labile-to-active mineral phosphorus transfer | kg P/ha |
-| [act_sta_p](modern-carbon-nitrogen/act_sta_p.md) | Active-to-stable mineral phosphorus transfer | kg P/ha |
-| [act_nit_n](modern-carbon-nitrogen/act_nit_n.md) | Active organic nitrogen mineralization | kg N/ha |
-| [act_sta_n](modern-carbon-nitrogen/act_sta_n.md) | Active-to-stable organic nitrogen transfer | kg N/ha |
-| [org_lab_p](modern-carbon-nitrogen/org_lab_p.md) | Organic-to-labile phosphorus transfer | kg P/ha |
-| [rsd_hs_c](modern-carbon-nitrogen/rsd_hs_c.md) | Residue carbon transferred to humus | kg C/ha |
-| [rsd_nitrorg_n](modern-carbon-nitrogen/rsd_nitrorg_n.md) | Residue nitrogen transferred to nitrate and organic pools | kg N/ha |
-| [rsd_laborg_p](modern-carbon-nitrogen/rsd_laborg_p.md) | Residue phosphorus transferred to labile and organic pools | kg P/ha |
+## Additional print settings
 
-`rsd_nitrorg_n` is the literal printed heading.
+| File family | Print row |
+| --- | --- |
+| [`hru_cbn_lyr_*`](modern-hru-cbn-lyr.md) | `hru_cb_lyr` |
+| [`hru_n_p_pool_stat_*`](modern-hru-n-p-pool-stat.md) | `hru_cb_npool` |
+| [`hru_soil_snap_*`](modern-hru-soil-snap.md) | `hru_cb_snap` |
+| [`hru_cflux_stat_*`](modern-hru-cflux-stat.md) | `hru_cb_flux` |
+| [`hru_cpool_stat_*`](modern-hru-cpool-stat.md) | `hru_cb_cpool` |
+| [`hru_carb_drv_*`](modern-hru-carb-drv.md) | `hru_cb_drv` |
+| [`hru_carb_dyn_*`](modern-hru-carb-dyn.md) | `hru_cb_dyn` |
 
-## Carbon gains and losses
+The flux, pool, driver, and dynamics reports require `carbon = 2` in [codes.bsn](../../introduction-1/basin-1/codes.bsn/README.md).
 
-`hru_carb_gl_*` and `lsu_carb_gl_*` use the exact process headings `sed_c`, `surq_c`, `latq_c`, `perc_c`, `res_decay`, `man_app_c`, `man_graze_c`, `rsp_c`, `soil_emit_c`, `plant_surf_c`, `plant_root_c`, `rsd_surfdecay_c`, `rsd_rootdecay_c`, `harv_stov_c`, `rsd_emit_c`, `npp_c`, `harv_abgr_c`, `harv_root_c`, `drop_c`, `grazeat_c`, and `plant_emit_c`. Their units line reports kg C/ha.
+[HRU nutrient file creation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_init.f90#L118), [Layer and snapshot file creation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_init.f90#L367), [LSU file creation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_init.f90#L1292)
 
-## Soil-carbon fluxes
+## Legacy reports
 
-`hru_scf_*` and `lsu_scf_*` use the exact headings `meta_micr`, `str_micr`, `str_hs`, `co2_meta`, `co2_str`, `micr_hs`, `micr_hp`, `hs_micr`, `hs_hp`, `hp_micr`, `co2_micr`, `co2_hs`, and `co2_hp`. Their units line reports kg C/ha.
-
-## Plant-carbon status
-
-`hru_plc_stat.*` and `lsu_plc_stat_*` report plant-carbon state. The HRU header uses `freq`, `jday`, `day`, `mon`, `yr`, `unit`, `gis_id`, `name`, `total_c`, `ab_gr_c`, `leaf_c`, `stem_c`, `seed_c`, `root_c`, and `surf_rsd_c`. LSU files use interval-specific rows and should be interpreted from their printed header.
-
-Legacy layered pool, allocation, ratio, and transformation reports remain documented under [Output Files Generated by hru_cb](output-files-generated-by-hru_cb.md) and [Output Files Generated by hru_cb_vars](output-files-generated-by-hru_cb_vars.md).
+The [legacy HRU plant carbon diagnostic](legacy-hru-plant-carbon-status.md) uses the filenames `hru_plc_stat.txt` and `hru_plc_stat.csv`. See [Output Files Generated by hru_cb](output-files-generated-by-hru_cb.md) and [Output Files Generated by hru_cb_vars](output-files-generated-by-hru_cb_vars.md) for the other legacy reports.

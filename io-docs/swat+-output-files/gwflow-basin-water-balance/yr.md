@@ -8,8 +8,8 @@ description: "Calendar year"
 
 The calendar year associated with the output row.
 
-For average-annual output, the printed date is the final reporting date; the values summarize multiple printed years.
+For average-annual output, the printed date is the final reporting date; the basin average-annual values divide the simulation accumulators by `time%nbyr`, the configured simulation-year count. This differs from the `time%yrs_prt` convention used by some other output families.
 
 This is an identifier, label, or date component; it has no physical unit.
 
-[Back to the output table](README.md).
+[Back to the daily schema](daily-basin-water-balance.md) · [Back to the longer-period schema](longer-period-basin-water-balance.md).

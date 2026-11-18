@@ -6,10 +6,10 @@ description: "Sand storage in the reservoir"
 
 **Code reference:** `res(j)%san` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L43)).
 
-Sand storage in the reservoir.
+Sand in the storage hydrograph. The sediment routine clears all six stored size classes when bulk sediment concentration exceeds the equilibrium threshold. A low-volume reset also clears these fields. [Sediment calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_sediment.f90#L17-L51), [Low-volume reset](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_nutrient.f90#L31-L36)
 
 **Unit:** tons.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Storage values are snapshots on the reporting date. See [sediment and particle sizes](README.md#sediment-and-particle-sizes).
 
 [Back to the output table](README.md).

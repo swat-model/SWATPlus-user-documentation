@@ -6,10 +6,10 @@ description: "Sediment storage in the reservoir"
 
 **Code reference:** `res(j)%sed` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L33)).
 
-Sediment storage in the reservoir.
+Bulk sediment remaining in storage after the active release and settling calculations. On the branch that runs settling, the calculation deducts the estimated export before the water balance caps release. The later low-volume reset can clear the stored mass. [Settling](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_sediment.f90#L17-L51), [Water balance](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_control.f90#L150-L205)
 
 **Unit:** tons.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Storage values are snapshots on the reporting date. See [sediment and particle sizes](README.md#sediment-and-particle-sizes).
 
 [Back to the output table](README.md).

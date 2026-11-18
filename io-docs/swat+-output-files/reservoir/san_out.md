@@ -1,15 +1,15 @@
 ---
-description: "Sand leaving the reservoir"
+description: "Sand outflow slot, left at zero by the reservoir controller"
 ---
 
 # san_out
 
 **Code reference:** `res_out_d(j)%san` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L43)).
 
-Sand leaving the reservoir.
+The reservoir controller leaves this outflow slot at its zero default. The settling routine calculates only bulk sediment export, reported separately in [sed_out](sed_out.md). [Outflow initialization](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_control.f90#L38-L42), [Settling and export](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_sediment.f90#L35-L58)
 
 **Unit:** tons.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Monthly and yearly records sum the daily loads. The average-annual record divides the accumulated loads by the number of printed years. See [sediment and particle sizes](README.md#sediment-and-particle-sizes).
 
 [Back to the output table](README.md).

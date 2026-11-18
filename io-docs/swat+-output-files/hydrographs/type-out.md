@@ -4,12 +4,12 @@ description: "Type of the source object"
 
 # type
 
-**Code reference:** `ob(icmd)%typ` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L333)).
+**Code reference:** `ob(icmd)%typ` ([daily writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydout_output.f90#L22)).
 
 Type of the source object.
 
-**Unit:** not printed. The exact interpretation depends on the configured operation or constituent.
+This identifier has no physical unit.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+The value identifies the connection shown in this row.
 
 [Back to the output table](README.md).

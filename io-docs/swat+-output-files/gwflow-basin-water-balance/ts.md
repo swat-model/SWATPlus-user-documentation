@@ -12,4 +12,4 @@ The length of the groundwater flow-solution time step, in days. A daily output r
 
 This field appears in the daily file only; it is not a column in the monthly, yearly, or average-annual basin water-balance files.
 
-[Back to the output table](README.md).
+[Back to the daily basin water-balance schema](daily-basin-water-balance.md).

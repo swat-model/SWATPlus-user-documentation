@@ -6,10 +6,10 @@ description: "Average, initial, and final pesticide storage"
 
 **Code reference:** `aqupst_d(j)%pest(ipest)%stor_ave` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_pesticide_module.f90#L12)).
 
-In this output table, `stor_ave_kg` is one of the fields described as: Average, initial, and final pesticide storage.
+The daily value equals `stor_final_kg`. The snapshot is taken at the end of that pesticide's turn, so it can miss daughter mass added by a parent processed later in the day. [Daily snapshots and loop](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_1d_control.f90#L363-L375).
 
 **Unit:** kg.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+The daily producer copies the end-of-day stored mass into this field. Monthly and yearly output averages those daily values using calendar month length or `time%day_end_yr`. Average annual divides the accumulated daily storage by `time%days_prt`. The basin writer sums aquifer masses before applying the same time divisions. [Daily assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_1d_control.f90#L372), [Storage averaging operator](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_pesticide_module.f90#L117)
 
-[Back to the output table](README.md).
+[Back to schema](aquifer-pesticide-balance.md).

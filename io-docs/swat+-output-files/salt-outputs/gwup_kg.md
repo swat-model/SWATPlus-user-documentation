@@ -1,15 +1,15 @@
 ---
-description: "Soil-aquifer and wetland-soil salt transfers"
+description: "Salt added to HRU soil layers by GWFlow groundwater–soil exchange, summed across HRUs and ions"
 ---
 
 # gwup_kg
 
-**Code reference:** `salt_basin(i)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L36)).
+**Code reference:** `salt_basin(8)` ([calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L126-L133)).
 
-In this output table, `gwup_kg` is one of the fields described as: Soil-aquifer and wetland-soil salt transfers.
+Salt added to HRU soil layers by GWFlow groundwater–soil exchange, summed across HRUs and ions. [Groundwater-to-soil transfer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_lch.f90#L75-L89)
 
-**Unit:** kg.
+**Unit:** kg for daily, monthly, and yearly output. The average-annual value is kg/yr.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [reporting periods](basin-salt-balance.md#reporting-periods) for aggregation.
 
-[Back to the output table](README.md).
+[Back to schema](basin-salt-balance.md).

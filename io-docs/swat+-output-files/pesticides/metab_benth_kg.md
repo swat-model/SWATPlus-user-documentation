@@ -6,10 +6,10 @@ description: "Benthic reaction, metabolite production, and burial"
 
 **Code reference:** `chpst_d(j)%pest(ipest)%metab_bot` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_pesticide_module.f90#L21)).
 
-In this output table, `metab_benth_kg` is one of the fields described as: Benthic reaction, metabolite production, and burial.
+The channel adds the newly formed daughter pesticide mass in the bed to this field. The reservoir producer leaves it at zero and uses `metab_h2o_kg` for its sediment-branch calculation. [Channel benthic production](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_rtpest.f90#L225-L235), [Reservoir sediment-branch assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_pest.f90#L150-L159).
 
 **Unit:** kg.
 
 The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
 
-[Back to the output table](README.md).
+[Back to schema](channel-reservoir-pesticide-balance.md).

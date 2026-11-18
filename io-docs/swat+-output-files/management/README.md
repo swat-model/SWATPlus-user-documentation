@@ -1,6 +1,16 @@
 # Management
 
-`mgt_out.txt` records management operations as they are executed. The file uses one fixed header, but the meaning of `op_var` and `var1` through `var7` depends on the operation named in `operation`.
+See [Management operation records](operation-records.md) for the row widths and values written by each operation, including the short paddy and weir records.
+
+`mgt_out.txt` records management operations as they are executed. The table below reproduces its nominal 21-column header. Actual rows have operation-dependent widths; the common state fields apply to rows that write the full prefix, and the `op_var` and `var1` through `var7` values depend on the operation.
+
+## How to produce this file
+
+Set `mgtout` to `y` in the `crop_yld mgtout hydcon fdcout` settings line of [print.prt](../../introduction-1/simulation-settings/print.prt/README.md). It is the second value on that line. SWAT+ creates `mgt_out.txt` and adds records as reportable management operations execute. This is a TXT event log. [Settings reader](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_print_codes_read.f90#L47), [File creation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_mgt.f90#L7), [Example operation writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L325)
+
+{% hint style="warning" %}
+At source revision `6f515368`, some rows cannot be interpreted positionally using this header. A short `PADDY IRRIGATION` row writes six identifiers/labels followed immediately by the applied irrigation amount, which would appear under `phubase`. A separate `IRRIGATE` branch writes the whole four-component residue record at `surf_rsd`, shifting subsequent values: residue carbon and nitrogen appear under `soil_no3` and `soil_solp`, while the actual nitrate and soluble-P values appear under `var1` and `var2`. See the [two write lists](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L325) and [residue-record components](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/organic_mineral_mass_module.f90#L11). These are static source findings; execution of these branches has not been tested.
+{% endhint %}
 
 | Field | Description | Unit |
 | --- | --- | --- |
@@ -17,7 +27,7 @@
 | [surf_rsd](surf_rsd.md) | Surface residue | kg/ha |
 | [soil_no3](soil_no3.md) | Soil nitrate | kg/ha |
 | [soil_solp](soil_solp.md) | Soil soluble phosphorus | kg/ha |
-| [op_var](op_var.md) | Operation-specific variable label | n/a |
+| [op_var](op_var.md) | First operation-specific value in full-prefix rows | operation-dependent |
 | [var1](var1.md) | Operation-specific value 1 | operation-dependent |
 | [var2](var2.md) | Operation-specific value 2 | operation-dependent |
 | [var3](var3.md) | Operation-specific value 3 | operation-dependent |
@@ -26,4 +36,8 @@
 | [var6](var6.md) | Operation-specific value 6 | operation-dependent |
 | [var7](var7.md) | Operation-specific value 7 | operation-dependent |
 
-`lu_change_out.txt` is a separate event report for land-use changes. Its fields and row content depend on the action being applied, so it should not be interpreted with the `mgt_out.txt` schema.
+For example, normal [irrigation rows](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L156) write the applied amount at `op_var`, while [fertilizer rows](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L357) write the fertilizer amount there followed by nutrient amounts. The slot holds a value, not an intervening variable-name label.
+
+The source units row prints `deg_c` for `phubase` and `phuplant`, but the [base heat-unit update](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L230) and [plant heat-unit update](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_nut_demand.f90#L65) accumulate normalized heat-unit fractions. The table uses those calculation-based units.
+
+See [Land-use change records](land-use-change-records.md) for the separate `lu_change_out.txt` report, its action-specific fields, and its unheaded values.

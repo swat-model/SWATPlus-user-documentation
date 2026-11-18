@@ -1,17 +1,17 @@
 ---
-description: "Nitrate nitrogen loss"
+description: "Nitrate removed by the first-order aquifer loss calculation"
 ---
 
 # no3_loss
 
-**Code reference:** `aqu_d(iaq)%no3_loss` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aquifer_module.f90#L49)).
+**Code reference:** `aqu_d(iaq)%no3_loss = no3_init - aqu_d(iaq)%no3_st`, after multiplying stored nitrate by `aqu_prm(iaq)%nloss` ([loss calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_1d_control.f90#L158)).
 
-Nitrate-nitrogen loss from the aquifer, expressed as nitrogen mass per unit area.
+The nitrate amount removed by this first-order loss step. It excludes the separately reported nitrate carried by groundwater discharge (`no3_lat`) and seepage (`no3_seep`). The retention coefficient is initialized as `Exp(-.693 / (hlife_n + .1))` ([coefficient](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_initial.f90#L168)).
 
-**Unit:** kg N/ha.
+**Unit:** kg N/ha in the daily calculation's convention. The stored-nitrate component has initialization/allocation mass-basis inconsistencies; see [no3_st](no3_st.md).
 
-Daily output gives the daily exchange. Monthly and yearly output sum exchanges over the period. Average-annual output gives the mean annual total over the printed simulation years.
+Monthly values sum daily exchanges; yearly values sum the monthly totals. Average-annual values divide the accumulated yearly totals by `time%yrs_prt`.
 
-Basin output weights aquifer values by aquifer area relative to the total basin area.
+Basin output applies `aqu_prm(iaq)%area_ha / bsn%area_tot_ha`; the denominator is the full basin area, not the sum of aquifer areas. This is not necessarily a normalized mean over just the aquifers.
 
 [Back to the output table](README.md).

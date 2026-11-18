@@ -6,10 +6,8 @@ description: "Lateral-flow run-on from upland landscape"
 
 **Code reference:** `bwb_d%latq_runon` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L30)).
 
-Lateral-flow run-on from upland landscape.
+Full HRUs directly copy the incoming lateral hydrograph volume in m³ and apply the same value to the soil layers by thickness. HRU-LTE reports zero. [Calculation and reporting details](README.md#run-on-and-water-yield)
 
-**Unit:** mm.
-
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+**Unit:** Printed as mm. The full-HRU value is in m³.
 
 [Back to the output table](README.md).

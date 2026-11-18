@@ -1,15 +1,15 @@
 ---
-description: "Stored nutrients and water-quality constituents"
+description: "Stored nitrate nitrogen"
 ---
 
 # no3_stor
 
 **Code reference:** `wet(j)%no3` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L36)).
 
-In this output table, `no3_stor` is one of the fields described as: Stored nutrients and water-quality constituents.
+Nitrate left in standing water after the applicable inflow additions, soil seepage, settling, and outflow export. Each reporting period writes the current stored mass. [Nutrient block details](README.md#what-the-nutrient-blocks-include).
 
-**Unit:** kg.
+**Unit:** kg N.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+The writer uses the current storage in each of the four periods.
 
 [Back to the output table](README.md).

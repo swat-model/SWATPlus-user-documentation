@@ -1,15 +1,15 @@
 ---
-description: "Pathogen transported with sediment"
+description: "Sediment-associated pathogen diagnostic, conditionally updated"
 ---
 
 # sed_kg/h
 
-**Code reference:** `hpath_bal(j)%path(ipath)%sed` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_ls_pathogen_module.f90#L10)).
+**Code reference:** `hpath_bal(j)%path(ipath)%sed` ([calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/path_ls_runoff.f90#L32)).
 
-Pathogen transported with sediment.
+The sediment-associated diagnostic is calculated and removed from the surface-soil pathogen pool only when `enratio > 0`. The routine does not reset this field when that condition fails. In the preceding runoff calculation, the runoff diagnostic is overwritten with the nonnegative soil pool and then subtracted, so this sediment term must not be interpreted without that source-order caveat.
 
-**Unit:** kg/h.
+**Unit:** unresolved. The printed heading says `kg/h`, the balance declaration says `kg/ha`, and the underlying constituent state is annotated `cfu`. The inspected code does not establish a consistent conversion between these bases; do not read the printed suffix as a verified per-hour rate.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+The period-averaging operator assigns only `plant` and `soil`; all other result components retain their zero defaults. Thus the monthly, yearly, and average-annual versions do not preserve this component as a process total. See the [family table](README.md) for the 18-value/15-heading mismatch and average-annual CSV format warning.
 
 [Back to the output table](README.md).

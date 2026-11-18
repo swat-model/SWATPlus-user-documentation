@@ -1,15 +1,17 @@
 ---
-description: "Precipitation, evaporation, and seepage volumes"
+description: "Precipitation volume"
 ---
 
 # precip
 
 **Code reference:** `wet_wat_d(j)%precip` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_body_module.f90#L9)).
 
-In this output table, `precip` is one of the fields described as: Precipitation, evaporation, and seepage volumes.
+Precipitation volume.
 
-**Unit:** ha-m.
+**Unit:** m3.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Daily precipitation volume is precipitation in mm multiplied by the full HRU area in ha and a factor of 10. It is calculated before the surface-area fraction is applied to the reported wetland area. [Precipitation calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_control.f90#L57)
+
+See the [reporting periods](README.md#how-to-read-the-reporting-periods) for how the writer combines daily values.
 
 [Back to the output table](README.md).

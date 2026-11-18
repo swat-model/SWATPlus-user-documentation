@@ -1,15 +1,15 @@
 ---
-description: "Incoming and outgoing nutrients and water-quality constituents"
+description: "Dissolved oxygen slot, left at zero by the wetland controller"
 ---
 
 # dox_out
 
 **Code reference:** `wet_out_d(j)%dox` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L42)).
 
-In this output table, `dox_out` is one of the fields described as: Incoming and outgoing nutrients and water-quality constituents.
+The wetland starts its dissolved oxygen outflow slot at zero and leaves it at zero. [Outflow initialization](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_control.f90#L59-L64), [Export assignments](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_nutrient.f90#L99-L115)
 
 **Unit:** kg.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Monthly and yearly rows sum daily masses. The average-annual row divides the accumulated mass by the number of printed years.
 
 [Back to the output table](README.md).

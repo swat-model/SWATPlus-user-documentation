@@ -6,10 +6,8 @@ description: "Average temperature of soil layer 2"
 
 **Code reference:** `bpw_d%sol_tmp` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L200)).
 
-Average temperature of soil layer 2.
+For full HRUs, the daily value is the temperature of soil layer 2. Longer periods use a daily mean. HRU-LTE writes zero, which is also the HRU-LTE contribution to LSU and basin values. [Full-HRU assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L853), [HRU-LTE assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L408).
 
 **Unit:** deg C.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
-
-[Back to the output table](README.md).
+[Back to the plant and weather schema](plant-weather-output.md).

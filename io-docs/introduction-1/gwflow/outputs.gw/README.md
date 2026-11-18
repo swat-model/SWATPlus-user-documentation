@@ -1,12 +1,12 @@
 ---
-description: "This file selects groundwater head output dates and observation cells."
+description: "This file selects GWFlow observation cells and accepts legacy output selectors."
 ---
 
 {% hint style="info" %}
 The inspected SWAT+ Editor has an exporter for this format. Field names and values in the table are based on the SWAT+ Fortran source. A dash means that a unit, recommended default, or range has not been established.
 {% endhint %}
 
-This file selects groundwater head output dates and observation cells.
+This file selects cells for [GWFlow observation reports](../../../swat+-output-files/gwflow-outputs/observation-wells.md). The reader also accepts the legacy head-output date and detailed-output cell rows below.
 
 SWAT+ looks for `outputs.gw` in the simulation working directory; it is not selected through `file.cio`. See the [gwflow_read.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L575) reader.
 
@@ -15,6 +15,8 @@ SWAT+ looks for `outputs.gw` in the simulation working directory; it is not sele
 After the title and column headings, enter one keyword and one value per row. Choose the appropriate row type below; the three types are alternatives and need not all appear.
 
 ## Head output date
+
+The reader stores the date. When the simulation reaches a matching date, it advances the date index without writing a grid snapshot. [Date handling](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_simulate.f90#L388-L393)
 
 | Field | Description | Type | Unit | Default | Range |
 | --- | --- | --- | --- | --- | --- |
@@ -29,6 +31,8 @@ After the title and column headings, enter one keyword and one value per row. Ch
 | [value](value_2.md) | Cell identifier selected for groundwater observation output | integer | n/a | — | — |
 
 ## Detailed-output cell
+
+The reader stores the cell ID in `gw_cell_obs_ss`. On this revision no output writer uses that value. [Selector read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L613-L618)
 
 | Field | Description | Type | Unit | Default | Range |
 | --- | --- | --- | --- | --- | --- |

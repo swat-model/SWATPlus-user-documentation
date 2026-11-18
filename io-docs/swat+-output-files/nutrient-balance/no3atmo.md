@@ -1,15 +1,15 @@
 ---
-description: "Nitrate added to the soil from atmospheric deposition"
+description: "Nitrate nitrogen added to the soil by wet and dry atmospheric deposition"
 ---
 
 # no3atmo
 
 **Code reference:** `bnb_d%no3atmo` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L97)).
 
-Nitrate added to the soil from atmospheric deposition.
+The daily value combines nitrate nitrogen deposited in rain and the day's share of dry deposition. SWAT+ adds it to the nitrate pool in the top soil layer. [Deposition calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/nut_nrain.f90#L43)
 
-**Unit:** kg/ha.
+**Unit:** kg N/ha for daily, monthly, and yearly rows. The average-annual value is in kg N/ha/year.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [spatial and time aggregation](README.md#spatial-and-time-aggregation) for how daily values are combined.
 
 [Back to the output table](README.md).

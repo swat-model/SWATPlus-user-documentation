@@ -1,15 +1,15 @@
 ---
-description: "Mineral dissolution in soils and aquifers"
+description: "Signed net change in dissolved soil salt from soil chemistry, weighted by HRU area"
 ---
 
 # dssl_kg
 
-**Code reference:** `salt_basin(i)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L36)).
+**Code reference:** `salt_basin(23)` ([calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L279-L284)).
 
-In this output table, `dssl_kg` is one of the fields described as: Mineral dissolution in soils and aquifers.
+Signed net change in dissolved soil salt from soil chemistry, weighted by HRU area. The first ion slot stores the combined change across the ions. [Soil chemistry](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_chem_hru.f90#L361-L369)
 
-**Unit:** kg.
+**Unit:** kg for daily, monthly, and yearly output. The average-annual value is kg/yr.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [reporting periods](basin-salt-balance.md#reporting-periods) for aggregation.
 
-[Back to the output table](README.md).
+[Back to schema](basin-salt-balance.md).

@@ -1,15 +1,17 @@
 ---
-description: "Groundwater head"
+description: "Groundwater head with explicit period averaging"
 ---
 
 # head
 
-**Code reference:** `gw_state(i)%head` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_module.f90#L57)).
+**Code reference:** daily `gw_state(i)%head`, monthly `gw_state(i)%hdmo`, yearly `gw_state(i)%hdyr`, and average annual `gw_head_sum_aa(i) / nbyr_r` ([daily](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L1228); [monthly](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L1364); [yearly](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L1621); [average annual](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L2025)).
 
-Groundwater head.
+Groundwater head for the reported active cell. Monthly head sums are divided by `time%day_mo`; yearly sums by `time%day_end_yr`. Average annual is the sum of yearly mean heads divided by the configured `time%nbyr`, rather than a single mean weighted by every simulated day.
+
+A mid-month or mid-year start can lower the corresponding reported mean for a positive head. See [partial reporting periods](cell-water-balance.md#partial-reporting-periods).
 
 **Unit:** m.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+This is hydraulic head, not depth below ground surface. The latter is [wt_depth](wt_depth.md).
 
-[Back to the output table](README.md).
+[Back to the cell water-balance schema](cell-water-balance.md).

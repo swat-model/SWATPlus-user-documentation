@@ -1,15 +1,15 @@
 ---
-description: "Salt entering the channel"
+description: "Total calcium entering the channel, including groundwater"
 ---
 
 # ca_in
 
 **Code reference:** `chsalt_d(iru)%salt(isalt)%tot_in` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_salt_module.f90#L8)).
 
-In this output table, `ca_in` is one of the fields described as: Salt entering the channel.
+Reported calcium inlet, including groundwater from the linked-aquifer diagnostic. The controller replaces the working inlet after adding that linked load, so the printed total can differ from the input used for routing. See [daily channel calculations](channel-salt.md#daily-channel-calculations).
 
 **Unit:** kg.
 
 The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
 
-[Back to the output table](README.md).
+[Back to schema](channel-salt.md).

@@ -1,85 +1,12 @@
 # GWFlow Basin Water Balance
 
-This output summarizes groundwater storage and water exchanges across the basin's active GWFlow cells. Water volumes are expressed as equivalent depths over the total basin area, making the exchanges comparable with other basin water-balance results.
+This report summarizes groundwater storage and water exchanges across the basin's active GWFlow cells. Water volumes are expressed as equivalent depths over the total basin area, making the exchanges comparable with other basin water-balance results. The daily file and the three longer-period files have distinct schemas.
 
-The files are `gwflow_basin_wb_day.txt`, `gwflow_basin_wb_mon.txt`, `gwflow_basin_wb_yr.txt`, and `gwflow_basin_wb_aa.txt`. GWFlow must be active. The `gwflow_wb` entry in `print.prt`, when present, overrides the GWFlow output flags from `codes.gw`.
+## How to produce these files
 
-{% tabs %}
-{% tab title="Daily" %}
+Set `gwflow = 1` in [codes.bsn](../../introduction-1/basin-1/codes.bsn/README.md). In [print.prt](../../introduction-1/simulation-settings/print.prt/README.md), set `use_obj_lbls = y` and enable the desired periods on `gwflow_wb`. For example, `gwflow_wb y n n n` selects daily output. If the row is omitted, the periods come from `write_day`, `write_mon`, `write_yr`, and `write_aa` in [codes.gw](../../introduction-1/gwflow/codes.gw/README.md). [GWFlow activation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_read_objs.f90#L46), [Print flag overrides](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L254)
 
-The daily file contains a title, column headings, units, and one basin-wide row per reported day.
-
-| Field | Description | Unit |
-| --- | --- | --- |
-| [jday](jday.md) | Day of year | n/a |
-| [mon](mon.md) | Month | n/a |
-| [day](day.md) | Day of month | n/a |
-| [yr](yr.md) | Calendar year | n/a |
-| [unit](unit.md) | Basin identifier, printed as 1 | n/a |
-| [gis_id](gis_id.md) | Basin placeholder, printed as 1 | n/a |
-| [name](name.md) | Basin name | n/a |
-| [ts](ts.md) | Groundwater flow-solution time step | days |
-| [vbef](vbef.md) | Groundwater storage before the daily balance | mm |
-| [vaft](vaft.md) | Groundwater storage after the daily balance | mm |
-| [recharge](recharge.md) | Recharge entering groundwater | mm |
-| [gw_et](gw_et.md) | Groundwater evapotranspiration | mm |
-| [gw_sw](gw_sw.md) | Groundwater discharge to channels | mm |
-| [sw_gw](sw_gw.md) | Channel seepage to groundwater | mm |
-| [sat_excess](sat_excess.md) | Saturation-excess groundwater discharge | mm |
-| [soil](soil.md) | Groundwater transferred to the soil profile | mm |
-| [lateral](lateral.md) | Net lateral flow between groundwater cells | mm |
-| [boundary](boundary.md) | Groundwater exchange across model boundaries | mm |
-| [pump_allo](pump_allo.md) | Groundwater pumping for allocation demand | mm |
-| [pump_ext](pump_ext.md) | Specified external groundwater pumping | mm |
-| [tile](tile.md) | Groundwater discharge through tile drains | mm |
-| [reservoir](reservoir.md) | Groundwater exchange with reservoirs | mm |
-| [wetland](wetland.md) | Groundwater exchange with wetlands | mm |
-| [canal](canal.md) | Groundwater exchange with canals | mm |
-| [floodplain](floodplain.md) | Groundwater exchange with floodplains | mm |
-| [pond](pond.md) | Recharge-pond seepage to groundwater | mm |
-| [phytorem](phytorem.md) | Groundwater uptake by phreatophytes | mm |
-| [error](error.md) | Groundwater water-balance closure error | % |
-| [sat_frac](sat_frac.md) | Fraction of active cells contributing saturation-excess flow | fraction |
-| [wt_depth](wt_depth.md) | Average depth from ground surface to the water table | m |
-| [pump_def](pump_def.md) | Unmet groundwater pumping demand | mm |
-
-The model's units row leaves `ts` unspecified; the groundwater time-step setting is in days.
-
-{% endtab %}
-{% tab title="Monthly, yearly, and average annual" %}
-
-These three files share a 26-column schema. They report the change in groundwater storage and aggregated exchanges instead of the daily before/after storage and diagnostic fields.
-
-| Field | Description | Unit |
-| --- | --- | --- |
-| [jday](jday.md) | Day of year at the reporting boundary | n/a |
-| [mon](mon.md) | Month at the reporting boundary | n/a |
-| [day](day.md) | Day of month at the reporting boundary | n/a |
-| [yr](yr.md) | Calendar year | n/a |
-| [unit](unit.md) | Basin identifier, printed as 1 | n/a |
-| [gis_id](gis_id.md) | Basin placeholder, printed as 1 | n/a |
-| [name](name.md) | Basin name | n/a |
-| [dvol](dvol.md) | Change in groundwater storage during the reporting period | mm |
-| [recharge](recharge.md) | Recharge entering groundwater | mm |
-| [gw_et](gw_et.md) | Groundwater evapotranspiration | mm |
-| [gw_sw](gw_sw.md) | Groundwater discharge to channels | mm |
-| [sw_gw](sw_gw.md) | Channel seepage to groundwater | mm |
-| [sat_excess](sat_excess.md) | Saturation-excess groundwater discharge | mm |
-| [soil](soil.md) | Groundwater transferred to the soil profile | mm |
-| [lateral](lateral.md) | Net lateral flow between groundwater cells | mm |
-| [boundary](boundary.md) | Groundwater exchange across model boundaries | mm |
-| [pump_allo](pump_allo.md) | Groundwater pumping for allocation demand | mm |
-| [pump_ext](pump_ext.md) | Specified external groundwater pumping | mm |
-| [tile](tile.md) | Groundwater discharge through tile drains | mm |
-| [reservoir](reservoir.md) | Groundwater exchange with reservoirs | mm |
-| [wetland](wetland.md) | Groundwater exchange with wetlands | mm |
-| [canal](canal.md) | Groundwater exchange with canals | mm |
-| [floodplain](floodplain.md) | Groundwater exchange with floodplains | mm |
-| [pond](pond.md) | Recharge-pond seepage to groundwater | mm |
-| [phytorem](phytorem.md) | Groundwater uptake by phreatophytes | mm |
-| [pump_def](pump_def.md) | Unmet groundwater pumping demand | mm |
-
-{% endtab %}
-{% endtabs %}
-
-Keep the reported signs when comparing gains, losses, and storage change. Positive and negative exchange values must not all be treated as positive additions.
+| File | Schema |
+| --- | --- |
+| `gwflow_basin_wb_day.txt` | [Daily basin water balance](daily-basin-water-balance.md), 31 columns |
+| `gwflow_basin_wb_mon.txt`, `gwflow_basin_wb_yr.txt`, `gwflow_basin_wb_aa.txt` | [Monthly, yearly, and average-annual basin water balance](longer-period-basin-water-balance.md), shared 26-column schema |

@@ -1,15 +1,15 @@
 ---
-description: "Plant uptake of nitrogen"
+description: "Plant nitrogen content"
 ---
 
 # nplt
 
-**Code reference:** `bpw_d%nplnt` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L207)).
+**Code reference:** `hpw_d(j)%nplnt = pl_mass(j)%tot_com%n` ([daily assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L860)).
 
-Plant uptake of nitrogen.
+Plant-community nitrogen stock. The full HRU assembles the community record before the day's growth calculation. [Daily calculations](plant-weather-output.md#daily-plant-values)
 
-**Unit:** kg/ha.
+**Unit:** kg N/ha.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Full HRU and LSU rows report the stock on the last day of the reporting period. For the average-annual row, they use the stock at simulation end. Basin rows use the daily mean of weighted stocks for longer periods. HRU-LTE reports zero. [HRU period writes](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_output.f90#L149), [LSU period writes](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/lsu_output.f90#L140), [basin period averaging](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_output.f90#L104-L136).
 
-[Back to the output table](README.md).
+[Back to the plant and weather schema](plant-weather-output.md).

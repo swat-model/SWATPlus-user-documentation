@@ -1,15 +1,15 @@
 ---
-description: "Phosphorus moving from the active mineral pool to the stable mineral pool"
+description: "Signed mineral-P exchange: positive active to stable; negative stable to active"
 ---
 
 # act_sta_p
 
-**Code reference:** `bnb_d%act_sta_p` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L85)).
+**Code reference:** `hnb_d(j)%act_sta_p` in the HRU record ([writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_output.f90#L75)); matching component in basin and LSU records.
 
-Phosphorus moving from the active mineral pool to the stable mineral pool.
+The output accumulates the signed `roc` transfer. Positive values represent active-to-stable mineral P; negative values represent the reverse direction. See the [pool updates and assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/nut_pminrl.f90#L44) and the [alternative routine](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/nut_pminrl2.f90#L139). Monthly and yearly records accumulate these contributions; average-annual records divide them by printed years.
 
-**Unit:** kg/ha.
+**Unit:** kg P/ha.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+In `nut_pminrl2`, the diagnostic is incremented after a conditional block that can suppress the pool updates when total P is at least 10,000 mg/kg. A reported calculated transfer is therefore not proof of an equal pool-mass change on that path; compare the [conditional updates and subsequent reporting](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/nut_pminrl2.f90#L152).
 
 [Back to the output table](README.md).

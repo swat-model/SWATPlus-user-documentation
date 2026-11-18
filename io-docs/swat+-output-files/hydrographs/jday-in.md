@@ -4,12 +4,12 @@ description: "Julian Day"
 
 # jday
 
-**Code reference:** `time%day` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/time_module.f90#L18)).
+**Code reference:** `time%day` ([daily writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydin_output.f90#L20)).
 
 Julian Day.
 
-This field has no physical unit in the output table.
+This identifier has no physical unit.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+The value identifies the connection shown in this row. Important: the [yearly CSV write](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydin_output.f90#L55) inserts an extra receiving-object number after `type`, giving 29 values under 28 headings. Use the matching TXT or repair the CSV layout before interpreting later columns.
 
 [Back to the output table](README.md).

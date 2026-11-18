@@ -1,15 +1,15 @@
 ---
-description: "Outgoing flow"
+description: "Outgoing water volume"
 ---
 
 # flo
 
-**Code reference:** `aqu_d(iaq)%flo` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aquifer_module.f90#L38)).
+**Code reference:** `ht1%flo` ([daily writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydout_output.f90#L22); [declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L32)).
 
-Outgoing flow.
+Outgoing water volume.
 
-**Unit:** m3/s.
+**Unit:** m3.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Daily volume and constituent mass values are added into monthly and yearly totals; the average-annual record divides accumulated volume and masses by `time%yrs_prt`. The [hydrograph operators](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L1334) combine temperature by water-volume weighting, and division by years leaves temperature unchanged. The writers perform no volume-to-rate conversion. The printed units row says `m^3/s`, whereas the source declares this component as volume and the writer makes no division by 86400; interpret the numeric value with the upstream hydrograph's volume convention.
 
 [Back to the output table](README.md).

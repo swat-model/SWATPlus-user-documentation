@@ -1,15 +1,20 @@
 ---
-description: "Object name and use identifier"
+description: "Use or treatment index with variant-specific positions"
 ---
 
 # use
 
-**Code reference:** `iuse` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_use_output.f90#L10)).
+**Code references:** `iuse` in [the use loop](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_use_output.f90#L13) and `itrt` in [the treatment loop](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_treat_output.f90#L13). The printed label `use` identifies a water-use index in use files and a treatment-object index in treatment files. It has no physical unit.
 
-In this output table, `use` is one of the fields described as: Object name and use identifier.
+| File/row | Actual identifier position |
+| --- | ---: |
+| Daily use TXT | 6 |
+| Other use TXT and all use CSV | 5 |
+| Daily treatment TXT | 5 |
+| Other treatment TXT and all treatment CSV | 4 |
 
-This field has no physical unit in the output table.
+The common printed header puts `use` at position 6. Treatment writes identifier before name, reversing the printed order. All CSV and monthly/yearly/AA TXT omit `jday`, causing a further one-position shift.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See the [water-use](water-use.md) and [water-treatment](water-treatment.md) row variants and CSV routing defects. These identifiers select a process diagnostic, not a POU/POD child index or an effluent flow record.
 
-[Back to the output table](README.md).
+[Back to the water-use schema](water-use.md) · [Back to the water-treatment schema](water-treatment.md).

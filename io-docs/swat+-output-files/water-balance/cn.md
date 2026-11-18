@@ -1,15 +1,13 @@
 ---
-description: "Curve number for the reporting period"
+description: "Curve-number diagnostic"
 ---
 
 # cn
 
 **Code reference:** `bwb_d%cn` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L18)).
 
-Curve number for the reporting period.
+Full HRUs calculate the curve number from soil water, with a frozen-soil adjustment. The wetland branch skips the surface routine and can retain an earlier value or the initialized zero. HRU-LTE calculates the curve number using its single soil-water store. [Calculation and reporting details](README.md#snow-irrigation-and-drainage)
 
 This field has no physical unit in the output table.
-
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
 
 [Back to the output table](README.md).

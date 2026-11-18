@@ -1,15 +1,15 @@
 ---
-description: "Stored sediment and particle-size classes"
+description: "Stored gravel"
 ---
 
 # grv_stor
 
 **Code reference:** `wet(j)%grv` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L48)).
 
-In this output table, `grv_stor` is one of the fields described as: Stored sediment and particle-size classes.
+Gravel retained in the storage hydrograph. The settling routine clears the size classes when bulk sediment concentration exceeds the equilibrium threshold. A low remaining water volume clears the entire storage hydrograph. [Sediment storage](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_sediment.f90#L17-L51)
 
 **Unit:** tons.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [sediment and particle sizes](README.md#sediment-and-particle-sizes) and [reporting periods](README.md#how-to-read-the-reporting-periods).
 
 [Back to the output table](README.md).

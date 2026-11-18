@@ -2,14 +2,16 @@
 description: "Harvest export, harvest sink, and plant-kill return"
 ---
 
-# harvest_sink_kg/ha
+# harvest_sink_kg
 
 **Code reference:** `hpestb_d(j)%pest(ipest)%harvest_sink` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_ls_pesticide_module.f90#L25)).
 
-In this output table, `harvest_sink_kg/ha` is one of the fields described as: Harvest export, harvest sink, and plant-kill return.
+The 15-character heading truncates `harvest_sink_kg/ha`. The field starts at zero. The source review found this member in the accumulation and scaling operators and found no direct daily producer. The pesticide database's `harvest_sink` switch is a separate setting. [Record declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_ls_pesticide_module.f90#L25), [Database setting](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pesticide_data_module.f90#L21)
 
 **Unit:** kg/ha.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+The terminal plant sink removes pesticide from soil at uptake. That mass contributes to the [uptake column](uptake_kg-per-ha.md) and leaves this diagnostic at zero. [Uptake and sink branch](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pest_pl_up.f90#L101-L115).
 
-[Back to the output table](README.md).
+See the [reporting periods](hru-landscape-pesticide-balance.md#reporting-periods) for how the writer aggregates this field.
+
+[Back to schema](hru-landscape-pesticide-balance.md).

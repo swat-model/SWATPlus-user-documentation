@@ -1,0 +1,25 @@
+# Legacy HRU Plant Carbon Status
+
+Set `carbon` to `2` in [codes.bsn](../../introduction-1/basin-1/codes.bsn/README.md). In [print.prt](../../introduction-1/simulation-settings/print.prt/README.md), use named rows and put a lowercase `l` in a daily, monthly, or yearly column of `hru_cb` to enable the legacy diagnostics. For example, `hru_cb n n l n` requests yearly records. The file is `hru_plc_stat.txt`. Set `csvout` to `y` for `hru_plc_stat.csv`. [Diagnostic flag](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_legacy_module.f90#L469), [File creation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_legacy_module.f90#L536), [Write calls](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/command.f90#L525)
+
+The legacy diagnostic has 15 columns. The `freq` field identifies the period of each row in the shared file. The header prints `kg/ha` for the seven plant-carbon stocks. [Header definition](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_legacy_module.f90#L19), [Writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/soil_nutcarb_write_legacy.f90#L323)
+
+| Field | Description | Unit |
+| --- | --- | --- |
+| `freq` | Reporting period marker | n/a |
+| `jday` | Day of year | n/a |
+| `day` | Day of month | n/a |
+| `mon` | Month | n/a |
+| `yr` | Calendar year | n/a |
+| `unit` | HRU identifier | n/a |
+| `gis_id` | GIS identifier | n/a |
+| `name` | Object name | n/a |
+| `total_c` | Total plant-community carbon | kg C/ha |
+| `ab_gr_c` | Aboveground plant-community carbon | kg C/ha |
+| `leaf_c` | Leaf carbon | kg C/ha |
+| `stem_c` | Stem carbon | kg C/ha |
+| `seed_c` | Seed carbon | kg C/ha |
+| `root_c` | Root carbon | kg C/ha |
+| `surf_rsd_c` | Surface-residue carbon | kg C/ha |
+
+See [HRU Plant Carbon Status](hru-plant-carbon-status.md) for the current interval files.

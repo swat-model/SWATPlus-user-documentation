@@ -6,10 +6,10 @@ description: "Outside-source irrigation"
 
 **Code reference:** `ru_hru_saltb_d(iru)%salt(isalt)%irwo` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_module.f90#L21)).
 
-In this output table, `irwo_ca` is one of the fields described as: Outside-source irrigation.
+Calcium in the HRU outside-source irrigation diagnostic, converted to kg with the full HRU area. This field stays zero on the inspected revision because the irrigation salt diagnostic has no active producer. [Routing-unit calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ru_control.f90#L169-L170), [HRU salt inputs](../hru-salt/README.md#irrigation-deposition-applications-and-uptake)
 
 **Unit:** kg.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [reporting periods](routing-unit-salt-balance.md#reporting-periods) for aggregation.
 
-[Back to the output table](README.md).
+[Back to schema](routing-unit-salt-balance.md).

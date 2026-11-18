@@ -1,15 +1,15 @@
 ---
-description: "Incoming and outgoing nutrients and water-quality constituents"
+description: "Outgoing chlorophyll a"
 ---
 
 # chla_out
 
 **Code reference:** `wet_out_d(j)%chla` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L38)).
 
-In this output table, `chla_out` is one of the fields described as: Incoming and outgoing nutrients and water-quality constituents.
+Chlorophyll-a exported with wetland water release. When the phosphorus threshold is met, the active calculation sets chlorophyll-a mass to water volume times `1.e-6` kg/m³ and allocates a fraction to the release. [Nutrient block details](README.md#what-the-nutrient-blocks-include).
 
 **Unit:** kg.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Monthly and yearly rows sum daily masses. The average-annual row divides the accumulated mass by the number of printed years.
 
 [Back to the output table](README.md).

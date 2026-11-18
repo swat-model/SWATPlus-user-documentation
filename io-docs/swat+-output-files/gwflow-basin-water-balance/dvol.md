@@ -10,6 +10,8 @@ The net change in groundwater storage during the reporting period. It is accumul
 
 **Unit:** mm.
 
-Monthly and yearly values sum the daily storage changes. Average-annual output gives the mean annual storage change over the reporting years.
+Monthly and yearly values sum the daily `vaft_grid - vbef_grid` differences. Average-annual output divides their simulation sum by `real(time%nbyr)`, the configured simulation-year count, rather than `time%yrs_prt`.
 
-[Back to the output table](README.md).
+`vbef` is calculated at the start of the lateral-solution section, after some exchange routines can already have changed heads. The difference therefore follows those source checkpoints; it is not proof of a complete start-of-day to end-of-day storage change. See [vbef](vbef.md) and the [daily accumulation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L900).
+
+[Back to the longer-period basin water-balance schema](longer-period-basin-water-balance.md).

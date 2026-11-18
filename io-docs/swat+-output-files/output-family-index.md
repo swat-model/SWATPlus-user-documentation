@@ -1,8 +1,6 @@
 # Output Family Index
 
-This index groups SWAT+ outputs by their actual printed schema. A family normally has daily (`_day`), monthly (`_mon`), yearly (`_yr`), and average-annual (`_aa`) variants. When CSV output is enabled, `.txt` and `.csv` generally share the same data headings, but TXT files may include explanatory lines before the header.
-
-The family names below describe the files opened by the current source. An output is created only when its model component, constituent, and print option are active.
+This index maps filename families in SWAT+ revision `6f515368` to their reference pages. The common time-series suffixes are `_day`, `_mon`, `_yr`, and `_aa`. See each family page for its intervals, activation conditions, and row layouts. See [Output File Format](output-file-format.md) for preambles and TXT and CSV differences.
 
 ## Landscape and basin
 
@@ -20,7 +18,8 @@ The family names below describe the files opened by the current source. An outpu
 
 | Family | Documentation |
 | --- | --- |
-| `channel_sd_*`, `channel_sdmorph_*`, basin equivalents | [Channel](channel/README.md) |
+| `channel_sd_*`, `channel_sdmorph_*`, `basin_sd_chamorph_*` | [Channel](channel/README.md) |
+| `basin_sd_cha_*` | [Basin SD Channel General Output](channel/basin-sd-channel-general.md) |
 | `channel_*`, `basin_cha_*` | [Channel](channel/README.md) |
 | `sd_chanbud_*`, `basin_sd_chanbud_*`, `ch_sedbud_*`, `chanbud_order_*`, `sedbud_*` | [Channel Sediment Budgets](channel-sediment-budgets/README.md) |
 | `reservoir_*`, `basin_res_*` | [Reservoir](reservoir/README.md) |
@@ -28,7 +27,9 @@ The family names below describe the files opened by the current source. An outpu
 | `aquifer_*`, `basin_aqu_*` | [Aquifer](aquifer/README.md) |
 | `ru_*` | [Routing Unit](routing-unit/README.md) |
 | `recall_*`, `basin_psc_*` | [Recall](recall/README.md) |
-| `hydin_*`, `hydout_*`, `deposition_*` | [Hydrographs](hydrographs/README.md) |
+| `hydin_*`, `hydout_*`, `deposition_*` | [Hydrographs](hydrographs/README.md); [Deposition schema](hydrographs/deposition.md) |
+
+The `ch_sedbud_*` and `chanbud_order_*` files use `_d`, `_m`, `_y`, and `_a` for their time suffixes. [Channel sediment budget opener](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_sd_channel.f90#L350) · [Order budget opener](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_sd_channel.f90#L282)
 
 ## Constituents
 
@@ -39,7 +40,7 @@ The family names below describe the files opened by the current source. An outpu
 | `hru_cs_*`, `rout_unit_cs_*`, `channel_cs_*`, `aquifer_cs_*`, `reservoir_cs_*`, `wetland_cs_*`, `basin_cs_*` | [Conservative Constituents](conservative-constituents/README.md) |
 | `hru_pest_*`, routed-object pesticide families, and basin equivalents | [Pesticides](pesticides/README.md) |
 | `hru_path_*` | [Pathogen Outputs](pathogens/README.md) |
-| `hydin_salts_*`, `hydout_salts_*`, pesticide, pathogen, and metal variants | [Hydrologic Constituent Streams](hydrologic-constituent-streams/README.md) |
+| `hydin_salts_*`, `hydout_salts_*`, pesticide, pathogen, and metal variants defined by dormant routines | [Hydrologic Constituent Streams](hydrologic-constituent-streams/README.md) |
 
 ## Water allocation and groundwater
 
@@ -51,10 +52,8 @@ The family names below describe the files opened by the current source. An outpu
 
 ## Carbon and nitrogen
 
-Modern and legacy carbon/nitrogen reports include `hru_ncycle_*`, `hru_carb_gl_*`, `hru_scf_*`, `lsu_carb_gl_*`, `lsu_scf_*`, `hru_totc.*`, `basin_totc.*`, and the dynamic layer/status reports under `hru_carbvars.*`, `hru_org_*_vars.*`, `hru_cbn_lyr.*`, and `hru_seq_lyr.*`. See [Modern Carbon and Nitrogen Outputs](carbon/modern-carbon-nitrogen.md) and the [carbon output overview](carbon/README.md). Layered and legacy files must be interpreted with their printed `freq`, `soil_lyr`, and `soil_depth` columns.
+Modern and legacy carbon/nitrogen reports include `hru_ncycle_*`, `hru_carb_gl_*`, `hru_scf_*`, `lsu_carb_gl_*`, `lsu_scf_*`, `hru_plc_stat_*`, `lsu_plc_stat_*`, `hru_totc.*`, `basin_totc.*`, and the dynamic layer/status reports under `hru_carbvars.*`, `hru_org_*_vars.*`, `hru_cbn_lyr.*`, and `hru_seq_lyr.*`. See [Modern Carbon and Nitrogen Outputs](carbon/modern-carbon-nitrogen.md) and the [carbon output overview](carbon/README.md). Layered and legacy reports use fields such as `freq`, `soil_lyr`, and `soil_depth` according to the specific writer. The `hru_ncycle_*` openers write titles, headings, and units. The pinned source trace found no data-row writer for their eight file units. [Nutrient-cycling openers](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_init.f90#L117)
 
 ## Dynamic and diagnostic outputs
 
-Configured [Object Outputs](object-outputs.md), the [Flow Duration Curve](flow-duration-curve/README.md), and [Debugging Outputs](debugging-outputs.md) do not share the normal fixed time-series schema. Their columns can depend on object selection, observations, layers, or diagnostic context.
-
-Files such as `simulation.out`, `diagnostics.out`, `checker.out`, `files_out.out`, `area_calc.out`, `hydcon.out`, `co2.out`, `paddy_test.csv`, and `yield.out` are specialized status, diagnostic, test, or legacy reports. Their presence in source does not mean they are normal user-selectable output tables.
+[Object Outputs](object-outputs.md) use request-specific names and layouts. [Flow Duration Curve](flow-duration-curve/README.md) covers the end-of-simulation summary in `flow_duration_curve.out`. [Debugging Outputs](debugging-outputs.md) covers the run log, registry, setup checks, and specialized files.

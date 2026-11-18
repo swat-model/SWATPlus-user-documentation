@@ -1,12 +1,12 @@
 ---
-description: "Stored nutrients and water-quality constituents"
+description: "Stored chlorophyll a"
 ---
 
 # chla_stor
 
 **Code reference:** `wet(j)%chla` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L38)).
 
-In this output table, `chla_stor` is one of the fields described as: Stored nutrients and water-quality constituents.
+Stored chlorophyll a.
 
 **Unit:** kg.
 

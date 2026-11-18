@@ -1,15 +1,21 @@
 ---
-description: "Salt transported in surface runoff from soil to stream"
+description: "Sodium surface-runoff salt diagnostic"
 ---
 
 # surq_na
 
-**Code reference:** `hsaltb_d(j)%salt(isalt)%surq` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_module.f90#L11)).
+**Printed heading:** `surq_na`, position 18 in the fixed 159-entry header. The mappings below apply to the eight-ion case in the order sulfate, calcium, magnesium, sodium, potassium, chloride, carbonate, bicarbonate. The writer uses `cs_db%num_salts` values per group; for another count, reconstruct the row from the WRITE list.
 
-In this output table, `surq_na` is one of the fields described as: Salt transported in surface runoff from soil to stream.
+**Actual value:** `hsaltb_d(j)%salt(4)%surq` ([daily writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L48); [record declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_module.f90#L7)). Sodium surface-runoff salt diagnostic.
 
 **Unit:** kg/ha.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+**Producer and interpretation:** [Soil leaching](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_lch.f90#L124) calculates a surface-runoff loss from the top layer as runoff depth times `cosurfsalt`, capped by the available dissolved ion mass. It subtracts that loss from the layer. [Surface lag storage](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/stor_surfstor.f90#L143) adds the new loss to `surf_bs(23,j)`, assigns `surqsalt(j,4)` to `surf_bs(23,j) * brt(j)`, and retains the unreleased remainder. This is the released mass per HRU area, which can include earlier days' runoff. It is not the raw same-day soil loss.
+
+Monthly and yearly values sum the daily diagnostic. Average annual divides the accumulated yearly diagnostic by configured `time%nbyr`, giving the annual amount convention kg/ha/yr. The denominator is the configured simulation-year count, not a count of years contributing output; skipped or partial periods require care.
+
+The corresponding period members are `hsaltb_m(j)%salt(4)%surq`, `hsaltb_y(j)%salt(4)%surq`, and `hsaltb_a(j)%salt(4)%surq` ([monthly/yearly transfer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L95); [yearly/AA transfer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L191); [AA division](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L288)).
+
+See the [complete schema and period limitations](README.md#actual-data-layout). This page identifies the stored diagnostic and writer aggregation; it does not independently validate every upstream transport or application calculation.
 
 [Back to the output table](README.md).

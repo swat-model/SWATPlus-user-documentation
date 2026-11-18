@@ -1,15 +1,15 @@
 ---
-description: "Incoming and outgoing nutrients and water-quality constituents"
+description: "Incoming nitrate nitrogen"
 ---
 
 # no3_in
 
 **Code reference:** `wet_in_d(j)%no3` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L36)).
 
-In this output table, `no3_in` is one of the fields described as: Incoming and outgoing nutrients and water-quality constituents.
+Routed nitrate in the daily inflow record. This can include linked-channel floodplain input and GWFlow nitrate. Irrigation nitrate is added directly to standing water and does not enter this column. [Nutrient block details](README.md#what-the-nutrient-blocks-include).
 
-**Unit:** kg.
+**Unit:** kg N.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Monthly and yearly rows sum daily masses. The average-annual row divides the accumulated mass by the number of printed years.
 
 [Back to the output table](README.md).
