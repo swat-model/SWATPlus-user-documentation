@@ -6,10 +6,10 @@ description: "Nitrogen deposition or erosion terms"
 
 **Code reference:** `ch_sed_bud(ichan)%bed_orgn` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_module.f90#L80)).
 
-In this output table, `bed_orgn` is one of the fields described as: Nitrogen deposition or erosion terms.
+The bed producer multiplies eroded sediment tons by the nitrogen concentration in mg/kg and writes the result without dividing by 1,000. The code does not add this calculated bed load to routed flow. [Nutrient budget calculation](channel-nutrient-sediment-budget.md#how-the-nutrient-values-are-formed).
 
-**Unit:** kg.
+**Unit:** t × mg/kg as written. Divide by 1,000 for kg.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Monthly and yearly rows sum daily values. The average-annual row divides the accumulated value by the number of printed years.
 
-[Back to the output table](README.md).
+[Back to the channel nutrient and sediment budget schema](channel-nutrient-sediment-budget.md).

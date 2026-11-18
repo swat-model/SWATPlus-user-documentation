@@ -1,15 +1,15 @@
 ---
-description: "Total salt-mineral dissolution, summed over soil layers"
+description: "No data value at this printed position"
 ---
 
 # dssl_total
 
-**Code reference:** `<no corresponding data value>` ([writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L48)).
+**Printed heading:** `dssl_total`, position 159 in the fixed 159-entry header. The mappings below apply to the eight-ion case in the order sulfate, calcium, magnesium, sodium, potassium, chloride, carbonate, bicarbonate. The writer uses `cs_db%num_salts` values per group; for another count, reconstruct the row from the WRITE list.
 
-Total salt-mineral dissolution, summed over soil layers. Important: this source prints a header/value mismatch. At the position labeled `dssl_total`, the data writer supplies `<no corresponding data value>`. This page records that positional relationship and does not reinterpret the value as the printed label. Important: the data row ends before this printed header position, so this heading has no corresponding value in the inspected writer.
+**Actual value:** No corresponding data value. For eight ions, every TXT/CSV interval writes 151 values; this printed position lies beyond the data row. **Actual unit:** none. The nominal heading does not establish a missing, zero, or measured value.
 
-**Unit:** kg/ha.
+The actual net dissolved-ion change is written at position 151, under [`conc_so4`](conc_so4.md). That scalar remains cumulative in the average-annual row; this terminal `dssl_total` heading at position 159 has no corresponding value.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See the [complete schema and period limitations](README.md#actual-data-layout).
 
 [Back to the output table](README.md).

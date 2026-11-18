@@ -1,15 +1,15 @@
 ---
-description: "Dissolved and mineral salt storage in soils and aquifers"
+description: "Solid salt stored in the standard aquifer objects' five mineral pools"
 ---
 
 # aqumn_kg
 
-**Code reference:** `salt_basin(i)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L36)).
+**Code reference:** `salt_basin(28)` ([calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L354-L367)).
 
-In this output table, `aqumn_kg` is one of the fields described as: Dissolved and mineral salt storage in soils and aquifers.
+Solid salt stored in the standard aquifer objects' five mineral pools. The calculation assumes 15 m of aquifer thickness and a bulk density of 2,000 kg/m³.
 
-**Unit:** kg.
+**Unit:** kg. The longer periods report mean daily storage.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [reporting periods](basin-salt-balance.md#reporting-periods) for aggregation.
 
-[Back to the output table](README.md).
+[Back to schema](basin-salt-balance.md).

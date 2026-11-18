@@ -10,6 +10,6 @@ Wetland surface area.
 
 **Unit:** ha.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+The daily record starts with the full HRU area. With positive stored volume, the controller applies a surface-area fraction for ordinary wetlands. Paddy areas retain the full HRU area. Yearly output sums monthly mean areas without dividing by 12. Average annual divides those yearly values by the number of printed years. [Area assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_control.f90#L58), [Surface-area fraction](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_control.f90#L82), [Reporting calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_output.f90#L37)
 
 [Back to the output table](README.md).

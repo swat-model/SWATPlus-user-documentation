@@ -1,15 +1,13 @@
 ---
-description: "Seepage out of the channel bottom"
+description: "Seepage volume out of the channel bottom"
 ---
 
 # seep
 
-**Code reference:** `ch_wat_d(ichan)%seep` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_body_module.f90#L11)).
+**Code reference:** `ch_wat_d(ichan)%seep` ([water-body declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_body_module.f90#L11); [channel writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_output.f90#L33)).
 
-Seepage out of the channel bottom.
+The router computes transmission loss from channel-bed conductivity, reach length, and width, caps it at available channel storage, and subtracts it from storage. With GWFlow enabled, the report records zero for this column even if that subtraction occurs. [Transmission loss and reported value](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_rtmusk.f90#L192-L208)
 
-**Unit:** ha-m.
+**Unit:** m3. These water-body terms are volumes, not ha-m. Monthly and yearly values accumulate daily amounts; average-annual values divide the accumulated amounts by reporting years.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
-
-[Back to the output table](README.md).
+[Back to the SD channel general schema](sd-channel-general.md).

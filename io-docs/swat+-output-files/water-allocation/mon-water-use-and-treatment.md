@@ -1,15 +1,13 @@
 ---
-description: "Reporting date"
+description: "Reporting date with missing-jday row variants"
 ---
 
 # mon
 
-**Code reference:** `time%mo` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/time_module.f90#L19)).
+**Code reference:** `time%mo` ([daily use TXT](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_use_output.f90#L19); [daily treatment TXT](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_treat_output.f90#L19)). This is month at the reporting date, including the end-of-period/final simulation date for longer intervals. It has no physical unit.
 
-In this output table, `mon` is one of the fields described as: Reporting date.
+Daily TXT writes `jday, mon, day, yr`. Every CSV row and monthly/yearly/AA TXT instead begins `mon, day, yr`: **jday is omitted**, although the printed header retains all four date labels. The actual mon value is at position 1 in those rows, rather than printed position 2.
 
-This field has no physical unit in the output table.
+The remaining prefix also differs: use writes name then identifier, while treatment writes identifier then name. See the [water-use](water-use.md) and [water-treatment](water-treatment.md) row variants and routing limitations. Dates identify the row boundary; they do not convert the monthly/yearly diagnostics into daily rates.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
-
-[Back to the output table](README.md).
+[Back to the water-use schema](water-use.md) · [Back to the water-treatment schema](water-treatment.md).

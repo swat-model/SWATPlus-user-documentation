@@ -1,15 +1,15 @@
 ---
-description: "Salt inputs from rain, dry deposition, road salt, fertilizer, and amendments"
+description: "Salt in full-HRU soil fertilizer diagnostics"
 ---
 
 # fert_kg
 
-**Code reference:** `salt_basin(i)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L36)).
+**Code reference:** `salt_basin(16)` ([calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L199-L207)).
 
-In this output table, `fert_kg` is one of the fields described as: Salt inputs from rain, dry deposition, road salt, fertilizer, and amendments.
+Salt in full-HRU soil fertilizer diagnostics. The daily basin calculation sets totals below 0.000001 kg to zero.
 
-**Unit:** kg.
+**Unit:** kg for daily, monthly, and yearly output. The average-annual value is kg/yr.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [reporting periods](basin-salt-balance.md#reporting-periods) for aggregation.
 
-[Back to the output table](README.md).
+[Back to schema](basin-salt-balance.md).

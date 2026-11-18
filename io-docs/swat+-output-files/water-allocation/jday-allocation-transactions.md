@@ -1,15 +1,24 @@
 ---
-description: "Reporting date"
+description: "Legacy allocation heading at position 1; row-dependent values"
 ---
 
 # jday
 
-**Code reference:** `hierarchical allocation row` ([writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_pou_output.f90#L29)).
+**Printed header:** `jday`, position 1 in the legacy 25-entry header; its printed unit is blank. The nominal label refers to day of year. It is not a universal data-column mapping.
 
-In this output table, `jday` is one of the fields described as: Reporting date. This printed slot has no single value declaration: the writer emits operation- or row-type-specific values with different row widths. The code link points to a representative writer, not a universal field mapping.
+The active writer supplies the following values at position 1, counting scalars in the WRITE list and ignoring indentation:
 
-This field has no physical unit in the output table.
+| Row | Actual value at this position |
+| --- | --- |
+| Daily POU TXT | `time%day` |
+| Monthly/yearly/AA POU TXT | `time%day` |
+| Daily POU CSV | `time%day` |
+| Monthly/yearly/AA POU CSV | `time%day` |
+| POD child, TXT/CSV | `"POD"` |
+| POR child, TXT/CSV | `"POR"` |
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Dates belong to the parent POU record. POD/POR children have no date prefix; their first values are the row marker and local child index. The POU date records the reporting boundary, including the final date for average-annual output.
 
-[Back to the output table](README.md).
+See the [actual row layouts and period limitations](allocation-transactions.md#actual-allocation-rows) before reading this heading as a physical quantity. **Code references:** [legacy header](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_allocation_module.f90#L220); [daily rows](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_pou_output.f90#L29), [monthly rows](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_pou_output.f90#L85), [yearly rows](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_pou_output.f90#L143), [average-annual rows](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_pou_output.f90#L198).
+
+[Back to the allocation-transactions schema](allocation-transactions.md).

@@ -1,15 +1,15 @@
 ---
-description: "Soil-aquifer and wetland-soil salt transfers"
+description: "Salt leaving the bottom of HRU soil profiles through percolation"
 ---
 
 # perc_kg
 
-**Code reference:** `salt_basin(i)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L36)).
+**Code reference:** `salt_basin(7)` ([calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L117-L124)).
 
-In this output table, `perc_kg` is one of the fields described as: Soil-aquifer and wetland-soil salt transfers.
+Salt leaving the bottom of HRU soil profiles through percolation.
 
-**Unit:** kg.
+**Unit:** kg for daily, monthly, and yearly output. The average-annual value is kg/yr.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [reporting periods](basin-salt-balance.md#reporting-periods) for aggregation.
 
-[Back to the output table](README.md).
+[Back to schema](basin-salt-balance.md).

@@ -1,15 +1,13 @@
 ---
-description: "Total plant carbon growth"
+description: "Plant carbon growth (period daily mean)"
 ---
 
 # c_gro
 
-**Code reference:** `bpw_d%c_gro` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L220)).
+**Code reference:** `hpw_d(j)%c_gro` accumulates `pl_mass_up%c` ([growth assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_biomass_gro.f90#L147)), after a daily reset ([reset](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_grow.f90#L24)).
 
-Total plant carbon growth.
+Daily plant carbon growth. For longer periods the plant/weather averaging operator divides the accumulated growth by the number of reporting days; these values are period daily means rather than total growth over the whole month or year ([averaging](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L1354)).
 
-**Unit:** kg/ha.
+**Unit:** kg C/ha.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
-
-[Back to the output table](README.md).
+[Back to the plant and weather schema](plant-weather-output.md).

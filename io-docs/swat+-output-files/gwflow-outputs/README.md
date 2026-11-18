@@ -1,75 +1,51 @@
 # GWFlow Outputs
 
-GWFlow writes basin, cell, observation, pumping, heat, feature, and configured-group reports. These files are produced only when GWFlow and the corresponding output flag are active. GWFlow files are TXT reports; several configured-observation files have dynamic columns.
+GWFlow writes basin, cell, observation, pumping, heat, canal, pond, and selected-cell reports. The index shows which files have fixed columns and which depend on the model configuration.
 
-The basin water-balance schema is documented separately on [GWFlow Basin Water Balance](../gwflow-basin-water-balance/README.md).
+## How to produce these files
 
-## Cell water balance
+Set `gwflow` to `1` in [codes.bsn](../../introduction-1/basin-1/codes.bsn/README.md) and supply the GWFlow inputs, including `chancell.gw`. To override report defaults in [print.prt](../../introduction-1/simulation-settings/print.prt/README.md), use named rows (`use_obj_lbls = y`). The period columns are daily, monthly, yearly, and average annual. GWFlow writes plain-text files. The diagnostic log, transit files, and selected-cell group files have no `.txt` suffix. [GWFlow activation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_read_objs.f90#L45-L88), [Named rows](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_print_codes_read.f90#L722-L769)
 
-The files are `gwflow_cell_wb_day.txt`, `gwflow_cell_wb_mon.txt`, `gwflow_cell_wb_yr.txt`, and `gwflow_cell_wb_aa.txt`.
+### Defaults when a print row is absent
 
-| Field | Description | Unit |
+| Print row | Behavior when omitted |
+| --- | --- |
+| `gwflow_wb` | Uses `write_day`, `write_mon`, `write_yr`, and `write_aa` from [codes.gw](../../introduction-1/gwflow/codes.gw/README.md). |
+| `gwflow_heat` | Follows the effective daily, yearly, and average-annual water-balance flags. |
+| `gwflow_solute` | Follows all four effective water-balance flags. |
+| `gwflow_obs` | All four observation periods are on. |
+| `gwflow_pump` | The common switch for all four HRU pumping files is on. |
+| `gwflow_flux` | The common switch for daily canal, pond, tile, exchange-group, and channel-observation diagnostics is on. A named row enables it with `y` in the daily or yearly column. |
+
+The input and feature requirements in the index still apply. [Default flags](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_module.f90#L9-L26), [Print overrides and inheritance](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L254-L311)
+
+## File index
+
+The [GWFlow Basin Water Balance](../gwflow-basin-water-balance/README.md) page lists `gwflow_basin_wb_{day,mon,yr,aa}.txt`.
+
+| File family | Print setting | Schema |
 | --- | --- | --- |
-| [jday](jday.md) | Day of year | n/a |
-| [mon](mon.md) | Month | n/a |
-| [day](day.md) | Day of month | n/a |
-| [yr](yr.md) | Calendar year | n/a |
-| [unit](unit.md) | Object identifier | n/a |
-| [gis_id](gis_id.md) | GIS identifier | n/a |
-| [name](name.md) | Object name | n/a |
-| [head](head.md) | Groundwater head | m |
-| [wt_depth](wt_depth.md) | Depth to the water table | m |
-| [recharge](recharge.md) | Recharge entering the cell | m3/day |
-| [gw_et](gw_et.md) | Groundwater evapotranspiration | m3/day |
-| [gw_sw](gw_sw.md) | Groundwater discharge to surface water | m3/day |
-| [sw_gw](sw_gw.md) | Surface-water seepage to groundwater | m3/day |
-| [sat_excess](sat_excess.md) | Saturation-excess discharge | m3/day |
-| [soil](soil.md) | Groundwater transferred to soil | m3/day |
-| [lateral](lateral.md) | Net lateral groundwater flow | m3/day |
-| [pump_allo](pump_allo.md) | Pumping for allocation demand | m3/day |
-| [pump_ext](pump_ext.md) | Specified external pumping | m3/day |
-| [tile](tile.md) | Tile-drain discharge | m3/day |
-| [reservoir](reservoir.md) | Reservoir-groundwater exchange | m3/day |
-| [wetland](wetland.md) | Wetland-groundwater exchange | m3/day |
-| [floodplain](floodplain.md) | Floodplain-groundwater exchange | m3/day |
-| [canal](canal.md) | Canal-groundwater exchange | m3/day |
-| [pond](pond.md) | Recharge-pond seepage | m3/day |
-| [phytorem](phytorem.md) | Phreatophyte uptake | m3/day |
+| `gwflow_cell_wb_{day,mon,yr,aa}.txt` | `gwflow_wb` periods | [Cell water balance](cell-water-balance.md) |
+| `gwflow_obs_{day,mon,yr,aa}.txt` | `gwflow_obs` periods and `observation_cell` entries in `outputs.gw` for data rows | [Observation wells](observation-wells.md) |
+| `gwflow_hru_pump_{day,mon,yr,aa}.txt` | any `gwflow_pump = y` enables all four | [HRU pumping, long format](hru-pumping.md) |
+| `gwflow_cell_wb_ppag_obs_day.txt` | `gwflow_pump` plus `hru_pump.gw` selection | [Selected-HRU pumping matrix](selected-hru-pumping-matrix.md) |
+| `gwflow_basin_heat_day.txt` | daily `gwflow_heat` and `heat = 1` in `codes.gw` | [Daily basin heat balance](daily-basin-heat-balance.md) |
+| `gwflow_basin_heat_{yr,aa}.txt` | yearly/AA `gwflow_heat` and `heat = 1` | [Longer-period basin heat balance](longer-period-basin-heat-balance.md) |
+| `gwflow_basin_sol_<solute>_{day,mon,yr,aa}.txt` | `gwflow_solute` periods and `solute = 1` in `codes.gw` | [Basin solute balance](basin-solute-balance.md) |
+| `gwflow_cell_definition.txt` | written during initialization | [Cell definition](cell-definition.md) |
+| `gwflow_record` | opened when `codes.bsn` requests GWFlow | [GWFlow diagnostic log](gwflow-record.md) |
+| `gwflow_canal_wb_day.txt` | daily/yearly `gwflow_flux` switch plus canal configuration | [Canal water balance](canal-water-balance.md) |
+| `gwflow_canal_sol_day.txt` | daily/yearly `gwflow_flux` and canal configuration open the file. Configured salts or conservative constituents supply rows | [Canal solute](canal-solute.md) |
+| `gwflow_pond_wb_day.txt` | daily/yearly `gwflow_flux` plus recharge-pond configuration. See matrix prerequisite below | [Recharge-pond water balance](recharge-pond-water-balance.md) |
+| `gwflow_pond_sol_day.txt` | daily/yearly `gwflow_flux` and pond configuration open the file. Configured GWFlow solutes supply rows | [Recharge-pond solute rows](recharge-pond-solute.md) |
+| `gwflow_pond_{mass,conc}_day.txt` | daily/yearly `gwflow_flux` and pond configuration open both files. Initialize GWFlow solutes before using this switch with ponds | [Recharge-pond solute matrices](recharge-pond-solute-matrices.md) |
+| `gwflow_gwsw_group_day.txt`, `gwflow_chan_obs_{flow,no3}_day.txt` | `gwflow_flux` plus `sw_group.gw` or flagged `chancell.gw` rows, with `solute = 1` for NO3 | [Configured exchange and observation matrices](configured-exchange-observation-matrices.md) |
+| `gwflow_tile_group_day.txt` | tile drainage, tile groups in `tile.gw`, and the `gwflow_flux` switch | [Tile-group matrix](tile-group-matrix.md) |
+| `gwflow_group_wb_day_*` | presence of configured `gwflow.wbgroups` | [Selected-cell water-balance groups](selected-cell-water-balance-groups.md) |
+| `gwflow_chan_hydsep_day.txt` | daily `gwflow_wb` or `write_day` in `codes.gw` when the row is absent | [Channel separation](channel-separation.md) |
+| `gwflow_transit_cell` | structured grid and `transit.gw` | [Groundwater transit tracks](transit-cell-tracks.md) |
+| `gwflow_transit_chan`, `gwflow_transit_tile` | structured grid and `transit.gw`, with tile drainage enabled for the tile file | [Groundwater transit times to channels and tiles](transit-channel-tile-times.md) |
 
-Daily rows are daily rates. Monthly, yearly, and average-annual files explicitly report average daily rates for their interval, not interval totals.
+## Legacy output selectors
 
-## Observation wells
-
-The files `gwflow_obs_day.txt`, `gwflow_obs_mon.txt`, `gwflow_obs_yr.txt`, and `gwflow_obs_aa.txt` use the headings `jday`, `mon`, `day`, `yr`, `unit`, `gis_id`, `name`, `head`, `wt_depth`, `temperature`, `no3`, and `p`. Units are m, m, degC, mg/L, and mg/L for the final five fields. A value of -99 means that quantity was not simulated.
-
-## HRU pumping
-
-The files `gwflow_hru_pump_day.txt`, `gwflow_hru_pump_mon.txt`, `gwflow_hru_pump_yr.txt`, and `gwflow_hru_pump_aa.txt` use `jday`, `mon`, `day`, `yr`, `unit`, `gis_id`, `name`, and `pump_allo`. Daily pumping is m3/day, monthly and yearly rows are totals in m3, and average annual is m3/yr.
-
-`gwflow_cell_wb_ppag_obs_day.txt` is a configured observation matrix: the first column is time and each remaining column represents an HRU listed in `gwflow.hru_pump_observe`. Its width and column identity therefore depend on the project configuration.
-
-## Basin heat balance
-
-GWFlow opens `gwflow_basin_heat_day.txt`, `gwflow_basin_heat_yr.txt`, and `gwflow_basin_heat_aa.txt`; there is no monthly heat file in the inspected source.
-
-The daily headings are `jday`, `mon`, `day`, `yr`, `unit`, `gis_id`, `name`, `ts`, `hbef`, `haft`, `recharge`, `gw_et`, `gw_sw`, `sw_gw`, `sat_excess`, `soil`, `lateral`, `dispersion`, `boundary`, `pump_allo`, `pump_ext`, `tile`, `reservoir`, `wetland`, `canal`, `floodplain`, `pond`, `error`, and `tavg`. Heat terms are MJ, `error` is percent, and `tavg` is degC.
-
-Yearly and average-annual files replace `ts`, `hbef`, and `haft` with `hdel` and omit `error` and `tavg`. Their heat-flux headings are otherwise the same.
-
-## Cell definition
-
-`gwflow_cell_definition.txt` maps groundwater cells to space. Its printed headings are `cell_id`, `row`, `col`, `x_coord`, `y_coord`, `zone`, `status`, and `area`. For an unstructured grid, `row` and `col` are written as zero.
-
-## Canal and recharge-pond reports
-
-`gwflow_canal_wb_day.txt` uses `jday`, `mon`, `day`, `yr`, `unit`, `gis_id`, `name`, `diversion`, `storage`, `pond_xfer`, and `seepage`; the four water-balance values are m3.
-
-`gwflow_canal_sol_day.txt` uses the same identifiers followed by `solute`, `div_mass`, `storage`, `pond_mass`, and `seep_mass`; mass fields are kg.
-
-`gwflow_pond_wb_day.txt` uses the identifiers followed by `area`, `storage`, `rain`, `div_added`, `evap`, `recharge`, `div_spec`, and `div_unsat`. `area` is m2 and the other values are m3.
-
-`gwflow_pond_sol_day.txt` uses the identifiers followed by `area`, `storage`, `solute`, `mass`, `div_added`, and `recharge`. The last three mass-transfer values are kg. `gwflow_pond_mass_day.txt` and `gwflow_pond_conc_day.txt` are dynamic matrices with one column per configured pond.
-
-## Configured group and observation reports
-
-The files `gwflow_gwsw_group_day.txt`, `gwflow_tile_group_day.txt`, `gwflow_chan_obs_flow_day.txt`, `gwflow_chan_obs_no3_day.txt`, and `gwflow_chan_hydsep_day.txt` depend on configured groups or observation cells. Their titles state the quantity and unit, but their data-column identity comes from the associated GWFlow input configuration. Do not assign a fixed public field list without that project configuration.
+`outputs.gw` still accepts `head_output_time` and `detail_debug_cell`. Matching a head-output date advances an index with no grid dump, and the debug cell ID is stored with no writer using it. For head values, use the [cell water balance](cell-water-balance.md) or select individual cells with `observation_cell` for the [observation files](observation-wells.md). [Input reader](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L570-L622), [Date handling](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_simulate.f90#L388-L393), [Cell file openers](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L498-L545)

@@ -10,6 +10,6 @@ Flow into the reservoir.
 
 **Unit:** m3.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Inflow is reported as a water volume. The monthly and yearly rows contain sums. Average annual divides the yearly inflow volumes by `time%yrs_prt`. Basin rows sum reservoir inflows, so a transfer routed through more than one reservoir can contribute at each reservoir. [Individual periods](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/reservoir_output.f90#L29), [Basin aggregation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_reservoir_output.f90#L20)
 
 [Back to the output table](README.md).

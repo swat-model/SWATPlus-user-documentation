@@ -6,10 +6,10 @@ description: "Carbonaceous Biochemical Oxygen Demand storage in the reservoir"
 
 **Code reference:** `res(j)%cbod` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L41)).
 
-Carbonaceous Biochemical Oxygen Demand storage in the reservoir.
+Carbonaceous biochemical oxygen demand mass in storage comes from initialization and incoming water. An allocation withdrawal can remove some of the mass, and a low-volume reset can clear the storage record. [Mass conversion](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L1282-L1303), [Allocation withdrawal](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_withdraw.f90#L99-L108), [Low-volume reset](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_nutrient.f90#L31-L36)
 
 **Unit:** kg.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Storage values are snapshots on the reporting date. See [oxygen and temperature values](README.md#oxygen-and-temperature-values).
 
 [Back to the output table](README.md).

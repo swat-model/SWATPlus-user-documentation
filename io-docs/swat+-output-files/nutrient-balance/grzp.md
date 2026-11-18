@@ -6,9 +6,9 @@ description: "Total phosphorus added to soil from grazing"
 
 **Code reference:** `bnb_d%grazp` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L83)).
 
-Total phosphorus added to soil from grazing.
+The static carbon routine (`cswat = 0`) records organic plus mineral phosphorus in applied grazing manure. The SWAT-C branch (`cswat = 2`) applies manure to soil pools and leaves the diagnostic at its daily reset value. [diagnostic reset](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/varinit.f90#L97-L101), [grazing branches](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_graze.f90#L83-L110).
 
-**Unit:** kg/ha.
+**Unit:** kg P/ha.
 
 The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
 

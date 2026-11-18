@@ -2,9 +2,9 @@
 
 Water-balance output is available for the basin, landscape units, HRUs, and HRU-LTEs. Enable `basin_wb`, `lsunit_wb`, `hru_wb`, or `hru-lte_wb` in [print.prt](../../introduction-1/simulation-settings/print.prt). Daily, monthly, yearly, and average-annual output can be selected independently.
 
-The filename prefixes are `basin_wb`, `lsunit_wb`, `hru_wb`, and `hru-lte_wb`. Each prefix can have `_day`, `_mon`, `_yr`, or `_aa`, followed by `.txt`. Corresponding `.csv` files are produced when CSV output is enabled.
+The filename prefixes are `basin_wb`, `lsunit_wb`, `hru_wb`, and `hru-lte_wb`. Each prefix can have `_day`, `_mon`, `_yr`, or `_aa`, followed by `.txt`. Set `csvout` to `y` for CSV copies. Daily rows also follow the shared daily print window and interval. [File openers](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_init.f90#L36), [Daily print timing](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/time_control.f90#L203)
 
-The model prints the same header at all four spatial levels. The first 49 printed columns are:
+All 32 variants print 51 headings and a 49-entry units record. The first 49 headings match the common data positions below. [Heading and units declarations](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L252)
 
 | Field | Description | Unit |
 | --- | --- | --- |
@@ -16,47 +16,47 @@ The model prints the same header at all four spatial levels. The first 49 printe
 | [gis_id](gis_id.md) | GIS identifier | n/a |
 | [name](name.md) | Spatial-object name; basin name for basin output | n/a |
 | [precip](precip.md) | Rain and snow precipitation | mm |
-| [snofall](snofall.md) | Precipitation falling as snow, sleet, or freezing rain | mm |
+| [snofall](snofall.md) | Water added to the snowpack as snowfall | mm |
 | [snomlt](snomlt.md) | Snowmelt | mm |
-| [surq_gen](surq_gen.md) | Surface runoff generated | mm |
-| [latq](latq.md) | Lateral soil flow | mm |
-| [wateryld](wateryld.md) | Water yield | mm |
+| [surq_gen](surq_gen.md) | Lagged surface runoff for full HRUs. Model runoff for HRU-LTEs | mm |
+| [latq](latq.md) | Lateral soil flow. HRU-LTE also includes shallow groundwater discharge | mm |
+| [wateryld](wateryld.md) | Sum of the reported surface runoff, lateral flow, and tile drainage | mm |
 | [perc](perc.md) | Water percolating below the soil profile | mm |
 | [et](et.md) | Actual evapotranspiration | mm |
 | [ecanopy](ecanopy.md) | Canopy evaporation | mm |
 | [eplant](eplant.md) | Plant transpiration | mm |
-| [esoil](esoil.md) | Soil evaporation | mm |
-| [surq_cont](surq_cont.md) | Surface runoff leaving the landscape | mm |
+| [esoil](esoil.md) | Evaporation diagnostic including snow sublimation and ponded-water evaporation | mm |
+| [surq_cont](surq_cont.md) | Full-HRU surface runoff variable used in destination diagnostics. Zero for HRU-LTE | mm |
 | [cn](cn.md) | Curve number for the reporting period | n/a |
 | [sw_init](sw_init.md) | Soil water at the start of the reporting period | mm |
 | [sw_final](sw_final.md) | Soil water at the end of the reporting period | mm |
 | [sw_ave](sw_ave.md) | Average soil water | mm |
-| [sw_300](sw_300.md) | Soil water in the upper 300 mm | mm |
+| [sw_300](sw_300.md) | Upper-300-mm water depth for full HRUs. Total LTE soil water divided by 300 for HRU-LTE | mm printed |
 | [sno_init](sno_init.md) | Snowpack water at the start of the reporting period | mm |
 | [sno_final](sno_final.md) | Snowpack water at the end of the reporting period | mm |
 | [snopack](snopack.md) | Average snowpack water equivalent | mm |
 | [pet](pet.md) | Potential evapotranspiration | mm |
 | [qtile](qtile.md) | Subsurface tile flow leaving the landscape | mm |
-| [irr](irr.md) | Irrigation applied | mm |
-| [surq_runon](surq_runon.md) | Surface-runoff run-on from upland landscape | mm |
-| [latq_runon](latq_runon.md) | Lateral-flow run-on from upland landscape | mm |
-| [overbank](overbank.md) | Overbank flooding from channels | mm |
+| [irr](irr.md) | Applied irrigation depth, with full-HRU runoff tracked separately | mm |
+| [surq_runon](surq_runon.md) | Surface volume plus the area-converted tile contribution | mm printed |
+| [latq_runon](latq_runon.md) | Incoming lateral-flow volume copied directly | mm printed |
+| [overbank](overbank.md) | Last linked-channel overbank contribution recorded for the HRU wetland | mm |
 | [surq_cha](surq_cha.md) | Surface runoff routed to channels | mm |
 | [surq_res](surq_res.md) | Surface runoff routed to reservoirs | mm |
 | [surq_ls](surq_ls.md) | Surface runoff routed to landscape objects | mm |
 | [latq_cha](latq_cha.md) | Lateral flow routed to channels | mm |
 | [latq_res](latq_res.md) | Lateral flow routed to reservoirs | mm |
 | [latq_ls](latq_ls.md) | Lateral flow routed to landscape objects | mm |
-| [gwsoilq](gwsoilq.md) | Groundwater transferred into the soil profile | mm |
+| [gwsoilq](gwsoilq.md) | Groundwater transferred into the full-HRU soil profile by GWFlow | mm |
 | [satex](satex.md) | Saturation-excess flow generated by a high water table | mm |
 | [satex_chan](satex_chan.md) | Saturation-excess flow reaching the main channel | mm |
 | [sw_change](sw_change.md) | Change in soil-water storage | mm |
-| [lagsurf](lagsurf.md) | Surface runoff still in transit to a channel | mm |
-| [laglatq](laglatq.md) | Lateral flow still in transit to a channel | mm |
-| [lagsatex](lagsatex.md) | Saturation-excess flow still in transit to a channel | mm |
-| [wet_evap](wet_evap.md) | Evaporation from wetland surfaces | mm |
-| [wet_oflo](wet_oflo.md) | Wetland overflow | mm |
-| [wet_stor](wet_stor.md) | Water stored in wetlands at the end of the reporting period | mm |
+| [lagsurf](lagsurf.md) | Water remaining in the daily surface runoff store | mm |
+| [laglatq](laglatq.md) | Water remaining in the lateral routing store | mm |
+| [lagsatex](lagsatex.md) | Water remaining in the saturation-excess routing store | mm |
+| [wet_evap](wet_evap.md) | Wetland evaporation already included in `esoil` and `et` | mm |
+| [wet_oflo](wet_oflo.md) | Wetland release diagnostic, which can also include redistributed soil water | mm |
+| [wet_stor](wet_stor.md) | Daily wetland storage; averaged accumulated storage in longer reports | mm |
 
 The printed header then ends with these two labels:
 
@@ -66,7 +66,56 @@ The printed header then ends with these two labels:
 | [mgt_ops](mgt_ops.md) | Management-schedule identifier associated with the HRU | n/a |
 
 {% hint style="warning" %}
-Only HRU data rows write values for `plant_cov` and `mgt_ops`. Basin, landscape-unit, and HRU-LTE rows stop after `wet_stor`, even though their printed header still includes these two trailing labels.
+HRU rows write plant-cover and management labels in positions 50 and 51. Landscape-unit, HRU-LTE, and daily, monthly, and yearly basin rows stop after `wet_stor`. [Basin average-annual rows](basin-average-annual.md) use the last two positions for calibration information under the same printed headings.
 {% endhint %}
 
-Water fluxes are accumulated over monthly and yearly reporting periods. State variables such as average soil water, curve number, and snowpack are averaged; start and end storage fields retain the reporting-period boundaries. Average-annual rows summarize the printed simulation years.
+## Daily runoff, routing, and upper-soil water
+
+- **Surface runoff.** The full-HRU `surq_gen` field writes `qday`, the runoff released by `sq_surfst` from surface storage. The outgoing surface hydrograph uses the same value times area. The earlier addition of wetland release to `qday` is overwritten when `sq_surfst` calculates `qday`. The water-balance record keeps the wetland release separately. `surq_cont` writes `surfq(j)`, which also feeds the surface destination fields. [wetland release and lag call](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L630-L639), [daily and subdaily surface lag](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sq_surfst.f90#L44-L69), [water record](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L732-L756), [surface hydrograph](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_hyds.f90#L62-L66).
+- **Destination fields.** For `surq_cha`, `surq_res`, and `surq_ls`, the HRU multiplies `surfq(j)` by the destination fractions on surface or total-flow links. The corresponding lateral fields use `latq(j)` and lateral or total-flow links. If the HRU belongs to routing units, the calculation uses only the first routing unit's outgoing links. These are depth diagnostics based on connection fractions. The surface diagnostic can differ from the routed hydrograph because that hydrograph uses `qday`. [destination attribution](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L673-L732), [hydrograph volume](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_hyds.f90#L62-L66).
+- **Saturation excess.** `satex` copies the generated depth for HRUs without a wetland. `satex_chan` is the release from the separate lag store, and `lagsatex` is the depth remaining in that store after release. [lag calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L358-L364), [output assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L770-L779).
+- **HRU-LTE.** `latq` adds shallow groundwater discharge to lateral flow, and `surq_cont` is explicitly zero. A full HRU sums soil-water depth to 300 mm, using a fraction of the layer that crosses 300 mm. An HRU-LTE divides its single soil-water store by 300 and writes that ratio under the same `sw_300` heading. LSU and basin sums weight both contributions as the same field. [LTE entries](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L359-L385), [full-HRU depth calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L484-L499), [LSU sum](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/lsu_output.f90#L31-L57), [basin sum](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_output.f90#L29-L55).
+
+The landscape-unit and basin writers use the same contributor lookups as the plant and weather reports. If element IDs and object numbers differ, they can select different daily water-balance records or weights. [Contributor selection](../plant-and-weather/plant-weather-output.md#landscape-unit-and-basin-contributors)
+
+## Run-on and water yield
+
+In a full HRU, the surface run-on routine divides only the tile contribution by ten times the HRU area in hectares. It adds the resulting depth to the unconverted surface volume and reports the sum as `surq_runon`. The same sum enters effective precipitation. The wetland route adds the incoming hydrographs to storage directly and bypasses this diagnostic. The lateral run-on routine copies incoming volume in m³ straight into `latq_runon`, printed as mm, and distributes the same number to the soil layers by thickness. HRU-LTE leaves both fields at zero. [Surface run-on](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/rls_routesurf.f90#L28-L38), [Wetland branch](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L268-L286), [Lateral run-on](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/rls_routesoil.f90#L23-L32), [Daily output assignments](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L765-L775)
+
+The full-HRU `wateryld` is the sum of lagged runoff, lateral flow, and tile drainage, with a floor of zero. The final assignment replaces an earlier addition of the wetland release. The `wet_oflo` field can include soil saturation excess added to the wetland release record when the weir is below 0.001 m. For HRU-LTE, water yield sums runoff, lateral soil flow, tile flow, and shallow groundwater discharge. That groundwater component is already included in the reported HRU-LTE `latq`. [Full-HRU release and yield](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L630-L663), [Wetland saturation excess](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swr_satexcess.f90#L72-L90), [HRU-LTE yield](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L333-L388)
+
+## Evapotranspiration and soil water
+
+The full-HRU `et` sums canopy evaporation, transpiration, and `esoil`. The `esoil` diagnostic includes evaporation from ponded water and sublimation from snow. The `wet_evap` column reports the ponded-water part again, converted from m³ using the full HRU area. HRU-LTE calculates `et` with its own soil-water and potential ET calculation, caps it at the soil water remaining after drainage, and leaves `ecanopy`, `eplant`, and `esoil` at zero. [Full-HRU ET](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L506-L512), [Snow and pond evaporation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/et_act.f90#L164-L198), [Evaporation total](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/et_act.f90#L257-L267), [HRU-LTE actual ET](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L176-L183), [HRU-LTE cap and output](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L325-L379)
+
+Full-HRU `perc` reports water leaving the bottom of the soil profile, including the crack-flow contribution when active. `gwsoilq` reports the separate GWFlow transfer into the soil layers. HRU-LTE computes its own percolation from water above a threshold tied to available water capacity, adds it to shallow groundwater, and leaves `gwsoilq` at zero. Full-HRU `sw_change` uses the end-of-day soil-water sum minus the sum taken at the start of the current simulation day. It can differ from subtracting the printed endpoints because the printed starting value advances only when a daily row is written. HRU-LTE leaves `sw_change` at zero. [Full-HRU percolation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swr_percmain.f90#L64-L83), [Bottom-layer flux](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swr_percmain.f90#L108-L125), [Groundwater transfer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_soil.f90#L81-L109), [HRU-LTE percolation and groundwater](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L318-L348), [Start-of-day soil water](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L99-L105), [Printed endpoints](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_output.f90#L53-L73)
+
+## Snow, irrigation, and drainage
+
+Full-HRU `precip` reports the weather record after the configured elevation adjustment, before canopy interception and the rain–snow split. HRU-LTE reads precipitation directly from its station record. Full-HRU `pet` uses the basin method or supplied PET series, then applies the HRU PET coefficient. HRU-LTE uses its own Hargreaves or Priestley–Taylor calculation and scales it by its ET coefficient. The full-HRU curve-number diagnostic is calculated from soil water, with a frozen-soil adjustment. Green–Ampt can update it during subdaily steps. The wetland branch skips the surface routine that updates it, so the value can stay at the initialized zero or retain an earlier value. HRU-LTE calculates its curve number from its single soil-water store. [Full-HRU weather and surface calls](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L124-L133), [Full-HRU surface branch](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L302-L319), [Full-HRU PET](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/et_pot.f90#L115-L280), [Curve number](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sq_dailycn.f90#L39-L55), [Subdaily update](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sq_greenampt.f90#L161-L176), [HRU-LTE weather and curve number](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L93-L121), [HRU-LTE PET](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L162-L176)
+
+Full-HRU `snofall` copies effective precipitation after the canopy interception call when mean temperature is at or below the configured snowfall threshold. Melt requires a positive snowpack and a maximum temperature above the melt threshold. It uses a seasonal melt factor and a snow-cover reduction and is bounded by available snow water. The snow temperature variable is reset before each calculation, so it carries no previous snow temperature into the formula. HRU-LTE treats all daily precipitation as snowfall when mean temperature is below 0 °C. On other days, it computes melt as 4.57 times mean temperature, capped at the snowpack. [Order of canopy and snow calls](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L261-L265), [Full-HRU snowfall and melt](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sq_snom.f90#L45-L86), [HRU-LTE snowfall and melt](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L123-L146)
+
+Full-HRU `irr` is the daily applied depth. Scheduled irrigation multiplies the specified depth by efficiency and the non-runoff fraction. The wetland irrigation routine uses the supplied volume divided by ten times HRU area, then applies efficiency and the non-runoff fraction. The soil or wetland water balance uses the applied depth, while any designated irrigation runoff is tracked separately. HRU-LTE records its calculated addition to soil water, after reducing it if the selected aquifer cannot supply the full amount. [Scheduled irrigation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L358-L372), [Wetland application](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_irrp.f90#L102-L110), [Soil input](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swr_percmain.f90#L69-L75), [Wetland input](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_control.f90#L74-L81), [HRU-LTE irrigation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L241-L265)
+
+Full-HRU `qtile` reports the tile flow released by the subsurface routing store, after any saturated-buffer split. The controller resets the earlier layer tile-flow sum before the separate drainage calculation, limits removal to water the soil can supply, and then passes the result through the store. GWFlow cell tile drainage enters the channel through a separate routine. HRU-LTE computes drainage from soil water above available water capacity when tile drainage is enabled. The code caps the daily depth at 10 mm and at the water available. [Full-HRU drainage and cap](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swr_percmain.f90#L144-L218), [Subsurface routing](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swr_substor.f90#L52-L73), [Buffer split](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L641-L657), [GWFlow tile delivery](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_control3.f90#L145-L151), [HRU-LTE tile drainage](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L307-L316)
+
+The `overbank` field only tracks channel overflow transferred into linked HRU wetlands. The channel assigns the depth each time it supplies a wetland, so a later contribution can replace an earlier one. The HRU copies and clears the stored depth. HRU-LTE leaves the field at zero. [Linked wetland fill](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_sediment3.f90#L140-L158), [HRU record and reset](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L765-L770)
+
+## Water held in routing stores
+
+On daily full-HRU rows, `lagsurf`, `laglatq`, and `lagsatex` read the depths left in their respective routing stores after release. Subdaily runoff uses a separate store and does not update the daily surface store that `lagsurf` reads. The lateral store releases a fraction determined by the lateral travel time. The saturation-excess store uses the surface runoff release fraction. HRU-LTE leaves these fields at zero. [Surface routing by time step](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sq_surfst.f90#L44-L69), [Lateral routing](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swr_substor.f90#L52-L73), [Saturation-excess routing](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L357-L364), [Printed stores](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L773-L778)
+
+Monthly and yearly rows sum the daily depths in each store, and the average-annual row divides the accumulated sums by the reporting-year count. The result is a sum of daily storage readings even though the units row says mm. Water held for several days can contribute on each of those days. [Addition](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L969-L971), [Year division](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L1129-L1131), [Fields left unchanged by day division](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L1177-L1179)
+
+## Period calculations
+
+The full-HRU, HRU-LTE, landscape-unit, and basin writers transfer accumulated water-balance values to the yearly record only at calendar month end. A final partial month is omitted from the yearly and average-annual flux sums and day-mean numerators. Day-mean divisors still use `time%day_end_yr` or `time%days_prt`, respectively. Full-HRU, landscape-unit, and basin records take final soil-water and snow values from the last daily record even when that month's sums are omitted. [HRU writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_output.f90#L102-L124), [HRU-LTE writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_output.f90#L53-L114), [landscape-unit writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/lsu_output.f90#L160-L175), [basin writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_output.f90#L151-L167).
+
+Monthly and yearly rows sum the water fluxes and the three lag-store depths. The writer divides the accumulated `cn`, `sw_ave`, `sw_300`, `snopack`, and `wet_stor` by the calendar month length or `time%day_end_yr`, respectively. In the average-annual rows, flux and lag-store sums divide by `time%yrs_prt` and these five state or diagnostic sums divide by `time%days_prt`. The flux columns therefore represent mm per reporting year, while the units row retains `mm`. [Year division](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L1093), [Day division](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L1137)
+
+{% hint style="warning" %}
+The HRU monthly accumulator takes soil water and snowpack from the daily record before the writer replaces those values with the daily initial/final midpoint. Basin and landscape-unit writers likewise accumulate before their daily midpoint calculation. Those three writers advance daily `sw_init` and `sno_init` inside the daily water-balance print gate. The HRU-LTE producer supplies its current soil water and snowpack directly, and its writer does not apply the midpoint step. [HRU writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_output.f90#L42), [Basin writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_output.f90#L62), [LSU writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/lsu_output.f90#L62), [HRU-LTE producer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L382)
+{% endhint %}
+
+In daily HRU-LTE rows, `sw_init` retains the soil water assigned during initialization, `sw_final` reports the current soil water, and both snow endpoints stay at zero even when `snopack` is positive. In monthly, yearly, and average-annual HRU-LTE rows all four endpoints remain zero. The accumulator keeps its own endpoint values when adding a daily record, and the HRU-LTE writer never fills the longer-period endpoints separately. The `sw_ave` and `snopack` columns still average the daily state values. [HRU-LTE soil initialization](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_read.f90#L255-L268), [Daily state](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L381-L388), [Endpoint handling in addition](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L929-L952), [HRU-LTE period writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_output.f90#L53-L114)

@@ -1,15 +1,15 @@
 ---
-description: "Receiving object and GIS identifiers"
+description: "GIS identifier of the receiving object"
 ---
 
 # gis_id
 
 **Code reference:** `ob(iob)%gis_id` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L352)).
 
-In this output table, `gis_id` is one of the fields described as: Receiving object and GIS identifiers.
+GIS identifier of the receiving object.
 
-This field has no physical unit in the output table.
+Position 6 of the incoming data prefix carries this value. Each row in the dormant writer represents one incoming connection of the receiving object. [Data write](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hcsin_output.f90#L22)
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+This field has no physical unit.
 
-[Back to the output table](README.md).
+The pinned source has no active call to this report writer. See the [family status and layouts](README.md).

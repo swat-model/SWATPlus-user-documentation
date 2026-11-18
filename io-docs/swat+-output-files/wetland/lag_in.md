@@ -1,15 +1,15 @@
 ---
-description: "Incoming and outgoing sediment and particle-size classes"
+description: "Incoming large aggregates"
 ---
 
 # lag_in
 
 **Code reference:** `wet_in_d(j)%lag` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L47)).
 
-In this output table, `lag_in` is one of the fields described as: Incoming and outgoing sediment and particle-size classes.
+Large aggregates in the incoming hydrograph. This can include routed surface runon, associated tile flow, and overbank inflow from a linked channel. [HRU runon](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L268-L276), [Overbank inflow](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_sediment3.f90#L140-L158)
 
 **Unit:** tons.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [sediment and particle sizes](README.md#sediment-and-particle-sizes) and [reporting periods](README.md#how-to-read-the-reporting-periods).
 
 [Back to the output table](README.md).

@@ -1,15 +1,15 @@
 ---
-description: "Stored nutrients and water-quality constituents"
+description: "Stored carbonaceous biochemical oxygen demand"
 ---
 
 # cbod_stor
 
 **Code reference:** `wet(j)%cbod` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L41)).
 
-In this output table, `cbod_stor` is one of the fields described as: Stored nutrients and water-quality constituents.
+Carbonaceous biochemical oxygen demand mass in the storage hydrograph comes from initialization and inflow. A low remaining water volume can clear it. [Initialization conversion](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L1282-L1303), [Low-volume reset](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_sediment.f90#L17-L24)
 
 **Unit:** kg.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See [oxygen and temperature values](README.md#oxygen-and-temperature-values) and [reporting periods](README.md#how-to-read-the-reporting-periods).
 
 [Back to the output table](README.md).

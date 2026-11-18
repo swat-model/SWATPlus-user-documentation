@@ -14,4 +14,6 @@ Daily output gives the daily exchange. Monthly and yearly output sum exchanges o
 
 Basin output weights aquifer values by aquifer area relative to the total basin area.
 
+The daily calculation uses the stored-nitrate component, which has initialization/allocation mass-basis inconsistencies; see [no3_st](no3_st.md). The kg N/ha label does not by itself certify numerical mass accounting in every configuration.
+
 [Back to the output table](README.md).

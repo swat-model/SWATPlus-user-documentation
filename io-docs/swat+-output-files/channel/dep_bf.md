@@ -1,15 +1,13 @@
 ---
-description: "Bankfull flow-depth diagnostic"
+description: "Bankfull channel depth"
 ---
 
 # dep_bf
 
-**Code reference:** `chsd_d(ichan)%dep_bf` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_module.f90#L282)).
+**Code reference:** `chsd_d(ich)%dep_bf = sd_ch_vel(ich)%dep_bf` ([assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_control3.f90#L431)).
 
-Bankfull flow-depth diagnostic.
+Bankfull channel depth. The initialization copies channel depth `sd_ch(i)%chd` into `sd_ch_vel(i)%dep_bf` ([initialization](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_hydsed_init.f90#L142); [channel-depth unit](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_module.f90#L645)).
 
-**Unit:** m/s.
+**Unit:** m. The source's printed morphology units row incorrectly labels this depth `m/s`. This interpretation follows the assigned depth, rather than the field name alone.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
-
-[Back to the output table](README.md).
+[Back to the SD channel morphology schema](sd-channel-morphology.md).

@@ -1,17 +1,17 @@
 ---
-description: "Groundwater flow routed to landscape objects"
+description: "Groundwater flow assigned to receiving aquifer objects"
 ---
 
 # flo_ls
 
-**Code reference:** `aqu_d(iaq)%flo_ls` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aquifer_module.f90#L54)).
+**Code reference:** `aqu_d(iaq)%flo_ls` ([routing calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_1d_control.f90#L377)).
 
-The portion of groundwater flow routed to landscape objects such as HRUs or routing units.
+Groundwater flow assigned to receiving aquifer objects. The controller sums `aqu_d(iaq)%flo * frac_out` only for outgoing connections whose hydrograph type is `tot` and whose receiver type is `aqu`. Despite the printed name and the declaration's landscape wording, this branch selects aquifers, not HRUs or routing units.
 
 **Unit:** mm.
 
-Daily output gives the daily exchange. Monthly and yearly output sum exchanges over the period. Average-annual output gives the mean annual total over the printed simulation years.
+Monthly values sum daily exchanges; yearly values sum the monthly totals. Average-annual values divide the accumulated yearly totals by `time%yrs_prt`.
 
-Basin output weights aquifer values by aquifer area relative to the total basin area.
+Basin output applies `aqu_prm(iaq)%area_ha / bsn%area_tot_ha`; the denominator is the full basin area, not the sum of aquifer areas. This is not necessarily a normalized mean over just the aquifers.
 
 [Back to the output table](README.md).

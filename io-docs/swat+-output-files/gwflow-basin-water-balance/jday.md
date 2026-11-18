@@ -12,4 +12,4 @@ For monthly and annual output this is the reporting-boundary date, rather than a
 
 This is an identifier, label, or date component; it has no physical unit.
 
-[Back to the output table](README.md).
+[Back to the daily schema](daily-basin-water-balance.md) · [Back to the longer-period schema](longer-period-basin-water-balance.md).

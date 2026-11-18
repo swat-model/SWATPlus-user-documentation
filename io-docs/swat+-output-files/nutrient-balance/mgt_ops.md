@@ -1,15 +1,13 @@
 ---
-description: "Management-operation label written for HRU rows"
+description: "HRU management-schedule identifier; header-only at other written levels"
 ---
 
 # mgt_ops
 
-**Code reference:** `<no corresponding data value>` ([writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_output.f90#L80)).
+**Code reference:** `lum(ilu)%mgt_ops` ([HRU writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_output.f90#L75)).
 
-Management-operation label written for HRU rows. Important: this source prints a header/value mismatch. At the position labeled `mgt_ops`, the data writer supplies `<no corresponding data value>`. This page records that positional relationship and does not reinterpret the value as the printed label. Important: the data row ends before this printed header position, so this heading has no corresponding value in the inspected writer.
+HRU rows append this identifier after their numeric balance record. Basin and LSU records omit this value; standalone HRU-LTE nutrient output is disabled. The shared printed header still includes the label. The missing-value warning applies to those other spatial levels, not to HRU records.
 
-This field has no physical unit in the output table.
-
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+**Unit:** n/a.
 
 [Back to the output table](README.md).

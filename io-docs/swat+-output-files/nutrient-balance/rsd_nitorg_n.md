@@ -1,15 +1,13 @@
 ---
-description: "Nitrogen moving from the fresh organic pool (residue) to the nitrate (80%) and active organic (20%) pools"
+description: "Surface-residue nitrogen mineralization diagnostic cleared before output"
 ---
 
 # rsd_nitorg_n
 
-**Code reference:** `bnb_d%rsd_nitorg_n` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L93)).
+**Code reference:** `hnb_d(j)%rsd_nitorg_n` in the HRU record ([writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_output.f90#L75)); matching component in basin and LSU records.
 
-Nitrogen moving from the fresh organic pool (residue) to the nitrate (80%) and active organic (20%) pools.
+In the static carbon route (`cswat = 0`), `rsd_decomp` adds 80% of decomposed surface-residue N to soil nitrate and 20% to active organic N. It adds only `0.8 * decomp%n` to the temporary diagnostic. The very next routine, `nut_nminrl`, clears that diagnostic before it reaches the output. The SWAT-C residue routines also leave this legacy field at zero. The column therefore gives no measure of the actual mineralized amount in these source paths. [surface-residue pools](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/rsd_decomp.f90#L112-L120), [call order](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L384-L402), [legacy reset](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/nut_nminrl.f90#L72-L78), [SWAT-C reset](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_rsd_transfer.f90#L49-L55).
 
-**Unit:** kg/ha.
-
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+**Unit:** kg N/ha.
 
 [Back to the output table](README.md).

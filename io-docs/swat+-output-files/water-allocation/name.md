@@ -1,15 +1,20 @@
 ---
-description: "Object name and use identifier"
+description: "Use/treatment name with variant-specific positions"
 ---
 
 # name
 
-**Code reference:** `om_use_name(iuse)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_allocation_module.f90#L217)).
+**Code references:** `om_use_name(iuse)` and `om_treat_name(itrt)` ([name arrays](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_allocation_module.f90#L216)). These are the names selected by the use/treatment output indices; the field has no physical unit.
 
-In this output table, `name` is one of the fields described as: Object name and use identifier.
+| File/row | Actual name position |
+| --- | ---: |
+| Daily use TXT | 5 |
+| Other use TXT and all use CSV | 4 |
+| Daily treatment TXT | 6 |
+| Other treatment TXT and all treatment CSV | 5 |
 
-This field has no physical unit in the output table.
+The common printed header puts `name` at position 5 for every variant. Treatment writes identifier **before** name; use writes name **before** identifier. All CSV and monthly/yearly/AA TXT omit `jday`, producing 23 values under 24 headings.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+See the [water-use](water-use.md) and [water-treatment](water-treatment.md) row variants and CSV routing defects. These identifiers select a process diagnostic, not a POU/POD child index or an effluent flow record.
 
-[Back to the output table](README.md).
+[Back to the water-use schema](water-use.md) · [Back to the water-treatment schema](water-treatment.md).

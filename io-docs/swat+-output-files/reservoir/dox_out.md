@@ -1,15 +1,15 @@
 ---
-description: "Dissolved oxygen leaving the reservoir"
+description: "Dissolved oxygen slot, left at zero by the reservoir controller"
 ---
 
 # dox_out
 
 **Code reference:** `res_out_d(j)%dox` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L42)).
 
-Dissolved oxygen leaving the reservoir.
+The reservoir controller leaves this outflow slot at its zero default. [Outflow initialization](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_control.f90#L38-L42), [Nutrient export assignments](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_nutrient.f90#L99-L115)
 
 **Unit:** kg.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Monthly and yearly records sum the daily loads. The average-annual record divides the accumulated loads by the number of printed years. See [oxygen and temperature values](README.md#oxygen-and-temperature-values).
 
 [Back to the output table](README.md).

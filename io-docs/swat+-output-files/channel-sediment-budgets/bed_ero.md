@@ -6,10 +6,10 @@ description: "Bank and bed erosion"
 
 **Code reference:** `ch_sed_bud(ichan)%bed_ero` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_module.f90#L69)).
 
-In this output table, `bed_ero` is one of the fields described as: Bank and bed erosion.
+Calculated bed sediment erosion after applying `wash_bed_fr`. The budget records this value, while the line that would add it to the routed hydrograph is commented out. [Nutrient budget calculation](channel-nutrient-sediment-budget.md#how-the-nutrient-values-are-formed).
 
 **Unit:** tons.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+Monthly and yearly rows sum daily values. The average-annual row divides the accumulated value by the number of printed years.
 
-[Back to the output table](README.md).
+[Back to the channel nutrient and sediment budget schema](channel-nutrient-sediment-budget.md).

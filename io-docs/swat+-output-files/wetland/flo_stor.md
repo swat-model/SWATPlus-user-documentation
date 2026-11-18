@@ -10,6 +10,6 @@ Water stored in the wetland.
 
 **Unit:** m3.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+The writer uses the current `wet(j)%flo` for every interval, including the average-annual row at simulation end. [Daily and longer-period records](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_output.f90#L20)
 
 [Back to the output table](README.md).

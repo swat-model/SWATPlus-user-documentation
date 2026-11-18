@@ -1,61 +1,16 @@
 # Channel Sediment Budgets
 
-SWAT+ has several channel sediment reports. They are separate schemas and should not be interpreted as variants of one table. Daily, monthly, yearly, and average-annual files use `_day`, `_mon`, `_yr`, and `_aa`, with TXT and CSV variants where enabled.
+Daily, monthly, yearly, and average-annual files use `_day`, `_mon`, `_yr`, and `_aa`. The channel-order and per-channel erosion budgets use `_d`, `_m`, `_y`, and `_a`.
 
-## Channel nutrient and sediment budget
+## How to produce these files
 
-The `sd_chanbud_*` and `basin_sd_chanbud_*` files use this printed schema:
+In [print.prt](../../introduction-1/simulation-settings/print.prt/README.md), set `channel_sd` to `y` for the desired periods. It controls `sd_chanbud_*`, `ch_sedbud_*`, `chanbud_order_*`, and `sedbud_*`. Use `basin_sd_cha` for `basin_sd_chanbud_*`. The writers require SWAT-DEG channels. Set `csvout` to `y` for CSV variants. [Basin print row](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_print_codes_read.f90#L239), [Channel print row](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_print_codes_read.f90#L553), [Channel budget file creation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_sd_channel.f90#L218), [Basin budget file creation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_write.f90#L433)
 
-| Field | Description | Unit |
-| --- | --- | --- |
-| [jday](jday.md) | Day of year | n/a |
-| [mon](mon.md) | Month | n/a |
-| [day](day.md) | Day of month | n/a |
-| [yr](yr.md) | Calendar year | n/a |
-| [unit](unit.md) | Object identifier | n/a |
-| [gis_id](gis_id.md) | GIS identifier | n/a |
-| [name](name.md) | Object name | n/a |
-| [in_sed](in_sed.md) | Incoming sediment | tons |
-| [out_sed](out_sed.md) | Outgoing sediment | tons |
-| [fp_dep](fp_dep.md) | Floodplain sediment deposition | tons |
-| [ch_dep](ch_dep.md) | Channel sediment deposition | tons |
-| [bank_ero](bank_ero.md) | Bank erosion | tons |
-| [bed_ero](bed_ero.md) | Bed erosion | tons |
-| [in_no3](in_no3.md) | Incoming nitrate nitrogen | kg |
-| [in_orgn](in_orgn.md) | Incoming organic nitrogen | kg |
-| [out_no3](out_no3.md) | Outgoing nitrate nitrogen | kg |
-| [out_orgn](out_orgn.md) | Outgoing organic nitrogen | kg |
-| [fp_no3](fp_no3.md) | Floodplain deposition of nitrate nitrogen | kg |
-| [bank_no3](bank_no3.md) | Bank erosion of nitrate nitrogen | kg |
-| [bed_no3](bed_no3.md) | Bed erosion of nitrate nitrogen | kg |
-| [fp_orgn](fp_orgn.md) | Floodplain deposition of organic nitrogen | kg |
-| [ch_orgn](ch_orgn.md) | Channel deposition of organic nitrogen | kg |
-| [bank_orgn](bank_orgn.md) | Bank erosion of organic nitrogen | kg |
-| [bed_orgn](bed_orgn.md) | Bed erosion of organic nitrogen | kg |
-| [in_solp](in_solp.md) | Incoming soluble phosphorus | kg |
-| [in_orgp](in_orgp.md) | Incoming organic phosphorus | kg |
-| [out_solp](out_solp.md) | Outgoing soluble phosphorus | kg |
-| [out_orgp](out_orgp.md) | Outgoing organic phosphorus | kg |
-| [fp_solp](fp_solp.md) | Floodplain deposition of soluble phosphorus | kg |
-| [bank_solp](bank_solp.md) | Bank erosion of soluble phosphorus | kg |
-| [bed_solp](bed_solp.md) | Bed erosion of soluble phosphorus | kg |
-| [fp_orgp](fp_orgp.md) | Floodplain deposition of organic phosphorus | kg |
-| [ch_orgp](ch_orgp.md) | Channel deposition of organic phosphorus | kg |
-| [bank_orgp](bank_orgp.md) | Bank erosion of organic phosphorus | kg |
-| [bed_orgp](bed_orgp.md) | Bed erosion of organic phosphorus | kg |
-| [no3_orgn](no3_orgn.md) | Combined nitrate and organic nitrogen term | kg |
-| [solp_orgp](solp_orgp.md) | Combined soluble and organic phosphorus term | kg |
+| File family | Schema |
+| --- | --- |
+| `sd_chanbud_*`, `basin_sd_chanbud_*` | [Channel nutrient and sediment budget](channel-nutrient-sediment-budget.md), 37 columns |
+| `ch_sedbud_*` | [Channel erosion by channel](channel-erosion-by-channel.md), 17 columns |
+| `chanbud_order_*` | [Channel erosion by order](channel-erosion-by-order.md), 15 columns |
+| `sedbud_*` | [Basin sediment budget](basin-sediment-budget.md), 10 columns |
 
-## Channel erosion by channel
-
-The `ch_sedbud_*` files report `jday`, `mon`, `day`, `yr`, `ichan`, `ob`, `name`, `num`, `wid`, `dep`, `fp_km2`, `ebank_t`, `ebtm_t`, `ebank_m`, `ebtm_m`, `fp_t`, and `fp_mm`.
-
-`wid` and `dep` are channel dimensions in m; `fp_km2` is floodplain area; `ebank_t`, `ebtm_t`, and `fp_t` are mass terms in tons; and `ebank_m`, `ebtm_m`, and `fp_mm` are equivalent-depth or dimensional terms in m or mm as printed.
-
-## Channel erosion by order
-
-The `chanbud_order_*` files report `jday`, `mon`, `day`, `yr`, `iord`, `num`, `wid`, `dep`, `fp_km2`, `ebank_t`, `ebtm_t`, `ebank_m`, `ebtm_m`, `fp_t`, and `fp_mm`. This is the same erosion summary grouped by channel order instead of individual channel.
-
-## Basin sediment budget
-
-The `sedbud_*` files report `jday`, `mon`, `day`, `yr`, `upland_t`, `ebank_t`, `ebtm_t`, `fp_t`, `res_dep_t`, and `wet_dep_t`. The last six columns are basin sediment sources and sinks in tons.
+The daily nutrient and sediment budgets follow the daily print window and interval. The daily erosion and basin sediment summaries check their daily switch and write on each eligible simulation day after the skipped years. [Reporting calls](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/command.f90#L439), [Nutrient budget daily gate](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_chanbud_output.f90#L16), [Erosion daily gate](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_sedbud_output.f90#L19), [Basin sediment daily gate](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_sedbud_output.f90#L11)

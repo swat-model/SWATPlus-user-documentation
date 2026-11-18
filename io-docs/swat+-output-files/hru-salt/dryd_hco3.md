@@ -1,15 +1,25 @@
 ---
-description: "Salt added by dry deposition"
+description: "Bicarbonate road-salt application diagnostic"
 ---
 
 # dryd_hco3
 
-**Code reference:** `hsaltb_d(j)%salt(isalt)%road` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_module.f90#L24)).
+**Printed heading:** `dryd_hco3`, position 118 in the fixed 159-entry header. The mappings below apply to the eight-ion case in the order sulfate, calcium, magnesium, sodium, potassium, chloride, carbonate, bicarbonate. The writer uses `cs_db%num_salts` values per group; for another count, reconstruct the row from the WRITE list.
 
-In this output table, `dryd_hco3` is one of the fields described as: Salt added by dry deposition. Important: this source prints a header/value mismatch. At the position labeled `dryd_hco3`, the data writer supplies `hsaltb_d(j)%salt(isalt)%road`. This page records that positional relationship and does not reinterpret the value as the printed label.
+**Actual value:** `hsaltb_d(j)%salt(8)%road` ([daily writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L48); [record declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_module.f90#L7)). Bicarbonate road-salt application diagnostic.
 
 **Unit:** kg/ha.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
+**Header mismatch:** The nominal heading denotes dry-deposition salt diagnostic, but the value at this position is `%road`. The omitted groundwater-upward-transfer group shifts the following values eight places to the left. Do not use the nominal label to assign the actual quantity or unit.
+
+**Calculation**
+
+The producer adds road salt directly to the top soil layer. It divides monthly loading by the calendar month length and average-annual loading by 365. In yearly mode the reader distributes the annual mass across days with positive precipitation and mean air temperature below 0 °C, in proportion to each qualifying day’s precipitation. A year with no qualifying days has zero daily allocations. The reader allocates the road-salt array only when `salt_road` exists. The application routine accesses the array in the applicable timestep branch without an allocation check. [Yearly daily allocation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_roadsalt_read.f90#L73) · [Daily soil application](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_roadsalt.f90#L34) · [Allocation guard](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_roadsalt_read.f90#L36)
+
+Monthly and yearly values sum the daily diagnostic. Average annual divides the accumulated yearly diagnostic by configured `time%nbyr`, giving the annual amount convention kg/ha/yr. The denominator is the configured simulation-year count, not a count of years contributing output; skipped or partial periods require care.
+
+The corresponding period members are `hsaltb_m(j)%salt(8)%road`, `hsaltb_y(j)%salt(8)%road`, and `hsaltb_a(j)%salt(8)%road` ([monthly/yearly transfer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L95); [yearly/AA transfer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L191); [AA division](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_salt_output.f90#L288)).
+
+See the [complete schema and period limitations](README.md#actual-data-layout). This page identifies the stored diagnostic and writer aggregation; it does not independently validate every upstream transport or application calculation.
 
 [Back to the output table](README.md).

@@ -6,7 +6,7 @@ description: "Nitrogen moving from active organic pool to nitrate pool"
 
 **Code reference:** `bnb_d%act_nit_n` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L90)).
 
-Nitrogen moving from active organic pool to nitrate pool.
+The static carbon routine records mineralization from active organic nitrogen to nitrate. The SWAT-C residue routine clears this legacy diagnostic and the modern transformations leave it at zero. [static transfer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/nut_nminrl.f90#L118-L135), [SWAT-C reset](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_rsd_transfer.f90#L49-L55).
 
 **Unit:** kg/ha.
 

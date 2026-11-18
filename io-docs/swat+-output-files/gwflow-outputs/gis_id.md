@@ -1,15 +1,13 @@
 ---
-description: "Cell identifiers and name"
+description: "Configured cell GIS identifier"
 ---
 
 # gis_id
 
-**Code reference:** `gis_id` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L572)).
+**Code reference:** `cell_gis_id(i)` ([cell writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L1225)).
 
-In this output table, `gis_id` is one of the fields described as: Cell identifiers and name.
+The writer sets local `gis_id = cell_gis_id(i)`, then prints it. This identifier can differ from the cell index in `unit`.
 
-This field has no physical unit in the output table.
+This is an identifier or label, with no physical unit.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
-
-[Back to the output table](README.md).
+[Back to the cell water-balance schema](cell-water-balance.md).

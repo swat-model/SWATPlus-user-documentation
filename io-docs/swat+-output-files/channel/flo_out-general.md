@@ -1,15 +1,13 @@
 ---
-description: "Flow out of the channel"
+description: "Mean daily channel outflow rate"
 ---
 
 # flo_out
 
-**Code reference:** `ch_out_d(ichan)%flo` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L32)).
+**Code reference:** `ch_out_d(ichan)%flo` ([writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_output.f90#L33)).
 
-Flow out of the channel.
+The normal channel controller divides the daily routed volume after water-allocation withdrawals by 86,400. Tiny channels can report only the last incoming contribution even when a larger flow is passed downstream. [Outflow assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_control3.f90#L330-L372) · [Daily flow sources and bypass](sd-channel-general.md#where-the-daily-water-values-come-from)
 
-**Unit:** m3.
+**Unit:** m3/s. Daily rows contain the day's mean discharge. Monthly and yearly rows average daily rates over the reporting days. Average-annual rows average the yearly mean rates over reporting years ([period treatment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_output.f90#L43)). Other hydrograph report families can retain water volumes under similar headings; this mapping is specific to `channel_sd_*`.
 
-The same printed heading can appear in daily, monthly, yearly, and average-annual variants of this family. The reporting interval changes the row period; this page does not infer a total-versus-average rule beyond what the family output and source establish.
-
-[Back to the output table](README.md).
+[Back to the SD channel general schema](sd-channel-general.md).

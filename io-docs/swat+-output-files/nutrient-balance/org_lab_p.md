@@ -6,7 +6,7 @@ description: "Phosphorus moving from the organic pool to labile pool"
 
 **Code reference:** `bnb_d%org_lab_p` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L92)).
 
-Phosphorus moving from the organic pool to labile pool.
+In the static carbon routine, the recorded transfer draws from the stable humus P pool and adds to labile P. The SWAT-C residue routine clears this legacy diagnostic and the modern transformations leave it at zero. [static humus P transfer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/nut_nminrl.f90#L119-L135), [SWAT-C reset](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_rsd_transfer.f90#L49-L55).
 
 **Unit:** kg/ha.
 
