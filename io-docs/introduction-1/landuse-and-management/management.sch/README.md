@@ -10,15 +10,15 @@ The structure of the **management.sch** file is different than that of most othe
 
 The user may use both scheduled operations and Decision Tables for the same land use. If doing so, the names of the DTs should be listed first.
 
-| Field                          | Description                               | Type    |
-| ------------------------------ | ----------------------------------------- | ------- |
-| [name](name-management.sch.md) | Name of the management schedule           | string  |
-| numb\_ops                      | Number of scheduled management operations | integer |
-| numb\_auto                     | Number of automatic operations            | integer |
-| [op\_typ](op_typ.md)           | Type of management operation              | string  |
-| mon                            | Month operation is scheduled for          | integer |
-| day                            | Day operation is scheduled for            | integer |
-| hu\_sch                        | Currently not used                        | real    |
-| [op\_data1](op_data1.md)       | Operation data 1                          | string  |
-| [op\_data2](op_data2.md)       | Operation data 2                          | string  |
-| [op\_data3](op_data3.md)       | Operation data 3                          | real    |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [name](name-management.sch.md) | Name of the management schedule | string |  |  |  |
+| numb\_ops | Number of scheduled management operations | integer |  |  |  |
+| numb\_auto | Number of automatic operations | integer |  |  |  |
+| [op\_typ](op_typ.md) | Type of management operation | string |  |  |  |
+| mon | Month operation is scheduled for | integer | none |  | 1-12 |
+| day | Day operation is scheduled for | integer | none |  | 1-31 |
+| hu\_sch | Currently not used | real | none |  |  |
+| [op\_data1](op_data1.md) | Operation data 1 | string |  |  |  |
+| [op\_data2](op_data2.md) | Operation data 2 | string |  |  |  |
+| [op\_data3](op_data3.md) | Operation data 3 | real | none |  |  |

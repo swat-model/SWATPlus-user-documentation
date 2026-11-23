@@ -6,12 +6,12 @@ description: >-
 
 # topography.hyd
 
-| Field                  | Description                                      |   Type  | Unit | Default | Range |
-| ---------------------- | ------------------------------------------------ | :-----: | :--: | :-----: | :---: |
-| [name](name.md)        | Name of the topography record                    |  string |  n/a |   n/a   |  n/a  |
-| [slp](slp.md)          | Average slope steepness                          |   real  |  m/m |   0.02  |       |
-| [slp\_len](slp_len.md) | Average slope length                             |   real  |   m  |   50.0  |       |
-| [lat\_len](lat_len.md) | Average slope length for lateral subsurface flow |   real  |   m  |   50.0  |       |
-| dist\_cha              | Currently not used                               |   real  |      |         |       |
-| [depos](depos.md)      | Deposition coefficient                           | integer |      |    1    |       |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [name](name.md) | Name of the topography record | string | n/a | n/a | n/a |
+| [slp](slp.md) | Average slope steepness | real | m/m | 0.02 | >=0 |
+| [slp\_len](slp_len.md) | Average slope length | real | m | 50.0 | >=0 |
+| [lat\_len](lat_len.md) | Average slope length for lateral subsurface flow | real | m | 50.0 | >=0 |
+| dist\_cha | Currently not used | real | m |  | 0-100000 |
+| [depos](depos.md) | Deposition coefficient | integer |  | 1 | >=0 |
 

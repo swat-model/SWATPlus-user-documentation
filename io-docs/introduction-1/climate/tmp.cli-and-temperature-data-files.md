@@ -8,11 +8,22 @@ description: >-
 
 The **temperature data files** contain the observed temperature input data. They are named by the user and must have the file ending \*.tmp. There must be one file per station used in the simulation. As in all SWAT+ input files, the first line in the temperature data files is reserved for user comments. The second line contains the column headers for the third line, which lists basic information about the station.&#x20;
 
-<table><thead><tr><th>Field</th><th width="292">Description</th><th width="150">Type</th><th>Unit</th></tr></thead><tbody><tr><td>nbyr</td><td>Length of the temperature time series</td><td>integer</td><td>years</td></tr><tr><td>tstep</td><td>Time step of the temperature data</td><td>integer</td><td>n/a</td></tr><tr><td>lat</td><td>Latitude of the temperature station</td><td>real</td><td>Decimal Degrees</td></tr><tr><td>lon</td><td>Longitude of the temperature station</td><td>real</td><td>Decimal Degrees</td></tr><tr><td>elev</td><td>Elevation of the temperature station</td><td>real</td><td>m</td></tr></tbody></table>
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| nbyr | Length of the temperature time series | integer | years |  |  |
+| tstep | Time step of the temperature data | integer | n/a |  |  |
+| lat | Latitude of the temperature station | real | Decimal Degrees |  |  |
+| lon | Longitude of the temperature station | real | Decimal Degrees |  |  |
+| elev | Elevation of the temperature station | real | m |  |  |
 
 Starting in the fourth line, the year, Julian day, and the maximum and minimum temperatures are listed. There are no headers for these columns.
 
-<table><thead><tr><th>Field</th><th width="292">Description</th><th width="150">Type</th><th>Unit</th></tr></thead><tbody><tr><td>year</td><td>Year of the observation</td><td>integer</td><td>n/a</td></tr><tr><td>jday</td><td>Julian day of the observation</td><td>integer</td><td>n/a</td></tr><tr><td>tmpmax</td><td>Observed maximum temperature</td><td>real</td><td>°C</td></tr><tr><td>tmpmin</td><td>Observed minimum temperature</td><td>real</td><td>°C</td></tr></tbody></table>
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| year | Year of the observation | integer | n/a |  |  |
+| jday | Julian day of the observation | integer | n/a |  |  |
+| tmpmax | Observed maximum temperature | real | °C |  |  |
+| tmpmin | Observed minimum temperature | real | °C |  |  |
 
 {% hint style="info" %}
 A negative 99.0 (-99.0) should be inserted for missing data. This value tells SWAT+ to generate minimum and maximum temperatures for that day.
