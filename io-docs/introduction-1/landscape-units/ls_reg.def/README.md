@@ -14,23 +14,23 @@ After the title, give the region and land-use-group counts, followed by the head
 
 ## File counts
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [mreg](mreg.md) | Number of regions | integer | n/a | — | — |
 | [mlug](mlug.md) | Number of land-use groups | integer | n/a | — | — |
 
 ## Land-use groups
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [i](i.md) | Record number | integer | n/a | — | — |
 | [num](num.md) | Numeric identifier (num) of a land use group | integer | n/a | — | — |
 | [name](name.md) | Record name | string | n/a | — | — |
 
 ## Regions
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
 | [name](name_2.md) | Record name | string | n/a | — | — |
 | [area_ha](area_ha.md) | Region area | real | — | — | — |

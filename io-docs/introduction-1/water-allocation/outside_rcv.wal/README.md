@@ -16,14 +16,14 @@ The file contains a title, the entry count, column headings, and the correspondi
 
 ## Number of records
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [imax](imax.md) | Number of records | integer | n/a | — | — |
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [i](i.md) | Record number | integer | n/a | — | — |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [filename](filename.md) | String specifying the filename associated with the outside basin receiving object | string | n/a | — | — |

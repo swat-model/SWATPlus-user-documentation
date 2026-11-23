@@ -16,20 +16,20 @@ After the title and column headings, supply the transport substep count and long
 
 ## Transport substeps
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [num_ts_transport](num_ts_transport.md) | Number of transport time steps per day used to subdivide the groundwater time step for solute transport calculations | integer | n/a | — | — |
 
 ## Longitudinal dispersivity
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [gw_long_disp](gw_long_disp.md) | Aquifer longitudinal dispersivity controlling the spreading of solute plumes along the direction of groundwater flow | real | — | — | — |
 
 ## Solute parameters
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [gwsol_sorb](gwsol_sorb.md) | Sorption coefficient for the solute | real | — | — | — |
 | [gwsol_rctn](gwsol_rctn.md) | First-order reaction rate for the solute | real | — | — | — |

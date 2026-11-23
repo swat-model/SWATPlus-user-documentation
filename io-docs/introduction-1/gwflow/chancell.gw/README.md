@@ -14,8 +14,8 @@ SWAT+ looks for `chancell.gw` in the simulation working directory; it is not sel
 
 After the title and column headings, enter one row per groundwater–channel connection. The first five fields are required; the depth-zone and observation selectors are optional trailing fields.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [cell_id](cell_id.md) | Index of the groundwater cell whose state (status, head) is referenced for this channel | integer | n/a | — | — |
 | [bed_elev](bed_elev.md) | Bed elevation of the channel | real | — | — | — |
 | [channel](channel.md) | Identifier of the channel record | integer | n/a | — | — |

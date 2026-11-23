@@ -16,14 +16,14 @@ After the title, object count, and headings, enter one object definition per row
 
 ## Object count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [imax](imax.md) | Number of records | integer | n/a | — | — |
 
 ## Water-use objects
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [stor_mx](stor_mx.md) | The maximum storage capacity of the object | real | — | — | — |
 | [lag_days](lag_days.md) | The treatment lag time in days before outflow occurs | real | — | — | — |
@@ -42,14 +42,14 @@ After the title, object count, and headings, enter one object definition per row
 
 ## Pesticide values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [pest](pest.md) | The pesticide loading value associated with this object | real | — | — | — |
 
 ## Pathogen values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [path](path.md) | The pathogen loading value associated with this object | real | — | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

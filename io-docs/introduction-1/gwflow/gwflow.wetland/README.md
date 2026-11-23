@@ -14,8 +14,8 @@ SWAT+ looks for `gwflow.wetland` in the simulation working directory; it is not 
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [wet_name](wet_name.md) | Identifier of the wetland (character string) read from the gwflow.wetland file | string | n/a | — | — |
 | [thick_val](thick_val.md) | Wetland-bed thickness | real | — | — | — |
 

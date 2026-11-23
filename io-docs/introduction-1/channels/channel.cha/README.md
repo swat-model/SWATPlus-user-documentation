@@ -12,8 +12,8 @@ This file links each channel to its initial-condition, hydrology, sediment, and 
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [init](init.md) | Name of the initial channel record in initial.cha that this channel data references | string | n/a | — | — |

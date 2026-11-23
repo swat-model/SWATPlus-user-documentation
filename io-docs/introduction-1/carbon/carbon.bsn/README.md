@@ -14,8 +14,8 @@ Use the basin parameters in the first table. The per-layer values belong in a co
 
 ## Basin parameters
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [frac_seq](frac_seq.md) | Fraction of total soil carbon assigned to sequestered (passive and slow) pools when initializing organic carbon pools | real | fraction | — | — |
 | [frac_hum_microb](frac_hum_microb.md) | Fraction of carbon assigned to the microbial pool when initializing microbial organic carbon pools | real | — | — | — |
 | [frac_hum_slow](frac_hum_slow.md) | Fraction of carbon assigned to the humus slow pool when initializing humus slow organic carbon pools | real | — | — | — |
@@ -47,8 +47,8 @@ Use the basin parameters in the first table. The per-layer values belong in a co
 
 ## Soil-layer companion
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [layer_id](layer_id.md) | Identifier of the soil layer (1 to max_lyr) to which the following companion-layer carbon parameters apply | integer | n/a | — | — |
 | [r_hp_rate](r_hp_rate.md) | Rate coefficient for the passive (humus passive) organic carbon pool on the identified layer | real | — | — | — |
 | [r_hs_rate](r_hs_rate.md) | Rate coefficient for the slow (humus slow) organic carbon pool on the identified layer | real | — | — | — |

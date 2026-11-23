@@ -14,8 +14,8 @@ SWAT+ looks for `sed_nut.cha` in the simulation working directory; it is not sel
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [order](order.md) | Order label stored with this channel parameter record | string | n/a | — | — |
 | [pk_rto](pk_rto.md) | Ratio of peak to mean daily flow in the channel | real | — | — | — |

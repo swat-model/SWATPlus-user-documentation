@@ -14,14 +14,14 @@ The file contains a title, the entry count, column headings, and the correspondi
 
 ## Number of parameters
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [mchp](mchp.md) | Number of calibration parameters | integer | n/a | — | — |
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [chg_typ](chg_typ.md) | Type of change to apply, one of absval, abschg, or pctchg | string | n/a | — | — |
 | [neg](neg.md) | Negative limit constraining the magnitude of a downward parameter change | real | — | — | — |

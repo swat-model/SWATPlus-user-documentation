@@ -14,8 +14,8 @@ SWAT+ looks for `pond_cell.gw` in the simulation working directory; it is not se
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [dum_id](dum_id.md) | Identifier of the pond whose groundwater cell count or cell list is being referenced by this record | integer | n/a | — | — |
 | [cell_num](cell_num.md) | Model grid cell number associated with the pond on this record | integer | n/a | — | — |
 | [dum4](dum4.md) | Real-valued parameter associated with the pond-cell linkage | real | — | — | — |

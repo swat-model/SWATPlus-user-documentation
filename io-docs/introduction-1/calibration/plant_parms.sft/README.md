@@ -18,14 +18,14 @@ The current model interprets the parameter-count and element-count positions inc
 
 ## Region count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [mreg](mreg.md) | Number of regions | integer | n/a | — | — |
 
 ## Regions and elements
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [lum_num](lum_num.md) | Number of land uses defined within the region | integer | n/a | — | — |
 | [parms](parms.md) | Number of plant parameters used in calibration for the region | integer | n/a | — | — |
@@ -34,8 +34,8 @@ The current model interprets the parameter-count and element-count positions inc
 
 ## Plant parameters
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [var](var.md) | Variable name identifying which plant parameter is being calibrated | string | n/a | — | — |
 | [name](name_2.md) | Record name | string | n/a | — | — |
 | [init_val](init_val.md) | Initial calibration value for the named plant parameter | real | — | — | — |

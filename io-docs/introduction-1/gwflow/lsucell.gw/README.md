@@ -16,26 +16,26 @@ The file starts with a title, the landscape-unit count, and the connected-unit c
 
 ## Landscape-unit count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [nlsu](nlsu.md) | Number of land-use source (LSU) entries in this linkage block | integer | n/a | — | — |
 
 ## Connected-unit count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [nlsu_connected](nlsu_connected.md) | Count of LSU-to-grid-cell connections to be read in the following association records | integer | n/a | — | — |
 
 ## Connected-unit identifiers
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [lsu_id](lsu_id.md) | Identifier of the LSU being linked to one or more groundwater grid cells | integer | n/a | — | — |
 
 ## Cell associations
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [lsu](lsu.md) | Identifier of the LSU that owns the grid-cell association on this record | integer | n/a | — | — |
 | [lsu_area](lsu_area.md) | Total area of the LSU used as the denominator when computing the fractional grid-cell coverage | real | — | — | — |
 | [lsu_cells](lsu_cells.md) | Groundwater grid cell index associated with the LSU on this record | integer | n/a | — | — |

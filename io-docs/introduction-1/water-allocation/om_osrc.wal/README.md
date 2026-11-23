@@ -16,14 +16,14 @@ The file contains a title, the entry count, column headings, and the correspondi
 
 ## Number of records
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [imax](imax.md) | Number of records | integer | n/a | — | — |
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [om_osrc_name](om_osrc_name.md) | Name identifying this component-value record | string | n/a | — | — |
 | [flo](flo.md) | Water-flow component value for this named record | real | — | — | — |
 | [sed](sed.md) | Sediment component value for this named record | real | — | — | — |

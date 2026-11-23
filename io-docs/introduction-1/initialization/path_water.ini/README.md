@@ -14,14 +14,14 @@ After the title and column headings, enter each initial-set name followed by a l
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [path_init_name(ipathi)](path_init_name_ipathi.md) | Name identifying this initial pathogen set | string | n/a | — | — |
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [titldum](titldum.md) | Record label | string | n/a | — | — |
 | [water](water.md) | Initial water-compartment value for each pathogen | real | — | — | — |
 | [benthic](benthic.md) | Initial benthic-compartment value for each pathogen | real | — | — | — |

@@ -14,8 +14,8 @@ SWAT+ looks for `cs_aqu.ini` in the simulation working directory; it is not sele
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [aqu](aqu.md) | Concentration, sorbed mass at start of simulation | real | — | — | — |
 

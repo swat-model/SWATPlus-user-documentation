@@ -14,8 +14,8 @@ SWAT+ looks for `ponds.gw` in the simulation working directory; it is not select
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [id](id.md) | Unique identifier for the recharge pond | integer | n/a | — | — |
 | [area](area.md) | Surface area of the recharge pond in square meters | real | — | — | — |
 | [chan](chan.md) | Channel identifier that provides water to the recharge pond | integer | n/a | — | — |

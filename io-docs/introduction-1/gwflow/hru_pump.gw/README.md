@@ -16,14 +16,14 @@ After the title and column headings, enter the number of HRUs to list, then one 
 
 ## HRU count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [num_hru_pump_obs](num_hru_pump_obs.md) | Number of HRU groundwater pumping observations to be read and processed | integer | n/a | — | — |
 
 ## HRU identifiers
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [hru_pump_ids(i)](hru_pump_ids_i.md) | HRU identifier associated with the i-th groundwater pumping observation | integer | n/a | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

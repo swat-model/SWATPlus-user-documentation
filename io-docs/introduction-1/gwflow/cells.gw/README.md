@@ -14,8 +14,8 @@ SWAT+ looks for `cells.gw` in the simulation working directory; it is not select
 
 After the title and column headings, enter one row per groundwater cell in cell-index order. The first 14 columns are required. Columns 15–23 are optional; use `null` for an optional value that is not supplied.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [cell_id_in](cell_id_in.md) | Cell identifier that must equal the row index of the cell being read | integer | n/a | — | — |
 | [cell_name](cell_name.md) | Label identifying the cell, typically of the form cellNNNN | string | n/a | — | — |
 | [cell_gis_id(i)](cell_gis_id_i.md) | GIS identifier linking the cell to its polygon in the gwflowcells shapefile | integer | n/a | — | — |

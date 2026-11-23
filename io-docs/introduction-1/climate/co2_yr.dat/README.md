@@ -16,14 +16,14 @@ The file contains a title, the number of annual entries, column headings, and on
 
 ## Number of annual entries
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [yrs](yrs.md) | Total number of annual CO2 records (integer) that follow in this file | integer | n/a | — | — |
 
 ## Annual concentrations
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [iyr](iyr.md) | Simulation year (integer) identifying the start of the year for which the CO2 value is defined | integer | n/a | — | — |
 | [co2](co2.md) | Atmospheric CO2 concentration (real) in parts per million (ppm) for the year given by iyr | real | — | — | — |
 

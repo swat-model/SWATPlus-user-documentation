@@ -14,8 +14,8 @@ SWAT+ looks for `puddle.ops` in the simulation working directory; it is not sele
 
 The first line is a title and the second line contains column headings. Add one row for each named operation, with the fields in the order below.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Puddling operation name | string | n/a | — | — |
 | [wet_hc](wet_hc.md) | Hydraulic conductivity after puddling | real | mm/h | — | — |
 | [sed](sed.md) | Sediment concentration after puddling | real | ppm | — | — |

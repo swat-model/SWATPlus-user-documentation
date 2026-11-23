@@ -14,14 +14,14 @@ The file contains a title, the entry count, column headings, and the correspondi
 
 ## Number of regions
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [mreg](mreg.md) | Number of regions | integer | n/a | — | — |
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [ord_num](ord_num.md) | Count of stream orders defined for this region | integer | n/a | — | — |
 | [nspu](nspu.md) | Number of element-list entries | integer | n/a | — | — |
@@ -29,8 +29,8 @@ The file contains a title, the entry count, column headings, and the correspondi
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name_2.md) | Record name | string | n/a | — | — |
 | [chw](chw.md) | Channel widening rate used for calibration | real | — | — | — |
 | [chd](chd.md) | Channel downcutting or accretion rate used for calibration | real | — | — | — |

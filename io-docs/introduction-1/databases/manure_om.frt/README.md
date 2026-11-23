@@ -14,8 +14,8 @@ SWAT+ looks for `manure_om.frt` in the simulation working directory; it is not s
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [frac_water](frac_water.md) | Mass fraction of the manure that is water | real | — | — | — |
 | [fcbn](fcbn.md) | Mass fraction of the fertilizer that is carbon | real | — | — | — |

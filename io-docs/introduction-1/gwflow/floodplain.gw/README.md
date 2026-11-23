@@ -16,14 +16,14 @@ The tables below describe the file’s input entries. Repeat array values for th
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [gw_fp_ncells](gw_fp_ncells.md) | Number of floodplain connections | integer | n/a | — | — |
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [gw_fp_cellid](gw_fp_cellid.md) | Grid cell identifier (gw_fp_cellid) for each floodplain groundwater interaction cell | integer | n/a | — | — |
 | [gw_fp_chanid](gw_fp_chanid.md) | Channel identifier (gw_fp_chanid) associated with each floodplain groundwater cell | integer | n/a | — | — |
 | [gw_fp_K](gw_fp_k.md) | Hydraulic conductivity (gw_fp_K) value for each floodplain groundwater cell | real | — | — | — |

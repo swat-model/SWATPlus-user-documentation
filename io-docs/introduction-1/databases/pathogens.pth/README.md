@@ -12,8 +12,8 @@ This file contains parameters for pathogen growth, die-off, partitioning, and tr
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [pathnm](pathnm.md) | Name identifying the pathogen record | string | n/a | — | — |
 | [do_soln](do_soln.md) | Die-off factor for persistent bacteria in soil solution | real | — | — | — |
 | [gr_soln](gr_soln.md) | Growth factor for persistent bacteria in soil solution | real | — | — | — |

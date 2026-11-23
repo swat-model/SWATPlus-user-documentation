@@ -14,8 +14,8 @@ SWAT+ looks for `pond_div.gw` in the simulation working directory; it is not sel
 
 After the title and column headings, enter one row per date: year, month, day, then one diversion volume for each configured pond.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [year](year.md) | Calendar year of the diversion time-series date | integer | n/a | — | — |
 | [month](month.md) | Calendar month of the diversion time-series date | integer | n/a | — | — |
 | [day](day.md) | Calendar day of the diversion time-series date | integer | n/a | — | — |

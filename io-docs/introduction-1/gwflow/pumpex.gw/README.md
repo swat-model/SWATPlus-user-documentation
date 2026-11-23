@@ -14,8 +14,8 @@ SWAT+ looks for `pumpex.gw` in the simulation working directory; it is not selec
 
 The first two lines contain a title and column headings. Each following row defines one pumping period. To change the pumping volume over time, add another row for the same cell with a different period. Keep rows for the same cell together.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [header](header.md) | Pumping-period label | string | n/a | — | — |
 | [pumpex_cell](pumpex_cell.md) | Groundwater cell identifier | integer | n/a | — | — |
 | [gw_pumpex_rates_tmp](gw_pumpex_rates_tmp.md) | Daily groundwater pumping volume | real | m³/day | — | — |

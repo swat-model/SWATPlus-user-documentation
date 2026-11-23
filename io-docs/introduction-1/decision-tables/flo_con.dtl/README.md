@@ -14,14 +14,14 @@ The file contains a title, a decision-table count, and table definitions. Each t
 
 ## Number of decision tables
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [mdtbl](mdtbl.md) | Number of decision tables | integer | n/a | — | — |
 
 ## Table definition
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [conds](conds.md) | Number of condition entries that follow for this decision table | integer | n/a | — | — |
 | [alts](alts.md) | Number of alternative branches evaluated for each condition | integer | n/a | — | — |
@@ -29,8 +29,8 @@ The file contains a title, a decision-table count, and table definitions. Each t
 
 ## Conditions
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [var](var.md) | Condition variable being tested (e.g. volume, flow, sw, time) | string | n/a | — | — |
 | [ob](ob.md) | Object type associated with the condition (e.g. res, hru, canal) | string | n/a | — | — |
 | [ob_num](ob_num.md) | Numeric identifier of the object associated with the condition | integer | n/a | — | — |
@@ -41,8 +41,8 @@ The file contains a title, a decision-table count, and table definitions. Each t
 
 ## Actions
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [typ](typ.md) | Type of action to perform (e.g. reservoir release, irrigate, fertilize) | string | n/a | — | — |
 | [ob](ob_2.md) | Object type targeted by the action (e.g. res, hru, canal) | string | n/a | — | — |
 | [ob_num](ob_num_2.md) | Numeric identifier of the object targeted by the action | integer | n/a | — | — |

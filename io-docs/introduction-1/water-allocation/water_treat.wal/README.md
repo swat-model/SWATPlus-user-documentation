@@ -16,14 +16,14 @@ After the title, plant count, and headings, enter each plant definition followed
 
 ## Plant count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [imax](imax.md) | Number of records | integer | n/a | — | — |
 
 ## Treatment plants
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [stor_mx](stor_mx.md) | Maximum storage capacity of the treatment plant | real | — | — | — |
 | [lag_days](lag_days.md) | Lag time applied to treated outflow from the plant | real | — | — | — |
@@ -32,8 +32,8 @@ After the title, plant count, and headings, enter each plant definition followed
 
 ## Treatment levels
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [org_min_typ](org_min_typ.md) | Source type for organic/mineral removal, one of const, dtbl, or recall | string | n/a | — | — |
 | [org_min_name](org_min_name.md) | Name of the organic/mineral source record selected by the corresponding source-type field | string | n/a | — | — |
 | [pests_typ](pests_typ.md) | Source type for pesticide removal, one of const, dtbl, or recall | string | n/a | — | — |
@@ -48,14 +48,14 @@ After the title, plant count, and headings, enter each plant definition followed
 
 ## Pesticide values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [pest](pest.md) | Pesticide removal amount applied per pesticide | real | — | — | — |
 
 ## Pathogen values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [path](path.md) | Pathogen removal amount applied per pathogen | real | — | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

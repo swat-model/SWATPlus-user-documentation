@@ -12,8 +12,8 @@ This file supplies named pesticide export-coefficient values.
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [exco_pest_name(ii)](exco_pest_name_ii.md) | Identifier naming the pesticide hydrograph set associated with this EXCO pest record | string | n/a | — | — |
 | [pest(ipest)](pest_ipest.md) | Sequence of pesticide hydrograph values for the named pesticide, as pesticide hydrographs | real | — | — | — |
 

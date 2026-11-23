@@ -12,8 +12,8 @@ This file supplies named pathogen delivery values.
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [dr_path_name(ii)](dr_path_name_ii.md) | Name identifying this pathogen delivery record | string | n/a | — | — |
 | [path(ipath)](path_ipath.md) | Delivery value for pathogen ipath | real | — | — | — |
 

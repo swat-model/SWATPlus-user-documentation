@@ -16,14 +16,14 @@ The file starts with a title and column headings. The current format includes a 
 
 ## Pesticide database entry
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [ipestcom_db](ipestcom_db.md) | Pesticide database record identifier | integer | n/a | — | — |
 
 ## Recall entries
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [typ](typ.md) | An integer recall type specifying the periodicity of the pesticide application: 1=day, 2=month, 3=year | integer | n/a | — | — |

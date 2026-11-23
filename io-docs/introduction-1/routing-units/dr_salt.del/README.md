@@ -12,8 +12,8 @@ This file supplies named salt-ion delivery values.
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [dr_salt_name(ii)](dr_salt_name_ii.md) | Name identifying this salt delivery record | string | n/a | — | — |
 | [salt(isalt)](salt_isalt.md) | Delivery value for salt ion isalt | real | — | — | — |
 

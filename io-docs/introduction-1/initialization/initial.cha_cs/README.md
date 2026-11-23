@@ -14,8 +14,8 @@ SWAT+ looks for `initial.cha_cs` in the simulation working directory; it is not 
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [pest](pest.md) | Name of the referenced pesticide initialization record | string | n/a | — | — |
 | [path](path.md) | Name of the referenced pathogen initialization record | string | n/a | — | — |

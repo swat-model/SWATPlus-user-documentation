@@ -14,8 +14,8 @@ SWAT+ looks for `carbon_layers.prt` in the simulation working directory; it is n
 
 After the title and column headings, enter the number of soil layers to include in carbon-layer output.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [n_lyr](n_lyr.md) | Count of carbon soil layers to be read for the simulation | integer | n/a | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

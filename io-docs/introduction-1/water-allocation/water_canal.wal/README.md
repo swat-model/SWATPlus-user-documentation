@@ -14,8 +14,8 @@ SWAT+ looks for `water_canal.wal` in the simulation working directory; it is not
 
 The file contains a title line, a line giving the [number of canals](imax.md), a line of column headings, and one data row per canal. Each canal row contains the fields below. The aquifer loss fractions are additional values at the end of that same row.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [i](i.md) | Canal record number | integer | n/a | — | — |
 | [name](name.md) | Canal name | string | n/a | — | — |
 | [w_sta](w_sta.md) | Weather station name | string | n/a | — | — |

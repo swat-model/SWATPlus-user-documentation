@@ -18,15 +18,15 @@ After the title and column headings, enter one keyword and one value per row. Ch
 
 The reader stores the date. When the simulation reaches a matching date, it advances the date index without writing a grid snapshot. [Date handling](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_simulate.f90#L388-L393)
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [record_type](record_type.md) | Literal record type head_output_time | string | n/a | — | — |
 | [value](value.md) | Encoding year and day for a groundwater head output time | integer | n/a | — | — |
 
 ## Observation cell
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [record_type](record_type.md) | Literal record type observation_cell | string | n/a | — | — |
 | [value](value_2.md) | Cell identifier selected for groundwater observation output | integer | n/a | — | — |
 
@@ -34,8 +34,8 @@ The reader stores the date. When the simulation reaches a matching date, it adva
 
 The reader stores the cell ID in `gw_cell_obs_ss`. On this revision no output writer uses that value. [Selector read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L613-L618)
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [record_type](record_type.md) | Literal record type detail_debug_cell | string | n/a | — | — |
 | [value](value_3.md) | Cell identifier selected for detailed groundwater debugging output | integer | n/a | — | — |
 

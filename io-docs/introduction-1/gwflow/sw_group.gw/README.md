@@ -14,8 +14,8 @@ SWAT+ looks for `sw_group.gw` in the simulation working directory; it is not sel
 
 After the title and column headings, enter one group per row: a label, the number of cells, and that many cell identifiers. Group order determines the group index.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [group_id](group_id.md) | Leading group label for the channel_cell_group record; serves as a human-readable identifier for the group | string | n/a | — | — |
 | [ncell](ncell.md) | Number of cell identifiers following this value in the record | integer | n/a | — | — |
 | [cell_id](cell_id.md) | Cell identifier repeated ncell times; identifies a member cell of the group | integer | n/a | — | — |

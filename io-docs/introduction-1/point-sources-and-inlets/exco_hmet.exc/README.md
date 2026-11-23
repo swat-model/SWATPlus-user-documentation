@@ -12,8 +12,8 @@ This file supplies named heavy-metal export-coefficient values.
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [exco_hmet_name(ii)](exco_hmet_name_ii.md) | Name identifying a heavy metals hydrograph record (character identifier used to match the exco hmet file to the corresponding exco database entry) | string | n/a | — | — |
 | [hmet(ihmet)](hmet_ihmet.md) | Export-coefficient value for heavy metal ihmet | real | — | — | — |
 

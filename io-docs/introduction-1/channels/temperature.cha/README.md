@@ -12,8 +12,8 @@ This file supplies coefficients, lag times, and shade settings for channel water
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [sno_mlt](sno_mlt.md) | Coefficient influencing the magnitude of snowmelt temperature contributions to the channel | real | — | — | — |
 | [gw](gw.md) | Coefficient influencing the magnitude of groundwater temperature contributions to the channel | real | — | — | — |

@@ -15,8 +15,8 @@ SWAT+ looks for `reservoir.res_cs` in the simulation working directory; it is no
 The tables below describe the file’s input entries. Repeat array values for the configured constituents or members; these are not additional fixed columns.
 
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
 | [pst](pst.md) | Name of the pesticide input file (pesticide.res) linked to this reservoir | string | n/a | — | — |
 | [weir](weir.md) | Name of the weir input file (weir.res) linked to this reservoir, added by Jaehak 2022 | string | n/a | — | — |

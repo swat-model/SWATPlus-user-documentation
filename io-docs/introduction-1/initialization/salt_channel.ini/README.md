@@ -14,8 +14,8 @@ SWAT+ looks for `salt_channel.ini` in the simulation working directory; it is no
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [conc](conc.md) | Initial salt ion concentration at the start of the simulation | real | — | — | — |
 

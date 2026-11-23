@@ -4,4 +4,11 @@ description: This legacy file is read by SWAT+ main (6f515368), but its fields a
 
 # initial.aqu
 
-<table><thead><tr><th width="111.33331298828125">Field</th><th width="295.666748046875">Description</th><th width="100.32305908203125">Type</th></tr></thead><tbody><tr><td><a href="name.md">name</a></td><td>Name of the legacy aquifer initialization record (read but not used in main 6f515368)</td><td>string</td></tr><tr><td><a href="org_min.md">org_min</a></td><td>Intended organic-mineral water initialization pointer (read but not used in main 6f515368)</td><td>string</td></tr><tr><td><a href="pest.md">pest</a></td><td>Intended pesticide-water initialization pointer (read but not used in main 6f515368)</td><td>string</td></tr><tr><td>path</td><td>Currently not used</td><td>string</td></tr><tr><td>hmet</td><td>Currently not used</td><td>string</td></tr><tr><td><a href="salt.md">salt</a></td><td>Intended salt-initialization pointer (read but not used in main 6f515368; active initialization uses initial.aqu_cs)</td><td>string</td></tr></tbody></table>
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [name](name.md) | Name of the legacy aquifer initialization record (read but not used in main 6f515368) | string |  |  |  |
+| [org_min](org_min.md) | Intended organic-mineral water initialization pointer (read but not used in main 6f515368) | string |  |  |  |
+| [pest](pest.md) | Intended pesticide-water initialization pointer (read but not used in main 6f515368) | string |  |  |  |
+| path | Currently not used | string |  |  |  |
+| hmet | Currently not used | string |  |  |  |
+| [salt](salt.md) | Intended salt-initialization pointer (read but not used in main 6f515368; active initialization uses initial.aqu_cs) | string |  |  |  |

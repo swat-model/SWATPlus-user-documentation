@@ -14,8 +14,8 @@ SWAT+ looks for `cs_recall.rec` in the simulation working directory; it is not s
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [typ](typ.md) | Recall temporal type code: 1 for daily, 2 for monthly, or 3 for yearly data | integer | n/a | — | — |
