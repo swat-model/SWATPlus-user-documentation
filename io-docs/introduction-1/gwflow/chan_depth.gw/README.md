@@ -14,8 +14,8 @@ SWAT+ looks for `chan_depth.gw` in the simulation working directory; it is not s
 
 After the title and column headings, enter daily rows containing two date columns and one depth for each configured depth zone. Keep the rows in simulation order: the date columns do not select or match the simulation day.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [jday](jday.md) | First date column of a time-series row | integer | n/a | — | — |
 | [year](year.md) | Second date column of a time-series row | integer | n/a | — | — |
 | [depth_by_zone](depth_by_zone.md) | Depth value for each configured depth zone | real | — | — | — |

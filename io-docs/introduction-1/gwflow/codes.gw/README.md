@@ -14,8 +14,8 @@ SWAT+ looks for `codes.gw` in the simulation working directory; it is not select
 
 The file contains a title, a row of setting names, and a row of corresponding values. Each value matches the setting name directly above it. The table lists recognized settings; their columns may be reordered together with their values.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [grid_type](grid_type.md) | Grid_type specifies the type of grid used in the groundwater model | string | n/a | — | — |
 | [ncell](ncell.md) | Ncell indicates the total number of groundwater flow cells in the model domain | integer | n/a | — | — |
 | [cell_size](cell_size.md) | Cell_size defines the size of each grid cell in the groundwater model | real | — | — | — |

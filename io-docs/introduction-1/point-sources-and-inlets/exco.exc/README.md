@@ -16,8 +16,8 @@ The first two lines contain a title and column headings. Each following row cont
 The interpretation of these records differs between initialization and direct routing. Confirm the intended routing setup before assigning coefficient or load units.
 {% endhint %}
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [om_file](om_file.md) | Name of the external Organic Matter (OM) input file linked to this connection record | string | n/a | — | — |
 | [pest_file](pest_file.md) | Name of the external Pesticide input file linked to this connection record | string | n/a | — | — |

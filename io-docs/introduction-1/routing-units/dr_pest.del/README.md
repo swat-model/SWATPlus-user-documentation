@@ -12,8 +12,8 @@ This file supplies named pesticide delivery values.
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [dr_pest_name(ii)](dr_pest_name_ii.md) | Identifier linking this record to a named pesticide delivery definition | string | n/a | — | — |
 | [pest(ipest)](pest_ipest.md) | Pesticide delivery value associated with the named pesticide | real | — | — | — |
 

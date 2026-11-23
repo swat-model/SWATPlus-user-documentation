@@ -12,8 +12,8 @@ This file contains channel sediment transport and erosion parameters.
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [eqn](eqn.md) | Selects the sediment transport equation applied to this channel: 0 = original SWAT | integer | n/a | — | — |
 | [cov1](cov1.md) | Channel bank erodibility factor scaling the computed bank critical shear stress | real | — | — | — |

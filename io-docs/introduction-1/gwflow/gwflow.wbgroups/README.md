@@ -16,26 +16,26 @@ The file starts with one title line, then the number of groups and the maximum c
 
 ## Number of groups
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [gw_wb_grp_num](gw_wb_grp_num.md) | Number of groundwater water-balance groups defined for output aggregation | integer | n/a | — | — |
 
 ## Maximum group size
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [max_num](max_num.md) | Maximum cells in a group | integer | n/a | — | — |
 
 ## Cells per group
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [gw_wb_grp_ncell(i)](gw_wb_grp_ncell_i.md) | Number of cells assigned to water-balance group i | integer | n/a | — | — |
 
 ## Group members
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [wb_cell](wb_cell.md) | Cell identifier assigned to position j within water-balance group i | integer | n/a | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

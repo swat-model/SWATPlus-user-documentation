@@ -14,8 +14,8 @@ SWAT+ looks for `gwflow_canal.con` in the simulation working directory; it is no
 
 The file starts with one title line. Each following canal row contains its identifier and connection count, then one three-value group per connection: cell identifier, connection length, and stage. Do not add a separate column-header line.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [canal_id](canal_id.md) | Index identifying the canal object whose connection detail row is being read | integer | n/a | — | — |
 | [obj_tot](obj_tot.md) | Number of connections | integer | n/a | — | — |
 | [con_row_buf(j)](con_row_buf_j.md) | Connection cell, length, and stage | real | — | — | — |

@@ -14,14 +14,14 @@ After the title and column headings, enter each initial-set name followed by a l
 
 ## Parameter-set name
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [titldum](titldum.md) | Record label | string | n/a | — | — |
 | [soil](soil.md) | Initial soil-compartment value for each pathogen | real | — | — | — |
 | [plt](plt.md) | Initial plant-compartment value for each pathogen | real | — | — | — |

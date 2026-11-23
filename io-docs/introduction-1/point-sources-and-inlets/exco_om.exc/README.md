@@ -16,8 +16,8 @@ The first two lines contain a title and column headings. Each following row cont
 The interpretation of these records differs between initialization and direct routing. Confirm the intended routing setup before assigning coefficient or load units.
 {% endhint %}
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [exco_om_name](exco_om_name.md) | Name identifying this component-value record | string | n/a | — | — |
 | [flo](flo.md) | Water-flow component value for this named record | real | — | — | — |
 | [sed](sed.md) | Sediment component value for this named record | real | — | — | — |

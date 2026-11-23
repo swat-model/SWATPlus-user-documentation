@@ -8,15 +8,32 @@ description: >-
 
 The **precipitation data files** contain the observed precipitation input data. They are named by the user and must have the file ending \*.pcp. There must be one file per station used in the simulation. As in all SWAT+ input files, the first line in the precipitation data files is reserved for user comments. The second line contains the column headers for the third line, which lists basic information about the station.&#x20;
 
-<table><thead><tr><th>Field</th><th width="292">Description</th><th width="150">Type</th><th>Unit</th></tr></thead><tbody><tr><td>nbyr</td><td>Length of the precipitation time series</td><td>integer</td><td>years</td></tr><tr><td>tstep</td><td>Time step of the precipitation data</td><td>integer</td><td>n/a</td></tr><tr><td>lat</td><td>Latitude of the precipitation station</td><td>real</td><td>Decimal Degrees</td></tr><tr><td>lon</td><td>Longitude of the precipitation station</td><td>real</td><td>Decimal Degrees</td></tr><tr><td>elev</td><td>Elevation of the precipitation station</td><td>real</td><td>m</td></tr></tbody></table>
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| nbyr | Length of the precipitation time series | integer | years |  |  |
+| tstep | Time step of the precipitation data | integer | n/a |  |  |
+| lat | Latitude of the precipitation station | real | Decimal Degrees |  |  |
+| lon | Longitude of the precipitation station | real | Decimal Degrees |  |  |
+| elev | Elevation of the precipitation station | real | m |  |  |
 
 Starting in the fourth line, the year, Julian day, and precipitation amount are listed. There are no headers for these columns.
 
-<table><thead><tr><th>Field</th><th width="292">Description</th><th width="150">Type</th><th>Unit</th></tr></thead><tbody><tr><td>year</td><td>Year of the observation</td><td>integer</td><td>n/a</td></tr><tr><td>jday</td><td>Julian day of the observation</td><td>integer</td><td>n/a</td></tr><tr><td>pcp</td><td>Observed precipitation</td><td>real</td><td>mm</td></tr></tbody></table>
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| year | Year of the observation | integer | n/a |  |  |
+| jday | Julian day of the observation | integer | n/a |  |  |
+| pcp | Observed precipitation | real | mm |  |  |
 
 If the user wishes to run simulations at a sub-daily time step, precipitation data has to be provided at the simulation time step. Currently, the model is able to run at an hourly time step. Smaller time steps have not been tested yet. Three additional columns need to be included in the hourly precipitation files:&#x20;
 
-<table><thead><tr><th>Field</th><th width="292">Description</th><th width="150">Type</th><th>Unit</th></tr></thead><tbody><tr><td>year</td><td>Year of the observation</td><td>integer</td><td>n/a</td></tr><tr><td>jday</td><td>Julian day of the observation</td><td>integer</td><td>n/a</td></tr><tr><td>mon</td><td>Month of the observation</td><td>integer</td><td>n/a</td></tr><tr><td>day</td><td>Day of the observation</td><td>integer</td><td>n/a</td></tr><tr><td>hr</td><td>Time of the observation</td><td>integer</td><td>n/a</td></tr><tr><td>pcp</td><td>Observed precipitation</td><td>real</td><td>mm</td></tr></tbody></table>
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| year | Year of the observation | integer | n/a |  |  |
+| jday | Julian day of the observation | integer | n/a |  |  |
+| mon | Month of the observation | integer | n/a |  |  |
+| day | Day of the observation | integer | n/a |  |  |
+| hr | Time of the observation | integer | n/a |  |  |
+| pcp | Observed precipitation | real | mm |  |  |
 
 {% hint style="info" %}
 A negative 99.0 (-99.0) should be inserted for missing data. This value tells SWAT+ to generate precipitation for that day.

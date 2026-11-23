@@ -12,8 +12,8 @@ This file supplies named pathogen export-coefficient values.
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [exco_path_name(ii)](exco_path_name_ii.md) | Name identifying this pathogen export-coefficient record | string | n/a | — | — |
 | [path(ipath)](path_ipath.md) | Export-coefficient value for pathogen ipath | real | — | — | — |
 

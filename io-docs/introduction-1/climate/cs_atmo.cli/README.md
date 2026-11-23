@@ -16,44 +16,44 @@ Use the annual, monthly, or yearly values appropriate to each climate station. T
 
 ## Station
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [station_name](station_name.md) | Station identifier for the annual timestep record (station_name) | real | — | — | — |
 
 ## Annual rainfall concentrations
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [rf](rf.md) | Annual rainfall concentration of the constituent in rainfall (mg/L) | real | — | — | — |
 
 ## Annual dry deposition
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [dry](dry.md) | Annual dry deposition flux of the constituent (kg/ha/yr), divided by 365 to obtain a daily rate | real | — | — | — |
 
 ## Monthly rainfall concentrations
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [rfmo(imo)](rfmo_imo.md) | Monthly rainfall concentration of the constituent for month imo | real | — | — | — |
 
 ## Monthly dry deposition
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [drymo(imo)](drymo_imo.md) | Monthly dry deposition flux of the constituent for month imo | real | — | — | — |
 
 ## Yearly rainfall concentrations
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [rfyr(iyr)](rfyr_iyr.md) | Yearly rainfall concentration of the constituent for year iyr | real | — | — | — |
 
 ## Yearly dry deposition
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [dryyr(iyr)](dryyr_iyr.md) | Yearly dry deposition flux of the constituent for year iyr, divided by 365 to obtain a daily rate | real | — | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

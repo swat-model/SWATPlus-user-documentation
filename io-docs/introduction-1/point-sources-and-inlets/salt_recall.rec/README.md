@@ -14,8 +14,8 @@ SWAT+ looks for `salt_recall.rec` in the simulation working directory; it is not
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [typ](typ.md) | Recall type selecting the temporal resolution: 1=day, 2=month, 3=year | integer | n/a | — | — |

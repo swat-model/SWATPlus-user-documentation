@@ -14,8 +14,8 @@ SWAT+ looks for `cellcon.gw` in the simulation working directory; it is not sele
 
 After the title and column headings, enter one row per groundwater cell in cell-index order. Each row contains the cell identifier, its neighbor count, and that many neighbor identifiers.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [cell_id](cell_id.md) | Cell identifier | integer | n/a | — | — |
 | [ncon](ncon.md) | Number of neighbor cell identifiers that follow in this record | integer | n/a | — | — |
 | [neighbor_cell_id](neighbor_cell_id.md) | Identifier of a cell hydraulically connected to the row's cell | integer | n/a | — | — |

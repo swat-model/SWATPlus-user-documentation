@@ -16,14 +16,14 @@ The file contains a title, headings, a units label, and cumulative soil-layer de
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [units](units.md) | Units text token read before the depth values | string | n/a | — | — |
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [csld](csld.md) | Cumulative custom soil-layer depth used to construct layer boundaries | integer | n/a | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

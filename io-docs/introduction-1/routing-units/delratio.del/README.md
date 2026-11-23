@@ -12,8 +12,8 @@ This file links named delivery-ratio sets to their organic/mineral, pesticide, p
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [om_file](om_file.md) | Name of the associated organic-mineral (om) file providing source data for this delivery ratio | string | n/a | — | — |
 | [pest_file](pest_file.md) | Name of the associated pesticide (pest) file providing source data for this delivery ratio | string | n/a | — | — |

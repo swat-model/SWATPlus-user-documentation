@@ -14,8 +14,8 @@ SWAT+ looks for `satbuffer.str` in the simulation working directory; it is not s
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [hru_src](hru_src.md) | Source HRU supplying tile inflow | integer | n/a | — | — |
 | [frac_src](frac_src.md) | Fraction used in buffer inflow and nitrate partitioning | real | fraction | — | — |

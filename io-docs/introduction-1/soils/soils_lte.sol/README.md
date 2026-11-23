@@ -16,8 +16,8 @@ The first two lines contain a title and column headings. Each following row cont
 The current file-loading routine has a repeated-loading issue. A complete file layout does not establish that the model will initialize successfully with it.
 {% endhint %}
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [texture](texture.md) | Texture class identifier for the soil entry | string | n/a | — | — |
 | [awc](awc.md) | Available water capacity value for the soil | real | — | — | — |
 | [por](por.md) | Porosity value for the soil, scaled by the soil layer thickness when assigned to the HRU LTE state | real | — | — | — |

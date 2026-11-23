@@ -14,8 +14,8 @@ SWAT+ looks for `cell_sol.gw` in the simulation working directory; it is not sel
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [cell_id](cell_id.md) | Identifier of the groundwater cell whose solute state is initialized by this record | integer | n/a | — | — |
 | [conc](conc.md) | Initial solute concentration in groundwater for the identified cell | real | — | — | — |
 

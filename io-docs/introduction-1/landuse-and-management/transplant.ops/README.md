@@ -14,8 +14,8 @@ SWAT+ looks for `transplant.ops` in the simulation working directory; it is not 
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [lai](lai.md) | Leaf area index | real | m²/m² | — | — |
 | [bioms](bioms.md) | Initial biomass | real | kg/ha | — | — |

@@ -16,15 +16,15 @@ After the title and column headings, enter the parent pesticide name and daughte
 
 ## Parent pesticide
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [parent_name](parent_name.md) | Name of the parent pesticide to which the following metabolites belong | string | n/a | — | — |
 | [num_metab](num_metab.md) | Number of daughter metabolites defined for this parent pesticide | integer | n/a | — | — |
 
 ## Daughter metabolites
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [foliar_fr](foliar_fr.md) | Fraction of parent pesticide degradation in the foliar compartment that forms this daughter metabolite | real | — | — | — |
 | [soil_fr](soil_fr.md) | Fraction of parent pesticide degradation in the soil compartment that forms this daughter metabolite | real | — | — | — |

@@ -4,8 +4,8 @@ description: This file specifies the initial soil nutrient contents.
 
 # nutrients.sol
 
-| Field                         | Description                                                   | Type   | Unit | Default | Range |
-| ----------------------------- | ------------------------------------------------------------- | ------ | ---- | ------- | ----- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name-nutrients.sol.md) | Name of the soil nutrient record | string | n/a |  |  |
 | [exp\_co](exp_co.md) | Depth coefficient to adjust nutrient concentrations for depth | real | 1/mm |  |  |
 | [lab\_p](lab_p.md) | Labile P in soil surface | real | ppm |  |  |

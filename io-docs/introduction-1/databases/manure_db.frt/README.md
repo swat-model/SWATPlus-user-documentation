@@ -14,8 +14,8 @@ SWAT+ looks for `manure_db.frt` in the simulation working directory; it is not s
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [org_min](org_min.md) | Identifier matching this manure type against the organic/mineral constituent database entry that supplies sediment | string | n/a | — | — |
 | [pests](pests.md) | Identifier matching this manure type against the pesticide database entry supplying pesticide concentrations | string | n/a | — | — |

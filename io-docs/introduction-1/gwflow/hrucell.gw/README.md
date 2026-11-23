@@ -14,8 +14,8 @@ SWAT+ looks for `hrucell.gw` in the simulation working directory; it is not sele
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [hru_id](hru_id.md) | Identifier of the HRU to which this groundwater cell belongs | integer | n/a | — | — |
 | [hru_area](hru_area.md) | Total area of the HRU | real | — | — | — |
 | [hru_cells](hru_cells.md) | Groundwater cell identifier for this HRU-cell association | integer | n/a | — | — |

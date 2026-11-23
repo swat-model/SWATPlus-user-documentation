@@ -16,14 +16,14 @@ The tables below describe the file’s input entries. Repeat array values for th
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [num_dtls](num_dtls.md) | Number of update rules | integer | n/a | — | — |
 
 ## Input values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [max_hits](max_hits.md) | Maximum number of times the referenced update table is executed during the simulation | integer | n/a | — | — |
 | [typ](typ.md) | Type of update table to apply | string | n/a | — | — |
 | [dtbl](dtbl.md) | Name of the ruleset in conditional.ctl that schedules when this update is applied | string | n/a | — | — |

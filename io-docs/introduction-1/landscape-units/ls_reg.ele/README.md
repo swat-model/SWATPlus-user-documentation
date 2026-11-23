@@ -12,8 +12,8 @@ This file identifies the model objects included in landscape regions.
 
 The first two lines contain a title and column headings. Enter one row per element using the fields below.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [ha](ha.md) | Area of the region element in hectares | real | — | — | — |

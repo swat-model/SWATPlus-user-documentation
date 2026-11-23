@@ -12,8 +12,8 @@ This file supplies named organic/mineral delivery values for water, sediment, an
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [dr_om_name](dr_om_name.md) | Name identifying this organic/mineral delivery record | string | n/a | — | — |
 | [flo](flo.md) | Water-flow component value for this named record | real | — | — | — |
 | [sed](sed.md) | Sediment component value for this named record | real | — | — | — |

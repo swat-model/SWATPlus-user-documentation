@@ -12,8 +12,8 @@ This file contains channel geometry and hydraulic parameters.
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [w](w.md) | Average width of the main channel | real | — | — | — |
 | [d](d.md) | Average depth of the main channel | real | — | — | — |

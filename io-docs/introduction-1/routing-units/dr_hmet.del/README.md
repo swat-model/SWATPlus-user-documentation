@@ -12,8 +12,8 @@ This file supplies named heavy-metal delivery values.
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [dr_hmet_name(ii)](dr_hmet_name_ii.md) | Name identifying a heavy metals delivery definition (dr_hmet_name) | string | n/a | — | — |
 | [hmet(ihmet)](hmet_ihmet.md) | Heavy metals delivery value (hmet) associated with the named delivery definition | real | — | — | — |
 

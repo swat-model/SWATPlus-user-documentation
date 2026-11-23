@@ -16,32 +16,32 @@ Give the number of minerals and then the input method for each mineral. A `singl
 
 ## Mineral count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [gw_nminl](gw_nminl.md) | The total number of salt minerals to be read and tracked for groundwater solute transport | integer | n/a | — | — |
 
 ## Input method
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [read_type](read_type.md) | The method used to supply values for each salt mineral | string | n/a | — | — |
 
 ## Uniform value
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [single_value](single_value.md) | The uniform mass fraction of a salt mineral applied to all groundwater cells when read_type is set to single | real | — | — | — |
 
 ## Structured-grid values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [grid_val(i,j)](grid_val_i_j.md) | The per-cell mass fraction of a salt mineral for a structured grid when read_type is set to array | real | — | — | — |
 
 ## Per-cell values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [fract(m)](fract_m.md) | The mass fraction of salt mineral m within a groundwater cell | real | — | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

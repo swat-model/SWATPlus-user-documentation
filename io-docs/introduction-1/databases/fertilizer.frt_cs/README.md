@@ -14,8 +14,8 @@ SWAT+ looks for `fertilizer.frt_cs` in the simulation working directory; it is n
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [fertnm](fertnm.md) | Fertilizer name label | string | n/a | — | — |
 | [seo4](seo4.md) | SeO4 constituent mass fraction | real | kg/kg fertilizer | — | — |
 | [seo3](seo3.md) | SeO3 constituent mass fraction | real | kg/kg fertilizer | — | — |

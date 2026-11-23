@@ -14,21 +14,21 @@ The first two lines contain a title and column headings. For each initial-condit
 
 ## Parameter-set name
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 
 ## Soil values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [titldum](titldum.md) | Record label | string | n/a | — | — |
 | [soil(ihmet)](soil_ihmet.md) | Amount of constituent in soil at start of simulation | real | — | — | — |
 
 ## Plant values
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [titldum](titldum.md) | Record label | string | n/a | — | — |
 | [plt(ihmet)](plt_ihmet.md) | Amount of constituent on plant at start of simulation | real | — | — | — |
 

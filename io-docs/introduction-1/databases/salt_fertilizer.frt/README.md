@@ -14,8 +14,8 @@ SWAT+ looks for `salt_fertilizer.frt` in the simulation working directory; it is
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [so4](so4.md) | Sulfate ion fraction | real | kg/kg fertilizer | — | — |
 | [ca](ca.md) | Calcium ion fraction | real | kg/kg fertilizer | — | — |

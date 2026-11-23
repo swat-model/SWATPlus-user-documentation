@@ -14,8 +14,8 @@ SWAT+ looks for `phreato.gw` in the simulation working directory; it is not sele
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [gw_phyt_dep](gw_phyt_dep.md) | Depth below ground surface (m) at which the phreatophyte ET-rate relationship is defined | real | — | — | — |
 | [gw_phyt_rate](gw_phyt_rate.md) | Transpiration rate (m/day) at the corresponding depth below ground surface | real | — | — | — |
 

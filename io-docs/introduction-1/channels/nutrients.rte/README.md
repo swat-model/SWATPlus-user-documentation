@@ -14,8 +14,8 @@ SWAT+ looks for `nutrients.rte` in the simulation working directory; it is not s
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [len_inc](len_inc.md) | Segment length over which nutrient and quality reductions are applied | real | — | — | — |
 | [no3_slp](no3_slp.md) | Slope of the denitrification rate equation relating inflow nitrate concentration to areal denitrification rate | real | — | — | — |

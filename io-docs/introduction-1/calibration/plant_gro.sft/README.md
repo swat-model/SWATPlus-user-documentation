@@ -14,14 +14,14 @@ After the title, region count, and headings, enter each region definition and it
 
 ## Region count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [mreg](mreg.md) | Number of regions | integer | n/a | — | — |
 
 ## Regions
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [lum_num](lum_num.md) | Number of land uses defined within this region | integer | n/a | — | — |
 | [nspu](nspu.md) | Number of element-list entries | integer | n/a | — | — |
@@ -29,8 +29,8 @@ After the title, region count, and headings, enter each region definition and it
 
 ## Plant-growth targets
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name_2.md) | Record name | string | n/a | — | — |
 | [yield](yield.md) | Crop yield value used as a soft annual calibration target | real | — | — | — |
 | [npp](npp.md) | Net primary productivity (biomass dry weight) value used as a soft annual calibration target | real | — | — | — |

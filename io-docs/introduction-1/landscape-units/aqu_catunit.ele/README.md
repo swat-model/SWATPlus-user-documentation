@@ -12,8 +12,8 @@ This file identifies the objects included in aquifer cataloging units and their 
 
 The first two lines contain a title and column headings. Enter one row per element using the fields below.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [obtyp](obtyp.md) | Object type | string | n/a | — | — |

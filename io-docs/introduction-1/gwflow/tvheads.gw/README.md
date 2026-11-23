@@ -14,8 +14,8 @@ SWAT+ looks for `tvheads.gw` in the simulation working directory; it is not sele
 
 After the title and column headings, enter one cell identifier followed by that cell’s prescribed heads for the configured time periods.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [cell_id](cell_id.md) | Groundwater cell identifier for this prescribed-head series | integer | n/a | — | — |
 | [gw_tvh_vals(i,j)](gw_tvh_vals_i_j.md) | Prescribed head value for cell i and time index j | real | — | — | — |
 

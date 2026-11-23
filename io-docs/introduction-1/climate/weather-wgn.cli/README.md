@@ -12,6 +12,27 @@ A **SWAT+ Global Weather Generator Database** containing weather generator datas
 If the user wishes to add a new weather generator station, the use of the **WGN Parameters Estimation Tool** or the **WGN Excel macro** is recommended. Both can be downloaded from the SWAT website: [https://swat.tamu.edu/software/](https://swat.tamu.edu/software/).
 {% endhint %}
 
-<table><thead><tr><th>Field</th><th width="292">Description</th><th width="150">Type</th><th>Unit</th></tr></thead><tbody><tr><td><a href="name-weather_wgn.cli.md">name</a></td><td>Name of weather generator station</td><td>string</td><td>n/a</td></tr><tr><td>latitude</td><td>Latitude of weather generator station</td><td>real</td><td>Decimal Degrees</td></tr><tr><td>longitude</td><td>Longitude of weather generator station</td><td>real</td><td>Decimal Degrees</td></tr><tr><td>elevation</td><td>Elevation of weather generator station</td><td>real</td><td>m</td></tr><tr><td><a href="yrs_pcp.md">yrs_pcp</a></td><td>Number of years of maximum monthly 0.5 h rainfall data used to define values for pcp_hhr</td><td>integer</td><td>years</td></tr></tbody></table>
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [name](name-weather_wgn.cli.md) | Name of weather generator station | string | n/a |  |  |
+| latitude | Latitude of weather generator station | real | Decimal Degrees |  |  |
+| longitude | Longitude of weather generator station | real | Decimal Degrees |  |  |
+| elevation | Elevation of weather generator station | real | m |  |  |
+| [yrs_pcp](yrs_pcp.md) | Number of years of maximum monthly 0.5 h rainfall data used to define values for pcp_hhr | integer | years |  |  |
 
-<table><thead><tr><th width="167">Field</th><th width="282">Description</th><th width="150">Type</th><th width="150">Unit</th><th>Range</th></tr></thead><tbody><tr><td><a href="tmp_max_ave.md">tmp_max_ave</a></td><td>Average or mean daily maximum air temperature for month</td><td>real</td><td>°C</td><td>-30 - 50</td></tr><tr><td><a href="tmp_min_ave.md">tmp_min_ave</a></td><td>Average or mean daily minimum air temperature for month</td><td>real</td><td>°C</td><td>-40 - 40</td></tr><tr><td><a href="tmp_max_sd.md">tmp_max_sd</a></td><td>Standard deviation for daily maximum air temperature in month</td><td>real</td><td>°C</td><td>0.1 - 100</td></tr><tr><td><a href="tmp_min_sd.md">tmp_min_sd</a></td><td>Standard deviation for daily minimum air temperature in month</td><td>real</td><td>°C</td><td>0.1 - 30</td></tr><tr><td><a href="pcp_ave.md">pcp_ave</a></td><td>Average or mean total monthly precipitation</td><td>real</td><td>mm</td><td>0 - 600</td></tr><tr><td><a href="pcp_sd.md">pcp_sd</a></td><td>Standard deviation for daily precipitation in month</td><td>real</td><td>mm/day</td><td>0.1 - 50</td></tr><tr><td><a href="pcp_skew.md">pcp_skew</a></td><td>Skew coefficient for daily precipitation in month</td><td>real</td><td>mm</td><td>-50 - 20</td></tr><tr><td><a href="wet_dry.md">wet_dry</a></td><td>Probability of a wet day following a dry day in the month</td><td>real</td><td>n/a</td><td>0 - 0.95</td></tr><tr><td><a href="wet_wet.md">wet_wet</a></td><td>Probability of a wet day following a wet day in the month</td><td>real</td><td>n/a</td><td>0 - 0.95</td></tr><tr><td><a href="pcp_days.md">pcp_days</a></td><td>Average number of days of precipitation in month</td><td>real</td><td>n/a</td><td>0 - 31</td></tr><tr><td><a href="pcp_hhr.md">pcp_hhr</a></td><td>Maximum 0.5-hour rainfall in month</td><td>real</td><td>mm</td><td>0 - 125</td></tr><tr><td><a href="slr_ave.md">slr_ave</a></td><td>Average daily solar radiation for month</td><td>real</td><td>MJ/m^2/day</td><td>0 - 750</td></tr><tr><td><a href="dew_ave.md">dew_ave</a></td><td>Average daily dew point temperature for each month (ºC) or relative humidity (fraction)</td><td>real</td><td>°C or fraction</td><td>-50 - 25</td></tr><tr><td><a href="wnd_ave.md">wnd_ave</a></td><td>Average daily wind speed in month</td><td>real</td><td>m/s</td><td>0 - 100</td></tr></tbody></table>
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [tmp_max_ave](tmp_max_ave.md) | Average or mean daily maximum air temperature for month | real | °C |  | -30 - 50 |
+| [tmp_min_ave](tmp_min_ave.md) | Average or mean daily minimum air temperature for month | real | °C |  | -40 - 40 |
+| [tmp_max_sd](tmp_max_sd.md) | Standard deviation for daily maximum air temperature in month | real | °C |  | 0.1 - 100 |
+| [tmp_min_sd](tmp_min_sd.md) | Standard deviation for daily minimum air temperature in month | real | °C |  | 0.1 - 30 |
+| [pcp_ave](pcp_ave.md) | Average or mean total monthly precipitation | real | mm |  | 0 - 600 |
+| [pcp_sd](pcp_sd.md) | Standard deviation for daily precipitation in month | real | mm/day |  | 0.1 - 50 |
+| [pcp_skew](pcp_skew.md) | Skew coefficient for daily precipitation in month | real | mm |  | -50 - 20 |
+| [wet_dry](wet_dry.md) | Probability of a wet day following a dry day in the month | real | n/a |  | 0 - 0.95 |
+| [wet_wet](wet_wet.md) | Probability of a wet day following a wet day in the month | real | n/a |  | 0 - 0.95 |
+| [pcp_days](pcp_days.md) | Average number of days of precipitation in month | real | n/a |  | 0 - 31 |
+| [pcp_hhr](pcp_hhr.md) | Maximum 0.5-hour rainfall in month | real | mm |  | 0 - 125 |
+| [slr_ave](slr_ave.md) | Average daily solar radiation for month | real | MJ/m^2/day |  | 0 - 750 |
+| [dew_ave](dew_ave.md) | Average daily dew point temperature for each month (ºC) or relative humidity (fraction) | real | °C or fraction |  | -50 - 25 |
+| [wnd_ave](wnd_ave.md) | Average daily wind speed in month | real | m/s |  | 0 - 100 |

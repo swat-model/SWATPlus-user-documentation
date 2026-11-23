@@ -16,21 +16,21 @@ After the title, group count, and headings, enter an irrigation-group name and H
 
 ## Irrigation-group count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [imax](imax.md) | Number of records | integer | n/a | — | — |
 
 ## Irrigation groups
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [hrus](hrus.md) | Number of irrigation operations sourced from the irrigation operations file | integer | n/a | — | — |
 
 ## Group members
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [hru_num(j)](hru_num_j.md) | HRU number associated with the j-th irrigation operation | integer | n/a | — | — |
 | [dtbl_lum(j)](dtbl_lum_j.md) | Name of the decision table used to set daily irrigation demand for the j-th HRU | string | n/a | — | — |
 

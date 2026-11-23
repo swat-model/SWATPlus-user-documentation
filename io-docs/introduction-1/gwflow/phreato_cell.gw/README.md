@@ -14,8 +14,8 @@ SWAT+ looks for `phreato_cell.gw` in the simulation working directory; it is not
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [gw_phyt_ids](gw_phyt_ids.md) | Identifier of a grid cell that contains phreatophytes, drawn from the model's cell numbering | integer | n/a | — | — |
 | [gw_phyt_area](gw_phyt_area.md) | Ground-water uptake area, in square meters, for each phreatophyte cell listed in gw_phyt_ids | real | — | — | — |
 

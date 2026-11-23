@@ -14,8 +14,8 @@ SWAT+ looks for `wetland.wet_cs` in the simulation working directory; it is not 
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
 | [pst](pst.md) | Name of the pesticide input source linked to this wetland, referencing an entry in pesticide.res | string | n/a | — | — |
 | [weir](weir.md) | Name of the weir input source linked to this wetland, referencing an entry in weir.res | string | n/a | — | — |

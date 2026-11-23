@@ -14,8 +14,8 @@ SWAT+ looks for `zones.gw` in the simulation working directory; it is not select
 
 The first two lines contain a title and column headings. Each following row contains the fields below, in this order.
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [zone_id](zone_id.md) | Leading label token for the zone record. This parameter-loading loop does not use it to choose the array index | string | n/a | — | — |
 | [aquifer_K](aquifer_k.md) | Aquifer hydraulic conductivity for the indexed zone | real | — | — | — |
 | [aquifer_Sy](aquifer_sy.md) | Aquifer specific yield for the indexed zone | real | — | — | — |

@@ -16,22 +16,22 @@ Give the number of release-condition tables, then each table name and its condit
 
 ## Table count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [max_table](max_table.md) | Number of release condition tables to read for reservoirs | integer | n/a | — | — |
 
 ## Table definitions
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [num_conds](num_conds.md) | Number of condition blocks defined for this table | integer | n/a | — | — |
 | [num_modules](num_modules.md) | Number of release modules associated with this table | integer | n/a | — | — |
 
 ## Condition comparisons
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [num_conds](num_conds_2.md) | Number of source-variable comparisons in this condition block | integer | n/a | — | — |
 | [var](var.md) | Name of the source variable compared in this condition entry | string | n/a | — | — |
 | [op](op.md) | Two-character comparison operator applied to the source variable | string | n/a | — | — |
@@ -40,14 +40,14 @@ Give the number of release-condition tables, then each table name and its condit
 
 ## Module condition count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [tnum_conds](tnum_conds.md) | Number of condition entries in each release module | integer | n/a | — | — |
 
 ## Module comparisons
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [num_conds](num_conds_3.md) | Number of source-variable comparisons in this module condition entry | integer | n/a | — | — |
 | [var](var_2.md) | Name of the source variable compared in this module condition entry | string | n/a | — | — |
 | [op](op_2.md) | Two-character comparison operator applied to the module source variable | string | n/a | — | — |

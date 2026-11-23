@@ -16,14 +16,14 @@ After the title and allocation count, enter each allocation-object block. A bloc
 
 ## Allocation count
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [imax](imax.md) | Number of records | integer | n/a | — | — |
 
 ## Allocation objects
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Record name | string | n/a | — | — |
 | [rule_typ](rule_typ.md) | Allocation rule type for the manure allocation object | string | n/a | — | — |
 | [src_obs](src_obs.md) | Number of source objects providing manure to this allocation object | integer | n/a | — | — |
@@ -31,8 +31,8 @@ After the title and allocation count, enter each allocation-object block. A bloc
 
 ## Manure sources
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Source or receiving-object record number | integer | n/a | — | — |
 | [mois_typ](mois_typ.md) | Manure moisture-type selector | string | n/a | — | — |
 | [manure_typ](manure_typ.md) | Manure type name referencing an entry in fertilizer.frt | string | n/a | — | — |
@@ -44,8 +44,8 @@ After the title and allocation count, enter each allocation-object block. A bloc
 
 ## Receiving objects
 
-| Field | Description | Type | Unit | Default | Range |
-| --- | --- | --- | --- | --- | --- |
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Source or receiving-object record number | integer | n/a | — | — |
 | [ob_typ](ob_typ.md) | Type of demand object receiving manure: hru for application | string | n/a | — | — |
 | [ob_num](ob_num.md) | Number identifying the demand object of the specified type | integer | n/a | — | — |
