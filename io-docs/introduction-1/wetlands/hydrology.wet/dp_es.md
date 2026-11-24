@@ -10,7 +10,9 @@ The average depth of water at the emergency spillway (in millimeters) is used to
 
 During initialization, SWAT+ calculates the emergency volume from the HRU area:
 
-$$\text{wet\_ob}\%\text{evol} = \text{hru}\%\text{area\_ha} \times \text{dp\_es} \times 10$$
+$$V_{\text{evol}} = \text{area} \times \text{depth} \times 10$$
+
+where $V_{\text{evol}}$ is emergency storage capacity in $\text{m}^3$ (`wet_ob%evol`), $\text{area}$ is HRU area in hectares (`hru%area_ha`), and $\text{depth}$ is the emergency spillway depth in millimeters (`dp_es`).
 
 *(Note: In SWAT+ main (6f515368), the model assumes for simplicity that the entire HRU is impounded, so [`hru_es`](hru_es.md) is not multiplied into this volume calculation).*
 
