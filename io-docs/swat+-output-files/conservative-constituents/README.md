@@ -17,6 +17,7 @@ In this source revision, `res_cs` also controls file creation and data rows for 
 | `hru_cs_*` | [HRU](hru.md) |
 | `rout_unit_cs_*` | [Routing unit](routing-unit.md) |
 | `channel_cs_*` | [Channel](channel.md) |
+| `cs_streamobs_output` | [Channel stream observation](channel-stream-observation.md) |
 | `aquifer_cs_*` | [Aquifer](aquifer.md) |
 | `reservoir_cs_*` | [Reservoir](reservoir.md) |
 | `wetland_cs_*` | [Wetland](wetland.md) |
