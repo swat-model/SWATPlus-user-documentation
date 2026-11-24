@@ -6,4 +6,8 @@ description: BOD decay rate coefficient
 
 **Code reference:** `sep(isep)%bod_dc` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/septic_data_module.f90#L33)).
 
-Biozone BOD coefficient is normalized by the volume of biomass in the formula.
+Biozone BOD decay rate coefficient ($\text{m}^3/\text{day}$), normalized by live biomass concentration in the biozone pore volume (daily rate capped at `4.0` $\text{day}^{-1}$ in `sep_biozone.f90`):
+
+$$k_{\text{bod}} = \min\!\left(\max\!\left(0,\; K_{\text{bod}} \cdot \frac{B \, A_{\text{hru}}}{V_{\text{bz}} \, \phi}\right),\; 4\right), \qquad \Delta \text{BOD} = \text{BOD}_i \left(1 - e^{-k_{\text{bod}}}\right)$$
+
+where $k_{\text{bod}}$ is the effective daily decay rate ($\text{day}^{-1}$), $K_{\text{bod}}$ is `bod_decay`, $B$ is live biomass (kg/ha), $A_{\text{hru}}$ is HRU area (ha), $V_{\text{bz}}$ is biozone volume ($\text{m}^3$), $\phi$ is porosity, and $\text{BOD}_i$ is initial daily BOD concentration.

@@ -1,5 +1,5 @@
 ---
-description: ​Number of permanent residents in the house
+description: Number of permanent residents in the house
 ---
 
 # residents

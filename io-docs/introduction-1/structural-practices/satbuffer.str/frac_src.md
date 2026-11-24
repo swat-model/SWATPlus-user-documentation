@@ -6,4 +6,10 @@ description: "Fraction used in buffer inflow and nitrate partitioning"
 
 **Code reference:** `satbuff_db(ibuff)%frac_src` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_module.f90#L101)).
 
-Used to scale buffer inflow and partition tile nitrate. Enter a fraction rather than a percentage; this parameter alone does not define the complete routing calculation.
+Used to scale buffer inflow and partition tile nitrate (`hru_control.f90`). Enter a fraction rather than a percentage; the decision table specified by [`flocon_dtbl`](flocon_dtbl.md) first determines the diverted tile inflow depth $Q_{\text{div}}$:
+
+$$Q_{\text{buf}} = \frac{A_{\text{rcv}}}{A_{\text{src}}} \, f_{\text{src}} \, Q_{\text{div}}, \qquad q_{\text{tile,rem}} = (1 - f_{\text{src}}) \, Q_{\text{div}}$$
+
+$$N_{\text{buf}} = f_{\text{src}} \, N_{\text{tile}}, \qquad N_{\text{tile,rem}} = (1 - f_{\text{src}}) \, N_{\text{tile}}$$
+
+where $f_{\text{src}}$ is `frac_src`, $A_{\text{src}}$ and $A_{\text{rcv}}$ are the source and receiving HRU areas (ha), $Q_{\text{buf}}$ and $N_{\text{buf}}$ are the tile water and nitrate routed into the buffer HRU, and $q_{\text{tile,rem}}$ and $N_{\text{tile,rem}}$ remain in the source HRU tile outflow.

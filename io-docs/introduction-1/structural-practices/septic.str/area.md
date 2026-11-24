@@ -1,5 +1,5 @@
 ---
-description: ​Average area of drainfield of individual septic systems
+description: Average area of drainfield of individual septic systems
 ---
 
 # area

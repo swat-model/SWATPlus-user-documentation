@@ -10,8 +10,8 @@ Data contained in the septic.str data file are: type of septic system, geometry 
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name_sepdb.md) | Name of septic system record | string | n/a | n/a | n/a |
 | [typ](typ.md) | 1-based septic water-quality record number in septic.sep | integer | n/a | 0 |  |
-| [yr](yr.md) | ​Year the septic system became operational | integer | n/a | 0 |  |
-| [operation](operation.md) | ​Septic system operation flag | integer | n/a | 0 | 0-2 |
+| [yr](yr.md) | Year the septic system became operational | integer | n/a | 0 |  |
+| [operation](operation.md) | Septic system operation flag | integer | n/a | 0 | 0-2 |
 | [residents](residents.md) | Number of permanent residents in the house (read but not used by the model) | real | n/a | 1 | 1.0-12.0 |
 | [area](area.md) | Average drainfield area per septic system (read but not used by the model) | real | m^2 | 1 |  |
 | [t\_fail](t_fail.md) | Time until failing systems gets fixed | integer | days | 0 | 0-150 |

@@ -1,5 +1,5 @@
 ---
-description: ​Year the septic system became operational
+description: Year the septic system became operational
 ---
 
 # yr
