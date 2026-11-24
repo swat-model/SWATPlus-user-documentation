@@ -6,4 +6,4 @@ description: Pointer to the reservoir and wetland nutrient file
 
 **Code reference:** `res_dat_c(ires)%nut` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/reservoir_data_module.f90#L11)).
 
-The pointer to the reservoir and wetland nutrient file is a foreign key referencing [name](../nutrients.res/untitled.md) in [**nutrients.res**](../nutrients.res/).
+The pointer to the reservoir and wetland nutrient file is a foreign key referencing [name](../nutrients.res/name.md) in [**nutrients.res**](../nutrients.res/), matched in [`res_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read.f90#L152-L154).

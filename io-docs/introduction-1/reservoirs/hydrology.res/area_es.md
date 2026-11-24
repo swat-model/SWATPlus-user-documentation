@@ -6,8 +6,6 @@ description: Reservoir surface area when reservoir is filled to emergency spillw
 
 **Code reference:** `res_hyddb(ires)%esa` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/reservoir_data_module.f90#L71)).
 
-For SWAT+ to calculate the reservoir surface area each day, the surface area at two different water volumes must be defined. Variables referring to the principal spillway can be thought of as variables referring to the normal reservoir storage volume, while variables referring to the emergency spillway can be thought of as variables referring to the maximum reservoir storage volume.
+Reservoir surface area when filled to the emergency spillway (`ha`; Fortran struct default: `0.`, historical table default: `500.0`, range `1.0–1000.0`). By default, QSWAT+ sets `area_es` to `1.15 * area_ps`. If `area_es` $\le 0$ when SWAT+ reads `hydrology.res` ([`res_read_hyd.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read_hyd.f90#L59)), the model sets $A_{\text{esa}} = 1.5 \, A_{\text{psa}}$.
 
-By default, QSWAT+ will assume that the reservoir surface area at emergency spillway equals [area\_ps](area_ps.md) \* 1.15.
-
-If area_es is zero or negative when SWAT+ reads hydrology.res, the model sets area_es to 1.5 times area_ps.
+Although the historical `hydrology.res` summary table lists smaller values for emergency spillway defaults/ranges than for principal spillway, physically `area_es` must exceed [area\_ps](area_ps.md) (and [vol\_es](vol_es-1.md) must exceed [vol\_ps](vol_ps.md)) for SWAT+ to fit the two-point log-linear area–volume curve in [`res_initial.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_initial.f90#L62-L84); otherwise the model falls back to the fixed exponent $b_2 = 0.9$.

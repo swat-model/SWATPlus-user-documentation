@@ -2,8 +2,12 @@
 description: Annual loss-rate coefficient for soluble phosphorus
 ---
 
-# secchi_co
+# secchi\_co
 
 **Code reference:** `res_nut(ires)%psolr` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/reservoir_data_module.f90#L118)).
 
-Despite the legacy input label, this field is the annual loss-rate coefficient for soluble phosphorus, not a water-clarity coefficient. SWAT+ divides the input by 365 and applies the daily coefficient in reservoir and wetland nutrient loss.
+Despite the legacy input label, this field is the annual loss-rate coefficient for soluble phosphorus (`1/year`; historical table default: `1.0`, range `0.50–2.0`; Fortran struct default: `1.`), not a water-clarity coefficient. SWAT+ divides the input by `365` in [`res_read_nut.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read_nut.f90#L70) and applies it in [`res_nutrient.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_nutrient.f90#L67-L73):
+
+$$f_{\text{solP}} = \min\!\left(1,\; \max\!\left(0,\; (C_{\text{solP}} - C_{P,\min}) \, \frac{k_{\text{solP}}}{365} \, \theta_P^{(T - 20)}\right)\right), \qquad M_{\text{solP,new}} = M_{\text{solP}} \,(1 - f_{\text{solP}} \, f_{\text{sol}})$$
+
+where $C_{\text{solP}}$ is soluble phosphorus concentration (ppm), $C_{P,\min}$ is [p\_min\_stl](p_min_stl.md) (ppm), $k_{\text{solP}}$ is `secchi_co` (`1/year`), $\theta_P$ is [theta\_p](theta_p.md), $T$ is daily average air temperature (`deg C`), and $f_{\text{sol}} = 0.2$ is the soluble settling fraction initialized in [`res_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read.f90#L146) and [`wet_initial.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_initial.f90#L103).

@@ -6,6 +6,10 @@ description: Equilibrium sediment concentration in the reservoir
 
 **Code reference:** `res_sed(ires)%nsed` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/reservoir_data_module.f90#L100)).
 
-The amount of suspended solid settling that occurs in the water body on a given day is calculated as a function of concentration. Settling occurs only when the sediment concentration in the water body exceeds the equilibrium sediment concentration specified by the user.
+Equilibrium suspended sediment concentration in the water body (`mg/L`, i.e., `ppm`; historical table default: `1.0`, range `1.0–5000.0`; Fortran struct default: `0.`). Enter `nsed` in mg/L; SWAT+ main (`6f515368`) compares it directly with the water body's suspended sediment concentration in ppm and does not convert it to kg/L.
 
-Enter `nsed` in mg/L (ppm). SWAT+ main (6f515368) compares it directly with the water body's sediment concentration in ppm; it does not convert the input to kg/L.
+Settling occurs in [`res_sediment.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_sediment.f90#L36-L38) only when the suspended sediment concentration exceeds `nsed`:
+
+$$C_{\text{sed,new}} = \max\!\left(C_{\text{eq}},\; (C_{\text{sed}} - C_{\text{eq}}) \, c_{\text{stl}} + C_{\text{eq}}\right) \quad \text{when } C_{\text{sed}} > C_{\text{eq}}$$
+
+where $C_{\text{sed}}$ is the suspended sediment concentration (mg/L), $C_{\text{eq}}$ is `nsed` (mg/L), and $c_{\text{stl}} = \exp(-0.184 \, d_{50})$ is the daily settling factor computed from [d50](d50.md).

@@ -8,13 +8,13 @@ description: >-
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| [name](name.md)​ | Name of the reservoir and wetland initialization record | string |  |  |  |
-| [org\_min](res_org_min.md)​ | Pointer to the organic-mineral initialization file | string |  |  |  |
-| [pest](res_pest.md)​ | Pointer to the pesticide initialization file | string |  |  |  |
-| path​ | Pointer to the pathogen initialization file for reservoirs | string |  |  |  |
-| hmet​ | Currently not used | string |  |  |  |
-| [salt](res_salt.md)​ | Intended salt-initialization pointer (read but not used here in main 6f515368; active initialization uses reservoir.res_cs) | string |  |  |  |
+| [name](name.md) | Name of the reservoir and wetland initialization record | string |  |  |  |
+| [org\_min](res_org_min.md) | Pointer to the organic-mineral initialization file | string |  |  |  |
+| [pest](res_pest.md) | Pointer to the pesticide initialization file | string |  |  |  |
+| [path](path.md) | Pointer to the pathogen initialization file for reservoirs | string |  |  |  |
+| [hmet](hmet.md) | Pointer to the heavy metals initialization file (not used) | string |  |  |  |
+| [salt](res_salt.md) | Intended salt-initialization pointer (read but not used here in main 6f515368; active initialization uses reservoir.res\_cs) | string |  |  |  |
 
 {% hint style="warning" %}
-In SWAT+ main (6f515368), the path field initializes pathogens for reservoirs. The code resolves a path value for wetlands but does not apply the resulting wetland initialization index. The hmet field is not used.
+In SWAT+ main (6f515368), the `path` field initializes pathogens for reservoirs. In [`wet_initial.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_initial.f90#L68-L69), the code resolves a `path` value for wetlands but does not apply the resulting wetland initialization index. The `hmet` field is not used.
 {% endhint %}
