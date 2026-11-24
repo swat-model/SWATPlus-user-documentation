@@ -6,11 +6,13 @@ description: >-
 
 # rout\_unit.rtu
 
+This file defines Routing Unit records and links each Routing Unit to its topography and field properties, read by [`ru_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ru_read.f90#L230).
+
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| id | ID of the Routing Unit | integer |  |  |  |
-| name | Name of the Routing Unit | string |  |  |  |
+| [id](id-rout_unit.rtu.md) | ID of the Routing Unit | integer |  |  |  |
+| [name](name-rout_unit.rtu.md) | Name of the Routing Unit (read but not used by the model) | string |  |  |  |
 | [define](define.md) | Routing Unit definition name (read but not used by the model) | string |  |  |  |
-| dlr | Delivery ratio name (read but not used by the model) | string |  |  |  |
+| [dlr](dlr.md) | Delivery ratio name (read but not used by the model) | string |  |  |  |
 | [topo](topo.md) | Pointer to the topography file | string |  |  |  |
 | [field](field.md) | Pointer to the field file | string |  |  |  |
