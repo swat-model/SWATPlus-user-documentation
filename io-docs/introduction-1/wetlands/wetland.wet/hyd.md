@@ -8,4 +8,4 @@ description: Pointer to the wetland hydrology file
 
 The pointer to the wetland hydrology file is a foreign key referencing [name](../hydrology.wet/name.md) in [**hydrology.wet**](../hydrology.wet/).
 
-The literal value `paddy` also activates special paddy behavior. SWAT+ retains the paddy water-surface-area setup and routes outflow through the paddy weir-release routine instead of the ordinary wetland decision-table and reservoir-hydrology path.
+The literal value `paddy` activates special rice-paddy behavior. SWAT+ routes outflow through the paddy weir-release routine instead of the standard wetland decision-table release, and maintains flat ponding across 100% of the HRU area, bypassing the dynamic depth-area curve.
