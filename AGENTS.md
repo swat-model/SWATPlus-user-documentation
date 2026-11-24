@@ -1,0 +1,45 @@
+# Agent Guidelines: SWAT+ User Documentation Review
+
+This repository contains the GitBook documentation for SWAT+ input and output files under `io-docs/`.
+
+## Baseline & Truth Source
+
+- **Target Source Baseline:** SWAT+ Fortran source at pinned commit **`6f515368525e7d84089ae0f9d33f4c9115de5679`** (version 62.0.1).
+- **Facts-First Tooling:** Use the **Tamandua MCP tools** (`swatplus-source-main-review`) before grepping or making assumptions:
+  - `file_io`: Identify which routines open, read, rewind, backspace, and close an input file.
+  - `find_procedure`: Inspect reader subroutines, line numbers, local variables, and format strings.
+  - `describe_type`: Inspect derived types, field declarations, initial values, and inline source comments.
+  - `module_variable`: Check global state instances and array allocations in modules.
+  - `uses` & `writers`: Confirm whether an input field is actually read/used in the physics calculations or if it has `reads=none`.
+
+## Documentation Standards for Input Families (`io-docs/introduction-1/`)
+
+1. **Focus on the Attribute:**
+   - Keep attribute markdown pages concise (1–3 short paragraphs).
+   - Define the parameter clearly: physical meaning, units, default value, and valid range.
+   - Describe how SWAT+ interprets or converts the value (e.g. volume calculations).
+   - Avoid long listings of internal simulation subsystems, architecture details, or irrelevant code.
+
+2. **Fortran Realities & Nuances:**
+   - **Unused Fields:** If an attribute is parsed by a reader but never read or evaluated during simulation (`reads=none`), explicitly state:
+     `*(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations).*`
+   - **Runtime Overrides:** If a reader enforces runtime fallbacks (e.g., nonpositive values being reset to a hardcoded number rather than the struct default), document this behavior.
+   - **Unread Example Tokens:** If shipped example files include extra trailing tokens (e.g., `WEIR` in `wetland.wet`) that list-directed read discards, document them as unread tokens so users are not confused.
+
+3. **KaTeX & Math Formatting in GitBook:**
+   - **Never put underscores inside `\text{...}`** (e.g., do not write `\text{wet_ob}`). GitBook's markdown parser unescapes `\_` to `_`, causing KaTeX to fail with `'_' allowed only in math mode`.
+   - Use clean, standard mathematical symbols ($V_{\text{evol}} = \text{area} \times \text{depth} \times 10$ or $x_1 = b^2 + 4c(1 - V/V_{\text{pvol}})$) and define the parameter names in plain markdown text below the equation.
+
+4. **Table & Link Integrity:**
+   - Every column in an input table must link to a valid local markdown page (`[field](field.md)`).
+   - Ensure foreign-key pointers to other files (e.g., `initial.res`, `nutrients.res`, `res_rel.dtl`) link to real, existing paths without placeholder filenames like `untitled.md`.
+   - Keep table cells free of invisible Unicode characters (such as zero-width spaces `\u200b`).
+   - Register any newly added input files or attribute pages in `io-docs/SUMMARY.md`.
+
+## Workflow & Git Conventions
+
+- **Active Branch:** Always work on and commit to branch **`codex/docs-main-review`**.
+- **Iteration Cadence:** Review and update family-by-family:
+  1. Audit the family's input files against Fortran readers using Tamandua.
+  2. Propose concise, attribute-focused improvements for any missing, inaccurate, or broken pages.
+  3. Apply verified edits, run `git diff` to ensure formatting cleanliness, then commit and push to remote.
