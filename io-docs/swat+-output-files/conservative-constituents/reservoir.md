@@ -1,42 +1,46 @@
-# Reservoir constituent output
+# Reservoir constituent fluxes and state variables
 
-The `reservoir_cs_day`, `reservoir_cs_mon`, `reservoir_cs_yr`, and `reservoir_cs_aa` files are available as TXT and CSV. Enable the desired periods on `res_cs` in [print.prt](../../introduction-1/simulation-settings/print.prt/README.md). At least one reservoir and one configured conservative constituent are required. Set `csvout` to `y` for CSV copies. The daily writer runs after the skipped years and uses the daily switch without a separate day window or interval. [File creation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L596), [Output caller](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/command.f90#L440), [Reservoir writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_output.f90#L40)
+Reservoir constituent output is written for each reservoir at daily, monthly, yearly, and average annual time steps. A period is active when the model has reservoirs (`sp_ob%res > 0`), `cs_db%num_cs > 0`, and the `print.prt` flag `pco%cs_res%d`, `%m`, `%y`, or `%a` is `y`. [Daily file setup](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L597-L626), [monthly](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L630-L631), [yearly](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L663-L664), [average annual](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L696-L697), [data writes](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_output.f90#L43-L245)
 
-## Column order
+* reservoir\_cs\_day.txt
+* reservoir\_cs\_day.csv
+* reservoir\_cs\_mon.txt
+* reservoir\_cs\_mon.csv
+* reservoir\_cs\_yr.txt
+* reservoir\_cs\_yr.csv
+* reservoir\_cs\_aa.txt
+* reservoir\_cs\_aa.csv
 
-The six identifying headings are `jday`, `mon`, `day`, `yr`, `unit`, and `gis_id`. The table below gives the remaining headings in order. The header is fixed at 40 columns. Each constituent group in the data row has one value per configured constituent, giving 40 values when the configured count is three. [Header declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_module.f90#L57), [Data write](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_output.f90#L43)
+A `.csv` copy is written only when `pco%csvout == "y"`. [CSV condition](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L621-L625)
 
-| Printed headings | Value | Unit |
-| --- | --- | --- |
-| `seo4_in`, `seo3_in`, `born_in` | Mass entering with inflow | kg |
-| `seo4_out`, `seo3_out`, `born_out` | Calculated release load | kg |
-| `seo4_seep`, `seo3_seep`, `born_seep` | Seepage mass calculated from the water-budget seepage term | kg |
-| `seo4_setl`, `seo3_setl`, `born_setl` | Mass settling to the bottom | kg |
-| `seo4_rctn`, `seo3_rctn`, `born_rctn` | Mass consumed by chemical reactions | kg |
-| `seo4_prod`, `seo3_prod`, `born_prod` | Mass produced by chemical reactions | kg |
-| `seo4_fert`, `seo3_fert`, `born_fert` | Mass added by fertilizer | kg |
-| `seo4_irrg`, `seo3_irrg`, `born_irrg` | Mass removed for irrigation | kg |
-| `seo4_div`, `seo3_div`, `born_div` | Diversion mass, negative for removal and positive for addition | kg |
-| `seo4_mass`, `seo3_mass`, `born_mass` | Stored constituent mass | kg |
-| `seo4_conc`, `seo3_conc`, `born_conc` | Concentration in stored water | g/m3 |
-| `vol_m3` | Stored water volume | m3 |
+* Each file starts with the basin name and `prog`, a title line, a definitions list, and one column-name row. [Header lines](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L600-L620)
+* Every data row begins with six values: `jday`, `mon`, `day`, `yr`, `unit`, and `gis_id`. Then it holds eleven groups of values in the table order below, each with one value per constituent (`cs_db%num_cs` values), and ends with one `vol_m3` value. [Data row](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_output.f90#L44-L56)
+* The column-name row is the fixed header record `rescs_hdr`. It names three constituent columns for each group: `seo4`, `seo3`, and `born`. The `irr` group appears in the header as `seo4_irrg`, `seo3_irrg`, and `born_irrg`. [Header record](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_module.f90#L57-L98)
 
-## Reporting periods
+| Field | Description | Type | Unit |
+| --- | --- | --- | --- |
+| [jday](reservoir/jday.md) | Julian day | integer | n/a |
+| [mon](reservoir/mon.md) | Month | integer | n/a |
+| [day](reservoir/day.md) | Day of the month | integer | n/a |
+| [yr](reservoir/yr.md) | Calendar year | integer | n/a |
+| [unit](reservoir/unit.md) | Reservoir number | integer | n/a |
+| [gis\_id](reservoir/gis_id.md) | GIS ID of the reservoir | integer | n/a |
+| [seo4\_in, seo3\_in, born\_in](reservoir/in.md) | Mass entering reservoir with inflow | real | kg |
+| [seo4\_out, seo3\_out, born\_out](reservoir/out.md) | Mass leaving reservoir with outflow | real | kg |
+| [seo4\_seep, seo3\_seep, born\_seep](reservoir/seep.md) | Mass leaving reservoir via seepage | real | kg |
+| [seo4\_setl, seo3\_setl, born\_setl](reservoir/setl.md) | Mass settling to bottom of reservoir | real | kg |
+| [seo4\_rctn, seo3\_rctn, born\_rctn](reservoir/rctn.md) | Mass consumed due to chemical reaction | real | kg |
+| [seo4\_prod, seo3\_prod, born\_prod](reservoir/prod.md) | Mass produced due to chemical reaction | real | kg |
+| [seo4\_fert, seo3\_fert, born\_fert](reservoir/fert.md) | Mass added to reservoir via fertilizer | real | kg |
+| [seo4\_irrg, seo3\_irrg, born\_irrg](reservoir/irr.md) | Mass removed from reservoir for irrigation | real | kg |
+| [seo4\_div, seo3\_div, born\_div](reservoir/div.md) | Mass removed (-) or added (+) via diversion | real | kg |
+| [seo4\_mass, seo3\_mass, born\_mass](reservoir/mass.md) | Mass stored in reservoir | real | kg |
+| [seo4\_conc, seo3\_conc, born\_conc](reservoir/conc.md) | Concentration in reservoir water | real | g/m3 |
+| [vol\_m3](reservoir/vol_m3.md) | Volume of water stored in reservoir | real | m3 |
 
-Daily rows report the values from the reservoir constituent calculation. Monthly and yearly rows sum the mass transfers and divide the daily sums of stored mass, concentration, and volume by the calendar month length or `time%day_end_yr`, respectively. Average-annual rows divide all daily sums by the configured number of simulation years (`time%nbyr`). The three storage groups in those rows therefore represent sums of daily values per configured year. Mass transfers are reported in kg/yr for average annual output. [Period calculations](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_output.f90#L74)
+## Reporting differences
 
-The writer transfers monthly sums into the yearly record only at calendar month end. If the simulation ends midmonth, the yearly and average-annual sums omit that final partial month. Any yearly state means still use `time%day_end_yr` as the divisor. [Month-end transfer and year-end processing](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_output.f90#L75-L145)
-
-## Where the daily values come from
-
-The constituent routine runs after the reservoir's water-budget steps. It uses the previously stored concentration and adds the incoming constituent hydrograph to the available mass. It then computes release and seepage from the respective water volumes, settling from surface area and settling velocity, and reaction loss from the remaining water volume and a temperature-adjusted rate. It caps each removal at the mass available at that step. Selenate consumed by reaction becomes an equal mass of selenite production. The routine writes the remaining mass, its concentration, and the remaining water volume. [Water-budget order](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_control.f90#L159-L223) · [Mass calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs.f90#L55-L142)
-
-**The reported release can be positive even when zero constituent mass is routed downstream.** For an operating reservoir, `res_cs` sets the outgoing constituent hydrograph, but the controller then replaces it with `hcs2%cs`, which it initialized to zero and does not populate for conservative constituents. The report keeps the calculated release. Before construction, the controller passes the incoming hydrograph downstream without doing the balance. [Outgoing initialization](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_control.f90#L39-L44) · [Calculated release](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs.f90#L134-L145) · [Overwrite and bypass](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_control.f90#L219-L254)
-
-At a remaining volume of 1 m³ or less, the routine skips the mass balance. The report's inflow, outflow, seepage, settling, reaction loss, mass, and concentration slots are cleared on entry, but volume and reaction production can retain earlier values. The routine leaves the constituent storage itself unchanged when the balance is skipped. [Entry resets and volume gate](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs.f90#L42-L60) · [State and production writes](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs.f90#L119-L150) · [Basin reset list](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cs_balance.f90#L644-L655)
-
-With GWFlow solute transport enabled, cell exchange changes reservoir constituent storage directly. The constituent routine also uses the signed net GWFlow water seepage volume in its own seepage formula. The printed seepage is that calculation and can be negative when net water exchange is into the reservoir. It can change storage again after the direct exchange. [GWFlow signed seepage](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_reservoir.f90#L69-L89) · [Direct additions](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_reservoir.f90#L104-L134) · [Direct removals and seepage assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_reservoir.f90#L190-L215) · [Report calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs.f90#L78-L83)
-
-The inspected source has no active producer for the reservoir fertilizer or diversion groups. Irrigation mass is assigned in `cs_irrig`, whose water-allocation call is commented out. The constituent routine also clears the irrigation group on entry. [Irrigation diagnostic](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cs_irrig.f90#L65-L77) · [Disabled call](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_pou_deliv.f90#L61-L68) · [Entry resets](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs.f90#L42-L53) · [Basin reset list](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cs_balance.f90#L644-L655)
-
-[Back to the Conservative Constituents index](README.md).
+* The file title ends in `daily`, `monthly`, `yearly`, or `average annual`. [Titles](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L602)
+* In the monthly and yearly legends, the `mass`, `conc`, and `vol_m3` lines end with `(averaged over month)` or `(averaged over year)`. In the average annual legend they end with `(averaged over years)`. [Monthly](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L649-L651), [yearly](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L682-L684), [average annual](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L715-L717)
+* In the average annual legend, the nine flux lines `in` to `div` give the unit `kg/yr`. [Average annual legend](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L706-L714)
+* Monthly rows divide `mass`, `conc`, and `vol_m3` by the days in the month. Yearly rows divide the same values by `time%day_end_yr`. Average annual rows divide every group and `vol_m3` by `time%nbyr`. [Monthly](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_output.f90#L91-L96), [yearly](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_output.f90#L161-L166), [average annual](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_cs_output.f90#L215-L230)

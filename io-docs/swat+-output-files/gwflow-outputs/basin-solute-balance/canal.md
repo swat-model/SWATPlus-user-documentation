@@ -1,0 +1,15 @@
+---
+description: "Average annual value in the canal column (kg)"
+---
+
+# canal
+
+**Code reference:** `sol_grid_canl_tt(s)` ([writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L2150), [declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_module.f90#L665)).
+
+**Printed header value:** `canal` ([header](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L467)).
+
+This is the 18th value after `name`. For solute `s` the accumulated total is divided by `nbyr_r` before it is written ([division](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L2134)). The units line prints `kg` for this column ([units](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_output.f90#L468-L470)).
+
+**Type:** real (declared `real`, format `e13.4`). **Unit:** kg.
+
+[Back to the output table](../basin-solute-balance.md).

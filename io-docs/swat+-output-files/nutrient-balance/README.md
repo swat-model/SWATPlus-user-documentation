@@ -1,4 +1,6 @@
 # Nutrient Balance
+See the [HRU nutrient balance schema](hru.md) for the HRU-specific file layout and field pages.
+
 
 Nutrient balance output can be printed at basin, LSU, and HRU level by entering "y" in the _basin\_nb_, _lsunit\_nb_, and _hru\_nb_ lines in [print.prt](../../introduction-1/simulation-settings/print.prt), respectively. Nutrient balance output can be printed at daily, monthly, yearly, and average annual time steps. The names of the nutrient balance output files are as follows:&#x20;
 
