@@ -15,6 +15,7 @@ This repository contains the GitBook documentation for SWAT+ input and output fi
 ## Documentation Standards for Input Families (`io-docs/introduction-1/`)
 
 1. **Focus on the Attribute:**
+   - **Every column in an input-file table must have its own attribute markdown page.** No field should appear in a table row without a corresponding `.md` file and a link to it. If a page does not yet exist, create one following the standards below.
    - Keep attribute markdown pages concise (1–3 short paragraphs).
    - Define the parameter clearly: physical meaning, units, default value, and valid range.
    - Describe how SWAT+ interprets or converts the value (e.g. volume calculations).
@@ -23,6 +24,7 @@ This repository contains the GitBook documentation for SWAT+ input and output fi
 2. **Fortran Realities & Nuances:**
    - **Unused Fields:** If an attribute is parsed by a reader but never read or evaluated during simulation (`reads=none`), explicitly state:
      `*(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations).*`
+   - **Historical Defaults & Ranges:** The Default and Range columns in input tables come from historical sources and match what SWAT+ Editor uses. Keep them even when they differ from Fortran struct initial values (which are usually `0.`). Change them only if they are physically impossible, and flag such cases to the user before editing.
    - **Runtime Overrides:** If a reader enforces runtime fallbacks (e.g., nonpositive values being reset to a hardcoded number rather than the struct default), document this behavior.
    - **Unread Example Tokens:** If shipped example files include extra trailing tokens (e.g., `WEIR` in `wetland.wet`) that list-directed read discards, document them as unread tokens so users are not confused.
 
