@@ -16,6 +16,8 @@ This repository contains the GitBook documentation for SWAT+ input and output fi
 
 1. **Focus on the Attribute:**
    - **Every column in an input-file table must have its own attribute markdown page.** No field should appear in a table row without a corresponding `.md` file and a link to it. If a page does not yet exist, create one following the standards below.
+   - **Fill empty stub pages:** Pages containing only YAML frontmatter, heading, and a `**Code reference:**` line must be completed with physical meaning, units, formulas (where applicable), and any runtime overrides or clamping.
+   - **Formulas & Subtle Source-Line Links:** Wherever a parameter enters a calculation, include the concise KaTeX formula and subtly link inline Fortran routine mentions directly to their exact pinned line or line range at `6f515368525e7d84089ae0f9d33f4c9115de5679` (e.g., `` [`smp_bmpfixed.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/smp_bmpfixed.f90#L56) ``) in the same first pass.
    - Keep attribute markdown pages concise (1–3 short paragraphs).
    - Define the parameter clearly: physical meaning, units, default value, and valid range.
    - Describe how SWAT+ interprets or converts the value (e.g. volume calculations).
@@ -35,13 +37,14 @@ This repository contains the GitBook documentation for SWAT+ input and output fi
 4. **Table & Link Integrity:**
    - Every column in an input table must link to a valid local markdown page (`[field](field.md)`).
    - Ensure foreign-key pointers to other files (e.g., `initial.res`, `nutrients.res`, `res_rel.dtl`) link to real, existing paths without placeholder filenames like `untitled.md`.
-   - Keep table cells free of invisible Unicode characters (such as zero-width spaces `\u200b`).
+   - Keep both table cells and YAML `description:` frontmatter free of invisible Unicode characters (such as zero-width spaces `\u200b`) and `&#x20;` entities.
    - Register any newly added input files or attribute pages in `io-docs/SUMMARY.md`.
 
 ## Workflow & Git Conventions
 
 - **Active Branch:** Always work on and commit to branch **`codex/docs-main-review`**.
-- **Iteration Cadence:** Review and update family-by-family:
-  1. Audit the family's input files against Fortran readers using Tamandua.
-  2. Propose concise, attribute-focused improvements for any missing, inaccurate, or broken pages.
-  3. Apply verified edits, run `git diff` to ensure formatting cleanliness, then commit and push to remote.
+- **Iteration Cadence (Single-Pass, Token-Efficient):** Review and update family-by-family:
+  1. Scope discovery strictly to `io-docs/introduction-1/<family>/` and the matching slice of `io-docs/SUMMARY.md`; avoid dumping whole-repo listings or full file batches into context.
+  2. Batch Tamandua queries (`file_io` -> `describe_type` + `uses` -> targeted `writers`/`find_procedure`) to gather unused fields, runtime overrides, and exact formula line numbers upfront.
+  3. Apply all updates in **one pass** (missing pages, empty stubs, formulas, subtle `#L` links, `SUMMARY.md`, and ZWSP/frontmatter cleanup) without creating separate audit artifacts unless requested; pause only to flag physically impossible Default/Range values or genuine ambiguities.
+  4. Run one UTF-8 verification check (`[System.IO.File]::ReadAllText(..., [System.Text.Encoding]::UTF8)` — never rely on PowerShell 5.1 default ANSI `Get-Content` for `\u200b`) confirming `zwsp=0`, `entity20=0`, `textUnderscore=0`, `unbalancedMath=0`, `brokenLinks=0`, `badUrls=0`, and `bareF90=0`, then check `git diff`, commit, and push to remote.
