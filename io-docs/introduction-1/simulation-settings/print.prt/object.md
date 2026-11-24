@@ -31,7 +31,7 @@ The user is advised to print only those outputs that are needed for model evalua
 | region\_res     | Currently not used                                             |
 | region\_sd\_cha | Currently not used                                             |
 | region\_psc     | Currently not used                                             |
-| water\_allo     | Water allocation                                               |
+| water\_allo     | Water allocation (also gates manure allocation source and demand outputs in [`manure_source_output.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/manure_source_output.f90#L19) and [`manure_demand_output.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/manure_demand_output.f90#L22)) |
 | lsunit\_wb      | Landscape unit water balance                                   |
 | lsunit\_nb      | Landscape unit nutrient balance                                |
 | lsunit\_ls      | Landscape unit losses                                          |
@@ -49,23 +49,23 @@ The user is advised to print only those outputs that are needed for model evalua
 | aquifer         | Aquifer output                                                 |
 | reservoir       | Reservoir output                                               |
 | recall          | Point source output                                            |
-| hyd             | Incoming and outgoing hydrographs                              |
+| hyd             | Incoming and outgoing hydrographs (`hydin_*`, `hydout_*`, and `deposition_*`; [`header_hyd.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_hyd.f90#L19-L204)) |
 | ru              | Routing unit output                                            |
 | pest            | Pesticide output for all objects and basin                     |
-| basin\_salt     |                                                                |
-| hru\_salt       |                                                                |
-| ru\_salt        |                                                                |
-| aqu\_salt       |                                                                |
-| channel\_salt   |                                                                |
-| res\_salt       |                                                                |
-| wetland\_salt   |                                                                |
-| basin\_cs       |                                                                |
-| hru\_cs         |                                                                |
-| ru\_cs          |                                                                |
-| aqu\_cs         |                                                                |
-| channel\_cs     |                                                                |
-| res\_cs         |                                                                |
-| wetland\_cs     |                                                                |
+| basin\_salt     | Basin salt balance                                             |
+| hru\_salt       | HRU salt fluxes and state variables                            |
+| ru\_salt        | Routing unit salt output                                       |
+| aqu\_salt       | Aquifer salt output                                            |
+| channel\_salt   | Channel salt output                                            |
+| res\_salt       | Reservoir salt output (also gates wetland salt data rows in [`wet_salt_output.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_salt_output.f90#L41)) |
+| wetland\_salt   | Wetland salt output (opens headers in [`header_salt.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_salt.f90#L854-L944); data rows check `res_salt`) |
+| basin\_cs       | Basin constituent balance                                      |
+| hru\_cs         | HRU constituent fluxes and state variables                     |
+| ru\_cs          | Routing unit constituent output                                |
+| aqu\_cs         | Aquifer constituent output                                     |
+| channel\_cs     | Channel constituent output                                     |
+| res\_cs         | Reservoir constituent output (also gates wetland constituent files in [`header_const.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/header_const.f90#L882-L978) and [`wet_cs_output.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_cs_output.f90#L43)) |
+| wetland\_cs     | Parsed into `pco%cs_wet` but not read by output writers in SWAT+ main (`6f515368`); wetland constituent output is gated by `res_cs` |
 | lsu\_cb\_gl | LSU-area-weighted carbon gain/loss |
 | lsu\_cb\_trf | LSU-area-weighted carbon transformations |
 | lsu\_cb\_plt | LSU-area-weighted plant carbon state |
@@ -88,10 +88,10 @@ The user is advised to print only those outputs that are needed for model evalua
 | gwflow\_obs | GWFlow observation-well output |
 | gwflow\_pump | GWFlow HRU pumping output |
 
-GWFlow output rows require label-based object parsing: set use_obj_lbls to a value other than n. When gwflow_wb is listed, its daily, monthly, yearly, and average annual switches replace the corresponding gwflow.input water-balance settings. The daily water-balance switch also controls channel hydrograph-separation output.
+Label-based object parsing (`use_obj_lbls` set to a value other than `n`) is required for `lsu_cb_*`, `hru_cb*`, and `gwflow_*` rows because fixed-order parsing in [`basin_print_codes_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_print_codes_read.f90#L57-L176) stops after `wetland_cs`. When `gwflow_wb` is listed, its daily, monthly, yearly, and average annual switches replace the corresponding `gwflow.input` water-balance settings ([`gwflow_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L265-L311)). The daily water-balance switch also controls channel hydrograph-separation output.
 
-gwflow_obs and gwflow_solute select their four output periods independently. gwflow_heat supports daily, yearly, and average annual output; its monthly column does not enable a monthly heat-balance output. If the heat or solute row is omitted, its periods follow the water-balance settings. If the observation row is omitted, its four period flags retain their default enabled values.
+`gwflow_obs` and `gwflow_solute` select their four output periods independently. `gwflow_heat` supports daily, yearly, and average annual output; its monthly column does not enable a monthly heat-balance output. If the heat or solute row is omitted, its periods follow the water-balance settings. If the observation row is omitted, its four period flags retain their default enabled values.
 
-gwflow_pump is a group switch: any y among its four columns enables pumping output at all implemented periods; four n values disable the group. gwflow_flux is also a group switch: a y in its daily or yearly column enables its diagnostics; its monthly and average annual columns do not enable the group. These two rows do not independently select output periods.
+`gwflow_pump` is a group switch: any `y` among its four columns enables pumping output at all implemented periods; four `n` values disable the group. `gwflow_flux` is also a group switch: a `y` in its daily or yearly column enables its diagnostics; its monthly and average annual columns do not enable the group. These two rows do not independently select output periods.
 
-In SWAT+ main (6f515368), `hru_cb` calls the legacy carbon writer for enabled daily, monthly, and yearly output. `hru_cb_vars` calls the legacy carbon-variable writer for those periods when `carbon = 2` in `codes.bsn`. These two legacy rows accept `y` for normal output and `l` for diagnostic output. Neither writer-call block has a corresponding average-annual call; the fourth column therefore does not independently request an average-annual legacy report. See [the legacy writer calls](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/command.f90#L524).
+In SWAT+ main (`6f515368`), `hru_cb` calls the legacy carbon writer for enabled daily, monthly, and yearly output, and triggers the end-of-simulation soil snapshot when any column is not `n` ([`hru_output.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_output.f90#L315-L318)). `hru_cb_vars` calls the legacy carbon-variable writer for daily, monthly, and yearly periods when `carbon = 2` in `codes.bsn`. These two legacy rows accept `y` for normal output and `l` for diagnostic output. Neither writer-call block has a corresponding average-annual call; the fourth column therefore does not independently request an average-annual legacy report. See [the legacy writer calls](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/command.f90#L529-L545).

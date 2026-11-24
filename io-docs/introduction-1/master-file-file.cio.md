@@ -11,7 +11,7 @@ If a file is not being used for a SWAT+ application, 'null' should be entered in
 1. [time.sim](simulation-settings/time.sim/)
 2. [print.prt](simulation-settings/print.prt/)
 3. [object.prt](simulation-settings/object.prt/)
-4. [object.cnt](simulation-settings/object.cnt.md)
+4. [object.cnt](simulation-settings/object.cnt/)
 5. constituents.cs
 
 #### Basin
