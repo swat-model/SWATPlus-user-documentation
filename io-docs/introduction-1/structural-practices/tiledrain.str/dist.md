@@ -8,7 +8,7 @@ description: Distance between two drain tubes or tiles
 
 Enter the distance between adjacent drain tubes or tiles in millimetres (mm). SWAT+ uses this value directly with drain depth, drain radius, and soil-profile depth, which are also in millimetres; for example, an input value of 30 is treated as 30 mm, not 30 m.
 
-In the DRAINMOD routine (`tiledrain = 1` in `codes.bsn`, `swr_drains.f90`), `dist` enters Hooghoudt's drainage flux equation:
+In the DRAINMOD routine (`tiledrain = 1` in `codes.bsn`, [`swr_drains.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swr_drains.f90#L205)), `dist` enters Hooghoudt's drainage flux equation:
 
 $$q = \frac{4 \cdot 24 \cdot K_e \cdot m \cdot (2 d_e + m)}{L^2}$$
 

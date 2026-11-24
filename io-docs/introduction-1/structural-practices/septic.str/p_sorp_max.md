@@ -6,7 +6,7 @@ description: Maximum P sorption capacity
 
 **Code reference:** `sep(isep)%psorpmax` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/septic_data_module.f90#L47)).
 
-Maximum phosphorus sorption capacity of the sub-biozone soil (mg P/kg soil), capping the linear sorption isotherm computed with [`p_sorp`](p_sorp.md) in `sep_biozone.f90`:
+Maximum phosphorus sorption capacity of the sub-biozone soil (mg P/kg soil), capping the linear sorption isotherm computed with [`p_sorp`](p_sorp.md) in [`sep_biozone.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sep_biozone.f90#L275):
 
 $$S_p = \min(K_d \cdot C_p,\; S_{\text{max}})$$
 

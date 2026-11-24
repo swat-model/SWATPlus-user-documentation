@@ -6,7 +6,7 @@ description: Denitrification rate coefficient
 
 **Code reference:** `sep(isep)%denitr` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/septic_data_module.f90#L45)).
 
-The biozone denitrification rate coefficient, normalized by live biomass concentration in the biozone pore volume (`sep_biozone.f90`):
+The biozone denitrification rate coefficient, normalized by live biomass concentration in the biozone pore volume ([`sep_biozone.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sep_biozone.f90#L266-L267)):
 
 $$k_{\text{den}} = \max\!\left(0,\; K_{\text{den}} \cdot \frac{B \, A_{\text{hru}}}{V_{\text{bz}} \, \phi}\right), \qquad R_{\text{den}} = \text{NO}_3 \left(1 - e^{-k_{\text{den}}}\right)$$
 
