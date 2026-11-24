@@ -12,4 +12,4 @@ SWAT+ uses layer bulk density $\rho_{b,l}$ to compute total porosity $\phi_l$ ([
 
 $$\phi_l = 1 - \frac{\rho_{b,l}}{2.65}, \qquad \theta_{\text{wp},l} = \frac{0.4 \cdot \text{clay}_l \cdot \rho_{b,l}}{100}, \qquad w_{\text{conv},l} = \frac{\rho_{b,l} \cdot \Delta z_l}{100}$$
 
-where $\text{clay}_l$ is layer clay percentage and $\Delta z_l$ is layer thickness (mm).
+where $\text{clay}_{l}$ is layer clay percentage and $\Delta z_l$ is layer thickness (mm).

@@ -12,4 +12,4 @@ SWAT+ always creates a 10 mm surface layer first ([`soils_init.f90`](https://git
 
 $$\bar{x}_i = \frac{1}{n} \sum_{j = z_{\text{prev}}}^{z_i} x(j)$$
 
-where $\bar{x}_i$ is the averaged property assigned to custom layer $i$ and $x(j)$ is the property value at millimeter depth $j$.
+where $\bar{x}_{i}$ is the averaged property assigned to custom layer $i$ and $x(j)$ is the property value at millimeter depth $j$.

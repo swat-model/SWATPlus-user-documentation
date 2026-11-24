@@ -32,6 +32,7 @@ This repository contains the GitBook documentation for SWAT+ input and output fi
 
 3. **KaTeX & Math Formatting in GitBook:**
    - **Never put underscores inside `\text{...}`** (e.g., do not write `\text{wet_ob}`). GitBook's markdown parser unescapes `\_` to `_`, causing KaTeX to fail with `'_' allowed only in math mode`.
+   - **Avoid unbraced subscripts after punctuation/braces in inline `$...$` math:** Never write `}_2`, `}_l`, etc. inside inline `$...$` (e.g., use `\text{FC}_{l}` instead of `\text{FC}_l`, and plain text for prose units like `` `mm H2O/mm soil` `` instead of `$\text{mm H}_2\text{O/mm soil}$`). Unbraced `}_<alnum>` acts as a CommonMark/GFM opening italic `_` and breaks inline math rendering when paired with another `_` in the same paragraph.
    - Use clean, standard mathematical symbols ($V_{\text{evol}} = \text{area} \times \text{depth} \times 10$ or $x_1 = b^2 + 4c(1 - V/V_{\text{pvol}})$) and define the parameter names in plain markdown text below the equation.
 
 4. **Table & Link Integrity:**
@@ -47,4 +48,4 @@ This repository contains the GitBook documentation for SWAT+ input and output fi
   1. Scope discovery strictly to `io-docs/introduction-1/<family>/` and the matching slice of `io-docs/SUMMARY.md`; avoid dumping whole-repo listings or full file batches into context.
   2. Batch Tamandua queries (`file_io` -> `describe_type` + `uses` -> targeted `writers`/`find_procedure`) to gather unused fields, runtime overrides, and exact formula line numbers upfront.
   3. Apply all updates in **one pass** (missing pages, empty stubs, formulas, subtle `#L` links, `SUMMARY.md`, and ZWSP/frontmatter cleanup) without creating separate audit artifacts unless requested; pause only to flag physically impossible Default/Range values or genuine ambiguities.
-  4. Run one UTF-8 verification check (`[System.IO.File]::ReadAllText(..., [System.Text.Encoding]::UTF8)` — never rely on PowerShell 5.1 default ANSI `Get-Content` for `\u200b`) confirming `zwsp=0`, `entity20=0`, `textUnderscore=0`, `unbalancedMath=0`, `brokenLinks=0`, `badUrls=0`, and `bareF90=0`, then check `git diff`, commit, and push to remote.
+  4. Run one UTF-8 verification check (`[System.IO.File]::ReadAllText(..., [System.Text.Encoding]::UTF8)` — never rely on PowerShell 5.1 default ANSI `Get-Content` for `\u200b`) confirming `zwsp=0`, `entity20=0`, `textUnderscore=0`, `inlineMathUnderscore=0`, `unbalancedMath=0`, `brokenLinks=0`, `badUrls=0`, and `bareF90=0`, then check `git diff`, commit, and push to remote.

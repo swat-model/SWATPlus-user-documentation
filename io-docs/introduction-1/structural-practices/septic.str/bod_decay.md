@@ -10,4 +10,4 @@ Biozone BOD decay rate coefficient ($\text{m}^3/\text{day}$), normalized by live
 
 $$k_{\text{bod}} = \min\!\left(\max\!\left(0,\; K_{\text{bod}} \cdot \frac{B \, A_{\text{hru}}}{V_{\text{bz}} \, \phi}\right),\; 4\right), \qquad \Delta \text{BOD} = \text{BOD}_i \left(1 - e^{-k_{\text{bod}}}\right)$$
 
-where $k_{\text{bod}}$ is the effective daily decay rate ($\text{day}^{-1}$), $K_{\text{bod}}$ is `bod_decay`, $B$ is live biomass (kg/ha), $A_{\text{hru}}$ is HRU area (ha), $V_{\text{bz}}$ is biozone volume ($\text{m}^3$), $\phi$ is porosity, and $\text{BOD}_i$ is initial daily BOD concentration.
+where $k_{\text{bod}}$ is the effective daily decay rate ($\text{day}^{-1}$), $K_{\text{bod}}$ is `bod_decay`, $B$ is live biomass (kg/ha), $A_{\text{hru}}$ is HRU area (ha), $V_{\text{bz}}$ is biozone volume ($\text{m}^3$), $\phi$ is porosity, and $\text{BOD}_{i}$ is initial daily BOD concentration.

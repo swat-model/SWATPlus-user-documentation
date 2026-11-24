@@ -10,4 +10,4 @@ The biozone denitrification rate coefficient, normalized by live biomass concent
 
 $$k_{\text{den}} = \max\!\left(0,\; K_{\text{den}} \cdot \frac{B \, A_{\text{hru}}}{V_{\text{bz}} \, \phi}\right), \qquad R_{\text{den}} = \text{NO}_3 \left(1 - e^{-k_{\text{den}}}\right)$$
 
-where $k_{\text{den}}$ is the effective daily denitrification rate ($\text{day}^{-1}$), $K_{\text{den}}$ is `denit`, $B$ is live biomass (kg/ha), $A_{\text{hru}}$ is HRU area (ha), $V_{\text{bz}}$ is biozone volume ($\text{m}^3$), $\phi$ is porosity, $\text{NO}_3$ is biozone nitrate N (kg/ha), and $R_{\text{den}}$ is daily denitrified N (kg/ha).
+where $k_{\text{den}}$ is the effective daily denitrification rate ($\text{day}^{-1}$), $K_{\text{den}}$ is `denit`, $B$ is live biomass (kg/ha), $A_{\text{hru}}$ is HRU area (ha), $V_{\text{bz}}$ is biozone volume ($\text{m}^3$), $\phi$ is porosity, $\text{NO}_{3}$ is biozone nitrate N (kg/ha), and $R_{\text{den}}$ is daily denitrified N (kg/ha).

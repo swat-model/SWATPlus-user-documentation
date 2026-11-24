@@ -12,4 +12,4 @@ Surface-layer `rock` reduces USLE/MUSLE erosion via the coarse-fragment factor i
 
 $$f_{\text{rock}} = \exp(-0.053 \cdot \text{rock}_1)$$
 
-Across soil layers, $(1 - \text{rock}_l / 100)$ scales fine-earth soil mass in carbon and tillage mixing routines ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L299), [`mgt_biomix.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_biomix.f90#L202)).
+Across soil layers, $(1 - \text{rock}_{l} / 100)$ scales fine-earth soil mass in carbon and tillage mixing routines ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L299), [`mgt_biomix.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_biomix.f90#L202)).
