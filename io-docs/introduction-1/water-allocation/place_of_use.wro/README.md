@@ -71,6 +71,6 @@ The file starts with a title line, the POU count, and a header line. Each POU co
 | [ann_max](por_ann_max.md) | Annual maximum inflow | real | m^3/s | 0. | — |
 | [frac](por_frac.md) | Fraction of POU outflow routed to this POR | real | fraction | 0. | 0–1 |
 
-See also [point_of_diver.wro](../point_of_diver.wro/README.md). The legacy [water_allocation.wro](../water_allocation.wro/README.md) page is historical and does not describe this layout.
+See also [point_of_diver.wro](../point_of_diver.wro/README.md).
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

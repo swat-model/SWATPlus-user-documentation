@@ -43,6 +43,6 @@ After the title line, POD count, and header line, each POD record has five fixed
 | [typ_num (POU)](pou_typ_num.md) | POD type number | integer | n/a | — | — |
 | [right (POU)](pou_right.md) | Water-right identifier | string | n/a | — | — |
 
-See also [place_of_use.wro](../place_of_use.wro/README.md). The legacy [water_allocation.wro](../water_allocation.wro/README.md) page is historical and does not describe this layout.
+See also [place_of_use.wro](../place_of_use.wro/README.md).
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

@@ -1,9 +1,0 @@
----
-description: Fraction of demand to be met by source object
----
-
-# frac
-
-{% hint style="warning" %}
-This is a historical `water_allocation.wro` field. For the reviewed main layout, see [place_of_use.wro](../place_of_use.wro/README.md) and [point_of_diver.wro](../point_of_diver.wro/README.md). The original description below is retained as historical reference.
-{% endhint %}

@@ -20,10 +20,6 @@ Opened by hardcoded filename from [`main.f90.in`](https://github.com/swat-model/
 - [water_tower.wal](water_tower.wal/README.md), [water_pipe.wal](water_pipe.wal/README.md), [water_canal.wal](water_canal.wal/README.md): conveyance and storage objects.
 - [water_hru_irr.wal](water_hru_irr.wal/README.md): irrigation HRU groups and demand decision tables.
 
-## Historical Format
-
-- [water_allocation.wro (historical)](water_allocation.wro/README.md): preserved legacy water-allocation table format; not read by SWAT+ main (`6f515368`).
-
 {% hint style="warning" %}
 Several `.wal` and `.wro` readers in `6f515368` have loop-exit, file-existence guard, or call-order quirks (documented on each file's page).
 {% endhint %}
