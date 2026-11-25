@@ -1,3 +1,7 @@
+---
+description: Properties of HRU-lte objects.
+---
+
 # hru-lte.hru
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
