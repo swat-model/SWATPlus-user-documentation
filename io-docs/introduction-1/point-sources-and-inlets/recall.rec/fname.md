@@ -1,9 +1,14 @@
 ---
-description: fname
+description: Time-series filename or EXCO database record name
 ---
 
 # fname
 
-**Code reference:** `recall(i)%filename` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L428)).
+**Code reference:** `recall(i)%filename` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L428), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L80)).
 
-For types 0-3, enter the name of the time-series data file. For type 4, this field is matched to the export-coefficient database record name.
+Character string (`character(len=25)`) identifying the data source for this recall entry:
+
+* For `type` `0`–`3`, `fname` is the filename of the organic/mineral time-series input file opened on unit `108` in [`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L89); see [`'om_filename'.rec`](../filename.rec/README.md).
+* For `type = 4`, `fname` is matched against `exco_db(iexco_om)%name` from [`exco.exc`](../exco.exc/README.md) in [`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L187).
+
+During SWIFT export, [`swift_output.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swift_output.f90#L264-L269) also writes `recall(irec)%filename` into `SWIFT/recall.swf` and creates average-annual files under `SWIFT/`.

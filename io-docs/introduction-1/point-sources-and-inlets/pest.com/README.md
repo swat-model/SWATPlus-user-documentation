@@ -2,31 +2,29 @@
 description: "This file identifies the recall data used for pesticide inputs."
 ---
 
-{% hint style="info" %}
-An Editor export of this format has not been verified. Field names and values in the table are based on the SWAT+ Fortran source. A dash means that a unit, recommended default, or range has not been established.
+{% hint style="warning" %}
+In SWAT+ main (`6f515368`), the `pest.com` reader in [`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L205-L276) is provisional/defective: line [`#L265`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L265) reads into `recall(i)%hd` (an organic/mineral record) rather than `rec_pest(i)%hd_pest`, and `rec_pest%hd_pest` has no downstream uses. For constant pesticide inputs, use [`exco_pest.exc`](../exco_pest.exc/README.md).
 {% endhint %}
 
-This file identifies the recall data used for pesticide inputs.
-
-SWAT+ looks for `pest.com` in the simulation working directory; it is not selected through `file.cio`. See the [recall_read.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L205) reader.
+This file identifies the recall data used for pesticide inputs. SWAT+ looks for `pest.com` in the simulation working directory; it is not selected through `file.cio` ([`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L205)).
 
 # pest.com
 
-The file starts with a title and column headings. The current format includes a pesticide database identifier before a block of recall definitions. Each recall definition gives its record number, name, time type, and input filename. The database-identifier arrangement remains provisional; confirm it before preparing a working input file.
+The file starts with a title and column headings ([`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L206-L208)). For each `db_mx%pestcom` entry (`#L224`), the reader reads `ipestcom_db` on its own row (`#L225`) followed by `imax` recall rows (`#L228-L232`).
 
 ## Pesticide database entry
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| [ipestcom_db](ipestcom_db.md) | Pesticide database record identifier | integer | n/a | — | — |
+| [ipestcom\_db](ipestcom_db.md) | Pesticide database record identifier; read but not used in calculations | integer | n/a | 0 | — |
 
 ## Recall entries
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
-| [name](name.md) | Record name | string | n/a | — | — |
-| [typ](typ.md) | An integer recall type specifying the periodicity of the pesticide application: 1=day, 2=month, 3=year | integer | n/a | — | — |
-| [filename](filename.md) | A 13-character name of an external file containing pesticide application data referenced by this recall record | string | n/a | — | — |
+| [name](name.md) | Record name; read but not used in calculations | string | n/a | — | — |
+| [typ](typ.md) | Recall temporal type code: `1`=day, `2`=month, `3`=year | integer | n/a | 0 | 1–3 |
+| [filename](filename.md) | Name (`character(len=13)`) of the external pesticide recall file | string | n/a | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

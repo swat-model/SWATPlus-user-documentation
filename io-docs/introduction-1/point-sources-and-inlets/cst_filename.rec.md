@@ -1,2 +1,0 @@
-# 'cst\_filename'.rec
-

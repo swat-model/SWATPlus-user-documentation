@@ -1,7 +1,9 @@
 ---
-description: Unique ID of the recall record
+description: Unique ID of the recall database record
 ---
 
 # id (recall\_db.rec)
 
-**Code reference:** `k` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recalldb_read.f90#L16)).
+**Code reference:** `k` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recalldb_read.f90#L16), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recalldb_read.f90#L46-L49)).
+
+Leading integer identifier on each row of `recall_db.rec`. During parsing, [`recalldb_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recalldb_read.f90#L46) reads this integer into `i` to select `recall_db(i)`, then backspaces and re-reads it into local variable `k` ([`recalldb_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recalldb_read.f90#L48-L49)). After selecting the array slot `i`, `k` is not used further.

@@ -1,9 +1,9 @@
 ---
-description: num
+description: Recall input record number
 ---
 
 # num
 
-**Code reference:** `k` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L28)).
+**Code reference:** `k` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L28), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L77-L80)).
 
-The integer recall input record number selects the record stored by SWAT+.
+Leading integer identifier on each row of `recall.rec`. During parsing, [`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L77) first reads this integer into the slot index `i` (between `1` and the row count `imax` from [`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L59-L63)) to select `recall(i)`, then backspaces and re-reads the leading column into local variable `k` ([`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L79-L80)). After selecting the array slot `i`, `k` is discarded.
