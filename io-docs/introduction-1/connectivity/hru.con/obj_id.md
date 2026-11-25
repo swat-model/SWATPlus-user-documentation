@@ -6,4 +6,6 @@ description: ID of the receiving object
 
 **Code reference:** `ob(i)%obtypno_out(isp)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L367)).
 
-The ID of the receiving object is a foreign key referencing the object ID ([id](id.md)) in the connect file of the receiving object.&#x20;
+The ID of the receiving object is a foreign key referencing the object ID ([id](id.md)) in the connect file of the receiving object.
+
+SWAT+ [uses this number as the row position](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hyd_connect.f90#L221-L276) of the receiver in its connect file, so [IDs](id.md) must run 1, 2, 3, ... in row order.
