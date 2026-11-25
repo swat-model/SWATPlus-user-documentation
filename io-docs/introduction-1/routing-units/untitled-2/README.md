@@ -4,4 +4,13 @@ description: This file lists all elements that are part of a Routing Unit.
 
 # rout\_unit.ele
 
-<table><thead><tr><th width="108.66664632161456">Field</th><th width="320.00006103515625">Description</th><th width="84">Type</th></tr></thead><tbody><tr><td><a href="id-rout_unit.ele.md">id</a></td><td>ID of the element</td><td>integer</td></tr><tr><td><a href="name-rout_uni.ele.md">name</a></td><td>Name of the element</td><td>string</td></tr><tr><td><a href="obj_typ.md">obj_typ</a></td><td>Object type of the element</td><td>string</td></tr><tr><td><a href="obj_id.md">obj_id</a></td><td>Object ID of the element</td><td>integer</td></tr><tr><td><a href="frac.md">frac</a></td><td>Fraction/ expansion factor of element in Routing Unit</td><td>real</td></tr><tr><td>dlr</td><td>Currently not used</td><td>real</td></tr></tbody></table>
+This file defines individual Routing Unit elements, their object references, area fractions, and delivery-ratio settings, read by [`ru_read_elements.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ru_read_elements.f90#L39-L89) (and optionally updated during HRU fraction changes in [`hru_fr_change.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_fr_change.f90#L35-L64)).
+
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [id](id-rout_unit.ele.md) | ID of the element | integer |  |  |  |
+| [name](name-rout_uni.ele.md) | Name of the element | string |  |  |  |
+| [obj\_typ](obj_typ.md) | Object type of the element | string |  |  |  |
+| [obj\_id](obj_id.md) | Object ID of the element | integer |  |  |  |
+| [frac](frac.md) | Fraction/ expansion factor of element in Routing Unit | real |  |  |  |
+| [dlr](dlr-rout_unit.ele.md) | Delivery ratio name or calculation keyword for the element | string |  |  |  |

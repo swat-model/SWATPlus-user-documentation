@@ -1,0 +1,15 @@
+---
+description: "Stored sand"
+---
+
+# san_stor
+
+**Code reference:** `wet(j)%san` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L43)).
+
+Sand retained in the storage hydrograph. The settling routine clears the size classes when bulk sediment concentration exceeds the equilibrium threshold. A low remaining water volume clears the entire storage hydrograph. [Sediment storage](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_sediment.f90#L17-L51)
+
+**Unit:** tons.
+
+See [sediment and particle sizes](README.md#sediment-and-particle-sizes) and [reporting periods](README.md#how-to-read-the-reporting-periods).
+
+[Back to the output table](README.md).

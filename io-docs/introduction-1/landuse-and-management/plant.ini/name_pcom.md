@@ -4,4 +4,6 @@ description: Plant community name
 
 # name (plant.ini)
 
-The name of the plant community is a primary key referenced by [plnt\_com](../landuse.lum/plnt_com.md) in [**landuse.lum**](../landuse.lum/). All names in the **plant.ini** file must be unique.
+**Code reference:** `pcomdb(icom)%name` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/plant_data_module.f90#L147), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/readpcom.f90#L62)).
+
+Character string (`len=40`, struct default `"frsd_frsd"`) identifying the plant community. This primary key is referenced by [plnt\_com](../landuse.lum/plnt_com.md) in [**landuse.lum**](../landuse.lum/README.md) ([`landuse_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/landuse_read.f90#L63)) and by `pcom` operations in `management.sch` ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L45)). All names in `plant.ini` must be unique.

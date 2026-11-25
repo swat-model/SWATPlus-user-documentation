@@ -4,7 +4,9 @@ description: Chemical application name
 
 # name (chem\_app.ops)
 
-The name of the chemical application is a primary key referenced when the application of fertilizers, manure, or pesticides is scheduled in [**management.sch**](../../landuse-and-management/management.sch/) or [**lum.dtl**](../../decision-tables/lum.dtl/). All names in the **chem\_app.ops** file must be unique.
+**Code reference:** `chemapp_db(ichemapp)%name` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operations_module.f90#L98), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_read_chemapp.f90#L45)).
+
+The name of the chemical application is a primary key matched when fertilizer, manure, or pesticide applications are scheduled in [**management.sch**](../../landuse-and-management/management.sch/README.md) ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L112-L145)), [**lum.dtl**](../../decision-tables/lum.dtl/README.md) ([`dtbl_lum_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/dtbl_lum_read.f90#L171-L214), [`hru_dtbl_actions_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_dtbl_actions_init.f90#L84-L85)), or manure allocation ([`manure_allocation_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/manure_allocation_read.f90#L105-L106)). All names in **chem\_app.ops** must be unique.
 
 | Name           | Description |
 | -------------- | ----------- |

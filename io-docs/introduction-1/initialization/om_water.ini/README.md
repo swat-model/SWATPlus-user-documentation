@@ -1,23 +1,32 @@
+---
+description: >-
+  This file defines initial water volume fractions, sediment concentrations,
+  organic and mineral nutrient concentrations, and temperature for channels,
+  reservoirs, and wetlands.
+---
+
 # om\_water.ini
 
-| Field                  | Description                                |  Type  |     Unit    | Default | Range |
-| ---------------------- | ------------------------------------------ | :----: | :---------: | :-----: | :---: |
-| [name](name.md)        | Name of water and nutrient initialization  | string |     n/a     |   n/a   |  n/a  |
-| [vol](vol.md)          | Volume of water                            |  real  |     m^3     |    0    |       |
-| [sed](sed.md)          | Sediment                                   |  real  | metric tons |    0    |       |
-| [part\_n](part_n.md)   | Organic N                                  |  real  |     kg N    |    0    |       |
-| [part\_p](part_p.md)   | Organic P                                  |  real  |     kg P    |    0    |       |
-| [no3](no3.md)          | NO3-N                                      |  real  |     kg N    |    0    |       |
-| [solp](solp.md)        | Mineral (soluble P)                        |  real  |     kg P    |    0    |       |
-| [chl\_a](chl_a.md)     | Chlorophyll-a                              |  real  |      kg     |    0    |       |
-| [nh3](nh3.md)          | NH3                                        |  real  |     kg N    |    0    |       |
-| [no2](no2.md)          | NO2                                        |  real  |     kg N    |    0    |       |
-| [cbn\_bod](cbn_bod.md) | Carbonaceous biological oxygen demand      |  real  |      kg     |    0    |       |
-| [dis\_ox](dis_ox.md)   | Dissolved oxygen                           |  real  |      kg     |    0    |       |
-| [sand](sand.md)        | Detached sand                              |  real  |     tons    |    0    |       |
-| [silt](silt.md)        | Detached silt                              |  real  |     tons    |    0    |       |
-| [clay](clay.md)        | Detached clay                              |  real  |     tons    |    0    |       |
-| [sm\_ag](sm_ag.md)     | Detached small aggregates                  |  real  |     tons    |    0    |       |
-| [l\_ag](l_ag.md)       | Detached large aggregates                  |  real  |     tons    |    0    |       |
-| [gvl](gvl.md)          | Gravel                                     |  real  |     tons    |    0    |       |
-| [tmp](tmp.md)          | Temperature                                |  real  |    deg C    |    0    |       |
+[`om_water_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/om_water_init.f90#L29-L57) reads `om_water.ini` (listed on the `init` row of [**file.cio**](../../master-file-file.cio.md)). Records are referenced by `org_min` in [**initial.cha**](../../channels/initial.cha/) and [**initial.res**](../../reservoirs/initial.res/) (for both reservoirs and wetlands). After setting the initial water volume from `vol`, SWAT+ converts each input concentration (`ppm` = `mg/L` = `g/m^3`) into stored mass via [`res_convert_mass`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L1282-L1303) for reservoirs/wetlands and [`hyd_convert_conc_to_mass`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L1233-L1255) for SWAT-DEG channels.
+
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [name](name.md) | Name of water and nutrient initialization | string | n/a | n/a | n/a |
+| [vol](vol.md) | Volume of water | real | fraction | 0 |  |
+| [sed](sed.md) | Sediment | real | ppm | 0 |  |
+| [part\_n](part_n.md) | Organic N | real | ppm | 0 |  |
+| [part\_p](part_p.md) | Organic P | real | ppm | 0 |  |
+| [no3](no3.md) | NO3-N | real | ppm | 0 |  |
+| [solp](solp.md) | Mineral (soluble P) | real | ppm | 0 |  |
+| [chl\_a](chl_a.md) | Chlorophyll-a | real | ppm | 0 |  |
+| [nh3](nh3.md) | NH3 | real | ppm | 0 |  |
+| [no2](no2.md) | NO2 | real | ppm | 0 |  |
+| [cbn\_bod](cbn_bod.md) | Carbonaceous biological oxygen demand | real | ppm | 0 |  |
+| [dis\_ox](dis_ox.md) | Dissolved oxygen | real | ppm | 0 |  |
+| [san](sand.md) | Detached sand | real | ppm | 0 |  |
+| [sil](silt.md) | Detached silt | real | ppm | 0 |  |
+| [cla](clay.md) | Detached clay | real | ppm | 0 |  |
+| [sag](sm_ag.md) | Detached small aggregates | real | ppm | 0 |  |
+| [lag](l_ag.md) | Detached large aggregates | real | ppm | 0 |  |
+| [grv](gvl.md) | Gravel | real | ppm | 0 |  |
+| [tmp](tmp.md) | Temperature | real | deg C | 0 |  |

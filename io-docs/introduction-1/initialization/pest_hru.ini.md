@@ -1,2 +1,0 @@
-# pest\_hru.ini
-

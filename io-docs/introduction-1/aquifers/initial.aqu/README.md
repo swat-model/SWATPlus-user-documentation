@@ -1,9 +1,16 @@
 ---
-description: >-
-  This file contains pointers referencing several files that specify the initial
-  aquifer properties.
+description: This legacy file is read by SWAT+ main (6f515368), but its fields are not used after reading. Active aquifer pesticide, pathogen, and salt initialization pointers are read from initial.aqu_cs instead.
 ---
 
 # initial.aqu
 
-<table><thead><tr><th width="111.33331298828125">Field</th><th width="295.666748046875">Description</th><th width="100.32305908203125">Type</th></tr></thead><tbody><tr><td><a href="name.md">name</a></td><td>Name of the aquifer initialization record</td><td>string</td></tr><tr><td><a href="org_min.md">org_min</a></td><td>Pointer to the organic and mineral initialization file </td><td>string</td></tr><tr><td><a href="pest.md">pest</a></td><td>Pointer to the pesticide initialization file</td><td>string</td></tr><tr><td>path</td><td>Currently not used</td><td>string</td></tr><tr><td>hmet</td><td>Currently not used</td><td>string</td></tr><tr><td><a href="salt.md">salt</a></td><td>Pointer to the salt initialization file</td><td>string</td></tr></tbody></table>
+[`aqu_read_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_read_init.f90#L32-L58) reads this file during aquifer setup, but no simulation routine reads any of its fields afterward. The [init](../aquifer.aqu/aqu_ini.md) pointer in **aquifer.aqu** is matched against [initial.aqu\_cs](../../initialization/initial.aqu_cs/), not this file.
+
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [name](name.md) | Name of the legacy aquifer initialization record (read but not used in main 6f515368) | string |  |  |  |
+| [org_min](org_min.md) | Intended organic-mineral water initialization pointer (read but not used in main 6f515368) | string |  |  |  |
+| [pest](pest.md) | Intended pesticide-water initialization pointer (read but not used in main 6f515368) | string |  |  |  |
+| [path](path.md) | Intended pathogen initialization pointer (read but not used in main 6f515368) | string |  |  |  |
+| [hmet](hmet.md) | Intended heavy metal initialization pointer (read but not used in main 6f515368) | string |  |  |  |
+| [salt](salt.md) | Intended salt initialization pointer (read but not used in main 6f515368) | string |  |  |  |

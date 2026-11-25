@@ -1,9 +1,15 @@
 ---
-description: Surface runoff lag coefficient
+description: Surface runoff lag time
 ---
 
 # surq\_lag
 
-In large routing units with a time of concentration greater than 1 day, only a portion of the surface runoff will reach the main channel on the day it is generated. SWAT+ incorporates a surface runoff storage feature to lag a portion of the surface runoff release to the main channel.&#x20;
+**Code reference:** `bsn_prm%surlag` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L82), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_read_prm.f90#L24)).
 
-This parameter controls the fraction of the total available water that will be allowed to enter the reach on any one day. For a given time of concentration, as _surq\_lag_ decreases in value more water is held in storage. The delay in release of surface runoff will smooth the streamflow hydrograph simulated in the reach.
+In large routing units with a time of concentration greater than 1 day, only a portion of the surface runoff reaches the main channel on the day it is generated (`days`, default `4`, range `1–24`; values `< 1.e-6` are reset to `4.0` in [`basin_prm_default.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_prm_default.f90#L11)).
+
+In [`time_conc_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/time_conc_init.f90#L71-L74), `surq_lag` controls the fraction of stored surface runoff released each day ($f_{\text{rel}}$, with sub-daily simulations dividing $t_c$ by $\Delta t_{\min}/60$):
+
+$$f_{\text{rel}} = 1 - \exp\!\left(-\frac{\text{surlag}}{t_c}\right)$$
+
+where $f_{\text{rel}}$ is the daily released fraction of stored surface runoff (dimensionless), $\text{surlag}$ is `surq_lag` (`days`), and $t_c$ is the time of concentration (`hours`). For a given $t_c$, smaller *surq\_lag* values retain more water in surface storage and smooth the streamflow hydrograph.

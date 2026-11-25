@@ -1,0 +1,13 @@
+---
+description: "Leaf area index maximum field, left at zero"
+---
+
+# lai_max
+
+**Code reference:** `bpw_d%lai_max` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L217)).
+
+The `lai_max` field starts at zero and stays at zero in all four plant and weather outputs in SWAT+ main `6f515368`. The accumulation operators carry the field forward, and the daily producers leave it at its default. [Record declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/output_landscape_module.f90#L217), [HRU daily assignments](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L848-L874), [HRU-LTE daily assignments](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L403-L424).
+
+**Unit:** m2/m2.
+
+[Back to the plant and weather schema](plant-weather-output.md).

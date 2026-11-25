@@ -4,7 +4,9 @@ description: Name of the conservation practice
 
 # name (cons\_practice.lum)
 
-The name of the conservation practice is a primary key referenced by [cons\_prac](../landuse.lum/cons_prac.md) in [**landuse.lum**](../landuse.lum/). All names in the **cons\_practice.lum** file must be unique.
+**Code reference:** `cons_prac(icp)%name` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/landuse_data_module.f90#L51), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cons_prac_read.f90#L45)).
+
+Character string (`len=40`, default `""`) identifying the conservation practice. This primary key is referenced by [cons\_prac](../landuse.lum/cons_prac.md) in [**landuse.lum**](../landuse.lum/README.md) ([`landuse_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/landuse_read.f90#L90)). All names in `cons_practice.lum` must be unique.
 
 | Name                 | Description                                     |
 | -------------------- | ----------------------------------------------- |
@@ -13,13 +15,13 @@ The name of the conservation practice is a primary key referenced by [cons\_prac
 | contour\_farming     | Contour tillage                                 |
 | strip\_cros\_slope   | Strip cropping with cross-slope tillage         |
 | strip\_contour       | Strip cropping with contour tillage             |
-| contour\_1-2         | Contour  tillage on 1-2% slopes                 |
-| contour\_3-5         | Contour  tillage on 3-5% slopes                 |
-| contour\_6-8         | Contour  tillage on 6-8% slopes                 |
-| contour\_9-12        | Contour  tillage on 9-12% slopes                |
-| contour\_13-16       | Contour  tillage on 13-16% slopes               |
-| contour\_17-20       | Contour  tillage on 17-20% slopes               |
-| contour\_21-25       | Contour  tillage on 21-25% slopes               |
+| contour\_1-2         | Contour tillage on 1-2% slopes                  |
+| contour\_3-5         | Contour tillage on 3-5% slopes                  |
+| contour\_6-8         | Contour tillage on 6-8% slopes                  |
+| contour\_9-12        | Contour tillage on 9-12% slopes                 |
+| contour\_13-16       | Contour tillage on 13-16% slopes                |
+| contour\_17-20       | Contour tillage on 17-20% slopes                |
+| contour\_21-25       | Contour tillage on 21-25% slopes                |
 | strip\_1-2\_past     | Strip cropping on 1-2% slopes with pasture      |
 | strip\_1-2\_row      | Strip cropping on 1-2% slopes with row crops    |
 | strip\_3-5\_past     | Strip cropping on 3-5% slopes with pasture      |

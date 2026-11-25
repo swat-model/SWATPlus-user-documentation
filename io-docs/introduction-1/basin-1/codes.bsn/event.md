@@ -1,0 +1,14 @@
+---
+description: Switch for the optional last column of plants.plt and soil_plant.ini
+---
+
+# event
+
+**Code reference:** `bsn_cc%nam1` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L24), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_read_cc.f90#L24)).
+
+Controls whether optional trailing columns are read from [**plants.plt**](../../databases/plants.plt/) ([`plant_parm_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/plant_parm_read.f90#L54-L58)) and [**soil\_plant.ini**](../../initialization/soil_plant.ini/) ([`soil_plant_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/soil_plant_init.f90#L46-L53)). Despite its legacy `event` column name, this flag does not control sub-daily event routing in SWAT+ main (`6f515368`).
+
+| Value | Effect |
+| ----- | ------ |
+| 0 (default) | The last column of **plants.plt** (description) is ignored, and **soil\_plant.ini** is read without a `cs` column |
+| any other value | The last column of **plants.plt** is read as the plant class (`pl_class`), and **soil\_plant.ini** is read with a `cs` column |

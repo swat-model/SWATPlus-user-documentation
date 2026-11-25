@@ -4,6 +4,6 @@ description: Object ID
 
 # obj\_num
 
-If _obj\_num_ = 0, the condition will be checked for the current object of the type specified by [obj](obj.md). If _obj\_num_ > 0, the condition will be checked for the object with the specified ID (in the object's [connect](../../connectivity/hru.con/) file) only.&#x20;
+**Code reference:** `dtbl_lum(i)%cond(ic)%ob_num` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditional_module.f90#L10)).
 
-Exception: prob\_unif where obj\_num is the first day of the period.&#x20;
+Index of the object the condition reads, in the array chosen by the [condition variable](var.md): HRU, reservoir, aquifer, channel, and so on. 0 means the current object that the table is being evaluated for. A few conditions, such as `month`, `jday`, and `year_cal`, do not use it. [`conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditions.f90#L66-L70) · [`conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditions.f90#L744-L747) For `prob_unif` and `prob_unif_lu` it is the first day of the window, and for `prob_unif1` the calendar year. [`conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditions.f90#L486-L496) · [`conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditions.f90#L558-L565)

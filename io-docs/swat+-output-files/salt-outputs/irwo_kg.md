@@ -1,0 +1,15 @@
+---
+description: "Salt assigned to outside-source irrigation in the HRU diagnostics"
+---
+
+# irwo_kg
+
+**Code reference:** `salt_basin(12)` ([calculation](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_balance.f90#L162-L169)).
+
+Salt assigned to outside-source irrigation in the HRU diagnostics. The field is zero on the inspected revision because it has no active producer. [HRU salt diagnostics](../hru-salt/README.md)
+
+**Unit:** kg for daily, monthly, and yearly output. The average-annual value is kg/yr.
+
+See [reporting periods](basin-salt-balance.md#reporting-periods) for aggregation.
+
+[Back to schema](basin-salt-balance.md).

@@ -1,8 +1,20 @@
 ---
-description: This file lists all recall records used in a simulation.
+description: Master list of recall inputs
 ---
 
-# recall\_db.rec
+# recall.rec
 
-<table><thead><tr><th width="145.3333740234375">Field</th><th width="250">Description</th><th width="109.3333740234375">Type</th></tr></thead><tbody><tr><td><a href="id-recall_db.rec.md">id</a></td><td>ID of the recall record</td><td>integer</td></tr><tr><td><a href="name-recall_db.rec.md">name</a></td><td>Name of the recall record</td><td>string</td></tr><tr><td><a href="om_name.md">om_name</a></td><td>Name of the organic and mineral data file</td><td>string</td></tr><tr><td><a href="om_unit.md">om_unit</a></td><td>Unit of the organic and mineral data</td><td>string</td></tr><tr><td><a href="om_tstep.md">om_tstep</a></td><td>Time step of the organic and mineral data</td><td>string</td></tr><tr><td>pest_name</td><td></td><td></td></tr><tr><td>pest_unit</td><td></td><td></td></tr><tr><td>pest_tstep</td><td></td><td></td></tr><tr><td>path_name</td><td></td><td></td></tr><tr><td>path_unit</td><td></td><td></td></tr><tr><td>path_tstep</td><td></td><td></td></tr><tr><td>hmet_name</td><td></td><td></td></tr><tr><td>hmet_unit</td><td></td><td></td></tr><tr><td>hmet_tstep</td><td></td><td></td></tr><tr><td>salt_name</td><td></td><td></td></tr><tr><td>salt_unit</td><td></td><td></td></tr><tr><td>salt_tstep</td><td></td><td></td></tr><tr><td>cst_name</td><td></td><td></td></tr><tr><td>cst_unit</td><td></td><td></td></tr><tr><td>cst_tstep</td><td></td><td></td></tr></tbody></table>
+This file lists the organic/mineral recall inputs used in a simulation. SWAT+ selects this file from `file.cio` (`in_rec%recall_rec`, default `"recall.rec"`) and reads it with [`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L50-L198). The first two lines contain a title and column headings; each following data row is read list-directed as `k`, `name`, `typ`, and `filename` ([`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L80)).
 
+Recall records are linked to spatial objects through `recall.con` (see [`'object'.con`](../../connectivity/hru.con/README.md)) and routed during simulation by [`command.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/command.f90#L320-L356). Recall hydrographs are also referenced by reservoir decision-table releases ([`res_hydro.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_hydro.f90#L232-L238)) and water-allocation routines ([`wallo_start_day.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_start_day.f90#L74-L82), [`wallo_treatment.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_treatment.f90#L46-L54), and [`wallo_use.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_use.f90#L42-L50)).
+
+{% hint style="warning" %}
+For `type = 4`, [`recall_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/recall_read.f90#L182-L191) matches `fname` against `exco_db(iexco_om)%name` and copies `exco(iexco_om)` into `recall(i)%hd(1,1)` (indexing `exco` directly by the loop counter `iexco_om`). However, [`command.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/command.f90#L320-L347) only handles `type` values `0`–`3` (there is no `case (4)` branch for `recall` objects), whereas water-allocation routines fall through to `exco(iom)`.
+{% endhint %}
+
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [num](num.md) | Recall input record number | integer | n/a | — | — |
+| [name](name.md) | User label for the recall input; read but not used in SWAT+ main (`6f515368`) | string | n/a | — | — |
+| [type](type.md) | Recall type: `0`=subdaily, `1`=daily, `2`=monthly, `3`=yearly, `4`=EXCO/average-annual constant | integer | n/a | 0 | 0–4 |
+| [fname](fname.md) | Time-series filename for types `0`–`3`; EXCO database record name for type `4` | string | n/a | — | — |

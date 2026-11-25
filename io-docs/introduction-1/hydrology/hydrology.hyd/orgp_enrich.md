@@ -4,10 +4,17 @@ description: Phosphorus enrichment ratio for loading with sediment
 
 # orgp\_enrich
 
-The phosphorus enrichment ratio is defined as the ratio of the concentration of phosphorus transported with the sediment to the concentration in the soil surface layer.
+**Code reference:** `hyd_db(ithyd)%erorgp` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrology_data_module.f90#L15)).
 
-As surface runoff flows over the soil surface, part of the water’s energy is used to pick up and transport soil particles. The smaller particles weigh less and are more easily transported than coarser particles. Therefore, the sediment load transported to the main channel has a greater proportion of clay sized particles than the soil surface layer. In other words, the sediment load is enriched in clay particles. Phosphorus in the soil is attached primarily to colloidal (clay) particles, so the sediment load will also contain a greater proportion or concentration of phosphorus than that found in the soil surface layer.
+Dimensionless enrichment ratio for sediment-attached phosphorus, including organic and mineral forms. SWAT+ uses the input when it exceeds 0.001 and uses the calculated enrichment ratio otherwise. [`nut_psed.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/nut_psed.f90#L63-L79) calculates:
 
-{% hint style="info" %}
-SWAT+ will calculate an enrichment ratio for each storm event or allow the user to define an enrichment ratio for phosphorus that is used for all storms during the simulation. To calculate the enrichment ratio, the value for _orgp\_enrich_ is set to 0. This is the default option.
-{% endhint %}
+$$P_{\mathrm{sed}} = \frac{1000 \, P_1 R Y}{M_1 A}$$
+
+where:
+
+- $P_{\mathrm{sed}}$ is the sediment-attached phosphorus yield (kg P/ha),
+- $P_1$ is the surface soil sediment-attached P pool per hectare (kg P/ha),
+- $R$ is the selected enrichment ratio (`orgp_enrich` when above 0.001, dimensionless),
+- $Y$ is sediment yield (tonnes),
+- $M_1$ is surface-layer soil mass per hectare, and
+- $A$ is HRU area (ha).

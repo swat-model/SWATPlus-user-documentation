@@ -4,6 +4,8 @@ description: Hydrologic soil group of the soil
 
 # hyd\_grp
 
+**Code reference:** `soildb(isol)%s%hydgrp` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/soil_data_module.f90#L66)).
+
 The U.S. Natural Resource Conservation Service (NRCS) classifies soils into four hydrologic groups based on infiltration characteristics of the soils. NRCS Soil Survey Staff (1996) defines a hydrologic group as a group of soils having similar runoff potential under similar storm and cover conditions. Soil properties that influence runoff potential are those that impact the minimum rate of infiltration for a bare soil after prolonged wetting and when not frozen. These properties are depth to seasonally-high water table, saturated hydraulic conductivity, and depth to a very slowly permeable layer. The definitions for the different classes are:
 
 A.  Soils having high infiltration rates even when thoroughly wetted, consisting chiefly of sands or gravel that are deep and well to excessively drained. These soils have a high rate of water transmission and a low runoff potential.
@@ -14,7 +16,7 @@ C.  Soils having slow infiltration rates when thoroughly wetted, chiefly with a 
 
 D.  Soils having very slow infiltration rates when thoroughly wetted, chiefly clay soils with a high swelling potential; soils with a high permanent water table; soils with a clay pan or clay layer at or near the surface; and shallow soils over nearly impervious materials. These soils have a very slow rate of water transmission and a very high runoff potential.
 
-| Criteria\*                                                                                       | A        | B          | C        |             |
+| Criteria\*                                                                                       | A        | B          | C        | D           |
 | ------------------------------------------------------------------------------------------------ | -------- | ---------- | -------- | ----------- |
 | Final constant infiltration rate \[mm/hr]                                                        | 7.6-11.4 | 3.8-7.6    | 1.3-3.8  | 0-1.3       |
 | Mean permeability of surface layer \[mm/hr]                                                      | > 254.0  | 84.0-254.0 | 8.4-84.0 | < 8.4       |
@@ -32,3 +34,5 @@ D.  Soils having very slow infiltration rates when thoroughly wetted, chiefly cl
 **Low**: All soils with sand, loamy sand, sandy loam, loam or silt loam horizons that are at least 50 cm thick from the surface without a clay horizon within 100 cm of the surface. \
 **Medium**: All soils with clay loam horizons within 50 cm of the surface or soils with clay horizons from 50 to 100 cm beneath the surface. \
 **High**: All soils with clay horizons within 50 cm of the surface. Lower the shrink-swell potential one class when kaolinite clay is dominant.
+
+In SWAT+ (valid values `A`, `B`, `C`, `D`; Fortran struct default `"A"`), `hyd_grp` selects the base curve number from `cntable.lum` in [`cn2_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cn2_init.f90#L22-L31), provides fallback saturated hydraulic conductivity (`A = 50`, `B = 20`, `C = 5`, `D = 2`, otherwise `10` mm/hr) when [`soil_k`](soil_k.md) is nonpositive in [`soil_phys_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/soil_phys_init.f90#L57-L72), and can be tested in calibration ([`cal_conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cal_conditions.f90#L69)) and decision-table conditions ([`conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditions.f90#L410)).

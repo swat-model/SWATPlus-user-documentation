@@ -1,0 +1,19 @@
+---
+description: "Water-volume change/removal"
+---
+
+# flo
+
+**Code references:** `wal_use_omd(iuse)%flo` and `wal_tr_omd(itrt)%flo`, the daily use and treatment record components ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L32); [use writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_use_output.f90#L19); [treatment writer](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_treat_output.f90#L19)).
+
+**Unit:** m3. The printed units row says `m^3/s` and a header comment says ha-m; the stored component and volume/mass calculations use m3, with no rate conversion in these writers.
+
+Water-volume change/removal. For water use, the diagnostic is outflow minus stored inflow: positive means net addition and negative means net removal. For treatment, the diagnostic adds allocated stored inflow minus treated outflow across receiving points. These are process change/removal diagnostics, not the entire routed effluent. Monthly/yearly values sum the daily diagnostic volumes or masses; average annual divides the accumulated yearly values by `time%yrs_prt`.
+
+**Position warning:** The printed heading is at position 7, but only daily TXT includes all six prefix values. In all CSV rows and monthly/yearly/AA TXT, the omitted `jday` moves this component to position 6. At printed position 7, those 23-value rows actually contain `hyd_output%sed`. Daily treatment TXT also reverses name and identifier, while its numeric tail retains the daily TXT positions.
+
+The use producer assigns its daily record; the treatment producer resets its daily record on entry. Repeated calls for the same object do not guarantee a sum across all calls. The output writers then accumulate and clear the resulting daily record.
+
+See the [water-use](water-use.md) and [water-treatment](water-treatment.md) row variants, CSV routing defects, and diagnostic limits. **Producer references:** [use difference](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_use.f90#L68); [treatment removal](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_treatment.f90#L79); [subtraction](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L1363), [addition](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L1334), [division](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L1462).
+
+[Back to the water-use schema](water-use.md) · [Back to the water-treatment schema](water-treatment.md).

@@ -1,0 +1,15 @@
+---
+description: "Gravel outflow slot, left at zero by the wetland controller"
+---
+
+# grv_out
+
+**Code reference:** `wet_out_d(j)%grv` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L48)).
+
+The wetland controller initializes the gravel outflow slot to zero and leaves it at zero through settling and flushing. Bulk sediment export is available separately in [sed_out](sed_out.md). [Outflow initialization](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_control.f90#L59-L64), [Bulk sediment calculations](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_sediment.f90#L17-L52)
+
+**Unit:** tons.
+
+See [sediment and particle sizes](README.md#sediment-and-particle-sizes) and [reporting periods](README.md#how-to-read-the-reporting-periods).
+
+[Back to the output table](README.md).

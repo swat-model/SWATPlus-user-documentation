@@ -1,9 +1,11 @@
 ---
-description: Organic carbon in aquifer
+description: Organic carbon in aquifer (printed but not used in routing or constituent calculations)
 ---
 
 # carbon
 
-The carbon content in the aquifer is used to compute a pesticide's Kd value, or distribution coefficient, which is a measure of how tightly a pesticide binds to soil particles. Kd values are important for understanding how pesticides move through the environment.
+**Code reference:** `aqudb(i)%cbn` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aquifer_module.f90#L13)).
 
-A higher carbon value increases the pesticide partition coefficient Kd, which increases retardation/sorption behavior and generally reduces pesticide movement with aquifer flow and seepage.
+Organic carbon content of the aquifer (%). SWAT+ copies this value into `aqu_d%cbn` in [`aqu_initial.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_initial.f90#L176) and writes it to [aquifer output](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aquifer_output.f90#L22). Calibration can also change it. No aquifer water, nutrient, or pesticide calculation reads it.
+
+*(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations).*

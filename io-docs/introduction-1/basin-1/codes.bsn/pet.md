@@ -4,10 +4,13 @@ description: Potential evapotranspiration (PET) method
 
 # pet
 
-Numerous methods exist to calculate potential evapotranspiration. Three of the most widely-used ones are included in SWAT+, the Priestley-Taylor, Penman/Monteith, and Hargreaves equations. The codes for the three methods are listed in the table below. If a method other than Priestley-Taylor, Penman/Monteith, or Hargreaves is recommended for the area, in which the watershed is located, the user can calculate daily PET values with the recommended method and import them into SWAT+ (using [pet](../../climate/weather-sta.cli/pet.md) in [**weather-sta.cli**](../../climate/weather-sta.cli/)).&#x20;
+**Code reference:** `bsn_cc%pet` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L20), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_read_cc.f90#L24)).
 
-| Code | Option                  |
-| ---- | ----------------------- |
-| 0    | Priestley-Taylor method |
-| 1    | Penman/Monteith method  |
-| 2    | Hargreaves method       |
+Selects the method used to obtain daily potential evapotranspiration in [`et_pot.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/et_pot.f90#L115-L278) (struct default `0`). When `pet = 3`, [`basin_read_cc.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_read_cc.f90#L30-L40) opens `pet.cli` and SWAT+ uses imported daily PET values linked through [pet](../../climate/weather-sta.cli/pet.md) in [**weather-sta.cli**](../../climate/weather-sta.cli/) and [**pet.cli**](../../climate/pet.cli/).
+
+| Code | Option |
+| ---- | ------ |
+| 0 | Priestley-Taylor method |
+| 1 | Penman-Monteith method |
+| 2 | Hargreaves method |
+| 3 | Read daily PET values from **pet.cli** |

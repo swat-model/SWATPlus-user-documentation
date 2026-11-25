@@ -4,3 +4,6 @@ description: Land surface slope
 
 # slp
 
+**Code reference:** `hlt_db(i)%slope` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_module.f90#L18)).
+
+Average land surface slope in m/m. It drives lateral soil flow ([`hru_lte_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L297-L302)) and the calculated USLE [LS factor](usle_ls.md) ([`hru_lte_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_read.f90#L237-L242)).

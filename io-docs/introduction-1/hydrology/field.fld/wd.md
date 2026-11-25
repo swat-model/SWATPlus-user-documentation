@@ -1,7 +1,20 @@
 ---
-description: Width of the field
+description: Representative field width
 ---
 
 # wd
 
-The width of the field is used to compute the sediment transport capacity of surface runoff across an HRU.&#x20;
+**Code reference:** `field_db(ith)%wid` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/topography_data_module.f90#L18)).
+
+Representative field width $W$ in meters. The built-in field record uses 100 m. Where incoming surface runoff is routed across an HRU, [`rls_routesurf.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/rls_routesurf.f90#L56-L66) uses the width in the sediment transport capacity equation.
+
+$$T = D\,C\,Q\,S^{1.4}W^{1.4}$$
+
+where:
+
+- $T$ is the sediment transport capacity,
+- $D$ is the [deposition coefficient](../topography.hyd/depos.md) (dimensionless),
+- $C$ is the USLE cover factor (dimensionless),
+- $Q$ is the surface runon term used in the calculation,
+- $S$ is slope steepness (m/m), and
+- $W$ is `wd` (m).

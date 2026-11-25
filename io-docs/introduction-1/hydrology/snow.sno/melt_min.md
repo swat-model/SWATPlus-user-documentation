@@ -1,13 +1,15 @@
 ---
-description: Melt factor for snow on December 21
+description: Snowmelt factor near December 21
 ---
 
 # melt\_min
 
-The variables [melt\_max](melt_max.md) and _melt\_min_ allow the rate of snow melt to vary through the year and account for the impact of snowpack density on snow melt.&#x20;
+**Code reference:** `snodb(isno)%meltmn` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_module.f90#L77)).
 
-If the watershed is in the Northern Hemisphere, _melt\_min_ will be the maximum melt factor. If the watershed is in the Southern Hemisphere, _melt\_min_ will be the minimum melt factor.&#x20;
+Seasonal melt coefficient $b_D$ near December 21. The built-in snow record uses 0.5 mm water equivalent per day per °C. Use with [melt_max](melt_max.md).
 
-{% hint style="info" %}
-In rural areas, the melt factor will vary from 1.4 to 6.9 mm H2O/day-°C (Huber and Dickinson, 1988). In urban areas, values will fall in the higher end of the range due to compression of the snowpack by vehicles, pedestrians, etc. Urban snow melt studies in Sweden (Bengston, 1981; Westerstrom, 1981) reported melt factors ranging from 3.0 to 8.0 mm H2O/day-°C. Studies of snow melt on asphalt (Westerstrom, 1984) gave melt factors of 1.7 to 6.5 mm H2O/day-°C.
-{% endhint %}
+The seasonal factor in [`sq_snom.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sq_snom.f90#L63-L67) is:
+
+$$b(d) = \frac{b_J + b_D}{2} + \sin\left(\frac{d - 81}{58.09}\right) \frac{b_J - b_D}{2}$$
+
+where $b(d)$ is the seasonal melt factor (mm water equivalent per day per °C), $b_J$ is [melt\_max](melt_max.md) (mm water equivalent per day per °C), $b_D$ is `melt_min` (mm water equivalent per day per °C), and $d$ is day of year. The equation uses the same calendar phase in both hemispheres.

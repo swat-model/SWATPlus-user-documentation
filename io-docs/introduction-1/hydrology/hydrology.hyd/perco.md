@@ -4,8 +4,12 @@ description: Percolation coefficient
 
 # perco
 
-The percolation coefficient is input to limit percolation from the bottom soil layer due to an impermeable layer or high water table. Since percolation can be a slow process, that can occur over days or weeks, the percolation coefficient is non-linear and difficult to parameterize and calibrate.&#x20;
+**Code reference:** `hyd_db(ithyd)%perco` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrology_data_module.f90#L21)).
 
-{% hint style="info" %}
-A _perco_ value of 0.0 does not allow any percolation from the soil and a value of 1.0 does not restrict percolation from the bottom soil layer.
-{% endhint %}
+Dimensionless input $p$ that controls the multiplier for seepage from the bottom soil layer. For HRUs with a tile drain, [`topohyd_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/topohyd_init.f90#L54-L66) sets $p$ to `0.1` before converting it. For $p > 10^{-9}$, the initialization uses:
+
+$$F = \min\left(1, \; \exp\left[-1.0052 \ln\left(-\ln(p - 10^{-6})\right) - 5.6862\right]\right)$$
+
+where $F$ is the bottom-layer seepage multiplier (dimensionless) and $p$ is `perco` (dimensionless).
+
+For smaller inputs it sets $F$ to `0`. The nested logarithms have a domain problem when $10^{-9} < p \leq 10^{-6}$, flagged as a suspected model issue. [`swr_percmicro.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swr_percmicro.f90#L104-L107) multiplies bottom-layer seepage by $F$.

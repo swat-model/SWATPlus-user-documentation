@@ -6,8 +6,16 @@ description: >-
 
 # bf\_max
 
-This parameter determines the daily groundwater flow amount needed for all channels linked to an aquifer to receive groundwater flow. If groundwater flow < _flo\_max_, the channels with the smallest drainage areas will stop receiving groundwater flow. The amount of groundwater flow a channel receives depends on the channel length.
+**Code reference:** `aqudb(i)%bf_max` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aquifer_module.f90#L15)).
+
+Daily groundwater flow (mm) needed for every channel linked to an aquifer to receive groundwater flow. [`aqu_1d_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_1d_control.f90#L279-L285) calculates the contributing channel length as follows:
+
+$$
+L_{\text{contrib}} = L_{\text{tot}} \times \frac{Q_{gw}}{\text{bf}_{\max}}
+$$
+
+where $L_{\text{tot}}$ is the total length of linked channels and $Q_{gw}$ is the day's groundwater flow (mm). Channels are tested in the order listed in **aqu\_cha.lin**. A channel receives groundwater only while its cumulative length is within $L_{\text{contrib}}$. When $Q_{gw}$ < _bf\_max_, channels further down the list stop receiving groundwater flow. Each contributing channel receives a share based on its length.
 
 {% hint style="info" %}
-This parameter is only active when the file [**aqu\_cha.lin**](../../connectivity/aqu_cha.lin.md) is used instead of [**aquifer.con**](../../connectivity/hru.con/) to connect aquifers to channels.&#x20;
+This parameter is only active when [**aqu\_cha.lin**](../../connectivity/aqu_cha.lin.md) is used instead of [**aquifer.con**](../../connectivity/hru.con/) to connect aquifers to channels. In that case _bf\_max_ must be greater than 0, because it is used as a divisor.
 {% endhint %}

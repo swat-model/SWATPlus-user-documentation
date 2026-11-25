@@ -4,10 +4,12 @@ description: This file controls the simulation time period and time step.
 
 # time.sim
 
-| Field                      | Description                      | Type    |
-| -------------------------- | -------------------------------- | ------- |
-| [day\_start](day_start.md) | Beginning day of the simulation  | integer |
-| [yrc\_start](yrc_start.md) | Beginning year of the simulation | integer |
-| [day\_end](day_end.md)     | Ending day of the simulation     | integer |
-| [yrc\_end](yrc_end.md)     | Ending year of the simulation    | integer |
-| [step](step.md)            | Time step of the simulation      | integer |
+This file is read by [`time_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/time_read.f90#L28).
+
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [day\_start](day_start.md) | Beginning day of the simulation | integer | day |  |  |
+| [yrc\_start](yrc_start.md) | Beginning year of the simulation | integer | year |  |  |
+| [day\_end](day_end.md) | Ending day of the simulation | integer | day |  |  |
+| [yrc\_end](yrc_end.md) | Ending year of the simulation | integer | year |  |  |
+| [step](step.md) | Time step of the simulation | integer | steps/day |  |  |

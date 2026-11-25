@@ -1,46 +1,39 @@
 # act\_typ
 
-The actions that can be triggered using the lum.dtl file are defined in the SWAT+ code. For each action, the type and ID of the object it is applied to, and a user-defined name have to be specified. Certain actions require additional information, which has to be specified in the fields option, const, const2, and fp. The use of these four fields depends on the action. The table below lists the actions implemented in the SWAT+ code, a short description, and the additional fields needed.  &#x20;
+**Code reference:** `dtbl_lum(i)%act(iac)%typ` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditional_module.f90#L17)).
 
-| Action           | Description                                 | Additional fields needed                                                 |
-| ---------------- | ------------------------------------------- | ------------------------------------------------------------------------ |
-| irrigate         | Irrigation                                  | [option](option.md), [const](const.md), [const2](const2.md), [fp](fp.md) |
-| irr\_demand      |                                             |                                                                          |
-| fertilize        | Fertilizer application                      | [option](option.md), [const](const.md), [const2](const2.md), [fp](fp.md) |
-| fert\_future     |                                             |                                                                          |
-| manure\_demand   |                                             |                                                                          |
-| till             | Tillage                                     |                                                                          |
-| plant            | Planting                                    | [option](option.md)                                                      |
-| harvest          | Harvest                                     | [option](option.md)                                                      |
-| kill             | Kill                                        |                                                                          |
-| harvest\_kill    | Harvest and kill                            | [option](option.md)                                                      |
-| rot\_reset       | Reset to beginning of rotation              |                                                                          |
-| pest\_apply      | Pesticide application                       | [option](option.md), [const](const.md), [const2](const2.md), [fp](fp.md) |
-| graze            | Grazing                                     | [option](option.md)                                                      |
-| grow\_init       | Initiate growing season for HRU-lte         |                                                                          |
-| grow\_end        | End growing season for HRU-lte              |                                                                          |
-| drain\_control   | Drainage water management                   |                                                                          |
-| divert           | Divert water                                |                                                                          |
-| res\_demand      | Demand from a reservoir                     |                                                                          |
-| flow\_control    | Flow control for water allocation           |                                                                          |
-| tile\_control    | Tile flow control for saturated buffers     |                                                                          |
-| impound\_off     | Turn off impounded water (paddy or wetland) |                                                                          |
-| impound\_on      | Turn on impounded water (paddy or wetland)  |                                                                          |
-| weir\_height     | Adjust weir height (paddy)                  |                                                                          |
-| puddle           |                                             |                                                                          |
-| hru\_fr\_update  | HRU area fraction change                    |                                                                          |
-| lu\_change       | Land use change                             |                                                                          |
-| p\_factor        | Update USLE P factor                        |                                                                          |
-| contour          | Contouring                                  |                                                                          |
-| stripcrop        | Strip cropping                              |                                                                          |
-| terrace          | Terracing                                   |                                                                          |
-| tile\_install    | Install tile drainage                       |                                                                          |
-| septic\_install  | Install septic tank                         |                                                                          |
-| fstrip\_install  | Install filterstrip                         |                                                                          |
-| grassww\_install | Install grass waterway                      |                                                                          |
-| user\_def\_bmp   | User user-defined BMP reductions            |                                                                          |
-| chan\_change     |                                             |                                                                          |
-| burn             | Burning                                     |                                                                          |
-| cn\_update       | Update Curve Number                         | [option](option.md), [const](const.md), [const2](const2.md)              |
-| pheno\_reset     |                                             |                                                                          |
+Selects the operation the row performs. An unrecognized type does nothing and gives no warning. A record name that the reader cannot match leaves its index at 0, also without a warning. [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L108-L110) · [`dtbl_lum_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/dtbl_lum_read.f90#L101-L112)
 
+| Type | Effect | Fields | Source |
+| ---- | ------ | ------ | ------ |
+| `irrigate` | Applies water now | ob/ob_num = source; option = irr.ops; const = mm; const2 = times per year | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L241-L341) |
+| `irr_demand` | Sets HRU irrigation demand | const = mm; option = irr.ops; fp = `unlim` to apply directly | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L126-L168) |
+| `res_irr_dmd` | Records irrigation demand on a reservoir | ob_num = reservoir; const = mm | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L171-L180) |
+| `fertilize` | Fertilizer application | option = fertilizer; const = kg/ha; fp = chem_app.ops | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L344-L374) |
+| `manure` | Manure application. The reader looks up no fertilizer for this type, so it is applied with index 0 | const = kg/ha | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L377-L399) |
+| `manure_demand` | Requests manure from an allocation source | option = chem_app.ops; const = t/ha; ob_num = source | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L112-L123) |
+| `fert_future` | Sets the day of a future fertilizer | ob_num = future-fertilizer slot; const2 = day of year | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L402-L405) |
+| `till` | Tillage. The alias `tillage` runs the same branch but the reader does not look up its record | option = tillage name | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L408-L429) |
+| `plant` | Planting | option = plant name; fp = transplant record | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L432-L492) |
+| `harvest`, `harvest_kill` | Harvest, with or without ending the plant | option = plant name or `all`; fp = harv.ops | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L495-L577), [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L611-L694) |
+| `kill` | Kill the plant | option = plant name or `all` | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L580-L608) |
+| `rot_reset`, `harv_reset`, `kill_reset`, `plant_reset`, `irr_reset` | Reset rotation year or a days-since counter | const = new value (minimum 1) | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L697-L729) |
+| `pest_apply` | Pesticide application | option = pesticide; const = kg/ha; fp = chem_app.ops | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L732-L752) |
+| `graze` | Grazing | option = graze.ops | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L754-L767) |
+| `grow_init`, `grow_end` | Start or end the HRU-lte growing season | obj_num | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L770-L808) |
+| `burn` | Burning | option = fire.ops | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L1225-L1244) |
+| `cn_update` | Changes curve number, bounded 35 to 95 | option = change type; const = value | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L1247-L1264) |
+| `pheno_reset` | Restarts moisture-triggered plants | const2 = times per year | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L1266-L1283) |
+| `tiledep_control` | Sets tile drain depth | const = depth | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L870-L884) |
+| `impound_on`, `impound_off` | Turns paddy or wetland ponding on or off | fp = wetland.wet record (on) | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L887-L914) |
+| `weir_height` | Sets weir height | option = `wet` for an HRU wetland, otherwise reservoir; const = mm | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L917-L934) |
+| `puddle` | Rice paddy puddling | option = puddle.ops; name = tillage name | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L937-L976) |
+| `hru_fr_update` | Changes HRU area fractions | option, fp = replacement element files | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L979-L984) |
+| `lu_change` | Changes land use | fp = landuse.lum record | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L987-L1030) |
+| `snow_change` | Changes snow parameters | fp = snow.sno record | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L1033-L1045) |
+| `p_factor`, `contour`, `stripcrop`, `terrace` | Sets the USLE P factor | const (`p_factor`); fp = `pasture` or `sod_outlet` | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L1048-L1110) |
+| `tile_install`, `septic_install`, `fstrip_install`, `grassww_install`, `user_def_bmp` | Installs a structure or BMP | fp = record name | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L1113-L1215) |
+| `grassww_uninstall` | Removes a grassed waterway | obj_num | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L1192-L1197) |
+| `chan_change` | Changes the current channel's cover and order | const = cover; const2 = order | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L1218-L1222) |
+| `wallo_dmd`, `duty_fr`, `tileflo_control`, `duty_reset` | Water allocation and tile-flow control | see [flo_con.dtl](../flo_con.dtl/typ.md) | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L183-L238), [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L811-L867) |
+| `herd` | Accepted but does nothing |  | [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L1286-L1286) |

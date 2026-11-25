@@ -4,7 +4,9 @@ description: Overland flow Manning's n class name
 
 # name (ovn\_table.lum)
 
-The overland flow Manning's n class name is a primary key referenced by [ov\_mann](../landuse.lum/ov_mann.md) in [**landuse.lum**](../landuse.lum/). All names in the **ovn\_table.lum** file must be unique.
+**Code reference:** `overland_n(il)%name` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/landuse_data_module.f90#L58), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/overland_n_read.f90#L44)).
+
+Character string (`len=40`, default `""`) identifying the overland Manning's n class. This primary key is referenced by [ov\_mann](../landuse.lum/ov_mann.md) in [**landuse.lum**](../landuse.lum/README.md) and matched in [`plant_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/plant_init.f90#L398-L403). All names in `ovn_table.lum` must be unique.
 
 | Name             | Land use/tillage type       | Treatment          |
 | ---------------- | --------------------------- | ------------------ |

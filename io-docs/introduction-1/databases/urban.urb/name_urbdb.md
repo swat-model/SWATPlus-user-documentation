@@ -4,9 +4,13 @@ description: Name of the urban land type
 
 # name (urban.urb)
 
+**Code reference:** `urbdb(iu)%urbnm` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/urban_data_module.f90#L6)).
+
+The name holds up to 16 characters and is matched against `urb_lu` in landuse.lum ([`plant_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/plant_init.f90#L390-L395)). A name that matches no record leaves the HRU without urban processes, with no warning.
+
 The name of the urban land type is a primary key referenced by [urban](../../landuse-and-management/landuse.lum/urb_ro.md) in [**landuse.lum**](../../landuse-and-management/landuse.lum/). All names in the **urban.urb** database must be unique.
 
-The names in the urban database are also used by QSWAT+ to link the grid codes in land use/land cover maps to SWAT+ urban land types.&#x20;
+The names in the urban database are also used by QSWAT+ to link the grid codes in land use/land cover maps to SWAT+ urban land types.
 
 | Name | Description                   |
 | ---- | ----------------------------- |

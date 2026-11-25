@@ -4,44 +4,8 @@ description: Object type
 
 # obj
 
-| Action           | Object type |
-| ---------------- | ----------- |
-| irrigate         | hru         |
-| irr\_demand      | hru         |
-| fertilize        | hru         |
-| fert\_future     | hru         |
-| manure\_demand   | hru         |
-| till             | hru         |
-| plant            | hru         |
-| harvest          | hru         |
-| kill             | hru         |
-| harvest\_kill    | hru         |
-| rot\_reset       | hru         |
-| pest\_apply      | hru         |
-| graze            | hru         |
-| grow\_init       | hlt         |
-| grow\_end        | hlt         |
-| drain\_control   | hru         |
-| divert           |             |
-| res\_demand      |             |
-| flow\_control    |             |
-| tile\_control    | hru         |
-| impound\_off     | hru         |
-| impound\_on      | hru         |
-| weir\_height     | hru         |
-| puddle           | hru         |
-| hru\_fr\_update  | hru         |
-| lu\_change       | hru         |
-| p\_factor        | hru         |
-| contour          | hru         |
-| stripcrop        | hru         |
-| terrace          | hru         |
-| tile\_install    | hru         |
-| septic\_install  | hru         |
-| fstrip\_install  | hru         |
-| grassww\_install | hru         |
-| user\_def\_bmp   | hru         |
-| chan\_change     |             |
-| burn             | hru         |
-| cn\_update       | hru         |
-| pheno\_reset     | hru         |
+**Code reference:** `dtbl_lum(i)%act(iac)%ob` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditional_module.f90#L18)).
+
+Object-type label for the action. Most actions act on an HRU whatever is entered, and `chan_change` acts on the current channel. [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L432-L434) · [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L1218-L1222)
+
+`irrigate` uses it to choose the water source whose storage is reduced: `aqu`, `cha` or `sdc`, or `res`, with the source number in [obj_num](obj_num-1.md). Any other label removes water from no source. If the demand exceeds the source storage, nothing is applied. [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L263-L320)

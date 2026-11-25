@@ -1,0 +1,15 @@
+---
+description: "Dissolved oxygen slot, left at zero by the wetland controller"
+---
+
+# dox_out
+
+**Code reference:** `wet_out_d(j)%dox` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L42)).
+
+The wetland starts its dissolved oxygen outflow slot at zero and leaves it at zero. [Outflow initialization](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wetland_control.f90#L59-L64), [Export assignments](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_nutrient.f90#L99-L115)
+
+**Unit:** kg.
+
+Monthly and yearly rows sum daily masses. The average-annual row divides the accumulated mass by the number of printed years.
+
+[Back to the output table](README.md).

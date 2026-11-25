@@ -4,6 +4,10 @@ description: Phosphorus uptake distribution parameter
 
 # p\_uptake
 
-This parameter controls plant uptake of phosphorus from the different soil horizons in the same way that [_n\_uptake_](n_uptake.md) controls nitrogen uptake.&#x20;
+**Code reference:** `bsn_prm%p_updis` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L89), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_read_prm.f90#L24)).
 
-Phosphorus removed from the soil by plants is taken from the solution phosphorus pool. The importance of the phosphorus uptake distribution parameter lies in its control over the maximum amount of solution P removed from the upper layers. Because the top 10 mm of the soil profile interacts with surface runoff, the phosphorus uptake distribution parameter will influence the amount of labile phosphorus available for transport in surface runoff. The model allows lower layers in the root zone to fully compensate for lack of solution P in the upper layers, so there should not be significant changes in phosphorus stress with variation in the value used for _p\_uptake_.
+Controls the vertical depth distribution of plant solution-phosphorus uptake in the same manner as [n\_uptake](n_uptake.md) (default `20`, range `0–100`; values `< 1.e-6` are reset to `20.0` in [`basin_prm_default.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_prm_default.f90#L16)). Using the normalization factor at [`basin_prm_default.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_prm_default.f90#L57), [`pl_pup.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_pup.f90#L70) calculates potential cumulative P uptake to depth $z$:
+
+$$U_{P,\max}(z) = U_{P,d}\,r_{P}\,\frac{1 - \exp(-\beta_p\,z / z_{\text{root}})}{1 - \exp(-\beta_p)}$$
+
+where $\beta_p$ is `p_uptake`, $U_{P,d}$ is plant phosphorus demand, $r_P$ is the solution-P demand ratio, and $z_{\text{root}}$ is root depth.

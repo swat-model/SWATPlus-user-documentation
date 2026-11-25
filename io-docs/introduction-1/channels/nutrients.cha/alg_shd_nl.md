@@ -4,23 +4,29 @@ description: Nonlinear algal self-shading coefficient
 
 # alg\_shd\_nl
 
-The light extinction coefficient, $$k_l$$, is calculated as a function of the algal density using the nonlinear equation:
+**Code reference:** `ch_nut(ich)%lambda2` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/channel_data_module.f90#L154)).
 
-$$k_l=k_{l,0}+k_{l,1}*\alpha_0*algae+k_{l,2}*(\alpha_0*algae)^{2/3}$$               &#x20;
+Nonlinear algal self-shading coefficient (`(1/m)(ug chla/L)^(-2/3)`, default `0.05`, range `0.0–1.0`). In [`ch_read_nut.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_read_nut.f90#L79), any value `<= 0.` is replaced with `0.054`, so `0` cannot be retained to disable nonlinear self-shading.
 
-where $$k_{l,0}$$ is the non-algal portion of the light extinction coefficient ($$m^{-1}$$), $$k_{l,1}$$ is the linear algal self shading coefficient ($$m^{-1}(\mu g - chla/L)^{-1})$$, $$k_{l,2}$$ is the nonlinear algal self shading coefficient $$m^{-1}(\mu g - chla/L)^{-2/3})$$, $$\alpha_0$$is the ratio of chlorophyll _a_ to algal biomass ($$\mu g$$ chla/mg alg), and $$algae$$ is the algal biomass concentration (mg alg/L).
+The intended light extinction coefficient $\lambda$ is:
 
-This equation allows a variety of algal, self-shading, light extinction relationships to be modeled. When both $$k_{l,1}$$ and $$k_{l,2}$$ are set to 0, no algal self-shading is simulated. When $$k_{l,1}$$ is set to a value other than 0 and $$k_{l,2}$$ is set to 0, linear algal self-shading is modeled. When both $$k_{l,1}$$ and $$k_{l,2}$$ are set to a value other than 0, non-linear algal self-shading is modeled.&#x20;
+$$\lambda = \lambda_0 + \lambda_1\,\alpha_0\,\text{algae} + \lambda_2\,(\alpha_0\,\text{algae})^{2/3}$$
 
-The Riley equation (Bowie et al., 1985) defines $$k_{l,1} = 0.0088 m^{-1}(\mu g - chla/L)^{-1}$$ and $$k_{l,2} = 0.054 m^{-1}(\mu g - chla/L)^{-2/3})$$.
+where:
+- $\lambda$ is the light extinction coefficient (`1/m`),
+- $\lambda_0$ is `lt_nonalg` (`1/m`),
+- $\lambda_1$ is `alg_shd_l` (`1/(m*ug chla/L)`),
+- $\lambda_2$ is `alg_shd_nl` (`(1/m)(ug chla/L)^(-2/3)`),
+- $\alpha_0$ is `chla_alg` (`ug chla/mg alg`), and
+- $\text{algae}$ is algal biomass (`mg alg/L`).
 
+However, in SWAT+ main (`6f515368`), [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L157-L164) immediately caps $\lambda$ at $\lambda_0$ (`if (lambda > lambda0) lambda = lambda0`). Because `lambda1` and `lambda2` are forced positive on read, the self-shading addition always exceeds $\lambda_0$ when algae are present and is cancelled before `fl_1` is calculated.
 
+The Riley equation (Bowie et al., 1985) defines $\lambda_1 = 0.0088$ `1/(m*ug chla/L)` and $\lambda_2 = 0.054$ `(1/m)(ug chla/L)^(-2/3)`.
 
-#### Relevant chapter in the Theoretical Documentation:&#x20;
+#### Relevant chapter in the Theoretical Documentation:
 
 [Local Specific Growth Rate of Algae](../../../theoretical-documentation/section-7-main-channel-processes/in-stream-nutrient-processes/algae/algal-growth/local-specific-growth-rate-of-algae.md)
-
-
 
 #### References
 

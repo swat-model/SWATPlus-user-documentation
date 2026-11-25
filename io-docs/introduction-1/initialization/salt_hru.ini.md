@@ -1,2 +1,0 @@
-# salt\_hru.ini
-
