@@ -5,16 +5,16 @@ description: This file contains water allocation tables.
 # water\_allocation.wro
 
 {% hint style="warning" %}
-This page preserves the historical `water_allocation.wro` layout. It is not the input layout used by the reviewed SWAT+ main `6f515368` reader. For the current formats, use [place_of_use.wro](../place_of_use.wro.md) and [point_of_diver.wro](../point_of_diver.wro.md). The historical field descriptions below must not be used as instructions for those files.
+This page preserves the historical `water_allocation.wro` layout. It is not the input layout used by the reviewed SWAT+ main `6f515368` reader. For the current formats, use [place_of_use.wro](../place_of_use.wro/README.md) and [point_of_diver.wro](../point_of_diver.wro/README.md). The historical field descriptions below must not be used as instructions for those files.
 {% endhint %}
 
 The current defaults are declared in [input_file_module.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/input_file_module.f90#L144).
 
 ## Historical format
 
-The structure of the water allocation file is different than that of most other SWAT+ input files. As usual, the first line is reserved for a title. The second line in the file specifies the total number of water allocation tables included in the file.&#x20;
+The structure of the water allocation file is different than that of most other SWAT+ input files. As usual, the first line is reserved for a title. The second line in the file specifies the total number of water allocation tables included in the file.
 
-Each water allocation table has three parts, which all have their own headers. First, the name of the water allocation table, the rule type, the number of source and demand objects, and whether or not one of the source objects is a channel are specified. &#x20;
+Each water allocation table has three parts, which all have their own headers. First, the name of the water allocation table, the rule type, the number of source and demand objects, and whether or not one of the source objects is a channel are specified. 
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |

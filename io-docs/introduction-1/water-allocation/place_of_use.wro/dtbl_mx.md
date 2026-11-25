@@ -1,0 +1,9 @@
+---
+description: "Flow-control decision table name for maximum daily right or duty"
+---
+
+# dtbl_mx
+
+**Code reference:** `pou(ipou)%dtbl_mx` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_allocation_module.f90#L74), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_allocation_read.f90#L68)).
+
+25-character name of a flow-control decision table in [flo_con.dtl](../../decision-tables/flo_con.dtl/README.md) (`dtbl_flo`), or `"null"` when fixed [rate_max](rate_max.md) is used. Crosswalked into `dtbl_mx_num` in [`water_allocation_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_allocation_read.f90#L109-L117) and evaluated daily in [`wallo_start_day.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_start_day.f90#L152-L160) to set `pou(ipou)%demand = dmd_m3` before capping by `rate_max * 86400.`.

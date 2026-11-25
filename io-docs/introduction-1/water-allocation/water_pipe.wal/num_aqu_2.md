@@ -1,9 +1,11 @@
 ---
-description: "Count of aquifers associated with the pipe or tower"
+description: "Count of aquifers associated with the pipe"
 ---
 
 # num_aqu
 
-**Code reference:** `pipe(ipipe)%num_aqu` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_allocation_module.f90#L183)).
+**Code reference:** `num_aqu / pipe(ipipe)%num_aqu` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_allocation_module.f90#L183), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_pipe_read.f90#L46,L53)).
 
-The number of aquifer fractions supplied at the end of this row. Follow it with that many fraction values.
+Number of aquifer loss fractions listed at the end of the pipe row. The first read stores the value in local `num_aqu` ([`water_pipe_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_pipe_read.f90#L46)) to allocate `aqu_loss_fr` ([`water_pipe_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_pipe_read.f90#L50)), and the second read stores it in `pipe(ipipe)%num_aqu` ([`water_pipe_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/water_pipe_read.f90#L53)), which is not read during simulation.
+
+*(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations).*
