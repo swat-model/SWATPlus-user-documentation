@@ -4,23 +4,33 @@ description: This file is used to schedule management operations.
 
 # management.sch
 
-Management operations can be scheduled by heat units/dates or by Decision Tables.
+Management operations can be scheduled by calendar date, by accumulated heat-unit fraction, or automatically using Decision Tables, as read by [`mgt_read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_read_mgtops.f90#L60-L92) and [`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L26-L33).
 
-The structure of the **management.sch** file is different than that of most other SWAT+ input files. The first line for each management schedule specifies the name of the schedule and the number of scheduled and/or automatic operations. When using scheduled operations, it is followed by one line per operation listing operation-specific data. The operations must be scheduled by date (Heat Unit scheduling must be done using a Decision Table) listed in chronological order. For automatic operations, the names of the Decision Tables in lum.dtl are listed (one name per line). Behind the name of a Decision Table, the user may list the crop(s) used in the Decision Table, which can be useful when the same Decision Table is used for different crop rotations (see xxx in yyy).
+Each schedule block begins with a header line (`name`, `numb_ops`, `numb_auto`), followed first by `numb_auto` decision-table lines (`auto_name`, plus optional `auto_crop` tokens for generic rotation tables `pl_hv_summer1`, `pl_hv_winter1`, and `pl_hv_summer2`), and then by `numb_ops` scheduled operation lines (`op_typ`, `mon`, `day`, `hu_sch`, `op_data1`, `op_data2`, `op_data3`) in chronological order. Scheduled operations trigger when the current date matches `mon`/`day` ([`mgt_operatn.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operatn.f90#L49-L62)) or when `hu_sch > 0` and accumulated heat units exceed `hu_sch` ([`mgt_operatn.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operatn.f90#L64-L85)). Both automatic and scheduled operations may be used in the same schedule, with automatic decision-table lines listed first.
 
-The user may use both scheduled operations and Decision Tables for the same land use. If doing so, the names of the DTs should be listed first.
+## Schedule header
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| [name](name-management.sch.md) | Name of the management schedule | string |  |  |  |
-| numb\_ops | Number of scheduled management operations | integer |  |  |  |
-| numb\_auto | Number of automatic operations | integer |  |  |  |
-| [op\_typ](op_typ.md) | Type of management operation | string |  |  |  |
-| mon | Month operation is scheduled for | integer |  |  | 1-12 |
-| day | Day operation is scheduled for | integer |  |  | 1-31 |
-| hu\_sch | Heat-unit scheduling threshold (used by the heat-unit scheduling loop) | real |  |  |  |
-| [op\_data1](op_data1.md) | Operation data 1 | string |  |  |  |
-| [op\_data2](op_data2.md) | Operation data 2 | string |  |  |  |
-| [op\_data3](op_data3.md) | Operation data 3 | real |  |  |  |
+| [name](name-management.sch.md) | Name of the management schedule | string | n/a | n/a | n/a |
+| [numb\_ops](numb_ops.md) | Number of scheduled management operations | integer | n/a | 0 | >= 0 |
+| [numb\_auto](numb_auto.md) | Number of automatic operations (decision tables) | integer | n/a | 0 | >= 0 |
 
-SWAT+ main (6f515368) reads `hu_sch` as `husc`, copies it with the entire operation record into `mgt`, and tests it in the heat-unit scheduling loop. See [the input read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L27), [the whole-record assignment](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operatn.f90#L46), and [the scheduling condition](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operatn.f90#L71).
+## Automatic operations (decision tables)
+
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [auto\_name](auto_name.md) | Name of the decision table in `lum.dtl` | string | n/a | n/a | n/a |
+| [auto\_crop](auto_crop.md) | Optional crop name(s) for generic `pl_hv_*` decision tables | string | n/a | n/a | n/a |
+
+## Scheduled operations
+
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [op\_typ](op_typ.md) | Type of management operation | string | n/a | n/a | n/a |
+| [mon](mon.md) | Month operation is scheduled for | integer | n/a | 0 | 1-12 |
+| [day](day.md) | Day of month operation is scheduled for | integer | n/a | 0 | 1-31 |
+| [hu\_sch](hu_sch.md) | Heat-unit scheduling threshold fraction | real | fraction | 0.0 | >= 0.0 |
+| [op\_data1](op_data1.md) | Operation data 1 (`op_char`) | string | n/a | n/a | n/a |
+| [op\_data2](op_data2.md) | Operation data 2 (`op_plant`) | string | n/a | n/a | n/a |
+| [op\_data3](op_data3.md) | Operation data 3 (`op3`) | real | varies | 0.0 | varies |

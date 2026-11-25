@@ -3,12 +3,16 @@ description: "This file groups point sources into cataloging units."
 ---
 
 {% hint style="info" %}
-An Editor export of this format has not been verified. Field names and values in the table are based on the SWAT+ Fortran source. A dash means that a unit, recommended default, or range has not been established.
+An Editor export of this format has not been verified. Field names and values in the table are based on the SWAT+ Fortran source (`6f515368`). A dash means that a unit, recommended default, or range has not been established.
+{% endhint %}
+
+{% hint style="warning" %}
+In SWAT+ main (`6f515368`), [`rec_read_elements.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/rec_read_elements.f90#L30-L76) (called from [`proc_cal.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/proc_cal.f90#L31)) parses `rec_catunit.def` into `pcu_out` and `db_mx%rec_out`, neither of which is read during simulation calculations.
 {% endhint %}
 
 This file groups point sources into cataloging units.
 
-# rec_catunit.def
+# rec\_catunit.def
 
 The file contains a title, a region count, headings, and one row per region. Each region row ends with the number of element-list entries and those entries.
 
@@ -24,8 +28,8 @@ The file contains a title, a region count, headings, and one row per region. Eac
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [k](k.md) | Record number | integer | n/a | — | — |
 | [name](name.md) | Record name | string | n/a | — | — |
-| [area_ha](area_ha.md) | Region area | real | — | — | — |
+| [area\_ha](area_ha.md) | Region area | real | ha | — | — |
 | [nspu](nspu.md) | Number of element-list entries | integer | n/a | — | — |
-| [elem_cnt](elem_cnt.md) | Element-list entry | integer | n/a | — | — |
+| [elem\_cnt](elem_cnt.md) | Element-list entry | integer | n/a | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

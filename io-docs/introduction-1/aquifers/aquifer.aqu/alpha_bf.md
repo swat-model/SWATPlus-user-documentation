@@ -6,16 +6,20 @@ description: Alpha factor for groundwater recession curve
 
 **Code reference:** `aqudb(i)%alpha` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aquifer_module.f90#L16)).
 
-The baseflow recession constant is a direct index of groundwater flow response to changes in recharge (Smedema and Rycroft, 1983). Values vary from 0.1-0.3 for land with a slow response to recharge to 0.9-1.0 for land with a rapid response. Although the baseflow recession constant may be calculated, the best estimates are obtained by analyzing measured streamflow during periods of no recharge in the watershed.
-
-It is common to find the baseflow days reported for a stream gage or watershed. This is the number of days for base flow recession to decline through one log cycle. When baseflow days are known, the alpha factor can be calculated:
+The baseflow recession constant (1/days) directly indexes how quickly groundwater flow responds to changes in recharge (Smedema and Rycroft, 1983). Values range from 0.1–0.3 for land that responds slowly to recharge to 0.9–1.0 for land that responds rapidly. [`aqu_initial.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_initial.f90#L167) precomputes $e^{-\alpha}$, and [`aqu_1d_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu_1d_control.f90#L110-L116) updates groundwater flow daily:
 
 $$
-α_{gw} = \frac{1}{N} * ln⁡[\frac{Q_{gw,N}}{Q_{gw,0}} ]=\frac{1}{BFD} * ln⁡[10]=\frac{2.3}{BFD}
+Q_{gw,t} = Q_{gw,t-1} \, e^{-\alpha} + R_{t} \left(1 - e^{-\alpha}\right)
 $$
 
-where $$α_{gw}$$ is the baseflow recession constant, and _BFD_ is the number of baseflow days for the watershed.
+where $R_{t}$ is the day's aquifer recharge (mm). The result is clamped between 0 and the current storage. It is set to 0 when the water table is deeper than [flo\_min](flo_min.md).
+
+The baseflow recession constant can be calculated, but the best estimates come from analyzing measured streamflow during periods with no recharge. If the number of baseflow days ($BFD$, the days needed for baseflow to decline through one log cycle) is known:
+
+$$
+\alpha = \frac{1}{BFD} \ln(10) = \frac{2.3}{BFD}
+$$
 
 > Smedema, L.K. and D.W. Rycroft. 1983. Land drainage - planning and design of agricultural drainage systems. Cornell University Press, Ithaca, NY.
 >
-> Sánchez-Gómez, A., Schuerz, C., Molina-Navarro, E., and Bieger, K. 2024. Groundwater modelling in SWAT+: Considerations for a realistic> &#x20;baseflow simulation. Groundwater for Sustainable Development 26:101275.
+> Sánchez-Gómez, A., Schuerz, C., Molina-Navarro, E., and Bieger, K. 2024. Groundwater modelling in SWAT+: Considerations for a realistic baseflow simulation. Groundwater for Sustainable Development 26:101275.

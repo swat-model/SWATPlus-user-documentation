@@ -1,29 +1,26 @@
 ---
-description: Operation data 1
+description: Operation data 1 (op_char)
 ---
 
 # op\_data1
 
-**Code reference:** `sched(isched)%mgt_ops(iop)%op_char` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operations_module.f90#L165)).
+**Code reference:** `sched(isched)%mgt_ops(iop)%op_char` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operations_module.f90#L165), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L31)).
 
-| Operation | Use of variable                                                                      |
-| --------- | ------------------------------------------------------------------------------------ |
-| pcom      | ???                                                                                  |
-| plnt      | Plant in the plant community to be planted                                           |
-| harv      | Plant in the plant community ([plant.ini](../plant.ini/)) to be harvested            |
-| hvkl      | Plant in the plant community ([plant.ini](../plant.ini/)) to be harvested and killed |
-| kill      | Plant in the plant community ([plant.ini](../plant.ini/)) to be killed               |
-| mons      | ???                                                                                  |
-| till      | Name of tillage type in [tillage.til](../../databases/tillage.til/) database         |
-| irrm      | Name of irrigation operation in [irr.ops](../../management-practices/irr.ops/) file  |
-| irra      | Name of irrigation operation in [irr.ops](../../management-practices/irr.ops/) file  |
-| fert      | Name of fertilizer in [fertilizer.frt](../../databases/fertilizer.frt/) database     |
-| frta      | Name of fertilizer in [fertilizer.frt](../../databases/fertilizer.frt/) database     |
-| frtc      | Name of fertilizer in [fertilizer.frt](../../databases/fertilizer.frt/) database     |
-| pest      | Name of pesticide in [pesticide.pes](../../databases/pesticide.pes/) database        |
-| pstc      | Name of pesticide in [pesticide.pes](../../databases/pesticide.pes/) database        |
-| graz      | ???                                                                                  |
-| burn      | ???                                                                                  |
-| swep      | ???                                                                                  |
-| prtp      | ???                                                                                  |
-| skip      | not used                                                                             |
+Character string (`len=40`, default `""`) supplying the primary target name or parameter option for the operation in [`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L41-L175) and [`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L84-L624).
+
+| Operation | Use of `op_data1` |
+| --------- | ----------------- |
+| `pcom` | Plant community name in [**plant.ini**](../plant.ini/README.md) ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L45)) |
+| `plnt` | Plant name in the HRU's [**plant.ini**](../plant.ini/README.md) community and [**plants.plt**](../../databases/plants.plt/README.md) ([`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L93)) |
+| `harv`, `hvkl`, `kill` | Plant name in [**plant.ini**](../plant.ini/README.md) community, or `"all"` to apply to all growing plants ([`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L160), [`#L248`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L248), [`#L271`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L271)) |
+| `till`, `pudl` | Tillage implement name in [**tillage.til**](../../databases/tillage.til/README.md) ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L88), [`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L602)) |
+| `irrm`, `irrp`, `irpm` | Irrigation operation name in [**irr.ops**](../../management-practices/irr.ops/README.md) ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L97)) |
+| `fert` | Fertilizer name in [**fertilizer.frt**](../../databases/fertilizer.frt/README.md) ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L106)) |
+| `manu` | Manure name in [**manure\_db.frt**](../../databases/manure_db.frt/README.md) ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L122)) |
+| `pest` | Pesticide name in [**pesticide.pes**](../../databases/pesticide.pes/README.md) and HRU pesticide community ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L138), [`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L421)) |
+| `graz` | Grazing operation name in [**graze.ops**](../../management-practices/graze.ops/README.md) ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L153)) |
+| `cnup` | Change type (`absval`, `abschg`, or `pctchg`) passed to `chg_par` ([`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L457)) |
+| `burn` | Fire operation name in [**fire.ops**](../../management-practices/fire.ops/README.md) ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L161)) |
+| `swep` | Street sweeping operation name in [**sweep.ops**](../../management-practices/sweep.ops/README.md) ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L169)) |
+| `weir` | Weir record name in [**weir.res**](../../reservoirs/weir.res/README.md) ([`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L518)) |
+| `mons`, `dwm`, `skip` | Not used (enter `"null"`) |

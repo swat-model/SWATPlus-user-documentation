@@ -2,8 +2,12 @@
 description: "Element-list entry"
 ---
 
-# elem_cnt
+# elem\_cnt
 
-**Code reference:** `elem_cnt(isp)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L23)).
+**Code reference:** `elem_cnt(isp)` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrograph_module.f90#L23), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_read_elements.f90#L100)).
 
-An entry identifying elements included in the group or region. Supply the number of entries specified by nspu.
+List of `nspu` integers specifying element IDs (and optional negative-end inclusive ranges `start -end`) referencing [`element.ccu`](../element.ccu/README.md) (`integer`, dimensionless), expanded via [`define_unit_elements.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/define_unit_elements.f90#L1-L96) into `ccu_reg(i)%num` and `ccu_reg(i)%num_tot` ([`ch_read_elements.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_read_elements.f90#L106-L107)).
+
+These element indices are copied only into `ccu_cal` ([`ch_read_elements.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_read_elements.f90#L179-L183), [`ch_read_orders_cal.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_read_orders_cal.f90#L127-L131)), which is unused in simulation calculations.
+
+*(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations).*

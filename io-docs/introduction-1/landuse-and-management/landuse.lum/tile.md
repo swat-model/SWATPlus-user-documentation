@@ -4,6 +4,6 @@ description: Pointer to the tile drain file
 
 # tile
 
-**Code reference:** `lum(ilu)%tiledrain` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/landuse_data_module.f90#L17)).
+**Code reference:** `lum(ilu)%tiledrain` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/landuse_data_module.f90#L17), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/landuse_read.f90#L56)).
 
-The pointer to the tile drain file is a foreign key referencing [name](../../structural-practices/tiledrain.str/name_tiledb.md) in [**tiledrain.str**](../../structural-practices/tiledrain.str/). &#x20;
+Character string (`len=40`, default `""`) acting as a foreign key referencing [name](../../structural-practices/tiledrain.str/name_tiledb.md) in [**tiledrain.str**](../../structural-practices/tiledrain.str/README.md), or `"null"` when tile drainage is not active. Matched against `sdr%name` in [`landuse_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/landuse_read.f90#L97-L104) (unmatched non-`"null"` values are logged at [`#L155-L157`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/landuse_read.f90#L155-L157)) and assigned to `hru(iihru)%tiledrain` in [`hru_lum_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lum_init.f90#L34).
