@@ -1,29 +1,29 @@
 ---
-description: "This file identifies groundwater transit cells in a structured grid."
+description: "Cells whose groundwater transit paths are written to output."
 ---
 
 {% hint style="info" %}
 An Editor export of this format has not been verified. Field names and values in the table are based on the SWAT+ Fortran source. A dash means that a unit, recommended default, or range has not been established.
 {% endhint %}
 
-This file identifies groundwater transit cells in a structured grid.
+This optional file lists cells whose groundwater travel path is written to `gwflow_transit_cell`. It is read only for structured grids. When it exists, SWAT+ also writes travel times to channels (`gwflow_transit_chan`) and, with tiles, to tiles (`gwflow_transit_tile`).
 
-SWAT+ looks for `transit.gw` in the simulation working directory; it is not selected through `file.cio`. See the [gwflow_read.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L2262) reader.
+SWAT+ looks for `transit.gw` in the simulation working directory; it is not selected through `file.cio`. See the [`gwflow_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L2247-L2273) reader.
 
 # transit.gw
 
-After the title and column headings, supply the transit-cell count followed by the cell identifiers.
+The file has a title line, a heading line, the number of cells, then one cell number per line ([`gwflow_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L2263-L2272)).
 
-## Transit-cell count
-
-| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
-| --------- | --------------- | -------- | -------- | ----------- | --------- |
-| [gw_transit_num](gw_transit_num.md) | Count of groundwater transit cells to be read from the file | integer | n/a | — | — |
-
-## Transit cells
+## Cell count
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| [cell_transit](cell_transit.md) | Cell identifier indexing into the structured grid's cell list for one transit cell entry | integer | n/a | — | — |
+| [gw_transit_num](gw_transit_num.md) | Number of cells listed | integer | n/a | — | — |
+
+## Cells
+
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --------- | --------------- | -------- | -------- | ----------- | --------- |
+| [cell_transit](cell_transit.md) | Cell number, one per line | integer | n/a | — | 1 to ncell |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

@@ -1,9 +1,9 @@
 ---
-description: "Identifier of the HRU to which this groundwater cell belongs"
+description: "HRU number"
 ---
 
 # hru_id
 
-**Code reference:** `hru_id` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L149)).
+**Code reference:** `hru_id` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L149), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L2165)).
 
-Integer identifier of the HRU to which this groundwater cell belongs, used to index HRU-level groundwater arrays.
+HRU number. In the counting pass, numbers outside 1 to the number of HRUs are skipped ([`gwflow_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L2138-L2145)). In the reading pass, lines are taken in order for HRU 1, 2, … ([`gwflow_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L2159-L2165)), so a skipped number, or an HRU whose lines are not together, shifts the following lines to the wrong HRU. Keep the lines sorted by HRU.

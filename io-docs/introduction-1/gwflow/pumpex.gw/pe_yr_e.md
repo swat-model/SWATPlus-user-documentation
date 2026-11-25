@@ -1,9 +1,9 @@
 ---
-description: "Ending calendar year"
+description: "Last year of the pumping period"
 ---
 
 # pe_yr_e
 
-**Code reference:** `pe_yr_e` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L139)).
+**Code reference:** `pe_yr_e` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L139), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L984)).
 
-The calendar year in which this pumping period ends. Combine it with [pe_dy_e](pe_dy_e.md) to specify the last pumping day.
+Calendar year in which the period ends. With [pe_dy_e](pe_dy_e.md), it gives the last pumping day $n_{e} = (y - y_{0}) \times 365 + d$ ([`gwflow_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L1004-L1008)). A year before the first simulation year gives day 1, so a period that ended before the simulation still pumps on day 1. This is listed in `MODEL_ISSUES.md`.

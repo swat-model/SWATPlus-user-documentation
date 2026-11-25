@@ -1,9 +1,9 @@
 ---
-description: "Groundwater cell identifier for this prescribed-head series"
+description: "Cell number"
 ---
 
 # cell_id
 
-**Code reference:** `cell_id` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L161)).
+**Code reference:** `cell_id` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L161), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L1479)).
 
-Groundwater cell identifier for this prescribed-head series.
+Number of the cell the heads apply to ([`gwflow_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L1479-L1484)). *(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations).*

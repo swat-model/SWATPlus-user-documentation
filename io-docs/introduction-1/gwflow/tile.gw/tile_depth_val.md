@@ -1,9 +1,13 @@
 ---
-description: "Common tile drain depth"
+description: "Tile depth below ground, m"
 ---
 
 # tile_depth_val
 
-**Code reference:** `tile_depth_val` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L106)).
+**Code reference:** `tile_depth_val` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L106), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L1030)).
 
-The tile drain depth applied to tile-enabled cells unless a cell-specific override is supplied.
+Depth of the tile drains below the ground surface, in m, for every cell; [cells.gw](../cells.gw/cell_tile_depth_over_i.md) can replace it per cell ([`gwflow_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L1033-L1043)). Tile outflow from an active, tiled cell is
+
+$$Q = A_{d} \, K_{t} \, (h - (z - d_{t})) \quad \text{when} \; h > z - d_{t}$$
+
+where $Q$ is the outflow (m³/day), $A_{d}$ the drain area, $K_{t}$ the tile conductivity, $h$ the head, $z$ the ground elevation and $d_{t}$ the tile depth ([`gwflow_tile.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_tile.f90#L45-L56)). The outflow is limited to the water stored in the cell and goes to the channel of the nearest channel cell ([`gwflow_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L1080-L1100)).

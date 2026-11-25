@@ -1,9 +1,9 @@
 ---
-description: "Identifier of the pond whose groundwater cell count or cell list is being referenced by this record"
+description: "Pond number"
 ---
 
 # dum_id
 
-**Code reference:** `dum_id` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L68)).
+**Code reference:** `dum_id` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L68), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L1999)).
 
-Integer identifier of the pond whose groundwater cell count or cell list is being referenced by this record.
+Number of the pond, matched to `id` in [ponds.gw](../ponds.gw/id.md) ([`gwflow_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/gwflow_read.f90#L2002-L2007)). Lines whose number matches no pond are ignored.
