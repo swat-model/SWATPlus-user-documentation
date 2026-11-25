@@ -1,0 +1,11 @@
+---
+description: Legacy atmospheric deposition code (read but not used in main 6f515368)
+---
+
+# atmo\_dep
+
+**Code reference:** `bsn_cc%atmo` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L66), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_read_cc.f90#L24)).
+
+Legacy 1-character string placeholder for atmospheric deposition timestep (struct default `"a"`). Atmospheric deposition is instead configured through [**atmo.cli**](../../climate/atmo.cli/) and linked per weather station in [**weather-sta.cli**](../../climate/weather-sta.cli/).
+
+*(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations).*

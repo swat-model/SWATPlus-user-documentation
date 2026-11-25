@@ -4,8 +4,12 @@ description: Phosphorus soil partitioning coefficient
 
 # p\_soil
 
-**Code reference:** `bsn_prm%phoskd` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L96)).
+**Code reference:** `bsn_prm%phoskd` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_module.f90#L96), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_read_prm.f90#L24)).
 
-The phosphorus soil partitioning coefficient _p\_soil_ is the ratio of the soluble phosphorus concentration in the top 10 mm of soil to the concentration of soluble phosphorus in surface runoff.
+Ratio of soluble phosphorus concentration in the top soil layer to its concentration in surface runoff ($k_d$, `m^3/Mg`, default `175`, range `100–200`; values `< 1.e-6` are reset to `175.0` in [`basin_prm_default.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/basin_prm_default.f90#L21) and copied per HRU in [`hrudb_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hrudb_init.f90#L30)).
 
-The primary mechanism of phosphorus movement in the soil is by diffusion. Diffusion is the migration of ions over small distances (1-2 mm) in the soil solution in response to a concentration gradient. Due to the low mobility of solution phosphorus, surface runoff will only partially interact with the solution P stored in the top 10 mm of soil.
+In [`nut_solp.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/nut_solp.f90#L57-L58), soluble phosphorus lost in surface runoff (`kg/ha`) is computed as:
+
+$$P_{\text{surq}} = \frac{P_{\text{lab},1}\,Q_{\text{surf}}}{\rho_{b,1}\,z_1\,k_d + 1}$$
+
+where $P_{\text{lab},1}$ is top-layer labile P (`kg/ha`), $Q_{\text{surf}}$ is surface runoff (`mm`), $\rho_{b,1}$ is top-layer bulk density (`Mg/m^3`), and $z_1$ is top-layer thickness (`mm`).

@@ -19,5 +19,5 @@ $$\Delta t = \frac{1440}{\text{step}}$$
 | 1440 | minute     |
 
 {% hint style="warning" %}
-When using the Green & Ampt method ([gampt](../../basin-1/codes.bsn/abstr_init.md) in [**codes.bsn**](../../basin-1/codes.bsn/)) for calculating surface runoff, the time step of the precipitation data must match the simulation time step.
+When using the Green & Ampt method ([gampt](../../basin-1/codes.bsn/gampt.md) in [**codes.bsn**](../../basin-1/codes.bsn/)) for calculating surface runoff, the time step of the precipitation data must match the simulation time step.
 {% endhint %}
