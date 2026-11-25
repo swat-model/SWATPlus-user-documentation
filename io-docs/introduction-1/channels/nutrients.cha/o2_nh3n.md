@@ -11,3 +11,13 @@ Mass of dissolved oxygen consumed per unit mass of ammonia nitrogen oxidized to 
 In [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L270-L273), `ai5` multiplies the ammonia-oxidation mass-rate term `bc1_m` in the dissolved oxygen source/sink expression `factm`:
 
 $$\text{factm}_{\text{O2}} = \text{rk1}_m + \text{rk2}_m - \text{rs4}_k + \text{bc1}_m \alpha_5 + \text{bc2}_m \alpha_6$$
+
+where:
+- $\text{factm}_{\text{O2}}$ is the dissolved oxygen source/sink mass-rate term (`factm`),
+- $\text{rk1}_{m}$ is the CBOD deoxygenation mass-rate term (`rk1_m`),
+- $\text{rk2}_{m}$ is the reaeration mass-rate term (`rk2_m`),
+- $\text{rs4}_{k}$ is the benthic oxygen demand term (`rs4_k`),
+- $\text{bc1}_{m}$ is the ammonia-oxidation mass-rate term (`bc1_m`),
+- $\alpha_5$ is `o2_nh3n` (`mg O2/mg N`),
+- $\text{bc2}_{m}$ is the nitrite-oxidation mass-rate term (`bc2_m`), and
+- $\alpha_6$ is `o2_no2n` (`mg O2/mg N`).

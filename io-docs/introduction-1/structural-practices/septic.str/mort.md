@@ -10,4 +10,4 @@ Daily bacterial mortality rate coefficient in the biozone (dimensionless; [`sep_
 
 $$R_{\text{mort}} = c_T \cdot k_m \cdot B$$
 
-where $R_{\text{mort}}$ is daily mortality (kg/ha), $k_m$ is `mort`, $B$ is live biomass (kg/ha), and $c_T = 1.0$ in SWAT+ main (`6f515368`). Dead biomass transfers to the biozone plaque pool.
+where $R_{\text{mort}}$ is daily mortality (kg/ha), $k_m$ is `mort` (dimensionless), $B$ is live biomass (kg/ha), and $c_T$ is the temperature factor (`1.0` in SWAT+ main (`6f515368`)). Dead biomass transfers to the biozone plaque pool.

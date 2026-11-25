@@ -8,8 +8,6 @@ description: Percolation coefficient from shallow to deep aquifer
 
 Fraction of the day's soil percolation that moves from the shallow aquifer to the deep aquifer, limited to the shallow storage remaining ([`hru_lte_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L335), [`hru_lte_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L343-L346)):
 
-$$
-w_{deep} = w_{perc} \times f
-$$
+$$w_{deep} = w_{perc} \times f$$
 
-Here *f* is rchg\_dp.
+where $w_{deep}$ is daily percolation to the deep aquifer (`mm`), $w_{perc}$ is daily soil percolation (`mm`), and $f$ is `rchg_dp` (fraction).

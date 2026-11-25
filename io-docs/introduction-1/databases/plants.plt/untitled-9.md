@@ -10,4 +10,9 @@ Exponent $r$ of the leaf area decline of **annual** plants after [hu\_lai\_decl]
 
 $$A = A_{0} \left( \frac{1 - h}{1 - d} \right)^{r}$$
 
-$A$ is leaf area index, $A_{0}$ its value when decline began, $h$ the current heat-unit fraction and $d$ the fraction when decline began. A value of 1 gives a linear decline.
+where:
+- $A$ is the leaf area index (dimensionless),
+- $A_{0}$ is the leaf area index when decline began (dimensionless),
+- $h$ is the current heat-unit fraction (dimensionless),
+- $d$ is the heat-unit fraction when decline began (dimensionless; [hu\_lai\_decl](untitled-10.md)), and
+- $r$ is `dlai_rate` (dimensionless; a value of `1` gives a linear decline).

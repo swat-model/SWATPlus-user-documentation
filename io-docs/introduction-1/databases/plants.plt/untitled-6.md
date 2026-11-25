@@ -10,7 +10,7 @@ description: Optimal temperature for plant growth
 
 $$f = \sin\left(1.5707\,\frac{T - T_{b}}{T_{o} - T_{b}}\right)$$
 
-$T$ is the daily mean temperature, $T_{b}$ is [tmp\_base](tmp_base.md) and $T_{o}$ is `tmp_opt`.
+where $f$ is the temperature stress factor (dimensionless; `1` = no stress), $T$ is the daily mean air temperature (`°C`), $T_{b}$ is [tmp\_base](tmp_base.md) (`°C`), and $T_{o}$ is `tmp_opt` (`°C`).
 
 Both optimal and base temperatures are very stable for cultivars within a species.
 

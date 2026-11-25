@@ -10,4 +10,11 @@ Representative field width $W$ in meters. The built-in field record uses 100 m. 
 
 $$T = D\,C\,Q\,S^{1.4}W^{1.4}$$
 
-$D$ is the [deposition coefficient](../topography.hyd/depos.md), $C$ is the USLE cover factor, $Q$ is the surface runon term used in the calculation, and $S$ is slope steepness.
+where:
+
+- $T$ is the sediment transport capacity,
+- $D$ is the [deposition coefficient](../topography.hyd/depos.md) (dimensionless),
+- $C$ is the USLE cover factor (dimensionless),
+- $Q$ is the surface runon term used in the calculation,
+- $S$ is slope steepness (m/m), and
+- $W$ is `wd` (m).

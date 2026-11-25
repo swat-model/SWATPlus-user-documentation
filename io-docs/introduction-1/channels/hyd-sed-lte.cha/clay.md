@@ -12,4 +12,6 @@ In [`sd_channel_sediment3.f90`](https://github.com/swat-model/swatplus/blob/6f51
 
 $$C = \max\!\left(1000,\; -87.1 + 42.82\,\text{clay} - 0.261\,\text{clay}^2 + 0.029\,\text{clay}^3\right)$$
 
+where $C$ is soil bank cohesion (floored at $1000$) and $\text{clay}$ is `clay` (`%`).
+
 The routine also computes the bank-erosion exponent `b_exp` from `clay` ([`sd_channel_sediment3.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_sediment3.f90#L184-L185)), though the commented-out power equation at [`sd_channel_sediment3.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_sediment3.f90#L195) leaves `b_exp` unused.

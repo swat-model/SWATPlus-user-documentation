@@ -12,8 +12,10 @@ For elements with $f_{\text{bsn}} > 10^{-12}$, SWAT+ weights HRU and HRU-LTE sta
 
 $$X_{\text{bsn}} = \sum_{e} X_{e} \cdot f_{\text{bsn},e}$$
 
+where $X_{\text{bsn}}$ is the basin-level state or flux, $X_{e}$ is the element state or flux, and $f_{\text{bsn},e}$ is `bsn_frac` (`fraction`).
+
 During dynamic land-use fraction changes ([`hru_fr_change.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_fr_change.f90#L97)) and soft calibration ([`lcu_read_softcal.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/lcu_read_softcal.f90#L108)), SWAT+ also computes HRU area from `bsn_frac` and basin landscape area:
 
 $$A_{\text{hru}} = f_{\text{bsn}} \cdot A_{\text{bsn,ls}}$$
 
-where $X_{e}$ is the element state or flux, $f_{\text{bsn},e}$ is `bsn_frac`, $A_{\text{hru}}$ is HRU area (`ha`), and $A_{\text{bsn,ls}}$ is `bsn%area_ls_ha` (`ha`).
+where $A_{\text{hru}}$ is HRU area (`ha`), $f_{\text{bsn}}$ is `bsn_frac` (`fraction`), and $A_{\text{bsn,ls}}$ is `bsn%area_ls_ha` (`ha`).

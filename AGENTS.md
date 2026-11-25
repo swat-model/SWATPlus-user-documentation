@@ -55,9 +55,13 @@ Do not take these from earlier commits, existing page links or the logs: they re
    - **Strong Claims:** Before committing a statement that something has no effect or does not work, try to disprove it: search for other writers and readers, calibration paths and other routines. Say it came from source reading unless a model run confirmed it.
 
 3. **KaTeX & Math Formatting in GitBook:**
+   - **Standalone display equations with `where` definitions (modeled on `io-docs/introduction-1/soils/soils.sol/anion_excl.md`):**
+     - Place every calculation equation in its own standalone display-math block (`$$...$$` surrounded by blank lines above and below — never inline inside a prose paragraph and never as a raw backticked Fortran assignment).
+     - Follow every display equation immediately with a `where ...` clause (a `where ...` sentence for 1–4 symbols, or `where:` with a markdown bullet list for 5+ symbols) defining each symbol, its units, and the input parameter it represents.
+     - Reserve inline `$...$` math for standalone symbols, simple bounds/comparisons (e.g. `$\le 10^{-6}$`), or brief unit identities.
    - **Never put underscores inside `\text{...}`** (e.g., do not write `\text{wet_ob}`). GitBook's markdown parser unescapes `\_` to `_`, causing KaTeX to fail with `'_' allowed only in math mode`.
    - **Avoid unbraced subscripts after punctuation/braces in inline `$...$` math:** Never write `}_2`, `}_l`, etc. inside inline `$...$` (e.g., use `\text{FC}_{l}` instead of `\text{FC}_l`, and plain text for prose units like `` `mm H2O/mm soil` `` instead of `$\text{mm H}_2\text{O/mm soil}$`). Unbraced `}_<alnum>` acts as a CommonMark/GFM opening italic `_` and breaks inline math rendering when paired with another `_` in the same paragraph.
-   - Use clean, standard mathematical symbols ($V_{\text{evol}} = \text{area} \times \text{depth} \times 10$ or $x_1 = b^2 + 4c(1 - V/V_{\text{pvol}})$) and define the parameter names in plain markdown text below the equation.
+   - Use clean, standard mathematical symbols (`$$V_{\text{evol}} = \text{area} \times \text{depth} \times 10$$` or `$$x_1 = b^2 + 4c(1 - V/V_{\text{pvol}})$$`) and define every symbol in the `where ...` clause below the equation.
 
 4. **Table & Link Integrity:**
    - Every column in an input table must link to a valid local markdown page (`[field](field.md)`).

@@ -11,3 +11,5 @@ Maximum daily symbiotic nitrogen fixation allowed for nitrogen-fixing plants (`k
 In [`pl_nfix.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_nfix.f90#L87), daily fixed nitrogen is capped at `n_fix_max`:
 
 $$\text{fix}_{N} = \min\!\big(\text{nfixmx},\; \text{fix}_{N}\big)$$
+
+where $\text{fix}_{N}$ is daily fixed nitrogen (`kg N/ha/day`) and $\text{nfixmx}$ is `n_fix_max` (`kg N/ha/day`).

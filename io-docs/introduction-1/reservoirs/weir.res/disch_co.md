@@ -10,4 +10,17 @@ Dimensionless linear coefficient in the weir-release equation (Fortran struct de
 
 $$Q = 0.45 \, A \cdot c \cdot w \cdot h_{\text{above}}^{k}$$
 
-where $A$ is surface area (ha), $c$ is `linear_c`, $w$ is [width](weir_wd.md) (m), $k$ is [exp\_k](energy_co.md), $h_{\text{above}} = \max(0,\, d - h_{\text{weir}})$ is water depth above the weir crest (m), and $Q$ is the discharge rate (`m3/s` in source comments, integrated over the sub-daily/hourly step to $\text{m}^3$).
+where:
+
+- $Q$ is the discharge rate (`m3/s` in source comments, integrated over the sub-daily/hourly step to $\text{m}^3$)
+- $A$ is surface area (ha)
+- $c$ is `linear_c` (dimensionless)
+- $w$ is [width](weir_wd.md) (m)
+- $k$ is [exp\_k](energy_co.md) (dimensionless)
+- $h_{\text{above}}$ is water depth above the weir crest (m)
+
+Water depth above the weir crest is computed as:
+
+$$h_{\text{above}} = \max(0,\, d - h_{\text{weir}})$$
+
+where $h_{\text{above}}$ is water depth above the weir crest (m), $d$ is water depth (m), and $h_{\text{weir}}$ is weir-crest height (m).

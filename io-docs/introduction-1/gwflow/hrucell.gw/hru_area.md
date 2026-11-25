@@ -10,4 +10,6 @@ Total area of the HRU, in m². SWAT+ divides each intersection area by it to get
 
 $$f_{\text{HRU}} = \frac{A_{\text{poly}}}{A_{\text{HRU}}}$$
 
+where $f_{\text{HRU}}$ is the fraction of the HRU in the cell (dimensionless), $A_{\text{poly}}$ is [poly_area](poly_area.md) ($\text{m}^2$), and $A_{\text{HRU}}$ is `hru_area` ($\text{m}^2$).
+
 These fractions split the HRU's recharge and ET among its cells, so for each HRU they should add up to 1. SWAT+ does not check this. The recharge volume itself comes from the HRU area in the HRU data, not from this value.

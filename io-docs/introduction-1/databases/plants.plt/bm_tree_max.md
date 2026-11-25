@@ -10,6 +10,6 @@ Above-ground biomass threshold for year-end mortality. It is entered in metric t
 
 $$D = (1 + d)\,(B - 1000\,M)$$
 
-$D$ is dead biomass (kg/ha), $B$ above-ground biomass (kg/ha), $M$ is `bm_tree_max` and $d$ is [bm\_dieoff](bm_dieoff.md). Nothing is removed if $D$ is not positive or is not smaller than $B$.
+where $D$ is dead biomass (`kg/ha`), $d$ is [bm\_dieoff](bm_dieoff.md) (dimensionless), $B$ is above-ground biomass (`kg/ha`), and $M$ is `bm_tree_max` (`metric tons/ha`). Nothing is removed if $D$ is not positive or is not smaller than $B$.
 
 For forest stands, the maximum biomass of a mature stand generally falls in the range of 30-50 metric tons/ha.

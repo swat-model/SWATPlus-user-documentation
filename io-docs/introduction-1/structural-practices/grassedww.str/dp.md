@@ -10,6 +10,12 @@ Channel depth of the grassed waterway in metres (m; range `0.0–10.0`). In [`sm
 
 $$A_{\text{sf}} = (d - d_{\text{flow}}) \cdot 8.06 \cdot L \cdot 1000$$
 
-where $d$ is `dp` (m), $d_{\text{flow}}$ is daily flow depth (m), and $L$ is waterway length ([`len`](len.md), km). At runtime ([`structure_set_parms.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/structure_set_parms.f90#L80-L96)), if `dp <= 0` or if the resulting bottom width $b = w - 16 \, d \le 0$ (where $w$ is [`wd`](wd.md)), SWAT+ resets `dp` to:
+where $A_{\text{sf}}$ is the side-slope sheet-flow area ($\text{m}^2$), $d$ is `dp` (m), $d_{\text{flow}}$ is daily flow depth (m), and $L$ is waterway length ([`len`](len.md), km). At runtime ([`structure_set_parms.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/structure_set_parms.f90#L80-L96)), SWAT+ checks bottom width:
+
+$$b = w - 16 \, d$$
+
+where $b$ is bottom width (m), $w$ is [`wd`](wd.md) (m), and $d$ is `dp` (m). If `dp <= 0` or $b \le 0$, SWAT+ resets `dp` to:
 
 $$d = \frac{3}{64} \, w$$
+
+where $d$ is the reset `dp` (m) and $w$ is [`wd`](wd.md) (m).

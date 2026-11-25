@@ -11,3 +11,5 @@ Fraction of incoming daily solar radiation that is photosynthetically active (di
 In [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L173-L177), `tfact` scales weather-station solar radiation $H_{\text{solrad}}$ divided by daylength $T_{\text{day}}$ to compute daylight-average photosynthetically active light intensity $I_a$ used in the algal light-attenuation factor:
 
 $$I_a = \frac{H_{\text{solrad}} \cdot \text{tfact}}{T_{\text{day}}}$$
+
+where $I_a$ is daylight-average photosynthetically active light intensity, $H_{\text{solrad}}$ is weather-station solar radiation, $\text{tfact}$ is `slr_act` (dimensionless), and $T_{\text{day}}$ is daylength.

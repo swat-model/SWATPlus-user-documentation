@@ -10,4 +10,6 @@ Percent by weight of soil particles that have an equivalent diameter between `0.
 
 $$\text{det}_{\text{sil}} = 0.13 \cdot \frac{\text{silt}_1}{100}$$
 
+where $\text{det}_{\text{sil}}$ is the detached silt fraction (dimensionless) and $\text{silt}_{1}$ is surface-layer `silt` (%).
+
 It is also used in overland sediment transport ([`ero_ovrsed.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ero_ovrsed.f90#L81)), slow humus initialization ([`soil_nutcarb_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/soil_nutcarb_init.f90#L163-L170)), and surface sand recalculation ([`soil_phys_init.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/soil_phys_init.f90#L179)).

@@ -12,4 +12,4 @@ Settling occurs in [`res_sediment.f90`](https://github.com/swat-model/swatplus/b
 
 $$C_{\text{sed,new}} = \max\!\left(C_{\text{eq}},\; (C_{\text{sed}} - C_{\text{eq}}) \, c_{\text{stl}} + C_{\text{eq}}\right) \quad \text{when } C_{\text{sed}} > C_{\text{eq}}$$
 
-where $C_{\text{sed}}$ is the suspended sediment concentration (mg/L), $C_{\text{eq}}$ is `nsed` (mg/L), and $c_{\text{stl}} = \exp(-0.184 \, d_{50})$ is the daily settling factor computed from [d50](d50.md).
+where $C_{\text{sed,new}}$ is the post-settling suspended sediment concentration (mg/L), $C_{\text{sed}}$ is the suspended sediment concentration (mg/L), $C_{\text{eq}}$ is `nsed` (mg/L), and $c_{\text{stl}}$ is the daily settling factor computed from [d50](d50.md) ($\exp(-0.184 \, d_{50})$).

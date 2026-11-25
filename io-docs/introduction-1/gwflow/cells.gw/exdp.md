@@ -10,4 +10,11 @@ Depth below the ground surface, in m, at which groundwater ET stops. The ET dema
 
 $$E = E_{\max} \, \frac{h - (z - d)}{d} \quad \text{for} \; z - d \le h \le z$$
 
-where $E_{\max}$ is the remaining ET volume mapped to the cell (m³), $h$ the head, $z$ the ground elevation and $d$ this depth. Above the surface $E = E_{\max}$; below $z - d$, $E = 0$. With $d = 0$, ET is taken only when the head is above the surface. The calibration parameter `aquifer_exdp` changes it cell by cell ([`cal_parm_select.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cal_parm_select.f90#L1077-L1080)).
+where:
+- $E$ is groundwater ET taken from the cell ($\text{m}^3$),
+- $E_{\max}$ is the remaining ET volume mapped to the cell ($\text{m}^3$),
+- $h$ is the head (m),
+- $z$ is the ground elevation (m), and
+- $d$ is `exdp` (m).
+
+Above the surface $E$ equals $E_{\max}$; below $z - d$, $E$ is `0`. With $d$ equal to `0`, ET is taken only when the head is above the surface. The calibration parameter `aquifer_exdp` changes it cell by cell ([`cal_parm_select.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cal_parm_select.f90#L1077-L1080)).

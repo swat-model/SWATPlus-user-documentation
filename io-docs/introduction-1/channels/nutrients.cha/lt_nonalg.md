@@ -12,7 +12,15 @@ In [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7
 
 $$\lambda = \lambda_0 + \lambda_1\,\alpha_0\,\text{algae} + \lambda_2\,(\alpha_0\,\text{algae})^{2/3}$$
 
-where $\lambda_0$ is `lt_nonalg` (`1/m`), $\lambda_1$ is `alg_shd_l` (`1/(m*ug chla/L)`), $\lambda_2$ is `alg_shd_nl` (`(1/m)(ug chla/L)^(-2/3)`), $\alpha_0$ is `chla_alg` (`ug chla/mg alg`), and $\text{algae}$ is the algal biomass concentration (`mg alg/L`). Because [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L164) enforces `if (lambda > lambda0) lambda = lambda0` and [`ch_read_nut.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_read_nut.f90#L78-L79) keeps `lambda1` and `lambda2` positive, $\lambda$ collapses to $\lambda_0$ before evaluating light attenuation ([`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L181)).
+where:
+- $\lambda$ is the light extinction coefficient (`1/m`),
+- $\lambda_0$ is `lt_nonalg` (`1/m`),
+- $\lambda_1$ is `alg_shd_l` (`1/(m*ug chla/L)`),
+- $\lambda_2$ is `alg_shd_nl` (`(1/m)(ug chla/L)^(-2/3)`),
+- $\alpha_0$ is `chla_alg` (`ug chla/mg alg`), and
+- $\text{algae}$ is the algal biomass concentration (`mg alg/L`).
+
+Because [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L164) enforces `if (lambda > lambda0) lambda = lambda0` and [`ch_read_nut.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_read_nut.f90#L78-L79) keeps `lambda1` and `lambda2` positive, $\lambda$ collapses to $\lambda_0$ before evaluating light attenuation ([`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L181)).
 
 #### Relevant chapter in the Theoretical Documentation:
 

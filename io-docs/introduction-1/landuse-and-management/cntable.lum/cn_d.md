@@ -10,4 +10,8 @@ Dimensionless SCS moisture-condition II runoff curve number (`30.0–100.0`, str
 
 $$\text{CN}_1 = \max\!\left(\text{CN}_2 - \frac{20\,(100 - \text{CN}_2)}{(100 - \text{CN}_2) + \exp\big(2.533 - 0.0636\,(100 - \text{CN}_2)\big)},\; 0.4\,\text{CN}_2\right)$$
 
+where $\text{CN}_{1}$ is the moisture-condition I (dry) curve number (dimensionless) and $\text{CN}_{2}$ is `cn_d` (dimensionless).
+
 $$S_{\max} = 254\left(\frac{100}{\text{CN}_1} - 1\right), \quad \text{CN}_3 = \text{CN}_2 \exp\!\big(0.006729\,(100 - \text{CN}_2)\big)$$
+
+where $S_{\max}$ is the maximum retention parameter (`mm`), $\text{CN}_{1}$ is the moisture-condition I curve number (dimensionless), $\text{CN}_{2}$ is `cn_d` (dimensionless), and $\text{CN}_{3}$ is the moisture-condition III (wet) curve number (dimensionless).

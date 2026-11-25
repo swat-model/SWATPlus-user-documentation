@@ -12,6 +12,15 @@ $$
 \Delta C = k \, f_c \, C_{pool}, \qquad f_c = \min\left(15, \; 0.9 \sqrt{f_T f_W} \, f_O \, f_{till}\right)
 $$
 
-$k$ is this rate (1/day), $C_{pool}$ the pool carbon (kg/ha), and $f_c$ the combined factor from temperature ([tmpf](tmpf.md)), water ([watf](watf.md)), depth (oxygen) and tillage ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L414)).
+where:
+
+- $\Delta C$ is the daily transformed slow humus carbon (kg/ha/day),
+- $k$ is `r_hs_rate` (1/day),
+- $f_c$ is the combined environmental factor (dimensionless; [`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L414)),
+- $C_{pool}$ is the slow humus pool carbon (kg/ha),
+- $f_T$ is the soil temperature factor ([tmpf](tmpf.md), dimensionless),
+- $f_W$ is the soil water factor ([watf](watf.md), dimensionless),
+- $f_O$ is the depth (oxygen) factor (dimensionless), and
+- $f_{till}$ is the tillage factor (dimensionless).
 
 The SWAT+ example file (`refdata/Ames_sub1`) heads this column `hs_rate` and uses 2.92e-04 and 1.81e-04 for rows 1 and 2. The calibration parameter is `hs_rate` (by layer).

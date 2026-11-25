@@ -12,6 +12,6 @@ $$
 a_{sp} = \max\left(0.001, \; h - 0.00009 \cdot \text{clay}\right)
 $$
 
-$h$ is this value and clay is in percent. Row `1` applies to soil layer 1, the 10 mm surface layer, and row `2` to all deeper layers ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L302-L309)).
+where $a_{sp}$ is the fraction of transformed slow humus carbon passed to the passive pool, $h$ is `r_hs_hp` (fraction), and $\text{clay}$ is the layer clay content (%). Row `1` applies to soil layer 1, the 10 mm surface layer, and row `2` to all deeper layers ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L302-L309)).
 
 The SWAT+ example file (`refdata/Ames_sub1`) heads this column `hs_hp` and uses 0.05 for both rows. The calibration parameter is `hs_hp` (by layer).

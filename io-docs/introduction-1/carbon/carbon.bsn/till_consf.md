@@ -12,6 +12,14 @@ $$
 F_{till} = (1 - k) \, F_{till}, \qquad k = k_{till} \min\left(1, \frac{SW}{FC}\right)
 $$
 
-$k_{till}$ is this value. The tillage factor changes decomposition only when [idc\_till](../../basin-1/codes.bsn/idc_till.md) `= 3` ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L380-L383)).
+where:
+
+- $F_{till}$ is the layer's tillage mixing factor (dimensionless),
+- $k$ is the daily decay fraction (1/day),
+- $k_{till}$ is `till_consf` (fraction/day),
+- $SW$ is the layer's soil water content (mm), and
+- $FC$ is the layer's field capacity (mm).
+
+The tillage factor changes decomposition only when [idc\_till](../../basin-1/codes.bsn/idc_till.md) `= 3` ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L380-L383)).
 
 The SWAT+ example file (`refdata/Ames_sub1`) heads this column `till_consol` and uses 0.10. The calibration parameter is `till_consol`.

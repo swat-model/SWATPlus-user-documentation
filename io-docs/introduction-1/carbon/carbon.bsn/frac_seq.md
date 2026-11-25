@@ -12,6 +12,15 @@ $$
 C_{pass} = f_{seq} \, f_{pass} \, C_{tot}, \qquad C_{meta} = 0.85 \, (1 - f_{seq}) \, C_{tot}, \qquad C_{str} = 0.15 \, (1 - f_{seq}) \, C_{tot}
 $$
 
-Here $f_{pass}$ is [frac\_hum\_passive](frac_hum_passive.md) and $C_{tot}$ is the layer's organic carbon in kg/ha. The slow and microbial pools use [frac\_hum\_slow](frac_hum_slow.md) (or the Mathers fraction, see [mathers\_int](mathers_int.md)) and [frac\_hum\_microb](frac_hum_microb.md) in the same way. Enter a fraction between 0 and 1.
+where:
+
+- $C_{pass}$ is the initial passive humus carbon (kg/ha),
+- $C_{meta}$ is the initial metabolic litter carbon (kg/ha),
+- $C_{str}$ is the initial structural litter carbon (kg/ha),
+- $f_{seq}$ is `frac_seq` (fraction),
+- $f_{pass}$ is [frac\_hum\_passive](frac_hum_passive.md) (fraction), and
+- $C_{tot}$ is the layer's organic carbon (kg/ha).
+
+The slow and microbial pools use [frac\_hum\_slow](frac_hum_slow.md) (or the Mathers fraction, see [mathers\_int](mathers_int.md)) and [frac\_hum\_microb](frac_hum_microb.md) in the same way. Enter a fraction between 0 and 1.
 
 The SWAT+ example file (`refdata/Ames_sub1`) heads this column `init_seq` and uses 0.95. The calibration parameter is `init_seq`.

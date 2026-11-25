@@ -10,4 +10,4 @@ Fraction of conveyed water lost in the pipe (`fraction`; uninitialized in the de
 
 $$H_{\text{pod}} \leftarrow \left(1 - f_{\text{loss}}\right) \cdot H_{\text{pod}}$$
 
-However, the call to `wallo_transfer` in [`wallo_return.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_return.f90#L21) is commented out, so `wallo_transfer` is never called in SWAT+ main (`6f515368`).
+where $H_{\text{pod}}$ is the conveyed POD hydrograph and $f_{\text{loss}}$ is `loss_fr` (fraction). However, the call to `wallo_transfer` in [`wallo_return.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_return.f90#L21) is commented out, so `wallo_transfer` is never called in SWAT+ main (`6f515368`).

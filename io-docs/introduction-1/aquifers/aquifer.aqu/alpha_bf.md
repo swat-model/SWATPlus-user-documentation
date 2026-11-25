@@ -12,13 +12,15 @@ $$
 Q_{gw,t} = Q_{gw,t-1} \, e^{-\alpha} + R_{t} \left(1 - e^{-\alpha}\right)
 $$
 
-where $R_{t}$ is the day's aquifer recharge (mm). The result is clamped between 0 and the current storage. It is set to 0 when the water table is deeper than [flo\_min](flo_min.md).
+where $Q_{gw,t}$ and $Q_{gw,t-1}$ are groundwater flow on days $t$ and $t-1$ (mm), $\alpha$ is `alpha_bf` (1/days), and $R_{t}$ is the day's aquifer recharge (mm). The result is clamped between 0 and the current storage. It is set to 0 when the water table is deeper than [flo\_min](flo_min.md).
 
 The baseflow recession constant can be calculated, but the best estimates come from analyzing measured streamflow during periods with no recharge. If the number of baseflow days ($BFD$, the days needed for baseflow to decline through one log cycle) is known:
 
 $$
 \alpha = \frac{1}{BFD} \ln(10) = \frac{2.3}{BFD}
 $$
+
+where $\alpha$ is `alpha_bf` (1/days) and $BFD$ is the number of baseflow days (days).
 
 > Smedema, L.K. and D.W. Rycroft. 1983. Land drainage - planning and design of agricultural drainage systems. Cornell University Press, Ithaca, NY.
 >

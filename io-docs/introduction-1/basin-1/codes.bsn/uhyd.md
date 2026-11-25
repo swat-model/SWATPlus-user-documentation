@@ -13,8 +13,15 @@ Selects the sub-daily unit hydrograph ordinate shape in [`unit_hyd.f90`](https:/
 | 0 | Triangular Unit Hydrograph |
 | 1 | Gamma Function Unit Hydrograph |
 
-For a basetime $t_b$ adjusted by [adj\_uhyd](../parameters.bsn/adj_uhyd.md) and time to peak $t_p = 0.375\,t_b$, code `0` uses linear rising ($t / t_p$) and falling ($(t_b - t)/(t_b - t_p)$) limbs, whereas code `1` uses the gamma shape with [uhyd\_alpha](../parameters.bsn/uhyd_alpha.md) ($\alpha$):
+For a basetime $t_b$ adjusted by [adj\_uhyd](../parameters.bsn/adj_uhyd.md), code `0` uses linear rising ($t / t_p$) and falling ($(t_b - t)/(t_b - t_p)$) limbs, whereas code `1` uses the gamma shape with [uhyd\_alpha](../parameters.bsn/uhyd_alpha.md) ($\alpha$):
 
-$$q(t) = \left(\frac{t}{t_p}\right)^{\alpha} \exp\!\left(\left(1 - \frac{t}{t_p}\right)\alpha\right)$$
+$$t_p = 0.375\,t_b, \qquad q(t) = \left(\frac{t}{t_p}\right)^{\alpha} \exp\!\left(\left(1 - \frac{t}{t_p}\right)\alpha\right)$$
+
+where:
+- $t_p$ is time to peak (`hours`),
+- $t_b$ is the unit hydrograph basetime (`hours`),
+- $q(t)$ is the dimensionless unit hydrograph ordinate at time $t$,
+- $t$ is time since runoff began (`hours`), and
+- $\alpha$ is `uhyd_alpha` (dimensionless).
 
 The Unit Hydrograph method is only relevant when simulating at a sub-daily timestep and [gampt](gampt.md) = 0.

@@ -12,6 +12,6 @@ $$
 μmn_{mon}=\frac{∑_{d=1}^N*T_{mn,mon}}{N}
 $$
 
-where $$μmn_{mon}$$is the mean daily minimum temperature for the month $$mon$$ (ºC), $$T_{mn,mon}$$ is the daily minimum temperature on day $$d$$ in month $$mon$$ (ºC), and $$N$$is the total number of daily minimum temperature records for month $$mon$$.
+where $μmn_{mon}$ is the mean daily minimum temperature for the month $mon$ (ºC), $T_{mn,mon}$ is the daily minimum temperature on day $d$ in month $mon$ (ºC), and $N$ is the total number of daily minimum temperature records for month $mon$.
 
 The generator computes daily minimum temperature as $\mu_{\min}+\sigma_{\min}Z_2$. If the result exceeds the generated maximum $T_{\max}$, it sets the minimum to $T_{\max}-0.2|T_{\max}|$. See [cli_tgen.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cli_tgen.f90#L42-L49).

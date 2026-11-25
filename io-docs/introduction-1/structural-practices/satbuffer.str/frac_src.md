@@ -10,6 +10,16 @@ Used to scale buffer inflow and partition tile nitrate ([`hru_control.f90`](http
 
 $$Q_{\text{buf}} = \frac{A_{\text{rcv}}}{A_{\text{src}}} \, f_{\text{src}} \, Q_{\text{div}}, \qquad q_{\text{tile,rem}} = (1 - f_{\text{src}}) \, Q_{\text{div}}$$
 
+where:
+
+- $Q_{\text{buf}}$ is the tile water routed into the buffer HRU
+- $q_{\text{tile,rem}}$ is the tile water remaining in the source HRU tile outflow
+- $Q_{\text{div}}$ is the diverted tile inflow depth determined by [`flocon_dtbl`](flocon_dtbl.md)
+- $f_{\text{src}}$ is `frac_src` (fraction)
+- $A_{\text{src}}$ and $A_{\text{rcv}}$ are the source and receiving HRU areas (ha)
+
+For nitrate partitioning:
+
 $$N_{\text{buf}} = f_{\text{src}} \, N_{\text{tile}}, \qquad N_{\text{tile,rem}} = (1 - f_{\text{src}}) \, N_{\text{tile}}$$
 
-where $f_{\text{src}}$ is `frac_src`, $A_{\text{src}}$ and $A_{\text{rcv}}$ are the source and receiving HRU areas (ha), $Q_{\text{buf}}$ and $N_{\text{buf}}$ are the tile water and nitrate routed into the buffer HRU, and $q_{\text{tile,rem}}$ and $N_{\text{tile,rem}}$ remain in the source HRU tile outflow.
+where $N_{\text{buf}}$ is the tile nitrate routed into the buffer HRU, $N_{\text{tile,rem}}$ is the tile nitrate remaining in the source HRU tile outflow, $N_{\text{tile}}$ is the source HRU tile nitrate load, and $f_{\text{src}}$ is `frac_src` (fraction).

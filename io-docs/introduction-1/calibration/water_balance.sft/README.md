@@ -39,4 +39,11 @@ When `hyd_hru` in `codes.sft` is not `"a"` (for example `"b"` or `"y"`), [`lcu_r
 
 $$f_{\text{srr}} = f_{\text{wyr}}(1 - f_{\text{bfr}}), \qquad f_{\text{bfr}}' = f_{\text{wyr}}\,f_{\text{bfr}}, \qquad f_{\text{lfr}} = 0.1\,f_{\text{bfr}}'$$
 
+where:
+- $f_{\text{srr}}$ is the derived `srr` target (dimensionless),
+- $f_{\text{bfr}}'$ is the converted baseflow fraction of precipitation (dimensionless),
+- $f_{\text{lfr}}$ is the derived `lfr` target (dimensionless),
+- $f_{\text{wyr}}$ is `wyr` (dimensionless), and
+- $f_{\text{bfr}}$ is `bfr` (dimensionless).
+
 After accumulating baseline averages, [`calsoft_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/calsoft_control.f90#L48-L52) and [`calsoft_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/calsoft_control.f90#L68-L72) multiply `srr`, `lfr`, `pcr`, `etr`, and `tfr` by saved average annual precipitation (`precip_aa_sav`) to convert ratios to depth targets in mm.

@@ -12,4 +12,4 @@ $$
 \text{NO3}_{t} = \text{NO3}_{t-1} \times \exp\left(\frac{-0.693}{t_{1/2} + 0.1}\right)
 $$
 
-The 0.1-day offset prevents division by zero. With _hl\_no3n_ = 0, about 99.9% of stored nitrate is removed each day.
+where $\text{NO3}_{t}$ and $\text{NO3}_{t-1}$ are stored aquifer nitrate nitrogen on days $t$ and $t-1$, and $t_{1/2}$ is `hl_no3n` (days). The 0.1-day offset prevents division by zero. With _hl\_no3n_ = 0, about 99.9% of stored nitrate is removed each day.

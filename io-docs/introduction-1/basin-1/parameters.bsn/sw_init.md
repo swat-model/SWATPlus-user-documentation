@@ -12,6 +12,8 @@ All soils in the watershed are initialized to the same fraction of field capacit
 
 $$f_{\text{fc}} = \frac{P_{\text{ann}}}{P_{\text{ann}} + \exp(9.043 - 0.002135\,P_{\text{ann}})}$$
 
+where $f_{\text{fc}}$ is the estimated initial fraction of field capacity water content (dimensionless) and $P_{\text{ann}}$ is average annual precipitation (`mm`).
+
 {% hint style="info" %}
 We recommend using a warm-up period of at least 1 year, i.e. start the simulation at least 1 year prior to the period of interest. This allows the model to get the water cycling properly before any comparisons between measured and simulated data are made. If a warm-up period is incorporated, the value for *sw\_init* will not impact model results.
 {% endhint %}

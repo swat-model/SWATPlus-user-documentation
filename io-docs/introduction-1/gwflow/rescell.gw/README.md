@@ -18,7 +18,15 @@ Each day, every active neighbor (from `cellcon.gw`) of a reservoir cell exchange
 
 $$Q = K \, \frac{z_{r} - h}{b} \, b \, L = K \, (z_{r} - h) \, L$$
 
-where $Q$ is the flow into the aquifer (m³/day), $K$ = `res_K`, $b$ = `res_thick`, $h$ the neighbor's head, $L = \sqrt{\min(A)}$ of the two cells, and $z_{r}$ the ground elevation of the reservoir cell from `cells.gw`. The thickness cancels, and neither `res_stage` nor the reservoir's water level is used. These are listed in `MODEL_ISSUES.md`. Seepage is set to 0 when it would exceed the reservoir volume.
+where:
+- $Q$ is the flow into the aquifer ($\text{m}^3/\text{day}$),
+- $K$ is `res_K` (`m/day`),
+- $b$ is `res_thick` (m),
+- $h$ is the neighbor's head (m),
+- $L$ is the connection width between the two cells ($\sqrt{\min(A)}$, m), and
+- $z_{r}$ is the ground elevation of the reservoir cell from `cells.gw` (m).
+
+The thickness cancels, and neither `res_stage` nor the reservoir's water level is used. These are listed in `MODEL_ISSUES.md`. Seepage is set to 0 when it would exceed the reservoir volume.
 
 ## Bed properties
 

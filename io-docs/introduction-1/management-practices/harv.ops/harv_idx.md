@@ -12,8 +12,15 @@ In biomass harvests (`biomass`, `tree`, `stripper`; [`mgt_harvbiomass.f90`](http
 
 $$HI_{\text{tot}} = HI_{\text{ovr}} \cdot E_{\text{harv}}$$
 
+where $HI_{\text{tot}}$ is the effective harvest index (dimensionless), $HI_{\text{ovr}}$ is `harv_idx` (dimensionless), and $E_{\text{harv}}$ is `harv_eff` (dimensionless).
+
 In residue harvests (`residue`; [`mgt_harvresidue.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvresidue.f90#L41-L43), [`#L57`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvresidue.f90#L57)), `harv_idx` scales the residue removal fraction:
 
 $$E_{\text{net}} = E_{\text{harv}} \cdot HI_{\text{ovr}}, \qquad M_{\text{rem}} = E_{\text{net}} \cdot M_{\text{rsd}}$$
 
-where $HI_{\text{ovr}}$ is `harv_idx`, $E_{\text{harv}}$ is `harv_eff` (or the scheduled efficiency when positive for residue harvest), $M_{\text{rsd}}$ is surface plant residue mass (`kg/ha`), and $M_{\text{rem}}$ is removed residue mass (`kg/ha`). For `grain`/`picker` ([`mgt_harvgrain.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvgrain.f90#L40-L48)) and `tuber`/`peanuts` ([`mgt_harvtuber.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvtuber.f90#L43-L46)) harvests, `harv_idx` is not used; grain harvests instead use the plant's simulated harvest index from [**plants.plt**](../../databases/plants.plt/README.md) (floored by `wsyf` at [`mgt_harvgrain.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvgrain.f90#L43)).
+where:
+- $E_{\text{net}}$ is the net residue removal fraction (dimensionless),
+- $E_{\text{harv}}$ is `harv_eff` (or the scheduled efficiency when positive for residue harvest, dimensionless),
+- $HI_{\text{ovr}}$ is `harv_idx` (dimensionless),
+- $M_{\text{rem}}$ is removed residue mass (`kg/ha`), and
+- $M_{\text{rsd}}$ is surface plant residue mass (`kg/ha`). For `grain`/`picker` ([`mgt_harvgrain.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvgrain.f90#L40-L48)) and `tuber`/`peanuts` ([`mgt_harvtuber.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvtuber.f90#L43-L46)) harvests, `harv_idx` is not used; grain harvests instead use the plant's simulated harvest index from [**plants.plt**](../../databases/plants.plt/README.md) (floored by `wsyf` at [`mgt_harvgrain.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvgrain.f90#L43)).

@@ -11,4 +11,10 @@ Plant uptake factor (a transpiration-stream concentration factor) used for root 
 
 $$U = f\,\frac{W}{S + W + K}\,M$$
 
-$U$ is uptake (kg/ha), $f$ is `pl_uptake`, $W$ the water taken up from the layer (mm), $S$ the effective soil water (see [resistance\_n](resistance_n.md)), $K$ the sorption capacity from [soil\_ads](soil_ads.md), and $M$ the pesticide mass in the layer.
+where:
+- $U$ is pesticide uptake from the layer (`kg/ha`),
+- $f$ is `pl_uptake` (dimensionless),
+- $W$ is water taken up from the layer (`mm`),
+- $S$ is effective soil water (`mm`; see [resistance\_n](resistance_n.md)),
+- $K$ is sorption capacity (`mm`; from [soil\_ads](soil_ads.md)), and
+- $M$ is pesticide mass in the layer (`kg/ha`).

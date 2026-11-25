@@ -8,8 +8,6 @@ description: Baseflow alpha factor
 
 Daily baseflow recession constant (1/days). SWAT+ converts it to a retention factor when reading the file ([`hru_lte_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_read.f90#L138)) and uses it for shallow aquifer flow in mm ([`hru_lte_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_lte_control.f90#L336-L337)):
 
-$$
-Q_{gw,t} = Q_{gw,t-1} \, e^{-\alpha} + w_{perc} \left( 1 - e^{-\alpha} \right)
-$$
+$$Q_{gw,t} = Q_{gw,t-1} \, e^{-\alpha} + w_{perc} \left( 1 - e^{-\alpha} \right)$$
 
-Flow is limited to the water stored in the shallow aquifer.
+where $Q_{gw,t}$ and $Q_{gw,t-1}$ are shallow aquifer flow on day $t$ and day $t-1$ (`mm`), $\alpha$ is `alpha_bf` (`1/days`), and $w_{perc}$ is daily soil percolation (`mm`). Flow is limited to the water stored in the shallow aquifer.

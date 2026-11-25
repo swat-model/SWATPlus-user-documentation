@@ -10,4 +10,13 @@ Despite the legacy input label, this field is the annual loss-rate coefficient f
 
 $$f_{\text{solN}} = \min\!\left(1,\; \max\!\left(0,\; (C_{\text{solN}} - C_{N,\min}) \, \frac{k_{\text{solN}}}{365} \, \theta_N^{(T - 20)}\right)\right), \qquad M_{\text{new}} = M \,(1 - f_{\text{solN}} \, f_{\text{sol}})$$
 
-where $C_{\text{solN}}$ is total soluble inorganic nitrogen concentration (ppm), $C_{N,\min}$ is [n\_min\_stl](n_min_stl.md) (ppm), $k_{\text{solN}}$ is `chla_co` (`1/year`), $\theta_N$ is [theta\_n](theta_n.md), $T$ is daily average air temperature (`deg C`), $M$ is each soluble nitrogen species (`no3`, `nh3`, `no2`), and $f_{\text{sol}} = 0.2$ is the soluble settling fraction initialized in [`res_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read.f90#L145) and [`wet_initial.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_initial.f90#L102).
+where:
+
+- $f_{\text{solN}}$ is the daily soluble nitrogen loss fraction (dimensionless)
+- $C_{\text{solN}}$ is total soluble inorganic nitrogen concentration (ppm)
+- $C_{N,\min}$ is [n\_min\_stl](n_min_stl.md) (ppm)
+- $k_{\text{solN}}$ is `chla_co` (`1/year`)
+- $\theta_N$ is [theta\_n](theta_n.md) (dimensionless)
+- $T$ is daily average air temperature (`deg C`)
+- $M$ and $M_{\text{new}}$ are the pre- and post-settling masses of each soluble nitrogen species (`no3`, `nh3`, `no2`, kg)
+- $f_{\text{sol}}$ is the soluble settling fraction (`0.2`, initialized in [`res_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read.f90#L145) and [`wet_initial.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_initial.f90#L102))

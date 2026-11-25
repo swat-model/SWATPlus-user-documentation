@@ -10,4 +10,9 @@ Longitudinal dispersivity of the aquifer, in m, for all solutes ([`gwflow_solute
 
 $$J = \alpha \, \frac{C_{n} - C_{i}}{L} \, \bar b$$
 
-where $\alpha$ is this value, $C$ the concentrations (g/m³), $L = \sqrt{\min(A)}$ of the two cells and $\bar b$ the mean saturated thickness at the interface.
+where:
+- $J$ is the dispersive mass flux into the cell ($\text{g}/\text{day}$),
+- $\alpha$ is `gw_long_disp` (m),
+- $C_{n}$ and $C_{i}$ are the solute concentrations in neighbor cell $n$ and cell $i$ ($\text{g}/\text{m}^3$),
+- $L$ is the connection width between the two cells ($\sqrt{\min(A_{i}, A_{n})}$, m), and
+- $\bar b$ is the mean saturated thickness at the interface (m).

@@ -12,9 +12,9 @@ description: Minimum value of the USLE C factor for water erosion
 
 The minimum C factor can be estimated from a known average annual C factor using the following equation (Arnold and Williams, 1995):
 
-$$C_{USLE,mn} = 1.463 * ln⁡[C_{USLE,aa}] + 0.1034$$
+$$C_{\text{USLE,mn}} = 1.463\,\ln(C_{\text{USLE,aa}}) + 0.1034$$
 
-where $$C_{USLE,mn}$$ is the minimum C factor for the land cover and $$C_{USLE,aa}$$ is the average annual C factor for the land cover.
+where $C_{\text{USLE,mn}}$ is the minimum C factor for the land cover (`usle_c_min`, dimensionless) and $C_{\text{USLE,aa}}$ is the average annual C factor for the land cover (dimensionless).
 
 #### References
 

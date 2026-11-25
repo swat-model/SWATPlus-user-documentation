@@ -12,4 +12,11 @@ When `exp_sed = 1`, [`decay_temp_adjust`](https://github.com/swat-model/swatplus
 
 $$t_{1/2}(T) = t_{1/2,25} \cdot Q_{10}^{(25 - T)/10}, \qquad f_{\text{surv}} = \exp\!\left(-\frac{0.693}{t_{1/2}(T)}\right)$$
 
+where:
+- $t_{1/2}(T)$ is the temperature-adjusted half-life (`days`),
+- $t_{1/2,25}$ is the 25 °C reference half-life (`days`),
+- $Q_{10}$ is the temperature coefficient (`2.58`, dimensionless),
+- $T$ is the compartment temperature (`°C`), and
+- $f_{\text{surv}}$ is the daily survival fraction (dimensionless).
+
 For any other value, SWAT+ uses the fixed decay factors from [**pesticide.pes**](../../databases/pesticide.pes/).

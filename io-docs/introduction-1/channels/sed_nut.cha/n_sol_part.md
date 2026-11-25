@@ -10,4 +10,6 @@ Instream transformation coefficient converting nitrate (`no3`) to organic nitrog
 
 $$f_{\text{N}} = 1 - \exp\!\left(-k_{\text{N}}\,t_{\text{travel}}\right)$$
 
-and the converted mass (`min(ht1%no3, f_N * ht1%orgn)`) is added to `ht2%orgn` and subtracted from `ht2%no3`.
+where $f_{\text{N}}$ is the transformed fraction (dimensionless), $k_{\text{N}}$ is `n_sol_part` (`1/h`), and $t_{\text{travel}}$ is reach travel time (`h`).
+
+The converted mass (`min(ht1%no3, f_N * ht1%orgn)`) is added to `ht2%orgn` and subtracted from `ht2%no3`.

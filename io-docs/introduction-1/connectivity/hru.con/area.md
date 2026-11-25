@@ -24,10 +24,10 @@ Even though some objects don't have an area, a value has to be specified in the 
 | Export Coefficient | Reference area of the export-coefficient object | Scales per-area values by the routed element area divided by this area |
 | Delivery Ratio     | Object does not have an area   | n/a                      |
 
-A water depth $d$ (mm) over an area $A$ (ha) is converted to a volume as
+A water depth over an HRU, routing unit, or aquifer area is converted to a volume as:
 
 $$V = 10 \times d \times A$$
 
-with $V$ in m3. For SWAT-DEG channels, the area is used in the [inflow depth](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_control3.f90#L155), the [peak-rate ratio](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_sediment3.f90#L87), the [flood duration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_sediment3.f90#L189) and the [channel ordering](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu2d_init.f90#L36) for [aqu\_cha.lin](../aqu_cha.lin.md).
+where $V$ is volume ($\text{m}^3$), $d$ is water depth (mm), and $A$ is `area` (ha). For SWAT-DEG channels, the area is used in the [inflow depth](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_control3.f90#L155), the [peak-rate ratio](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_sediment3.f90#L87), the [flood duration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sd_channel_sediment3.f90#L189) and the [channel ordering](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/aqu2d_init.f90#L36) for [aqu\_cha.lin](../aqu_cha.lin.md).
 
 The `hru_fr_update` decision-table action [replaces HRU areas](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_fr_change.f90#L97-L100) during the simulation.

@@ -10,4 +10,4 @@ Aeration-stress threshold $a$, a fraction of the pore space between field capaci
 
 $$x = 100\,\frac{s - a}{1.0001 - a}, \qquad f = 1 - \frac{x}{x + \exp(2.9014 - 0.03867x)}$$
 
-$f$ is the aeration stress factor (1 = no stress).
+where $x$ is the scaled excess-water index (dimensionless), $s$ is the filled fraction of pore space between field capacity and saturation (dimensionless), $a$ is `aeration` (dimensionless), and $f$ is the aeration stress factor (dimensionless; `1` = no stress).

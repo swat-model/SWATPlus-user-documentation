@@ -10,4 +10,8 @@ Urban areas differ from rural areas in the fraction of total area that is imperv
 
 This fraction includes directly and indirectly connected impervious areas.
 
-**Current use:** weights loads from the impervious part against the pervious part, `load = impervious load × frac_imp + pervious load × (1 − frac_imp)` ([`hru_urban.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_urban.f90#L153-L172)), reduces overland erosion by `1 − frac_imp` ([`ero_ovrsed.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ero_ovrsed.f90#L159-L180)), and enters the USGS regression loads ([`regres.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/regres.f90#L77-L79)).
+**Current use:** weights loads from the impervious part against the pervious part in [`hru_urban.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_urban.f90#L153-L172):
+
+$$L = L_{\text{imp}}\,f_{\text{imp}} + L_{\text{perv}}\,(1 - f_{\text{imp}})$$
+
+where $L$ is the total HRU load, $L_{\text{imp}}$ is the impervious-area load, $L_{\text{perv}}$ is the pervious-area load (same load units as $L$), and $f_{\text{imp}}$ is `frac_imp` (dimensionless). It also reduces overland erosion by $(1 - f_{\text{imp}})$ ([`ero_ovrsed.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ero_ovrsed.f90#L159-L180)), and enters the USGS regression loads ([`regres.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/regres.f90#L77-L79)).

@@ -12,6 +12,15 @@ $$
 C_{loss} = C_{mic} \left(1 - \exp\left(\frac{-Q}{SAT + 10^{-4} \, K_{oc} \, C_{tot}}\right)\right)
 $$
 
-$C_{mic}$ is the microbial carbon in layer 1, $Q$ the sum of surface runoff, lateral flow and percolation (mm), $SAT$ the layer's saturated water content (mm) and $C_{tot}$ its total organic carbon. A larger value holds more carbon in the soil. The source comment gives a range of 500 to 1500.
+where:
+
+- $C_{loss}$ is the microbial carbon lost from soil layer 1 (kg/ha),
+- $C_{mic}$ is the microbial carbon in layer 1 (kg/ha),
+- $Q$ is the sum of surface runoff, lateral flow, and percolation (mm),
+- $SAT$ is the layer's saturated water content (mm),
+- $K_{oc}$ is `prmt_21` (partition coefficient), and
+- $C_{tot}$ is the layer's total organic carbon (kg/ha).
+
+A larger value holds more carbon in the soil. The source comment gives a range of 500 to 1500.
 
 The SWAT+ example file (`refdata/Ames_sub1`) heads this column `koc_c` and uses 1000. The calibration parameter is `koc_c`.

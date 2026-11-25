@@ -12,6 +12,6 @@ $$
 μwnd_{mon}=\frac{∑_{d=1}^N*T_{wnd,mon}}{N}
 $$
 
-where $$μwnd_{mon}$$ is the mean daily wind speed for the month (m/s), $$T_{wnd,mon}$$ is the average wind speed for day $$d$$ in month $$mon$$ (m/s), and _N_ is the total number of daily wind speed records for month $$mon$$.
+where $μwnd_{mon}$ is the mean daily wind speed for the month (m/s), $T_{wnd,mon}$ is the average wind speed for day $d$ in month $mon$ (m/s), and $N$ is the total number of daily wind speed records for month $mon$.
 
 The wind generator uses $u_m[-\ln(U)]^{0.3}$, where $u_m$ is the monthly mean in m/s and $U$ is a uniform random draw. See [cli_wndgen.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cli_wndgen.f90#L43-L49).

@@ -12,4 +12,6 @@ In [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7
 
 $$\text{algcon} = \frac{1000\,\text{chla}_{\text{in}}}{\alpha_0}$$
 
+where $\text{algcon}$ is algal biomass concentration (`mg alg/L`), $\text{chla}_{\text{in}}$ is incoming chlorophyll-a concentration (`mg/L`), and $\alpha_0$ is `chla_alg` ($\mu\text{g chla}/\text{mg alg}$).
+
 It also appears in the algal self-shading expression at [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L157-L159), though light extinction is subsequently capped at `lt_nonalg` ([`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L164)).

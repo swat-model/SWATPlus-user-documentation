@@ -10,4 +10,6 @@ Instream transformation coefficient converting soluble phosphorus (`solp`) to pa
 
 $$f_{\text{P}} = 1 - \exp\!\left(-k_{\text{P}}\,t_{\text{travel}}\right)$$
 
-and the converted mass (`min(ht1%solp, f_P * ht1%sedp)`) is added to `ht2%sedp` and subtracted from `ht2%solp`.
+where $f_{\text{P}}$ is the transformed fraction (dimensionless), $k_{\text{P}}$ is `p_sol_part` (`1/h`), and $t_{\text{travel}}$ is reach travel time (`h`).
+
+The converted mass (`min(ht1%solp, f_P * ht1%sedp)`) is added to `ht2%sedp` and subtracted from `ht2%solp`.

@@ -12,4 +12,4 @@ In [`time_conc_init.f90`](https://github.com/swat-model/swatplus/blob/6f51536852
 
 $$f_{\text{rel}} = 1 - \exp\!\left(-\frac{\text{surlag}}{t_c}\right)$$
 
-For a given time of concentration $t_c$ (`hours`), smaller *surq\_lag* values retain more water in surface storage and smooth the streamflow hydrograph.
+where $f_{\text{rel}}$ is the daily released fraction of stored surface runoff (dimensionless), $\text{surlag}$ is `surq_lag` (`days`), and $t_c$ is the time of concentration (`hours`). For a given $t_c$, smaller *surq\_lag* values retain more water in surface storage and smooth the streamflow hydrograph.

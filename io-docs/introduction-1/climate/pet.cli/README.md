@@ -36,8 +36,18 @@ The list file starts with a title and header. Each referenced file starts with a
 
 SWAT+ reads measured PET for matched stations, then recomputes station PET with Hargreaves for every weather station and applies a minimum of 0.01 mm/day. HRU PET method 3 uses this recomputed value before applying the HRU PET coefficient. See [climate_control.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/climate_control.f90#L165-L210) and [et_pot.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/et_pot.f90#L273-L280).
 
-For $T_{\max}>T_{\min}$, the station calculation uses
+For $T_{\max}>T_{\min}$, the station calculation uses:
+
 $$
-\mathrm{PET}=\max\!\left(0.01,\ 0.0023\frac{37.59R_{\max}}{30(2.501-0.002361T_{\mathrm{ave}})}(T_{\mathrm{ave}}+17.8)\sqrt{T_{\max}-T_{\min}}\right).
+\mathrm{PET}=\max\!\left(0.01,\ 0.0023\frac{37.59R_{\max}}{30(2.501-0.002361T_{\mathrm{ave}})}(T_{\mathrm{ave}}+17.8)\sqrt{T_{\max}-T_{\min}}\right)
 $$
-Here $R_{\max}$ is maximum solar radiation and the temperatures are in °C. If $T_{\max}\leq T_{\min}$, station PET is 0.01 mm/day. See [climate_control.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/climate_control.f90#L199-L210).
+
+where:
+
+- $\mathrm{PET}$ is the station potential evapotranspiration (mm/day),
+- $R_{\max}$ is maximum solar radiation (MJ/m²/day),
+- $T_{\mathrm{ave}}$ is daily mean air temperature (°C),
+- $T_{\max}$ is daily maximum air temperature (°C), and
+- $T_{\min}$ is daily minimum air temperature (°C).
+
+If $T_{\max}\leq T_{\min}$, station PET is 0.01 mm/day. See [climate_control.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/climate_control.f90#L199-L210).

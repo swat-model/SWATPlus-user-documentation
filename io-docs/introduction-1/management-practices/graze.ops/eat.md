@@ -12,6 +12,8 @@ In [`pl_graze.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84
 
 $$f_{\text{eat}} = \min\!\left(\frac{B_{\text{eat}}}{B_{\text{abg}}},\, 1\right)$$
 
+where $f_{\text{eat}}$ is the daily grazed fraction of community above-ground biomass (dimensionless), $B_{\text{eat}}$ is `bm_eat` (`(kg/ha)/day`), and $B_{\text{abg}}$ is total community above-ground biomass (`pl_mass(j)%ab_gr_com%m`, `kg/ha`).
+
 $$\text{LAI} \leftarrow \text{LAI} - \frac{B_{\text{eat}}}{1000}, \qquad \text{PHU}_{\text{acc}} \leftarrow \text{PHU}_{\text{acc}}\left(1 - \frac{B_{\text{eat}}}{1000}\right)$$
 
-where $B_{\text{eat}}$ is `bm_eat` (`(kg/ha)/day`) and $B_{\text{abg}}$ is total community above-ground biomass (`pl_mass(j)%ab_gr_com%m`, `kg/ha`).
+where $\text{LAI}$ is the leaf area index (dimensionless), $\text{PHU}_{\text{acc}}$ is the accumulated heat-unit fraction (dimensionless), and $B_{\text{eat}}$ is `bm_eat` (`(kg/ha)/day`).

@@ -12,6 +12,16 @@ $$
 c_{perc} = \frac{C_{loss}}{Q_{perc} + r \, (Q_{surf} + Q_{lat})}, \qquad c_{surf} = r \, c_{perc}
 $$
 
-Here $r$ is this ratio and the $Q$ terms are the day's percolation, surface runoff and lateral flow (mm). The source comment gives a range of 0.1 to 1.
+where:
+
+- $c_{perc}$ is the soluble carbon concentration in percolate (kg/ha/mm),
+- $c_{surf}$ is the soluble carbon concentration in surface runoff and lateral flow (kg/ha/mm),
+- $C_{loss}$ is the microbial carbon lost from layer 1 (kg/ha),
+- $Q_{perc}$ is the day's percolation (mm),
+- $Q_{surf}$ is the day's surface runoff (mm),
+- $Q_{lat}$ is the day's lateral flow (mm), and
+- $r$ is `prmt_44` (ratio).
+
+The source comment gives a range of 0.1 to 1.
 
 The SWAT+ example file (`refdata/Ames_sub1`) heads this column `solc_ratio` and uses 0.5. The calibration parameter is `solc_ratio`.

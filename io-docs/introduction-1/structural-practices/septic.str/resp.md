@@ -10,4 +10,4 @@ Daily bacterial respiration rate coefficient in the biozone (dimensionless; [`se
 
 $$R_{\text{resp}} = c_T \cdot k_r \cdot B$$
 
-where $R_{\text{resp}}$ is daily biomass respiration loss (kg/ha), $k_r$ is `resp`, $B$ is live biomass (kg/ha), and $c_T = 1.0$ in SWAT+ main (`6f515368`).
+where $R_{\text{resp}}$ is daily biomass respiration loss (kg/ha), $k_r$ is `resp` (dimensionless), $B$ is live biomass (kg/ha), and $c_T$ is the temperature factor (`1.0` in SWAT+ main (`6f515368`)).

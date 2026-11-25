@@ -12,4 +12,9 @@ In [`ch_rtmusk.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d8
 
 $$E_{\text{ch}} = \text{evrch} \cdot \text{PET} \cdot \frac{1000\,L_{\text{ch}}\,W_{\text{ch}}}{1000}$$
 
-capped by available channel water storage, where $\text{PET}$ is daily potential evapotranspiration (`mm`), $L_{\text{ch}}$ is channel length (`km`), and $W_{\text{ch}}$ is channel width (`m`).
+where:
+- $E_{\text{ch}}$ is daily channel evaporation (`m^3/day`, capped by available channel water storage),
+- $\text{evrch}$ is `evap_adj` (dimensionless),
+- $\text{PET}$ is daily potential evapotranspiration (`mm`),
+- $L_{\text{ch}}$ is channel length (`km`), and
+- $W_{\text{ch}}$ is channel width (`m`).

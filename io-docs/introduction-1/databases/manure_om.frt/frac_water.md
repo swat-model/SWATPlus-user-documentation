@@ -10,4 +10,4 @@ Water fraction $w$ of the wet manure. The application amount $m$ (kg/ha) is trea
 
 $$W = \frac{m}{1 - w} - m$$
 
-$W$ is kg of water per ha (0.0001 mm per kg/ha). Do not enter 1.
+where $W$ is added water (`kg/ha`, equivalent to `0.0001 mm` per `kg/ha`), $m$ is the applied dry solids mass (`kg/ha`), and $w$ is `frac_water` (dimensionless fraction). Do not enter 1.

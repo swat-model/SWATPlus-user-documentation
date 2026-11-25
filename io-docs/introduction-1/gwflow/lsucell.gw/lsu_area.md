@@ -10,4 +10,6 @@ Total area of the LSU, in m². The intersection area is divided by it to get the
 
 $$f = \frac{A_{\text{poly}}}{A_{\text{LSU}}}$$
 
+where $f$ is the fraction of the LSU in the cell (dimensionless), $A_{\text{poly}}$ is [poly_area](poly_area.md) ($\text{m}^2$), and $A_{\text{LSU}}$ is `lsu_area` ($\text{m}^2$).
+
 For each LSU the fractions should add up to 1; SWAT+ does not check this.

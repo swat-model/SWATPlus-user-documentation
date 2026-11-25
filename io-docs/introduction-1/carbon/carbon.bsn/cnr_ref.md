@@ -14,6 +14,15 @@ $$
 f_{CN} = \exp\left(-0.693 \, \frac{\min(CN, CN_{cap}) - CN_{ref}}{CN_{ref}}\right), \qquad f = \min(f_{CN}, f_{CP}, 1)
 $$
 
-$f_{CP}$ uses the C:P ratio, [cpr\_cap](cpr_cap.md) and [cpr\_ref](cpr_ref.md) in the same way. A factor is 1 when the residue holds almost no N or P. Only surface residue uses these values: the call to the soil residue routine `cbn_rsd_decomp` is commented out ([`hru_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L399)).
+where:
+
+- $f_{CN}$ is the nitrogen decomposition factor (dimensionless),
+- $CN$ is the residue C:N ratio (ratio),
+- $CN_{cap}$ is [cnr\_cap](cnr_cap.md) (ratio),
+- $CN_{ref}$ is `cnr_ref` (ratio),
+- $f$ is the combined nutrient limitation factor (dimensionless), and
+- $f_{CP}$ is the phosphorus decomposition factor, computed in the same way using the C:P ratio, [cpr\_cap](cpr_cap.md), and [cpr\_ref](cpr_ref.md).
+
+A factor is 1 when the residue holds almost no N or P. Only surface residue uses these values: the call to the soil residue routine `cbn_rsd_decomp` is commented out ([`hru_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L399)).
 
 The SWAT+ example file (`refdata/Ames_sub1`) heads this column `cnr_ref` and uses 25.0. The calibration parameter is `cnr_ref`.

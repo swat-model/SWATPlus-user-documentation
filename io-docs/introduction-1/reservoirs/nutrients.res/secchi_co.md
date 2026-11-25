@@ -10,4 +10,13 @@ Despite the legacy input label, this field is the annual loss-rate coefficient f
 
 $$f_{\text{solP}} = \min\!\left(1,\; \max\!\left(0,\; (C_{\text{solP}} - C_{P,\min}) \, \frac{k_{\text{solP}}}{365} \, \theta_P^{(T - 20)}\right)\right), \qquad M_{\text{solP,new}} = M_{\text{solP}} \,(1 - f_{\text{solP}} \, f_{\text{sol}})$$
 
-where $C_{\text{solP}}$ is soluble phosphorus concentration (ppm), $C_{P,\min}$ is [p\_min\_stl](p_min_stl.md) (ppm), $k_{\text{solP}}$ is `secchi_co` (`1/year`), $\theta_P$ is [theta\_p](theta_p.md), $T$ is daily average air temperature (`deg C`), and $f_{\text{sol}} = 0.2$ is the soluble settling fraction initialized in [`res_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read.f90#L146) and [`wet_initial.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_initial.f90#L103).
+where:
+
+- $f_{\text{solP}}$ is the daily soluble phosphorus loss fraction (dimensionless)
+- $C_{\text{solP}}$ is soluble phosphorus concentration (ppm)
+- $C_{P,\min}$ is [p\_min\_stl](p_min_stl.md) (ppm)
+- $k_{\text{solP}}$ is `secchi_co` (`1/year`)
+- $\theta_P$ is [theta\_p](theta_p.md) (dimensionless)
+- $T$ is daily average air temperature (`deg C`)
+- $M_{\text{solP}}$ and $M_{\text{solP,new}}$ are the pre- and post-settling soluble phosphorus masses (kg)
+- $f_{\text{sol}}$ is the soluble settling fraction (`0.2`, initialized in [`res_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read.f90#L146) and [`wet_initial.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_initial.f90#L103))

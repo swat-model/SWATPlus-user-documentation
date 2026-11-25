@@ -18,5 +18,11 @@ Real numeric parameter (default `0.0`) providing operation-specific rates, thres
 | `cnup` | Curve number adjustment value passed to `chg_par` and clamped to `35.0–95.0` ([`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L457)) |
 | `dwm` | Tile drain depth (`mm`); `<= 0` disables drainage (`ldrain = 0`) ([`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L491-L499)) |
 | `weir` | Weir height (`mm`), divided by `1000` to set `wet_ob(j)%weir_hgt` (`m`) and principal spillway volume ([`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L510-L514)) |
-| `irrp` | Target paddy ponding depth (`mm`): `> 0` enables paddy irrigation with `irr_hmax = op3` and `irr_hmin = 0.9 * irr_hmax`, `0` turns paddy irrigation off, and `< 0` uses `irr.ops` `amt_mm` (line `530` also copies `op3` to `irr_isc`) ([`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L530-L560)) |
+| `irrp` | Target paddy ponding depth (`mm`): `> 0` enables paddy irrigation and sets maximum and minimum ponding targets (see below), `0` turns paddy irrigation off, and `< 0` uses `irr.ops` `amt_mm` (line `530` also copies `op3` to `irr_isc`) ([`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L530-L560)) |
 | All other operations | Not used (enter `0.0`) |
+
+For `irrp` when `op_data3 > 0`, SWAT+ sets the target paddy ponding depths in [`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L537-L538) as:
+
+$$h_{\max} = \text{op}_3, \qquad h_{\min} = 0.9\,h_{\max}$$
+
+where $h_{\max}$ is the maximum target ponding depth (`irr_hmax`, `mm`), $\text{op}_{3}$ is `op_data3` (`mm`), and $h_{\min}$ is the minimum ponding depth trigger (`irr_hmin`, `mm`).

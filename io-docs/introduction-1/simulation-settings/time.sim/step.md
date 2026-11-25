@@ -10,6 +10,8 @@ description: Time step of the simulation
 
 $$\Delta t = \frac{1440}{\text{step}}$$
 
+where $\Delta t$ is the sub-daily time-step length (`time%dtm`, minutes) and $\text{step}$ is `step` (`steps/day`).
+
 | Code | Time Step  |
 | ---- | ---------- |
 | 0 or 1 | day |

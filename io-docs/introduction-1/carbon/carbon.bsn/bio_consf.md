@@ -12,6 +12,15 @@ $$
 b = \min\left(b + k \, b_{init}, \; b_{init}\right), \qquad k = k_{bio} \min\left(1, \frac{SW}{FC}\right)
 $$
 
-$k_{bio}$ is this value; $SW$ and $FC$ are the layer's soil water and field capacity (mm). A larger value lets mixing recover faster.
+where:
+
+- $b$ is the layer's current biological mixing efficiency (dimensionless),
+- $b_{init}$ is the layer's initial biological mixing efficiency (dimensionless),
+- $k$ is the daily recovery increment (1/day),
+- $k_{bio}$ is `bio_consf` (fraction/day),
+- $SW$ is the layer's soil water content (mm), and
+- $FC$ is the layer's field capacity (mm).
+
+A larger value lets mixing recover faster.
 
 The SWAT+ example file (`refdata/Ames_sub1`) heads this column `bio_consol` and uses 0.15. The calibration parameter is `bio_consol`.

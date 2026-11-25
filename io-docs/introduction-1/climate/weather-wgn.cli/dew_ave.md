@@ -16,6 +16,6 @@ $$
 μdew_{mon}=\frac{∑_{d=1}^N*T_{dew,mon}}{N}
 $$
 
-where $$μdew_{mon}$$ is the mean daily dew point temperature for the month (ºC), $$T_{dew,mon}$$ is the dew point temperature for day $$d$$ in month $$mon$$ (ºC), and $$N$$is the total number of daily dew point records for month $$mon$$. Please refer to the SWAT+ Theoretical Documentation for the equations used to convert dew point to relative humidity.
+where $μdew_{mon}$ is the mean daily dew point temperature for the month (ºC), $T_{dew,mon}$ is the dew point temperature for day $d$ in month $mon$ (ºC), and $N$ is the total number of daily dew point records for month $mon$. Please refer to the SWAT+ Theoretical Documentation for the equations used to convert dew point to relative humidity.
 
 For dew-point input, the generator estimates mean relative humidity as $e_s(T_d)/e_s((T_{\max}+T_{\min})/2)$, where $e_s$ is saturation vapor pressure and the temperatures are monthly inputs. See [cli_rhgen.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cli_rhgen.f90#L49-L66).

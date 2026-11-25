@@ -12,6 +12,21 @@ $$
 C_{slow} = f_{seq} \, f_M \, C_{tot}, \qquad f_M = \frac{0.41 + 0.53 \, (\text{clay} + \text{silt})}{100}
 $$
 
-The code switches to a second equation, $f_M = (0.069 + 1.5 \, (\text{clay} + \text{silt}))/100$, when clay + silt is below 0.35. Clay and silt are stored in percent, so for any real soil the first equation is used. This is listed in `MODEL_ISSUES.md`. The slow pool mass is set to $C_{slow} / 0.58$.
+where:
+
+- $C_{slow}$ is the initial slow humus carbon (kg/ha),
+- $f_{seq}$ is [frac\_seq](frac_seq.md) (fraction),
+- $f_M$ is the Mathers slow-humus fraction (dimensionless),
+- $C_{tot}$ is the layer's initial organic carbon (kg/ha),
+- $\text{clay}$ is the layer clay content (%), and
+- $\text{silt}$ is the layer silt content (%).
+
+When clay + silt is below 0.35, the code switches to:
+
+$$
+f_M = \frac{0.069 + 1.5 \, (\text{clay} + \text{silt})}{100}
+$$
+
+where $f_M$, $\text{clay}$, and $\text{silt}$ are as defined above. Clay and silt are stored in percent, so for any real soil the first equation is used. This is listed in `MODEL_ISSUES.md`. The slow pool mass is set to $C_{slow} / 0.58$.
 
 The SWAT+ example file (`refdata/Ames_sub1`) heads this column `mathers_method` and uses 1.

@@ -10,6 +10,6 @@ Any value above `1e-6` turns fixation on and also removes nitrogen stress for th
 
 $$N = c\,\min(6, f D) + (1 - c)\,D$$
 
-$N$ is the fixed nitrogen and $f$ is the growth-stage, water and nitrate factor. The result is capped at $D$ and at the basin maximum [n\_fix\_max](../../basin-1/parameters.bsn/n_fix_max.md).
+where $N$ is the fixed nitrogen (`kg N/ha`), $c$ is `nfix_co` (dimensionless), $f$ is the combined growth-stage, water, and nitrate factor (dimensionless), and $D$ is the unmet plant nitrogen demand (`kg N/ha`). The result is capped at $D$ and at the basin maximum [n\_fix\_max](../../basin-1/parameters.bsn/n_fix_max.md).
 
 The nitrogen fixation coefficient in the SWAT+ plant database is 0.5 for legumes and 0.0 for non-legumes.

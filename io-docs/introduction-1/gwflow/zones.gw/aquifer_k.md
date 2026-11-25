@@ -10,4 +10,13 @@ Horizontal hydraulic conductivity of the aquifer, in m/day. Each cell takes the 
 
 $$Q = K_{f} \, \frac{h_{n} - h_{i}}{d} \, \bar b \, L, \qquad K_{f} = \frac{2 K_{i} K_{n}}{K_{i} + K_{n}}$$
 
-where $Q$ is the flow into cell $i$ from neighbor $n$ (m³/day), $h$ the heads (m), $d$ the distance between the cell centroids (m), $\bar b$ the mean saturated thickness of the two cells (m) and $L = \sqrt{\min(A_{i}, A_{n})}$ (m). The calibration parameter `aquifer_K` changes the value cell by cell ([`cal_parm_select.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cal_parm_select.f90#L1060-L1063)).
+where:
+- $Q$ is the flow into cell $i$ from neighbor $n$ ($\text{m}^3/\text{day}$),
+- $K_{f}$ is the harmonic-mean interface hydraulic conductivity ($\text{m}/\text{day}$),
+- $K_{i}$ and $K_{n}$ are the `aquifer_K` values of cell $i$ and neighbor $n$ ($\text{m}/\text{day}$),
+- $h_{n}$ and $h_{i}$ are the heads in neighbor $n$ and cell $i$ (m),
+- $d$ is the distance between the cell centroids (m),
+- $\bar b$ is the mean saturated thickness of the two cells (m), and
+- $L$ is the connection width ($\sqrt{\min(A_{i}, A_{n})}$, m).
+
+The calibration parameter `aquifer_K` changes the value cell by cell ([`cal_parm_select.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cal_parm_select.f90#L1060-L1063)).

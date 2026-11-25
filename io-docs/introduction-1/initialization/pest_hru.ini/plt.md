@@ -10,4 +10,9 @@ Initial pesticide mass on plant foliage (`kg/ha`), read in [`pest_hru_aqu_read.f
 
 $$M_{\text{pl},i} = f_{\text{pl},i} \cdot M_{\text{plt}}, \qquad f_{\text{pl},i} = \min\!\left(\frac{\text{LAI}_{i}}{\text{LAI}_{\text{sum}}},\, 1\right)$$
 
-with $f_{\text{pl},i} = 0$ when total community LAI (`pcom(ihru)%lai_sum`) is zero.
+where:
+* $M_{\text{pl},i}$ is initial pesticide mass on plant $i$ (`kg/ha`),
+* $f_{\text{pl},i}$ is the LAI allocation fraction (set to `0` when total community LAI, `pcom(ihru)%lai_sum`, is zero),
+* $M_{\text{plt}}$ is `plt` (`kg/ha`),
+* $\text{LAI}_{i}$ is the leaf area index of plant $i$, and
+* $\text{LAI}_{\text{sum}}$ is total community leaf area index (`pcom(ihru)%lai_sum`).

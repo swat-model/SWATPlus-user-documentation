@@ -10,4 +10,4 @@ Top width of the grassed waterway in metres (m; range `0.0–1000.0`). Used with
 
 $$b = w - 2 \cdot d \cdot z$$
 
-where $b$ is bottom width (m), $w$ is `wd` (m), $d$ is `dp` (m), and $z = 8$ is the horizontal-to-vertical side slope. If $b \le 0$, SWAT+ resets `dp` to $\frac{3}{64} \, w$.
+where $b$ is bottom width (m), $w$ is `wd` (m), $d$ is `dp` (m), and $z$ is the horizontal-to-vertical side slope (`8`). If $b \le 0$, SWAT+ resets `dp` to $\frac{3}{64} \, w$.
