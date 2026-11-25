@@ -1776,7 +1776,7 @@
     * [hyd\_typ](introduction-1/connectivity/hru.con/hyd_typ.md)
     * [frac](introduction-1/connectivity/hru.con/frac.md)
   * [aqu\_cha.lin](introduction-1/connectivity/aqu_cha.lin.md)
-  * [chan\_surf.lin](introduction-1/connectivity/chan_surf.lin.md)
+  * [chan-surf.lin](introduction-1/connectivity/chan_surf.lin.md)
 * [Water Allocation](introduction-1/water-allocation/README.md)
   * [place\_of\_use.wro](introduction-1/water-allocation/place_of_use.wro/README.md)
     * [imax](introduction-1/water-allocation/place_of_use.wro/imax.md)
