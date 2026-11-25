@@ -4,6 +4,6 @@ description: "Initial biomass"
 
 # bioms
 
-**Code reference:** `transpl(ic)%bioms` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/plant_data_module.f90#L157)).
+**Code reference:** `transpl(ic)%bioms` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/plant_data_module.f90#L157), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/plant_transplant_read.f90#L43)).
 
-Sets the initial crop biomass in kilograms per hectare at transplanting. This value is assigned directly to the plant mass pool during the transplant operation.
+Initial dry plant biomass (`kg/ha`, struct default `0.0`) at transplanting. In [`mgt_transplant.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_transplant.f90#L32), SWAT+ assigns `pl_mass(j)%tot(ipl)%m = bioms`, initializes total N mass ([`#L40`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_transplant.f90#L40)), and partitions the mass into root, seed, leaf, and stem pools ([`#L56-L58`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_transplant.f90#L56-L58)).

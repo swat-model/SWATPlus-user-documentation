@@ -2,8 +2,8 @@
 description: "Manure type name referencing an entry in fertilizer.frt"
 ---
 
-# manure_typ
+# manure\_typ
 
-**Code reference:** `mallo(imro)%src(i)%manure_typ` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/manure_allocation_module.f90#L28)).
+**Code reference:** `mallo(imro)%src(i)%manure_typ` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/manure_allocation_module.f90#L28), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/manure_allocation_read.f90#L67)).
 
-Manure type name referencing an entry in fertilizer.frt.
+Character string (`len=25`, default `""`) acting as a foreign key referencing [name](../../databases/fertilizer.frt/name_fertdb.md) in [**fertilizer.frt**](../../databases/fertilizer.frt/README.md). Matched against `fertdb%fertnm` in [`manure_allocation_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/manure_allocation_read.f90#L72-L77) to set `src(i)%fertdb`, which selects the nutrient composition applied via `pl_fert` in [`mallo_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mallo_control.f90#L55-L59).
