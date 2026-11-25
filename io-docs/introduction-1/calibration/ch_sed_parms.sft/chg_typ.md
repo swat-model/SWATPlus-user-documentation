@@ -1,9 +1,9 @@
 ---
-description: "Type of change to apply, one of absval, abschg, or pctchg"
+description: Change type in ch_sed_parms.sft.
 ---
 
-# chg_typ
+# chg\_typ
 
-**Code reference:** `ch_prms(i)%chg_typ` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/calibration_data_module.f90#L73)).
+**Code reference:** `ch_prms(i)%chg_typ` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/calibration_data_module.f90#L73), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_read_parms_cal.f90#L34)).
 
-Type of change to apply, one of absval, abschg, or pctchg.
+Intended change mode (`absval`, `abschg`, or `pctchg`, struct default `""`). In SWAT+ main (`6f515368`), only `ch_prms(1)%chg_typ` is echoed to `hru-new.cal` at [`calsoft_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/calsoft_control.f90#L159); no calibration adjustment routine evaluates this field.
