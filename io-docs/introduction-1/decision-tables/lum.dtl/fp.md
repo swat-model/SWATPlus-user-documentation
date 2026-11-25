@@ -14,3 +14,5 @@ The file pointer is only needed for certain actions. The file that is referenced
 | harvest\_kill | [harv.ops](../../management-practices/harv.ops/) ([name](../../management-practices/harv.ops/name_harvops.md))           |
 | pest\_apply   | [chem\_app.ops](../../management-practices/chem_app.ops/) ([name](../../management-practices/chem_app.ops/name_chem.md)) |
 | fertilize     | [chem\_app.ops](../../management-practices/chem_app.ops/) ([name](../../management-practices/chem_app.ops/name_chem.md)) |
+
+This column can contain a named database record. The reader matches harvest actions to a harvest-operation name and can match planting to a transplant-operation name. The role depends on the action. [`dtbl_lum_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/dtbl_lum_read.f90#L105-L127)

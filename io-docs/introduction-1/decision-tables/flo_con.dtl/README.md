@@ -10,7 +10,9 @@ This file defines decision tables used to control flow-related actions.
 
 # flo_con.dtl
 
-The file contains a title, a decision-table count, and table definitions. Each table definition gives its condition, alternative, and action counts. Follow it with the condition rows and action rows; repeat alternative and outcome values according to the alternative count.
+Line 1 is the title. Line 2 starts with the number of decision tables. Leave line 3 blank. For each table, enter a header and the definition row, then a condition header and exactly `conds` condition rows, then an action header and exactly `acts` action rows. Each condition row ends with `alts` comparison entries. Each action row ends with `alts` outcomes in the same order. Leave a blank line after each action block, including the last one. [`dtbl_flocon_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/dtbl_flocon_read.f90#L34-L68)
+
+SWAT+ main (6f515368) reads this file and matches connectivity `rule` names to table names. The matched table index has no downstream executable reads, so these rules have no effect on routed flow at this commit. [`dtbl_flocon_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/dtbl_flocon_read.f90#L77-L87)
 
 ## Number of decision tables
 
@@ -33,11 +35,11 @@ The file contains a title, a decision-table count, and table definitions. Each t
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [var](var.md) | Condition variable being tested (e.g. volume, flow, sw, time) | string | n/a | — | — |
 | [ob](ob.md) | Object type associated with the condition (e.g. res, hru, canal) | string | n/a | — | — |
-| [ob_num](ob_num.md) | Numeric identifier of the object associated with the condition | integer | n/a | — | — |
+| [ob_num](ob_num.md) | Object index or condition-specific numeric input | integer | n/a | — | — |
 | [lim_var](lim_var.md) | Limit variable compared against the condition variable (e.g. evol, pvol, fc, ul) | string | n/a | — | — |
-| [lim_op](lim_op.md) | Operator applied when comparing the condition variable to the limit (one of *, +, -) | string | n/a | — | — |
+| [lim_op](lim_op.md) | Arithmetic operator for building a threshold where the condition uses one | string | n/a | — | — |
 | [lim_const](lim_const.md) | Constant value used with the limit operator in the condition comparison | real | — | — | — |
-| [alt(ic,ial)](alt_ic_ial.md) | Alternative value for condition ic under alternative branch ial | string | n/a | — | — |
+| [alt(ic,ial)](alt_ic_ial.md) | Comparison token, repeated once per alternative | string | n/a | — | — |
 
 ## Actions
 
@@ -45,12 +47,12 @@ The file contains a title, a decision-table count, and table definitions. Each t
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [typ](typ.md) | Type of action to perform (e.g. reservoir release, irrigate, fertilize) | string | n/a | — | — |
 | [ob](ob_2.md) | Object type targeted by the action (e.g. res, hru, canal) | string | n/a | — | — |
-| [ob_num](ob_num_2.md) | Numeric identifier of the object targeted by the action | integer | n/a | — | — |
-| [name](name_2.md) | Record name | string | n/a | — | — |
-| [option](option.md) | Action-specific option whose meaning depends on the action type (e.g. rate input | string | n/a | — | — |
+| [ob_num](ob_num_2.md) | Object index or other integer input for the action | integer | n/a | — | — |
+| [name](name_2.md) | Action name | string | n/a | — | — |
+| [option](option.md) | Action-specific option token | string | n/a | — | — |
 | [const](const.md) | Primary constant for the action (e.g. rate or duration) | real | — | — | — |
 | [const2](const2.md) | Secondary constant for the action (e.g. additional rate or duration parameter) | real | — | — | — |
-| [file_pointer](file_pointer.md) | External file or equation pointer referenced by the action option (e.g. weir equation pointer) | string | n/a | — | — |
-| [act_outcomes(iac,ial)](act_outcomes_iac_ial.md) | Outcome flag for action iac under alternative ial ("y" to perform the action, "n" to skip it) | string | n/a | — | — |
+| [file_pointer](file_pointer.md) | Action-specific selector or referenced record name | string | n/a | — | — |
+| [act_outcomes(iac,ial)](act_outcomes_iac_ial.md) | Action outcome token, repeated once per alternative | string | n/a | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.

@@ -6,4 +6,4 @@ description: "Number of condition entries that follow for this table"
 
 **Code reference:** `dtbl_scen(i)%conds` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditional_module.f90#L30)).
 
-Number of condition entries that follow for this table.
+Number of condition rows after the condition header. Each row contains one comparison token per alternative after its six leading fields. [`dtbl_scen_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/dtbl_scen_read.f90#L61-L66)
