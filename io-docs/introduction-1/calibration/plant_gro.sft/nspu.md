@@ -1,9 +1,9 @@
 ---
-description: "Number of element-list entries"
+description: Number of HRU element-list tokens in plant_gro.sft.
 ---
 
 # nspu
 
-**Code reference:** `nspu` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_read_regions_cal.f90#L18)).
+**Code reference:** `nspu` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_read_regions_cal.f90#L18), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_read_regions_cal.f90#L49-L54)).
 
-Number of element-list entries.
+Integer count of HRU element-list tokens trailing on the region line. When `nspu > 0`, [`pl_read_regions_cal.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_read_regions_cal.f90#L53-L54) backspaces and reads `nspu` integers into `elem_cnt`.

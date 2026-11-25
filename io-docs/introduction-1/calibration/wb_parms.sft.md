@@ -1,2 +1,0 @@
-# wb\_parms.sft
-
