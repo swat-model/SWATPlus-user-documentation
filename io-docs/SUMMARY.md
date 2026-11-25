@@ -1971,10 +1971,6 @@
     * [typ](introduction-1/calibration/scen_dtl.upd/typ.md)
     * [dtbl](introduction-1/calibration/scen_dtl.upd/dtbl.md)
 * [Carbon](introduction-1/carbon/README.md)
-  * [carb\_coefs.cbn](introduction-1/carbon/carb_coefs.cbn.md)
-
-## SWAT+ Output Files
-
   * [carbon.bsn](introduction-1/carbon/carbon.bsn/README.md)
     * [frac\_seq](introduction-1/carbon/carbon.bsn/frac_seq.md)
     * [frac\_hum\_microb](introduction-1/carbon/carbon.bsn/frac_hum_microb.md)
@@ -2016,6 +2012,9 @@
     * [r\_asco2](introduction-1/carbon/carbon.bsn/r_asco2.md)
     * [r\_apco2](introduction-1/carbon/carbon.bsn/r_apco2.md)
     * [r\_abco2](introduction-1/carbon/carbon.bsn/r_abco2.md)
+
+## SWAT+ Output Files
+
 * [Output File Format](swat+-output-files/output-file-format.md)
 * [Debugging Outputs](swat+-output-files/debugging-outputs.md)
 * [Soil](swat+-output-files/soil/README.md)

@@ -1,9 +1,17 @@
 ---
-description: "Rate coefficient for the microbial organic carbon pool on the identified layer"
+description: "Daily transformation rate of the microbial pool below soil layer 1"
 ---
 
-# r_microb_rate
+# r\_microb\_rate
 
-**Code reference:** `r_microb_rate` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_bsn_read.f90#L41)).
+**Code reference:** `carbdb(layer_id)%microb_rate` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_module.f90#L66), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_bsn_read.f90#L142), [calibration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cal_parm_select.f90#L515-L516)).
 
-Rate coefficient for the microbial organic carbon pool on the identified layer.
+Maximum daily fraction of microbial carbon transformed under optimal conditions in the deeper layers, multiplied by a texture factor $0.25 + 0.0075 \cdot \text{sand}$ ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L489-L494)). Soil layer 1 uses [r\_microb\_top\_rate](r_microb_top_rate.md) instead, so this value has no effect on row `1`. Row `1` applies to soil layer 1, the 10 mm surface layer, and row `2` to all deeper layers ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L302-L309)).
+
+$$
+\Delta C = k \, f_c \, C_{pool}, \qquad f_c = \min\left(15, \; 0.9 \sqrt{f_T f_W} \, f_O \, f_{till}\right)
+$$
+
+$k$ is this rate (1/day), $C_{pool}$ the pool carbon (kg/ha), and $f_c$ the combined factor from temperature ([tmpf](tmpf.md)), water ([watf](watf.md)), depth (oxygen) and tillage ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L414)).
+
+The SWAT+ example file (`refdata/Ames_sub1`) heads this column `microb_rate` and uses 0.0164 and 0.02 for rows 1 and 2. The calibration parameter is `microb_rate` (by layer).

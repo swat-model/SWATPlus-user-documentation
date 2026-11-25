@@ -1,9 +1,18 @@
 ---
-description: "Selector for the water response function approach used in the Zhang et al. carbon decomposition model"
+description: "Selects the soil water factor equation for decomposition"
 ---
 
 # watf
 
-**Code reference:** `org_con%watf` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_module.f90#L118)).
+**Code reference:** `org_con%watf` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_module.f90#L118), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_bsn_read.f90#L75)).
 
-Selector for the water response function approach used in the Zhang et al. carbon decomposition model.
+Selects the soil water factor $f_W$ used for decomposition in [`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L326-L353):
+
+| Value | Factor |
+| ----- | ------ |
+| 1 | $f_W = 0.1 + 0.9 \sqrt{SW / FC}$, limited to 0.05–1 |
+| 2 | Product of a water-content term (0.4 at wilting point rising to 1 at field capacity) and an air-filled pore term |
+
+Enter 1 or 2. Any other value leaves $f_W$ unset, so the value from the previous layer or day is reused without a warning.
+
+The SWAT+ example file (`refdata/Ames_sub1`) heads this column `watf_eqn` and uses 1.

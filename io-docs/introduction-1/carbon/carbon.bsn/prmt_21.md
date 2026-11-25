@@ -1,9 +1,17 @@
 ---
-description: "Koc partition coefficient for carbon loss to water and sediment"
+description: "Partition coefficient (Koc) for microbial carbon loss from the top soil layer with water"
 ---
 
-# prmt_21
+# prmt\_21
 
-**Code reference:** `cb_wtr_coef%prmt_21` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_module.f90#L147)).
+**Code reference:** `cb_wtr_coef%prmt_21` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_module.f90#L147), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_bsn_read.f90#L72), [calibration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cal_parm_select.f90#L480-L481)).
 
-Koc partition coefficient for carbon loss to water and sediment, used to compute the distribution coefficient as KD = KOC * C.
+Organic carbon partition coefficient $K_{oc}$ that controls how much microbial carbon leaves soil layer 1 with surface runoff, lateral flow and percolation each day ([`nut_orgnc2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/nut_orgnc2.f90#L113-L131)):
+
+$$
+C_{loss} = C_{mic} \left(1 - \exp\left(\frac{-Q}{SAT + 10^{-4} \, K_{oc} \, C_{tot}}\right)\right)
+$$
+
+$C_{mic}$ is the microbial carbon in layer 1, $Q$ the sum of surface runoff, lateral flow and percolation (mm), $SAT$ the layer's saturated water content (mm) and $C_{tot}$ its total organic carbon. A larger value holds more carbon in the soil. The source comment gives a range of 500 to 1500.
+
+The SWAT+ example file (`refdata/Ames_sub1`) heads this column `koc_c` and uses 1000. The calibration parameter is `koc_c`.

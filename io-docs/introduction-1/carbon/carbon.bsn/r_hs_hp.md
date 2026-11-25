@@ -1,9 +1,17 @@
 ---
-description: "Ratio between the slow and passive humus organic carbon pools on the identified layer"
+description: "Base fraction of transformed slow humus carbon passed to the passive pool"
 ---
 
-# r_hs_hp
+# r\_hs\_hp
 
-**Code reference:** `r_hs_hp` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_bsn_read.f90#L42)).
+**Code reference:** `carbdb(layer_id)%hs_hp` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_module.f90#L70), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/carbon_bsn_read.f90#L146), [calibration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cal_parm_select.f90#L523-L524)).
 
-Ratio between the slow and passive humus organic carbon pools on the identified layer.
+Sets the fraction of transformed slow humus carbon that goes to the passive pool, reduced by clay content ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L474)):
+
+$$
+a_{sp} = \max\left(0.001, \; h - 0.00009 \cdot \text{clay}\right)
+$$
+
+$h$ is this value and clay is in percent. Row `1` applies to soil layer 1, the 10 mm surface layer, and row `2` to all deeper layers ([`cbn_zhang2.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cbn_zhang2.f90#L302-L309)).
+
+The SWAT+ example file (`refdata/Ames_sub1`) heads this column `hs_hp` and uses 0.05 for both rows. The calibration parameter is `hs_hp` (by layer).
