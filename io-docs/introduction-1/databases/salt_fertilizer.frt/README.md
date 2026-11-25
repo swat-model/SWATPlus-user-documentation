@@ -21,9 +21,15 @@ The first two lines contain a title and column headings. Each following row cont
 | [ca](ca.md) | Calcium ion fraction | real | kg/kg fertilizer | — | — |
 | [mg](mg.md) | Magnesium ion fraction | real | kg/kg fertilizer | — | — |
 | [na](na.md) | Sodium ion fraction | real | kg/kg fertilizer | — | — |
-| [k](k.md) | Record number | real | kg/kg fertilizer | — | — |
+| [k](k.md) | Potassium ion fraction | real | kg/kg fertilizer | — | — |
 | [cl](cl.md) | Chloride ion fraction | real | kg/kg fertilizer | — | — |
 | [co3](co3.md) | Carbonate ion fraction | real | kg/kg fertilizer | — | — |
 | [hco3](hco3.md) | Bicarbonate ion fraction | real | kg/kg fertilizer | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.
+
+The reader expects one row for every [fertilizer.frt](../fertilizer.frt/) record, in the same order ([`salt_fert_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/salt_fert_read.f90#L29-L37)).
+
+{% hint style="warning" %}
+In SWAT+ main (`6f515368`) these values are applied by `manu` operations, the `manure` decision-table action, and `fert` operations on ponded fields. The call for a dry-field `fert` operation is commented out ([`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L390-L409)). For manure, the row number comes from [manure\_db.frt](../manure_db.frt/), not from `fertilizer.frt`. This comes from source reading, not a model run.
+{% endhint %}

@@ -22,7 +22,7 @@ description: >-
 | [ben\_act\_dep](ben_act_dep.md) | Depth of the active benthic layer | real | m | 0.0 | >=0 |
 | [ben\_bury](ben_bury.md) | Burial velocity in the benthic sediment | real | m/day | 0.0 | >=0 |
 | [ben\_hlife](ben_hlife.md) | Half-life of the pesticide in the benthic sediment | real | days | 0.0 | >=0 |
-| [pl\_uptake](pl_uptake.md) | Fraction of the pesticide taken up by the plant | real | fraction | 0.0 |  |
+| [pl\_uptake](pl_uptake.md) | Plant uptake factor (transpiration-stream concentration factor) | real | fraction | 0.0 |  |
 | [harvest\_sink](harvest_sink.md) | 1 = the plant is a 100% sink (pesticide is lost on uptake); 0 = pesticide accumulates in the plant and returns to the soil at harvest or kill | real | n/a | 1.0 | 0 or 1 |
 | [resistance\_n](resistance_n.md) | Resistance blending: 0 = use the actual soil water concentration; 1 = use the field-capacity concentration | real | none | 1.0 | 0.0-1.0 |
 | [description](description.md) | Description of the pesticide | string | n/a | n/a | n/a |

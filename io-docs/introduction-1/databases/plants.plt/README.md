@@ -12,10 +12,10 @@ The plant growth database distributed with SWAT+ includes parameters for most of
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| [name](untitled.md) | Name of the plant/landcover | ​string | ​n/a | n/a | n/a |
-| [plnt_typ](untitled-21.md) | Plant/landcover type | ​string | n/a | n/a | n/a |
+| [name](untitled.md) | Name of the plant/landcover | string | n/a | n/a | n/a |
+| [plnt_typ](untitled-21.md) | Plant/landcover type | string | n/a | n/a | n/a |
 | [gro_trig](untitled-20.md) | Phenology trigger | string | n/a | n/a | n/a |
-| [nfix_co](untitled-19.md) | Nitrogen fixation coefficient | real​ | none | 0.0 | n/a |
+| [nfix_co](untitled-19.md) | Nitrogen fixation coefficient | real | none | 0.0 | n/a |
 | [days_mat](untitled-18.md) | Days to maturity | integer | days | 110 | 0-300 |
 | [bm_e](untitled-17.md) | Biomass-energy ratio | real | (kg/ha/(MJ/m^2) | 15.0 | 10.0-90.0 |
 | [harv_idx](untitled-16.md) | Harvest index for optimal growth conditions | real | (kg/ha)/(kg/ha) | 0.76 | 0.01-1.25 |
@@ -54,9 +54,9 @@ The plant growth database distributed with SWAT+ includes parameters for most of
 | [ext_co](ext_co.md) | Light extinction coefficient | real | none | 0.65 | 0.0-2.0 |
 | [leaf_tov_min](leaf_tov_min.md) | Perennial leaf turnover rate with minimum stress | real | months | 12.0 |  |
 | [leaf_tov_max](leaf_tov_max.md) | Perennial leaf turnover rate with maximum stress | real | months | 3.0 |  |
-| [bm_dieoff](bm_dieoff.md) | Above-ground biomass that dies off at dormancy | real | fraction | 1.0 | 0.0-1.0 |
-| [rt_st_beg](rt_st_beg.md) | Root to shoot ratio at the beginning of the growing season | real | fraction | 0. |  |
-| [rt_st_end](rt_st_end.md) | Root to shoot ratio at the end of the growing season | real | fraction | 0. |  |
+| [bm_dieoff](bm_dieoff.md) | Fraction used in year-end biomass mortality (not applied at dormancy) | real | fraction | 1.0 | 0.0-1.0 |
+| [rt_st_beg](rt_st_beg.md) | Root fraction of total biomass at the beginning of growth | real | fraction | 0. |  |
+| [rt_st_end](rt_st_end.md) | Root fraction of total biomass at the end of growth | real | fraction | 0. |  |
 | [plnt_pop1](plnt_pop1.md) | Plant population corresponding to the 1st point on the population LAI curve | real | plants/m^2 | 0. |  |
 | [frac_lai1](frac_la1.md) | Fraction of the maximum leaf area index corresponding to the 1st point on the leaf area development curve | real | fraction | 0. | 0.0-1.0 |
 | [plnt_pop2](plnt_pop2.md) | Plant population corresponding to the 2nd point on the population LAI curve | real | plants/m^2 | 0.0 |  |
@@ -64,10 +64,12 @@ The plant growth database distributed with SWAT+ includes parameters for most of
 | [frac_sw_gro](untitled-5.md) | Intended tropical-growth trigger (read but not used in main 6f515368; intended unit unresolved) | real | fraction | 0.5 | 0.0-1.0 |
 | [aeration](untitled-4.md) | Aeration stress factor | real | none | 0.2 |  |
 | [rsd_pctcov](untitled-3.md) | Residue factor for percent cover equation; read but has no simulation effect in SWAT+ main (6f515368) | real | none | 0.4 | 0.15-0.6 |
-| [rsd_covfac](untitled-2.md) | Residue factor for surface cover (C factor) equation | real | none | 0.04 | 0.02-0.09 |
+| [rsd_covfac](untitled-2.md) | Residue factor for surface cover (C factor); read but has no simulation effect in SWAT+ main (6f515368) | real | none | 0.04 | 0.02-0.09 |
 | [avg_lig_frac](avg_lig_frac.md) | Average lignin fraction of residue (entered value not used; overwritten with 0.85 outside carbon mode 2 in main 6f515368) | real | fraction | 0.85 |  |
 | [ab_lig_frac](ab_lig_frac.md) | Lignin fraction of above-ground residue; used only when carbon = 2 in codes.bsn (otherwise a fixed 0.15 is used) | real | fraction | 0.15 |  |
 | [bg_lig_frac](bg_lig_frac.md) | Lignin fraction of below-ground residue; used only when carbon = 2 in codes.bsn (otherwise a fixed 0.12 is used) | real | fraction | 0.12 |  |
 | [description](description.md) | Description of the plant. When event in codes.bsn is not 0, this column is read as the plant class (e.g. row crop, tree, grass) | string | n/a | n/a |  |
 
 For `frac_sw_gro`, the Unit column reproduces the source declaration as a fraction. The adjacent source comment instead describes a 30-day precipitation-minus-PET sum; the intended input unit remains unresolved in SWAT+ main (6f515368).
+
+The file has a title line and a column-header line, then one record per plant. Values are read in the order above, not by header name. Several columns replace a value of 0 at initialization; see the attribute pages.

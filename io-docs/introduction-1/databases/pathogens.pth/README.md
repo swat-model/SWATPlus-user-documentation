@@ -34,3 +34,7 @@ The first two lines contain a title and column headings. Each following row cont
 | [conc_min](conc_min.md) | Minimum pathogen concentration applied as a floor in foliage and soil solution calculations | real | — | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.
+
+{% hint style="warning" %}
+Suspected defects (this comes from source reading, not a model run): HRU routines choose the pathogen record by the initialization record number and channel routing by list position, not by the matched name ([`path_ls_process.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/path_ls_process.f90#L34-L35), [`ch_rtpath.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_rtpath.f90#L90)). The surface runoff routine moves the whole surface-layer pathogen amount to runoff each day ([`path_ls_runoff.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/path_ls_runoff.f90#L26-L30)).
+{% endhint %}

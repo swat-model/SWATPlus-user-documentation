@@ -27,3 +27,7 @@ The first two lines contain a title and column headings. Each following row cont
 | [description](description.md) | Free-text description of the manure type | string | n/a | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.
+
+{% hint style="warning" %}
+Suspected defect: a `manu` operation looks up the name in [manure\_db.frt](../manure_db.frt/) and then takes the composition from the `manure_om.frt` record with the **same row number**, not the record named by `org_min` ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L121-L126), [`pl_manure.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_manure.f90#L83-L84)). Keep both files in the same order. This comes from source reading, not a model run.
+{% endhint %}

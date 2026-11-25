@@ -6,4 +6,6 @@ description: "Free-text description of the manure type"
 
 **Code reference:** `manure_om(it)%description` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/fertilizer_data_module.f90#L45)).
 
-Free-text description of the manure type.
+Free-text description, up to 64 characters.
+
+*(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations).* ([`manure_orgmin_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/manure_orgmin_read.f90#L47-L50))

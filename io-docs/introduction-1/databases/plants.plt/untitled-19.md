@@ -6,4 +6,10 @@ description: Nitrogen fixation coefficient
 
 **Code reference:** `pldb(ic)%nfix_co` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/plant_data_module.f90#L41)).
 
+Any value above `1e-6` turns fixation on and also removes nitrogen stress for the plant ([`pl_nup.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_nup.f90#L91-L107)). The coefficient $c$ blends fixation with the unmet nitrogen demand $D$ ([`pl_nfix.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pl_nfix.f90#L84-L87)):
+
+$$N = c\,\min(6, f D) + (1 - c)\,D$$
+
+$N$ is the fixed nitrogen and $f$ is the growth-stage, water and nitrate factor. The result is capped at $D$ and at the basin maximum [n\_fix\_max](../../basin-1/parameters.bsn/n_fix_max.md).
+
 The nitrogen fixation coefficient in the SWAT+ plant database is 0.5 for legumes and 0.0 for non-legumes.

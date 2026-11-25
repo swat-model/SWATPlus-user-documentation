@@ -32,3 +32,7 @@ After the title and column headings, enter the parent pesticide name and daughte
 | [ben_fr](ben_fr.md) | Fraction of parent pesticide degradation in the benthic compartment that forms this daughter metabolite | real | — | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.
+
+{% hint style="warning" %}
+Every parent name should be in `pesticide.pes`. Suspected defect: for an unknown parent the reader does not skip its daughter rows, so later records are misread ([`pest_metabolite_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/pest_metabolite_read.f90#L49-L76)). A daughter that is not simulated leaves position 0, which the decay routines then use. This comes from source reading, not a model run.
+{% endhint %}

@@ -26,3 +26,5 @@ The first two lines contain a title and column headings. Each following row cont
 | [descrip](descrip.md) | Free-text description of the manure type | string | n/a | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.
+
+All eight values are read for every record ([`manure_db_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/manure_db_read.f90#L47-L49)). Only `name` and `org_min` are used afterwards. See the note on [org\_min](org_min.md) about how the composition record is chosen.

@@ -10,21 +10,25 @@ Information of water quality or effluent characteristics required to simulate di
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| [name](name_sepdb.md) | Septic record name (read but not used by the model) | string | ​n/a | ​n/a | n/a |
-| [q\_rate](q_rate.md) | Per-capita septic tank effluent flow rate (read but not used by the model) | ​real | m^3/capita/d | 0.0 | 0.0-1.0 |
-| [bod](bod.md) | ​7-day Biological Oxygen Demand of the septic tank effluent | ​real | mg/l | ​0.0 | 0.0-300.0 |
-| [tss](tss.md) | Total suspended solids in the septic tank effluent | ​real | ​mg/l | ​0.0 | 0.0-300.0 |
-| [nh4\_n](nh4_n.md) | ​Ammonium nitrogen in the septic tank effluent | ​real | ​mg/l | ​0.0 | ​ |
-| [no3\_n](no3_n.md) | ​Nitrate nitrogen in the septic tank effluent | ​real | ​mg/l | 0.0 |  |
+| [name](name_sepdb.md) | Septic record name (read but not used by the model) | string | n/a | n/a | n/a |
+| [q\_rate](q_rate.md) | Per-capita septic tank effluent flow rate (read but not used by the model) | real | m^3/capita/d | 0.0 | 0.0-1.0 |
+| [bod](bod.md) | 7-day Biological Oxygen Demand of the septic tank effluent | real | mg/l | 0.0 | 0.0-300.0 |
+| [tss](tss.md) | Total suspended solids in the septic tank effluent | real | mg/l | 0.0 | 0.0-300.0 |
+| [nh4\_n](nh4_n.md) | Ammonium nitrogen in the septic tank effluent | real | mg/l | 0.0 |  |
+| [no3\_n](no3_n.md) | Nitrate nitrogen in the septic tank effluent | real | mg/l | 0.0 |  |
 | [no2\_n](no2_n.md) | Nitrite nitrogen in the septic tank effluent | real | mg/l | 0.0 |  |
 | [org\_n](org_n.md) | Organic nitrogen in the septic tank effluent | real | mg/l | 0.0 |  |
 | [min\_p](min_p.md) | Mineral phosphorus in the septic tank effluent | real | mg/l | 0.0 |  |
 | [org\_p](org_p.md) | Organic phosphorus in the septic tank effluent | real | mg/l | 0.0 |  |
 | [fcoli](fcoli.md) | Fecal coliform concentration in the septic tank effluent | real | cfu/100 mL | 0.0 |  |
 
+{% hint style="warning" %}
+In SWAT+ main (`6f515368`) none of the concentrations in this file changes simulation results, because the septic effluent inflow they are multiplied by is never set ([`sep_biozone.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/sep_biozone.f90#L121)). This comes from source reading, not a model run.
+{% endhint %}
+
 #### References
 
-> Siegrist et al. (2005)&#x20;
+> Siegrist et al. (2005)
 >
 > McCray et al. (2005)
 >
