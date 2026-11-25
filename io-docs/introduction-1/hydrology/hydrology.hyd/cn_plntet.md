@@ -6,4 +6,4 @@ description: Lateral flow coefficient
 
 **Code reference:** `hyd_db(ithyd)%latq_co` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hydrology_data_module.f90#L25)).
 
-Soil lateral flow is computed for each soil layer using a hillslope storage method. The equation is a function of excess water above field capacity, total soil water capacity, hydraulic conductivity, slope, and flow length. The lateral flow coefficient is a direct linear coefficient applied to the hillslope storage equation.
+Dimensionless multiplier $c_{\ell}$ for lateral soil flow. The built-in hydrology record uses 0.3. Below the top soil layer, [`swr_percmicro.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/swr_percmicro.f90#L60-L73) calculates $q_{\ell}=0.024\,c_{\ell}HKS/L$ using saturated thickness $H$, saturated hydraulic conductivity $K$, slope steepness $S$, and [lateral slope length](../topography.hyd/lat_len.md) $L$. It bounds the result between zero and the layer's excess water. The top layer produces zero in this calculation.

@@ -6,11 +6,13 @@ description: >-
 
 # topography.hyd
 
+Each record supplies topographic parameters referenced by HRUs and routing units. After the title and header, [`topo_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/topo_read.f90#L31-L52) reads each record in the order below.
+
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Name of the topography record | string | n/a | n/a | n/a |
 | [slp](slp.md) | Average slope steepness | real | m/m | 0.02 |  |
 | [slp\_len](slp_len.md) | Average slope length | real | m | 50.0 |  |
 | [lat\_len](lat_len.md) | Average slope length for lateral subsurface flow | real | m | 50.0 |  |
-| dist\_cha | Average distance to stream (copied to HRU state and available for calibration; the nitrogen-loss equation using it is commented out in main 6f515368) | real | m |  |  |
-| [depos](depos.md) | Deposition coefficient | real | none | 1 |  |
+| [dist\_cha](dist_cha.md) | Average distance to stream (stored for calibration) | real | m |  |  |
+| [depos](depos.md) | Sediment transport capacity multiplier | real | none | 1 |  |

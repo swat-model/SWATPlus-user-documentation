@@ -4,10 +4,12 @@ description: This file controls the simulation of snowfall and snowmelt processe
 
 # snow.sno
 
+Each record supplies snow accumulation and melt parameters for an HRU. After the title and header, [`snowdb_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/snowdb_read.f90#L28-L49) reads each record in the order below.
+
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Name of the snow record | string | n/a | n/a | n/a |
-| [fall\_tmp](fall_tmp.md) | Snowfall temperature | real | ºC | 1 | -5 - 5 |
+| [fall\_tmp](fall_tmp.md) | Mean air temperature threshold for snowfall | real | ºC | 1 | -5 - 5 |
 | [melt\_tmp](melt_tmp.md) | Snow melt base temperature | real | ºC | 0.5 | -5 - 5 |
 | [melt\_max](melt_max.md) | Melt factor for snow on June 21 | real | mm H2O/day-ºC | 0.0 | 0.0-10.0 |
 | [melt\_min](melt_min.md) | Melt factor for snow on December 21 | real | mm H2O/day-ºC | 0.0 | 0.0-10.0 |
