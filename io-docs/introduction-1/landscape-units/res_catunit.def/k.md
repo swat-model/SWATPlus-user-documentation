@@ -4,6 +4,8 @@ description: "Record number"
 
 # k
 
-**Code reference:** `k` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read_elements.f90#L21)).
+**Code reference:** `k` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read_elements.f90#L21), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read_elements.f90#L48)).
 
-The leading integer identifier on this data row.
+Region record identifier (`integer`, dimensionless, default `0`), read in [`res_read_elements.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/res_read_elements.f90#L48-L53) and discarded after reading.
+
+*(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations).*
