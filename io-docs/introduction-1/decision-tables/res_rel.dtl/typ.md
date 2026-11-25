@@ -1,5 +1,5 @@
 ---
-description: "Type of action to perform (e.g. reservoir release, irrigate, fertilize)"
+description: "Action type, normally release"
 ---
 
 # typ

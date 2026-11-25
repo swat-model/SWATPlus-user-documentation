@@ -4,9 +4,9 @@ Decision tables combine condition rows, alternative columns, and action rows. Ea
 
 ![The four quadrants of a decision table](../../.gitbook/assets/DT_Quadrants.jpg)
 
-For numeric comparisons, use `<`, `>`, `<=`, `>=`, `=`, or `/=`. Quote `/=` as `'/='` in the input file. A hyphen skips the condition for numeric comparisons. Specialized conditions can handle these tokens differently. The general action evaluator considers an action row once if at least one satisfied alternative has a `y` outcome. [`cond_real.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cond_real.f90#L19-L52) · [`cond_integer.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cond_integer.f90#L15-L48) · [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L99-L109)
+For numeric comparisons, use `<`, `>`, `<=`, `>=`, `=`, or `/=`. Quote `/=` as `'/='` in the input file. A hyphen skips the condition for numeric comparisons. Category and probability conditions handle these tokens differently; see [lum.dtl alt](lum.dtl/alt.md). A misspelled condition keyword or action type is ignored without a warning. The general action evaluator considers an action row once if at least one satisfied alternative has a `y` outcome. [`cond_real.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cond_real.f90#L19-L52) · [`cond_integer.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cond_integer.f90#L15-L48) · [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L99-L109)
 
 - [lum.dtl](lum.dtl/) supplies land use and management rules.
 - [scen_lu.dtl](scen_lu.dtl/) supplies scenario update rules.
 - [res_rel.dtl](res_rel.dtl/) supplies reservoir and wetland release rules.
-- [flo_con.dtl](flo_con.dtl/) supplies parsed connectivity rules whose table indices have no downstream use in this revision.
+- [flo_con.dtl](flo_con.dtl/) supplies flow-control rules for water allocation and saturated buffers.

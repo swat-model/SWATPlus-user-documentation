@@ -1,5 +1,5 @@
 ---
-description: "Action option specific to its type (e.g. rate input, drawdown days, weir equation pointer)"
+description: "Action option"
 ---
 
 # option

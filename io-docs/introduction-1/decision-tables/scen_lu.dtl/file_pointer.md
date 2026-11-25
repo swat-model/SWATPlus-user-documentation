@@ -1,5 +1,5 @@
 ---
-description: "Pointer referencing an external option (e.g. weir equation pointer)"
+description: "Selector or referenced record name"
 ---
 
 # file_pointer

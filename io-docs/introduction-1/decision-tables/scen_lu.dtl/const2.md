@@ -1,5 +1,5 @@
 ---
-description: "Secondary constant for the action (e.g. rate, days)"
+description: "Secondary action value"
 ---
 
 # const2

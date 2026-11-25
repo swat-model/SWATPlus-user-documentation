@@ -1,11 +1,9 @@
 ---
-description: "Numeric identifier of the object associated with the condition"
+description: "Object index or condition-specific number"
 ---
 
 # ob_num
 
 **Code reference:** `dtbl_flo(i)%cond(ic)%ob_num` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditional_module.f90#L10)).
 
-Numeric identifier of the object associated with the condition.
-
-*(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations. See [flo_con.dtl](README.md).)*
+Index of the object the condition reads, in the array chosen by the [condition variable](var.md): HRU, reservoir, aquifer, channel, and so on. 0 means the current object that the table is being evaluated for. A few conditions, such as `month`, `jday`, and `year_cal`, do not use it. [`conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditions.f90#L66-L70) · [`conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditions.f90#L744-L747) In saturated-buffer tables the current object is the source HRU. For `dtbl_mx` and `dtbl_pod_fr` the water allocation routine does not set a current object for the table first, so enter a positive number for object conditions there. [`wallo_start_day.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wallo_start_day.f90#L152-L171) · [`hru_control.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/hru_control.f90#L641-L647)

@@ -1,9 +1,9 @@
 ---
-description: "Numeric index of the object the condition applies to"
+description: "Object index or condition-specific number"
 ---
 
 # ob_num
 
 **Code reference:** `dtbl_scen(i)%cond(ic)%ob_num` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditional_module.f90#L10)).
 
-For conditions that use an object index, 0 typically selects the current object. Positive values are indices in the model array used by the condition. For example, the water-stress condition indexes the HRU plant community directly. [`conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditions.f90#L66-L85)
+Index of the object the condition reads, in the array chosen by the [condition variable](var.md): HRU, reservoir, aquifer, channel, and so on. 0 means the current object that the table is being evaluated for. A few conditions, such as `month`, `jday`, and `year_cal`, do not use it. [`conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditions.f90#L66-L70) · [`conditions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditions.f90#L744-L747) The scenario update loops over every HRU, so 0 means the HRU being processed.

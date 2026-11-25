@@ -1,11 +1,9 @@
 ---
-description: "Primary constant for the action (e.g. rate or duration)"
+description: "Primary action value"
 ---
 
 # const
 
 **Code reference:** `dtbl_flo(i)%act(iac)%const` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/conditional_module.f90#L23)).
 
-Primary constant for the action (e.g. rate or duration).
-
-*(Note: In SWAT+ main (6f515368), this column is parsed into memory but is not used in simulation calculations. See [flo_con.dtl](README.md).)*
+Primary value used by the [option](option.md): a demand in m³ for `set_dmd`, a target fraction of capacity for the fill options, a fraction for `duty_fr` and `frac`, and a tile-flow depth in mm for `flo_mm`, `min_mm`, and `max_mm`. For `duty_reset` it is the source number. [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L183-L233) · [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L818-L865)

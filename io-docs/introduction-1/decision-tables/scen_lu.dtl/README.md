@@ -33,12 +33,12 @@ Line 1 is the title. Line 2 starts with the number of decision tables. Leave lin
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| [var](var.md) | Condition variable tested (e.g. volume, flow, sw, time) | string | n/a | — | — |
-| [ob](ob.md) | Object type the condition applies to (e.g. res, hru, canal) | string | n/a | — | — |
-| [ob_num](ob_num.md) | Object index or condition-specific numeric input | integer | n/a | — | — |
-| [lim_var](lim_var.md) | Limit variable compared against (e.g. evol, pvol, fc, ul) | string | n/a | — | — |
+| [var](var.md) | Keyword naming the quantity tested | string | n/a | — | — |
+| [ob](ob.md) | Object-type label for the condition | string | n/a | — | — |
+| [ob_num](ob_num.md) | Object index or condition-specific number | integer | n/a | — | — |
+| [lim_var](lim_var.md) | Named quantity or category for the condition | string | n/a | — | — |
 | [lim_op](lim_op.md) | Arithmetic operator for building a threshold where the condition uses one | string | n/a | — | — |
-| [lim_const](lim_const.md) | Constant value used in the limit comparison | real | — | — | — |
+| [lim_const](lim_const.md) | Number used by the condition | real | — | — | — |
 | [alt(ic,ial)](alt_ic_ial.md) | Comparison token, repeated once per alternative | string | n/a | — | — |
 
 ## Actions
@@ -46,13 +46,13 @@ Line 1 is the title. Line 2 starts with the number of decision tables. Leave lin
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [typ](typ.md) | Scenario action type, such as lu_change or snow_change | string | n/a | — | — |
-| [ob](ob_2.md) | Object type the action applies to (e.g. res, hru, canal) | string | n/a | — | — |
-| [ob_num](ob_num_2.md) | Object index or other integer input for the action | integer | n/a | — | — |
-| [name](name_2.md) | Action name | string | n/a | — | — |
-| [option](option.md) | Action option specific to its type (e.g. rate input, drawdown days, weir equation pointer) | string | n/a | — | — |
-| [const](const.md) | Primary constant for the action (e.g. rate, days) | real | — | — | — |
-| [const2](const2.md) | Secondary constant for the action (e.g. rate, days) | real | — | — | — |
-| [file_pointer](file_pointer.md) | Action-specific selector or referenced record name | string | n/a | — | — |
+| [ob](ob_2.md) | Object-type label for the action | string | n/a | — | — |
+| [ob_num](ob_num_2.md) | HRU changed by the action | integer | n/a | — | — |
+| [name](name_2.md) | User label for the action | string | n/a | — | — |
+| [option](option.md) | Action option | string | n/a | — | — |
+| [const](const.md) | Primary action value | real | — | — | — |
+| [const2](const2.md) | Secondary action value | real | — | — | — |
+| [file_pointer](file_pointer.md) | Selector or referenced record name | string | n/a | — | — |
 | [act_outcomes(iac,ial)](act_outcomes_iac_ial.md) | Action outcome token, repeated once per alternative | string | n/a | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.
