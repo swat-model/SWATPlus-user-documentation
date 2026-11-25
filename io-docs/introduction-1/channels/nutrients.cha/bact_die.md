@@ -6,4 +6,4 @@ description: Coliform die-off rate in the reach at 20ºC
 
 **Code reference:** `ch_nut(ich)%rk5` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/channel_data_module.f90#L126)).
 
-SWAT+ main (6f515368) reads this value and may replace a nonpositive value with its default, but does not otherwise use it in a calculation.
+*(Note: In SWAT+ main (6f515368), this column is parsed into memory and values `<= 0.` are replaced with `2.0` in [`ch_read_nut.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_read_nut.f90#L102), but `rk5` is not used in simulation calculations).* Additionally, selecting `"rk5"` in calibration ([`cal_parm_select.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cal_parm_select.f90#L608-L610)) modifies `ch_nut%rs2` instead of `rk5`.

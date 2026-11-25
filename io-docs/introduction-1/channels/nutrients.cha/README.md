@@ -7,7 +7,7 @@ description: This file controls the channel nutrient properties.
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
 | [name](name.md) | Name of the channel nutrient record | string | n/a | n/a | n/a |
-| <p><a href="plt_n.md">plt_n</a></p><p></p> | Channel organic N concentration SWAT+ main (6f515368) reads this value but does not use it in a calculation. | real | ppm | 0.0 | 0.0-100.0 |
+| [plt\_n](plt_n.md) | Channel organic N concentration SWAT+ main (6f515368) reads this value but does not use it in a calculation. | real | ppm | 0.0 | 0.0-100.0 |
 | [ptl\_p](plt_p.md) | Channel organic P concentration SWAT+ main (6f515368) reads this value but does not use it in a calculation. | real | ppm | 0.0 | 0.0-100.0 |
 | [alg\_stl](alg_stl.md) | Local algal settling rate in the channel at 20ºC | real | m/day | 1.0 | 0.15-1.82 |
 | [ben\_disp](ben_disp.md) | Benthic source rate for dissolved P in the channel at 20ºC | real | mg P/m2*day | 0.05 | 0.001-0.10 |
@@ -21,7 +21,7 @@ description: This file controls the channel nutrient properties.
 | [cbn\_bod\_stl](cbn_bod_stl.md) | Rate of loss of CBOD due to settling in the channel at 20ºC | real | 1/day | 0.36 | -0.36-0.36 |
 | [ben\_bod](ben_bod.md) | Sediment oxygen demand rate in the channel at 20ºC | real | mg O2/m2*day | 2.0 | 0.0-100.0 |
 | [bact\_die](bact_die.md) | Coliform die-off rate in the channel at 20ºC SWAT+ main (6f515368) reads this value and may replace a nonpositive value with its default, but does not otherwise use it in a calculation. | real | 1/day | 2.0 | 0.05-4.0 |
-| [cst\_decay  ](cst_decay.md) | Decay rate for arbitrary non-conservative constituents in the channel at 20ºC SWAT+ main (6f515368) reads this value and allows calibration/default handling, but does not use it in channel water-quality routing. | real | 1/day | 1.71 | 0.0-10.0 |
+| [cst\_decay](cst_decay.md) | Decay rate for arbitrary non-conservative constituents in the channel at 20ºC SWAT+ main (6f515368) reads this value and allows calibration/default handling, but does not use it in channel water-quality routing. | real | 1/day | 1.71 | 0.0-10.0 |
 | [nh3n\_no2n](nh3n_no2n.md) | Biological oxidation rate of NH3 to NO2 in the channel at 20ºC in well-aerated conditions | real | 1/day | 0.55 | 0.10-1.0 |
 | [no2n\_no3n](no2n_no3n.md) | Biological oxidation rate of NO2 to NO3 in the channel at 20ºC in well-aerated conditions | real | 1/day | 1.10 | 0.20-2.0 |
 | [ptln\_nh3n](ptln_nh3n.md) | Hydrolysis rate of organic N to ammonia in the channel at 20ºC | real | 1/day | 0.21 | 0.20-0.40 |
@@ -42,6 +42,6 @@ description: This file controls the channel nutrient properties.
 | [const\_n](const_n.md) | Michaelis-Menton half-saturation constant for N | real | mg N/L | 0.02 | 0.01-0.30 |
 | [const\_p](const_p.md) | Michaelis-Menton half saturation constant for P | real | mg P/L | 0.03 | 0.001-0.05 |
 | [lt\_nonalg](lt_nonalg.md) | Non-algal portion of the light extinction coefficient | real | 1/m | 1.0 | 0.0-10.0 |
-| [alg\_shd\_l](alg_shd_l.md) | Linear algal self-shading coefficient | real | 1/(m\*ug chla/L) | 0.03 | 0.006-0.065 |
-| [alg\_shd\_nl](alg_shd_nl.md) | Nonlinear algal self-shading coefficient | real | (1/m)(ug chla/L)^(-2/3) | 0.05 | 0.0-1.0 |
+| [alg\_shd\_l](alg_shd_l.md) | Linear algal self-shading coefficient (capped back to `lt_nonalg` in [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L157-L164) at 6f515368) | real | 1/(m\*ug chla/L) | 0.03 | 0.006-0.065 |
+| [alg\_shd\_nl](alg_shd_nl.md) | Nonlinear algal self-shading coefficient (capped back to `lt_nonalg` in [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L157-L164) at 6f515368) | real | (1/m)(ug chla/L)^(-2/3) | 0.05 | 0.0-1.0 |
 | [nh3\_pref](nh3_pref.md) | Algal preference factor for ammonia | real | none | 0.50 | 0.0-1.0 |

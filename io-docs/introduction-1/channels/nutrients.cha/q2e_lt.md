@@ -15,4 +15,4 @@ Qual2E defines four light averaging options:
 
 The options above describe the intended light-averaging methods.
 
-SWAT+ main (6f515368) stores this field as a real value and replaces a nonpositive value with 2, but does not use the selected light-averaging option in a later calculation.
+SWAT+ main (6f515368) stores this field as a real value and replaces a nonpositive value with `2` in [`ch_read_nut.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_read_nut.f90#L62), but does not branch on `lao` in [`ch_watqual4.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/ch_watqual4.f90#L170-L183) (which always evaluates Light Averaging Option #2).
