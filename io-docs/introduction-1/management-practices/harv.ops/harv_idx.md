@@ -4,6 +4,16 @@ description: Harvest index target specified at harvest
 
 # harv\_idx
 
-**Code reference:** `harvop_db(iharvop)%hi_ovr` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operations_module.f90#L113)).
+**Code reference:** `harvop_db(iharvop)%hi_ovr` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operations_module.f90#L113), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_read_harvops.f90#L44)).
 
-This variable will force the ratio of yield to total above-ground biomass to the specified value. If biomass is cut and removed (e.g., in hay cuttings), _harv\_idx_ must be used to specify the amount of biomass cut. For grain harvest, the harvest index in the plant growth database ([**plants.plt**](../../databases/plants.plt/)) is used instead of _harv\_idx_, which assumes that only the seed is being harvested.&#x20;
+Dimensionless override harvest index (`fraction`, `(kg/ha)/(kg/ha)`; default `0.0`, valid range `0.0–1.0`) specifying the target fraction of above-ground biomass or surface residue removed during biomass and residue harvests.
+
+In biomass harvests (`biomass`, `tree`, `stripper`; [`mgt_harvbiomass.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvbiomass.f90#L38-L46), [`#L126-L127`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvbiomass.f90#L126-L127)), SWAT+ combines `harv_idx` with `harv_eff` to scale seed, leaf, and stem mass into yield and reduce leaf area index and accumulated heat units by $(1 - 0.5\,HI_{\text{tot}})$:
+
+$$HI_{\text{tot}} = HI_{\text{ovr}} \cdot E_{\text{harv}}$$
+
+In residue harvests (`residue`; [`mgt_harvresidue.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvresidue.f90#L41-L43), [`#L57`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvresidue.f90#L57)), `harv_idx` scales the residue removal fraction:
+
+$$E_{\text{net}} = E_{\text{harv}} \cdot HI_{\text{ovr}}, \qquad M_{\text{rem}} = E_{\text{net}} \cdot M_{\text{rsd}}$$
+
+where $HI_{\text{ovr}}$ is `harv_idx`, $E_{\text{harv}}$ is `harv_eff` (or the scheduled efficiency when positive for residue harvest), $M_{\text{rsd}}$ is surface plant residue mass (`kg/ha`), and $M_{\text{rem}}$ is removed residue mass (`kg/ha`). For `grain`/`picker` ([`mgt_harvgrain.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvgrain.f90#L40-L48)) and `tuber`/`peanuts` ([`mgt_harvtuber.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvtuber.f90#L43-L46)) harvests, `harv_idx` is not used; grain harvests instead use the plant's simulated harvest index from [**plants.plt**](../../databases/plants.plt/README.md) (floored by `wsyf` at [`mgt_harvgrain.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_harvgrain.f90#L43)).

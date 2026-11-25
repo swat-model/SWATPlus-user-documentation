@@ -1,12 +1,12 @@
 ---
-description: ​Irrigation operation name
+description: Irrigation operation name
 ---
 
 # name (irr.ops)
 
-**Code reference:** `irrop_db(irr_op)%name` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operations_module.f90#L6)).
+**Code reference:** `irrop_db(irr_op)%name` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operations_module.f90#L6), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_read_irrops.f90#L48)).
 
-The name of the irrigation operation is a primary key referenced when irrigation operations are scheduled in [**management.sch**](../../landuse-and-management/management.sch/) or [**lum.dtl**](../../decision-tables/lum.dtl/). All names in the **irr.ops** file must be unique.
+The name of the irrigation operation is a primary key matched when irrigation operations are scheduled in [**management.sch**](../../landuse-and-management/management.sch/README.md) ([`read_mgtops.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/read_mgtops.f90#L96-L97)) or [**lum.dtl**](../../decision-tables/lum.dtl/README.md) ([`dtbl_lum_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/dtbl_lum_read.f90#L139-L156)). All names in **irr.ops** must be unique.
 
 | Name            | Description       |
 | --------------- | ----------------- |

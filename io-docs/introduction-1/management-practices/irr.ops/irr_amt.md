@@ -1,9 +1,22 @@
 ---
-description: ​Irrigation application amount
+description: Irrigation application amount
 ---
 
 # amt\_mm
 
-**Code reference:** `irrop_db(irr_op)%amt_mm` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operations_module.f90#L7)).
+**Code reference:** `irrop_db(irr_op)%amt_mm` ([declaration](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_operations_module.f90#L7), [read](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_read_irrops.f90#L48)).
 
-Irrigation application amount in mm. SWAT+ uses this value with eff_frac and sumq_frac to calculate irrigation applied to the land and irrigation runoff.
+Irrigation application amount (`mm`; table default `0.0`, Fortran derived-type initial `25.4`). SWAT+ uses `amt_mm` along three active pathways:
+
+* **Scheduled manual irrigation:** In [`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L361-L362) and [`#L574-L575`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L574-L575), SWAT+ computes applied water and irrigation runoff as:
+
+$$I_{\text{app}} = A_{\text{mm}} \cdot E_{\text{irr}} \cdot (1 - f_{\text{surq}}), \qquad I_{\text{run}} = A_{\text{mm}} \cdot f_{\text{surq}}$$
+
+* **Decision-table demand/transfer irrigation:** In [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L149-L150), SWAT+ uses:
+
+$$I_{\text{app}} = A_{\text{mm}} \cdot E_{\text{irr}} \cdot (1 - f_{\text{surq}}), \qquad I_{\text{run}} = A_{\text{mm}} \cdot E_{\text{irr}} \cdot f_{\text{surq}}$$
+
+Direct `irrigate` decision-table actions at [`actions.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/actions.f90#L253-L259) use the decision-table constant `d_tbl%act(iac)%const` instead of `amt_mm`.
+* **Paddy/wetland auto-irrigation:** In [`mgt_sched.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/mgt_sched.f90#L537-L538) and [`wet_irrp.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/wet_irrp.f90#L28), `amt_mm` is copied to the maximum target ponding depth `hru(j)%irr_hmax`, with minimum trigger depth `hru(j)%irr_hmin = 0.9 * hru(j)%irr_hmax`.
+
+Here $A_{\text{mm}}$ is `amt_mm` (`mm`), $E_{\text{irr}}$ is `eff_frac`, and $f_{\text{surq}}$ is `sumq_frac`.
