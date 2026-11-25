@@ -8,11 +8,11 @@ An Editor export of this format has not been verified. Field names and values in
 
 This file supplies named sets of initial general-constituent values in HRU soil and plants.
 
-SWAT+ looks for `cs_hru.ini` in the simulation working directory; it is not selected through `file.cio`. See the [cs_hru_read.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cs_hru_read.f90#L23) reader.
+SWAT+ looks for `cs_hru.ini` in the simulation working directory; it is not selected through `file.cio`. See the [`cs_hru_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cs_hru_read.f90#L23-L75) reader.
 
-# cs_hru.ini
+# cs\_hru.ini
 
-The first two lines contain a title and column headings. For each initial-condition set, enter its name followed by separate soil and plant rows with values for the configured constituents.
+The first **5 lines** contain a title and four header lines ([`cs_hru_read.f90`](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cs_hru_read.f90#L24-L32)). For each initial-condition set, enter its `name` row followed by separate `soil` and `plt` rows, each containing `2 * cs_db%num_cs` values (first `cs_db%num_cs` dissolved concentrations, then `cs_db%num_cs` sorbed concentrations, e.g., for `SeO4`, `SeO3`, and `Boron`).
 
 ## Parameter-set name
 
@@ -24,12 +24,12 @@ The first two lines contain a title and column headings. For each initial-condit
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| [soil](soil.md) | Amount of constituent in soil at start of simulation | real | — | — | — |
+| [soil](soil.md) | Dissolved (`1..num_cs`) and sorbed (`num_cs+1..2*num_cs`) constituent values in soil | real | mg/L; mg/kg | — | — |
 
 ## Plant values
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| [plt](plt.md) | Amount of constituent on plant at start of simulation | real | — | — | — |
+| [plt](plt.md) | Intended plant constituent values (read into memory, but not used in simulation) | real | — | — | — |
 
 **Type note:** `string` means Fortran `character`; `integer` and `real` use the same names in Fortran.
