@@ -13,3 +13,5 @@ P_i(W⁄D)=\frac{days_{W⁄D,i}}{days_{dry,i}}
 $$
 
 where $$P_i(W⁄D)$$ is the probability of a wet day following a dry day in month $$i$$, $$days_{W⁄D,i}$$ is the number of times a wet day followed a dry day in month $$i$$ for the entire period of record, and $$days_{dry,i}$$ is the number of dry days in month $$i$$ during the entire period of record. A dry day is a day with 0 mm of precipitation. A wet day is a day with > 0 mm precipitation.
+
+If $p_{ww}\leq p_{wd}$ or $p_{wd}\leq 0$, SWAT+ sets $p_{wd}=0.75\max(0.1,d_w)/D$. Here $d_w$ is the supplied wet-day count and $D$ is the number of days in the month. See [cli_initwgn.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cli_initwgn.f90#L175-L188).

@@ -6,26 +6,30 @@ description: >-
 
 # slr.cli and slr data files
 
-The **solar radiation data files** contain the observed precipitation input data. They are named by the user and must have the file ending \*.slr. There must be one file per station used in the simulation. As in all SWAT+ input files, the first line in the solar radiation data files is reserved for user comments. The second line contains the column headers for the third line, which lists basic information about the station.&#x20;
+The **solar radiation data files** contain the observed precipitation input data. Use the exact filename listed in the corresponding climate list. A common extension is .slr. There must be one file per station used in the simulation. As in all SWAT+ input files, the first line in the solar radiation data files is reserved for user comments. The second line contains the column headers for the third line, which lists basic information about the station.
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| nbyr | Length of the solar radiation time series | integer | years |  |  |
-| tstep | Time step of the solar radiation data | integer | n/a |  |  |
-| lat | Latitude of the solar radiation station | real | Decimal Degrees |  |  |
-| lon | Longitude of the solar radiation station | real | Decimal Degrees |  |  |
-| elev | Elevation of the solar radiation station | real | m |  |  |
+| [nbyr](slr/nbyr.md) | Length of the solar radiation time series | integer | years |  |  |
+| [tstep](slr/tstep.md) | Time step of the solar radiation data | integer | n/a |  |  |
+| [lat](slr/lat.md) | Latitude of the solar radiation station | real | Decimal Degrees |  |  |
+| [lon](slr/lon.md) | Longitude of the solar radiation station | real | Decimal Degrees |  |  |
+| [elev](slr/elev.md) | Elevation of the solar radiation station | real | m |  |  |
 
 Starting in the fourth line, the year, Julian day, and solar radiation are listed. There are no headers for these columns.
 
 | **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
 | --------- | --------------- | -------- | -------- | ----------- | --------- |
-| year | Year of the observation | integer | n/a |  |  |
-| jday | Julian day of the observation | integer | n/a |  |  |
-| slr | Observed solar radiation | real | MJ/m^2/day |  |  |
+| [year](slr/year.md) | Year of the observation | integer | n/a |  |  |
+| [jday](slr/jday.md) | Julian day of the observation | integer | n/a |  |  |
+| [slr](slr/slr.md) | Observed solar radiation | real | MJ/m^2/day |  |  |
 
 {% hint style="info" %}
-A negative 99.0 (-99.0) should be inserted for missing data. This value tells SWAT+ to generate a solar radiation value for that day.
+Enter −99 for missing observations. SWAT+ uses the weather generator for values at or below −97 and dates outside the station coverage. See [climate_control.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/climate_control.f90#L64-L160).
 {% endhint %}
 
-The **slr.cli** file lists the names of the solar radiation data files used in the simulation. The first line is reserved for user comments. The second line is reserved for the column header "filename". The user can list as many solar radiation data file names as needed for the simulation. Only one file name should be listed per line. All file names listed in [**weather-sta.cli**](weather-sta.cli/) must be listed here. For every file name listed in **slr.cli**, a file with that name must be provided by the user that contains the solar radiation data measured at the station. &#x20;
+The **slr.cli** file lists the names of the solar radiation data files used in the simulation. The first line is reserved for user comments. The second line is reserved for the column header "filename". The user can list as many solar radiation data file names as needed for the simulation. Only one file name should be listed per line. List each measured filename referenced for this variable in [weather-sta.cli](weather-sta.cli/README.md). For every file name listed in **slr.cli**, a file with that name must be provided by the user that contains the solar radiation data measured at the station.
+
+| **Field** | **Description** | **Type** | **Unit** | **Default** | **Range** |
+| --- | --- | --- | --- | --- | --- |
+| [filename](slr/filename.md) | Name of the measured data file | string |  |  |  |

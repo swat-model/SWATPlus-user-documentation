@@ -13,3 +13,5 @@ $$
 $$
 
 where $$σmn_{mon}$$is the standard deviation for daily minimum temperature in month $$mon$$ (ºC), $$T_{mn,mon}$$ is the daily minimum temperature on day $$d$$ in month $$mon$$ (ºC), $$μmn_{mon}$$ is the average daily minimum temperature for the month $$mon$$ (ºC), and $$N$$ is the total number of daily minimum temperature records for month $$mon$$.
+
+The standard deviation multiplies the generated minimum-temperature residual $Z_2$ in the term $\sigma_{\min} Z_2$. See [cli_tgen.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cli_tgen.f90#L47-L49).

@@ -13,3 +13,5 @@ $$
 $$
 
 where $$μrad_{mon}$$ is the mean daily solar radiation for the month (MJ/m2/day), $$H_{day,mon}$$ is the total solar radiation reaching the earth’s surface on day $$d$$ in month $$mon$$ (MJ/m2/day), and $$N$$ is the total number of daily solar radiation records for month $$mon$$.
+
+SWAT+ computes a daily solar-radiation estimate, then overwrites it with the monthly input mean $H_m$. On generated days the routine therefore returns $H_m$ in MJ/m²/day. See [cli_slrgen.f90](https://github.com/swat-model/swatplus/blob/6f515368525e7d84089ae0f9d33f4c9115de5679/src/cli_slrgen.f90#L30-L36).
